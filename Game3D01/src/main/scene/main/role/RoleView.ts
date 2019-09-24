@@ -137,7 +137,6 @@ export default class RoleView extends ui.test.jueseUI {
         d.heroType = type;
         d.setGoldType( goldType );
         d.popup();
-        
 
         this.oldNum = Session.homeData.getGoldByType( goldType );
         d.on( AdDiamond.CHANGE_GOLD_EVENT , this, this.flyGoldFun , [flyTarget , fc , type ] );
@@ -151,6 +150,7 @@ export default class RoleView extends ui.test.jueseUI {
         fly.endOffY = flyTarget.height / 2;
         fly.flyTargetHandler = new Laya.Handler( this,this.flyFun , [type] );
         fly.flyFromP( Laya.stage.width/2 , Laya.stage.height/2 , flyTarget , v , this.oldNum , fc  );
+        //Laya.MouseManager.enabled = false;
     }
 
     public flyFun( type:HeroLvType , fc:Laya.FontClip , now:number  ) :void{
@@ -161,8 +161,14 @@ export default class RoleView extends ui.test.jueseUI {
         let rc:RollCell = <any>this.heroLvTypeMap[type];
         rc.setValue( now , cost );
         if( now == cost ){
-            rc.effect1();
+            Laya.timer.once( 800 , this, this.tttFun , [ rc ]  );
+            //rc.effect1();
         }
+    }
+
+    public tttFun( rc:RollCell ):void{
+        rc.effect1();
+        //Laya.MouseManager.enabled = true;
     }
 
     /**
