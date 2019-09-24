@@ -60,6 +60,18 @@ export default class HeroData implements IData{
         return hd.getLv( type );
     }
 
+    public getHeroBaseData(heroId:number):HeroBaseData{
+        return this.heroMap[heroId];
+    }
+
+    public getBaseTime( type:HeroLvType , heroId:number ):number{
+        let b = this.getHeroBaseData( heroId );
+        if( type == HeroLvType.ATK ){
+            return b.atkTime;
+        }
+        return b.hpTime;
+    }
+
     /**
      * 得到某位英雄具体的数值 给战场用的
      * @param heroId 

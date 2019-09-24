@@ -50,6 +50,10 @@ export default class FlyEffect{
     public goldEvery:number = 0;
     public nowGold:number = 0;
     public fc:Laya.FontClip;
+
+    public endOffX:number = 0;
+    public endOffY:number = 1;
+
     public flyFromP( x1:number ,y1:number ,end:Laya.Sprite , gold:number , nowGold:number,fc:Laya.FontClip  ):void{
         this.fc = fc;
         this.end = end;
@@ -57,8 +61,8 @@ export default class FlyEffect{
         this.y1 = y1;
         this.nowGold = nowGold;
         let p = end.localToGlobal( new Laya.Point(0,0) );
-        this.ex = p.x;// + end.width/2;
-        this.ey = p.y;// + end.height/2;
+        this.ex = p.x + this.endOffX;// + end.width/2;
+        this.ey = p.y + this.endOffY;// + end.height/2;
         this.flyGold( 0,0,gold );
     }
 

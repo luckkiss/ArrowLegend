@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":49,
+    "selectedBox":112,
+    "selecteID":72,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#c6abab","height":1334},
     "nodeParent":-1,
@@ -240,13 +240,14 @@
                                             "props":{"name":"item0"},
                                             "nodeParent":108,
                                             "label":"item0",
-                                            "isOpen":null,
+                                            "isOpen":true,
                                             "isDirectory":true,
                                             "isAniNode":true,
                                             "hasChild":true,
                                             "compId":106,
                                             "child":[
                                                 {
+                                                    "x":90,
                                                     "type":"FontClip",
                                                     "searchKey":"FontClip,hpLv",
                                                     "props":{"y":4,"x":65.5,"width":180,"var":"hpLv","value":"99","spaceX":-3,"skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:vbnd","scaleY":0.25,"scaleX":0.25,"height":113,"align":"center"},
@@ -262,6 +263,7 @@
                                                     "$HIDDEN":false
                                                 },
                                                 {
+                                                    "x":90,
                                                     "type":"Sprite",
                                                     "searchKey":"Sprite",
                                                     "props":{"x":-0.5,"texture":"main/dengji.png","scaleY":0.6,"scaleX":0.6},
@@ -591,7 +593,7 @@
                                             "x":75,
                                             "type":"Box",
                                             "searchKey":"Box,item0",
-                                            "props":{"name":"item0"},
+                                            "props":{"y":0,"x":0,"width":110,"name":"item0","height":35.4},
                                             "nodeParent":111,
                                             "label":"item0",
                                             "isOpen":null,
