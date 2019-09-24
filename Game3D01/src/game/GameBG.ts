@@ -299,6 +299,7 @@ export default class GameBG extends Laya.Sprite {
                     Hero.bornY = yy;
                     console.log("主角出生位置",xx,yy);
                 }
+                grid.pos(xx,yy);
                 this._box.addChild(grid);
                 k++;
             }

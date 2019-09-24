@@ -46,6 +46,8 @@ import FlyUpTips from "../../../FlyUpTips";
         this.box.y = this.box.y + App.top;
         this.box1.y = this.box1.y + App.top;
 
+        this.box1.mouseThrough = true;
+
         this.list = new Laya.List();
         this.list.pos(this.box.x,this.box.y);
         this.addChild(this.list);
@@ -69,6 +71,14 @@ import FlyUpTips from "../../../FlyUpTips";
         Laya.stage.on( GameEvent.ADD_COIN , this , this.addCoinFun );
         Laya.stage.on( GameEvent.APP_ENERGY ,  this, this.reducePowerFun );
         //Laya.stage.on( Laya.Event.CLICK ,this,this.reducePowerFun , [1] );
+
+        this.on(Laya.Event.CLICK,this,this.onClick);
+
+        this.addChild(this.box1);
+    }
+
+    private onClick(e:Laya.Event):void{
+        console.log("================",e.target);
     }
 
     public reducePowerFun( v:number ):void{
