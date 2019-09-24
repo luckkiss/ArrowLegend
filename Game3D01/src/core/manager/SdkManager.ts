@@ -69,7 +69,7 @@ export default class SdkManager {
         btn.type = "image";
         let sty:any = {};
         sty.left = 0;
-        sty.top = 300;
+        sty.top = 400;
         sty.width = 44;
         sty.height = 44;
         //sty.backgroundColor = "#ffffff";
