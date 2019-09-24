@@ -6,6 +6,7 @@ import Session from "../Session";
 import { GoldType } from "../../game/data/HomeData";
 import { GOLD_CHANGE_TYPE } from "../../UseGoldType";
 import GetItemDialog from "./GetItemDialog";
+import { HeroLvType } from "../../game/data/HeroData";
 
 export default class AdDiamond extends ui.test.juese_tishiUI{
     constructor(){
@@ -15,6 +16,9 @@ export default class AdDiamond extends ui.test.juese_tishiUI{
     }
 
     private clickFun():void{
+        if( this.check() > 0 ){
+            return;
+        }
         App.sdkManager.playAdVideo( AD_TYPE.AD_DIAMOND , new Laya.Handler(this,this.adFun) );
     }
 
@@ -22,9 +26,42 @@ export default class AdDiamond extends ui.test.juese_tishiUI{
     public setGoldType(a:GoldType):void{
         this.goldType = a;
         this.v1.vs.selectedIndex = a;
+
+        let res = this.check();
+        if( res < 0 ){
+            this.fc.visible = false;
+        }else{
+            this.fc.visible = true;
+            Laya.timer.frameLoop( 1, this,this.loopFun );
+        }
+        this.on( Laya.Event.UNDISPLAY ,this,this.aundisFun );
+    }
+
+    public aundisFun():void{
+        Laya.timer.clearAll( this );
+    }
+
+    public loopFun():void{
+        let res = this.check();
+        if( res < 0 ){
+            this.fc.visible = false;
+            return;
+        }else{
+            this.fc.value = "00:" + this.getV0(  Math.ceil( res/1000 )  );
+        }
+    }
+
+    public getV0( v:number ):string{
+        return ( (v<10) ? ("0" + v) : ("" + v) );
+    }
+
+    private check():number{
+        let t = Session.heroData.getBaseTime( this.heroType , Session.heroData.nowRoleId );
+        return t - Laya.Browser.now();
     }
 
     public addNum:number = 0;
+    public heroType:HeroLvType;
 
     private adFun():void{
         let v:number = Math.ceil( Math.random() * 4 )  + 6;
@@ -56,6 +93,13 @@ export default class AdDiamond extends ui.test.juese_tishiUI{
         g.popup(true);
 
         g.once( Laya.Event.UNDISPLAY ,this, this.undisFun );
+
+        let b = Session.heroData.getHeroBaseData( Session.heroData.nowRoleId );
+        if( this.heroType == HeroLvType.ATK ){
+            b.atkTime = Laya.Browser.now() + 60 * 1000;
+        }else if( this.heroType == HeroLvType.HP ) {
+            b.hpTime  = Laya.Browser.now() + 60 * 1000;
+        }
     }
 
     private undisFun():void{
