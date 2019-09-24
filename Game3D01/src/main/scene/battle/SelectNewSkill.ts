@@ -50,7 +50,10 @@ import Session from "../../Session";
 
     removeSelf():Laya.Node
     {
-        Game.hero.addBlood(Session.talentData.dropLevelhp);
+        if(Session.talentData.dropLevelhp > 0)
+        {
+            Game.hero.addBlood(Session.talentData.dropLevelhp);
+        }
         console.log("战斗内升级回血",Session.talentData.dropLevelhp);
         Game.executor.start();
         Game.state = 0;

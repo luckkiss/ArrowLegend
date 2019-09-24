@@ -7,6 +7,7 @@ import App from "../../core/App";
 import MonsterBulletAI from "./MonsterBulletAI";
 import MonsterBullet from "../player/MonsterBullet";
 import { GameAI } from "./GameAI";
+import Monster from "../player/Monster";
 
 /**怪射击器*/
 export default class MonsterShooting {
@@ -27,10 +28,11 @@ export default class MonsterShooting {
 
     public _sysBullet: SysBullet;
 
-    public short_arrow(r_: number, pro: GamePro, proType_: number,range:number = 0) {
+    public short_arrow(r_: number, pro: Monster, proType_: number,range:number = 0) {
         var bo = MonsterBullet.getBullet(this._sysBullet);
         bo.curLen = null;
         bo.moveLen = null;
+        bo.enemy = pro;
         // bo.sp3d.transform.localPositionX = bo.sp3d.transform.localPositionY = bo.sp3d.transform.localPositionZ = 0;
         bo.sp3d.transform.localPositionY = 0.1;
         bo.setXY2D(pro.pos2.x, pro.pos2.z);
