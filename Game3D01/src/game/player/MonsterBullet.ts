@@ -7,6 +7,7 @@ import Game from "../Game";
 import { ui } from "./../../ui/layaMaxUI";
 import MemoryManager from "../../main/scene/battle/MemoryManager";
 import BulletRotateScript from "../controllerScript/BulletRotateScript";
+import Monster from "./Monster";
 
 export default class MonsterBullet extends GamePro {
     static TAG: string = "MonsterBullet_";
@@ -14,6 +15,8 @@ export default class MonsterBullet extends GamePro {
     public curLen: number;
     public moveLen: number;
     public sysBullet: SysBullet;
+
+    enemy:Monster;
 
     private bullet3d: Laya.Sprite3D;
     constructor() {

@@ -2,6 +2,10 @@
 import Game from "../Game";
 import GamePro from "../GamePro";
 import MemoryManager from "../../main/scene/battle/MemoryManager";
+import SysBullet from "../../main/sys/SysBullet";
+import GameHitBox from "../GameHitBox";
+import Monster from "../player/Monster";
+import MonsterBullet from "../player/MonsterBullet";
 
 /**子弹爆炸特效 */
 export default class BoomEffect{
@@ -14,27 +18,38 @@ export default class BoomEffect{
 
     }
 
-    static getEffect(pro: GamePro,effectId:number):BoomEffect
+    static getEffect(pro: GamePro,sys:SysBullet):BoomEffect
     {
-        // let effect:BoomEffect = Laya.Pool.getItemByClass(BoomEffect.TAG,BoomEffect);
-        let tag:string = BoomEffect.TAG + effectId;
+        if(!sys)
+        {
+            return null;
+        }
+        if(sys.boomEffect <= 0)
+        {
+            return null;
+        }
+        let tag:string = BoomEffect.TAG + sys.boomEffect;
         Game.poolTagArr[tag] = tag;
         let effect:BoomEffect = Laya.Pool.getItemByClass(tag,BoomEffect);
-        // let effect:BoomEffect = new BoomEffect();
         if(!effect.pro)
         {
             effect.pro = pro;
-            effect.effectId = effectId;
-            effect.sp3d = Laya.Sprite3D.instantiate(Laya.loader.getRes("h5/bulletsEffect/" + effectId + "/monster.lh"));
-            // Game.monsterResClones.push(effect.sp3d);
+            effect.effectId = sys.boomEffect;
+            effect.sp3d = Laya.Sprite3D.instantiate(Laya.loader.getRes("h5/bulletsEffect/" + sys.boomEffect + "/monster.lh"));
             MemoryManager.ins.add(effect.sp3d.url);
             console.log("创建新的怪物子弹爆炸特效");
         }
-        effect.sp3d.transform.localPosition = pro.sp3d.transform.localPosition;
+        effect.sp3d.transform.localPositionX = pro.sp3d.transform.localPositionX;
+        effect.sp3d.transform.localPositionZ = pro.sp3d.transform.localPositionZ;
         Game.layer3d.addChild(effect.sp3d);
 
+        if (GameHitBox.faceToLenth(pro.hbox, Game.hero.hbox) <= sys.attackAngle) {
+            pro.hurtValue = (pro as MonsterBullet).enemy.sysEnemy.enemyAttack;
+            Game.hero.hbox.linkPro_.event(Game.Event_Hit, pro);
+        }
+
         setTimeout(() => {
-            effect.recover();
+            // effect.recover();
         }, 500);
         return effect;
     }
@@ -42,8 +57,7 @@ export default class BoomEffect{
     recover():void
     {
         this.sp3d && this.sp3d.removeSelf();
-        Laya.Pool.recover(BoomEffect.TAG + this.effectId,this)
-        // Laya.Pool.recover(BoomEffect.TAG,this)
+        Laya.Pool.recover(BoomEffect.TAG + this.effectId,this);
         MemoryManager.ins.app(this.sp3d.url);
     }
 }

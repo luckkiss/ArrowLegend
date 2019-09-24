@@ -26,14 +26,14 @@
 			{
 				"type":"Sprite3D",
 				"props":{
-					"name":"zhadanzha",
+					"name":"zhadanzha (1)",
 					"active":true,
 					"isStatic":false,
 					"layer":0,
 					"position":[
-						-0.46,
-						0.47,
-						0.75
+						0,
+						0.33,
+						0
 					],
 					"rotation":[
 						-0.7071069,
@@ -168,7 +168,7 @@
 							"playOnAwake":true,
 							"maxParticles":1000,
 							"autoRandomSeed":true,
-							"randomSeed":1.127053E+09,
+							"randomSeed":6.609572E+08,
 							"emission":{
 								"enable":true,
 								"emissionRate":0,

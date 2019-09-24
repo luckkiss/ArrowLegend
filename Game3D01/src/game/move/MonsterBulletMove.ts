@@ -148,9 +148,7 @@ export default class MonsterBulletMove extends GameMove {
     private hitEffect(pro: MonsterBullet): void {
         // console.trace("===========================================");
         pro.setSpeed(0);
-        if (pro.sysBullet.boomEffect > 0) {
-            BoomEffect.getEffect(pro,pro.sysBullet.boomEffect);
-        }
+        BoomEffect.getEffect(pro,pro.sysBullet);
     }
 }
 

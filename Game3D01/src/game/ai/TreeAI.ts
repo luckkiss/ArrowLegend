@@ -103,11 +103,7 @@ export default class TreeAI extends FlowerAI {
 
     /**aoe */
     private onAoe(bullet: SysBullet): void {
-        BoomEffect.getEffect(this.pro, bullet.boomEffect);
-        if (GameHitBox.faceToLenth(this.pro.hbox, Game.hero.hbox) <= bullet.attackAngle) {
-            this.pro.hurtValue = this.pro.sysEnemy.enemyAttack
-            Game.hero.hbox.linkPro_.event(Game.Event_Hit, this.pro);
-        }
+        BoomEffect.getEffect(this.pro, bullet);
     }
 
     /**跳跃 */
