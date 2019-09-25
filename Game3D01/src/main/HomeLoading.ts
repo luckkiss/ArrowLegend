@@ -74,6 +74,9 @@ import CookieKey from "../gameCookie/CookieKey";
 	}
 
 	private onProgress(value: number): void {
+        this.rect.width = this.barImg.width * value;
+        this.barImg.scrollRect = this.rect;
+        this.sliderImg.x = this.rect.width;
 		value = value * 100;
 		this.txt.text = "" + value.toFixed(0) + "%";
 	}
