@@ -32,7 +32,7 @@ export default class HomeData implements IData{
     isPass:boolean = false;
 
     /**
-     * 新手引导的状态 0是关闭 1是天赋 2是角色
+     * 新手引导的状态 0是关闭
      */
     public newStat = 0;
 
@@ -67,8 +67,13 @@ export default class HomeData implements IData{
             this.curEnergy = this.totalEnergy - delta;
             console.log("Session剩余的时间", time , this.curEnergy);
         }
-        this.newStat = 1; 
+        this.newStat = data.newStat;
         this.curEnergy = 20;
+        if( data.openBtn == null ){
+            this.openBtn = ["1","1","1","-1","1"];
+        }else{
+            this.openBtn = data.openBtn.split(",");
+        }
     }
 
     /**
@@ -97,6 +102,8 @@ export default class HomeData implements IData{
         data.coins += Game.battleCoins;
         data.isGuide = this.isGuide;
         this.coins = data.coins;
+        data.newStat = this.newStat;
+        data.openBtn = this.openBtn.join(",");
     }
 
     /**
@@ -119,7 +126,10 @@ export default class HomeData implements IData{
         this.blueDiamond = 0;
         this.coins = 500;
         this.newStat = 1;
+        this.openBtn = ["1","-1","-1","-1","1"];
     }
+
+    public openBtn:Array<string> = [];
 
     /**
      * 

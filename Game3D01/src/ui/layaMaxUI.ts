@@ -573,6 +573,20 @@ export module ui.test {
         }
     }
     REG("ui.test.newhand1UI",newhand1UI);
+    export class OpenIconUI extends Dialog {
+		public light:ui.test.LightUI;
+		public icon:Laya.Button;
+		public title:Laya.Image;
+		public closeText:Laya.Box;
+		public clickClose:laya.display.Text;
+        public static  uiView:any ={"type":"Dialog","props":{"width":750,"isModal":true,"height":1334},"compId":2,"child":[{"type":"Light","props":{"y":453,"x":375,"var":"light","blendMode":"lighter","anchorY":0.5,"anchorX":0.5,"runtime":"ui.test.LightUI"},"compId":4},{"type":"Button","props":{"y":453,"x":375,"var":"icon","stateNum":2,"skin":"main/btn_2.png","selected":true,"scaleY":1.5,"scaleX":1.5,"anchorY":0.5,"anchorX":0.5},"compId":3},{"type":"Image","props":{"y":188,"x":384,"var":"title","skin":"main/changhong2.png","anchorY":0.5,"anchorX":0.5},"compId":6,"child":[{"type":"Sprite","props":{"y":16.25,"x":88.75,"texture":"main/xitongzi.png"},"compId":8}]},{"type":"Box","props":{"x":295,"visible":false,"var":"closeText","bottom":421},"compId":9,"child":[{"type":"Text","props":{"var":"clickClose","text":"点击关闭","fontSize":40,"color":"#ffffff","runtime":"laya.display.Text"},"compId":10}]}],"loadList":["main/btn_2.png","main/changhong2.png","main/xitongzi.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(OpenIconUI.uiView);
+        }
+    }
+    REG("ui.test.OpenIconUI",OpenIconUI);
     export class paihangUI extends Dialog {
 		public guanbi:Laya.Button;
 		public tab:Laya.Tab;
