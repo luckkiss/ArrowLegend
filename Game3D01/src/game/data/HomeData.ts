@@ -73,12 +73,12 @@ export default class HomeData implements IData{
         data.maxEngergy = this.maxEngergy;
         data.lastTime = this.lastTime;
         data.totalEnergy = this.totalEnergy;
-        data.mapIndex = this.mapIndex;
-        data.chapterId = this.chapterId;
         data.battleLv = this.battleLv;
         data.playerLv = this.playerLv;
         data.coins = this.coins;
         data.playerExp = this.playerExp;
+        data.chapterId = this.chapterId;
+        if(Game.battleLoader.chapterId < )
         if( Game.battleLoader.index > this.mapIndex ) {
             data.mapIndex = Game.battleLoader.index - 1;
             data.mapIndex = Math.max(0,data.mapIndex);
