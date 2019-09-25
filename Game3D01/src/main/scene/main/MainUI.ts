@@ -13,7 +13,7 @@ import SysHero from "../../sys/SysHero";
 import GameEvent from "../../GameEvent";
     export default class MainUI extends Laya.Box {
         topUI:TopUI;
-        private bottomUI:BottomUI;
+        public bottomUI:BottomUI;
         
         constructor(){
             super();
@@ -215,7 +215,7 @@ import GameEvent from "../../GameEvent";
         private curBg:Laya.Image = new Laya.Image();
         private btnBox:Laya.Box = new Laya.Box();
         private bgs:Laya.Image[] = [];
-        private btns:Laya.Button[] = [];
+        public btns:Laya.Button[] = [];
 
         private _selectIndex:number = 0;
 

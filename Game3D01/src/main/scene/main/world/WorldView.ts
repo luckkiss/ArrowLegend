@@ -13,6 +13,7 @@ import GameMain from "../../../GameMain";
 import MyTimeGold from "../timegold/MyTimeGold";
 import FlyEffect from "../../../../game/effect/FlyEffect";
 import FlyUpTips from "../../../FlyUpTips";
+import GuideManager from "../../../guide/GuideManager";
     export default class WorldView extends ui.test.worldUI {
     private list:Laya.List;
     constructor() { 
@@ -117,6 +118,10 @@ import FlyUpTips from "../../../FlyUpTips";
         cell.mapBtn.scale( 0.0,0.0 );
         let t = new Laya.Tween();
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
+
+        if( Session.homeData.newStat == 1 ){
+            GuideManager.getInstance().hand( Game.scenneM.main.mainUI.bottomUI.btns[2] ,0 ,0 );
+        }
     }
 
 }

@@ -77,7 +77,7 @@
                     "x":30,
                     "type":"Box",
                     "searchKey":"Box,roleBox",
-                    "props":{"y":624,"x":368,"var":"roleBox"},
+                    "props":{"y":628,"x":368,"var":"roleBox"},
                     "nodeParent":49,
                     "label":"roleBox",
                     "isOpen":true,

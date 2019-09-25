@@ -31,6 +31,11 @@ export default class HomeData implements IData{
 
     isPass:boolean = false;
 
+    /**
+     * 新手引导的状态 0是关闭 1是天赋 2是角色
+     */
+    public newStat = 0;
+
     public setChapterId( value:number ):void{
         this.chapterId = value;
         Session.rankData.saveWorldRank();
@@ -107,7 +112,8 @@ export default class HomeData implements IData{
         this.redDiamond = 0;
         this.playerExp = 0;
         this.blueDiamond = 0;
-        this.coins = 9999;
+        this.coins = 0;
+        this.newStat = 1;
     }
 
     /**
