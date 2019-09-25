@@ -69,4 +69,5 @@
    <item name="test/MainUITest.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/ReducePower.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/juese_zuanguang.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="test/newhand1.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

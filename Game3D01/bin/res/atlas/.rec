@@ -35,7 +35,7 @@ P 761AF61D jingyantiaoguang.png
 P 08F8B30F jingyantiaoshang.png
 P A653A0FF lanying.png
 P C5032B85 lvkuang.png
-R EF83E9C8 mogui.scene
+R 318AA8BE mogui.scene
 P 9FF2060E qianshu.png
 P AFF0FC23 renlankuang.png
 P 66D52362 renyan.png
@@ -44,7 +44,7 @@ P 81B51E22 rockerBg.png
 P 2648BCEB rollDir.png
 P 6EC0F896 sanjiao.png
 P 824F858E tantan.jpg
-R 47F587D7 tianshi.scene
+R DB93F7CA tianshi.scene
 P 61E5E0A4 tianshiying.png
 P 83DF0706 xiaoguan.png
 P 7332C14C xiongmao.png
@@ -65,11 +65,13 @@ P EA8335C7 chengjiupai2.png
 P D2BFD404 lingquzi.png
 P 3E2AD869 xiao.png
 D guide
+P FCF7F9B7 clip_guang.png
 P B31F2D67 fangbian.png
 P AFF82D52 huangdian.png
 P 9204C0C7 huangjian.png
 P 7BB70B25 nvren.png
 P 6D55EF74 qipao.png
+P E1040ADB xiaoshou.png
 D icons
 D jiesuan
 P 2984BF02 baifen.png
