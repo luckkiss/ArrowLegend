@@ -33,6 +33,7 @@ export default class GuideManager{
         this.nextStat = nextStat;
         this.handMv.visible = true;
         Laya.stage.addChild( this.handMv );
+        this.handMv.zOrder = 1000;
         let p = target.localToGlobal( new Laya.Point(0,0) );
         this.handMv.pos( p.x , p.y );
         this.handMv.lightClip.play();

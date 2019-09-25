@@ -71,10 +71,7 @@
    <item name="test/juese_zuanguang.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/newhand1.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="game/homeloading.scene" props="" ifExport="内嵌模式" aName=""/>
-<<<<<<< HEAD
    <item name="game/Loading.scene" props="" ifExport="内嵌模式" aName=""/>
-=======
    <item name="game/homeLoading.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/Loading.scene" props="" ifExport="内嵌模式" aName=""/>
->>>>>>> 11abb4c7edb3725ca12ffbb880af46a4532b0d7b
 </page>

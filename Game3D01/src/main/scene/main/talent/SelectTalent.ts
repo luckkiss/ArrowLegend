@@ -26,8 +26,12 @@ export default class SelectTalent extends ui.test.TalentViewUI{
         this.clickClose.alpha = 0;
         this.box1.visible = false;
 
+        Laya.timer.once( 400,this,this.tFun );
+    }
+
+    private tFun():void{
         if( Session.homeData.newStat == 3 ){
-            GuideManager.getInstance().hand( this.b1 , 0,0,4 );
+            GuideManager.getInstance().hand( this.b1 , this.b1.width/2,this.b1.height/2 + 10,4 );
         }
     }
 

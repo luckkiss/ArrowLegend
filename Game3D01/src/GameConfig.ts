@@ -10,11 +10,7 @@ export default class GameConfig{
     static screenMode:string="none";
     static alignV:string="top";
     static alignH:string="left";
-<<<<<<< HEAD
-    static startScene:any="game/Loading.scene";
-=======
-    static startScene:any="game/homePage.scene";
->>>>>>> 11abb4c7edb3725ca12ffbb880af46a4532b0d7b
+    static startScene:any="test/Loading.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=true;
