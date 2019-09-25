@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":49,
-    "selecteID":114,
+    "selectedBox":1,
+    "selecteID":49,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#c6abab","height":1334},
     "nodeParent":-1,
@@ -47,7 +47,7 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,zuo",
-                    "props":{"y":517,"x":111,"visible":false,"var":"zuo","stateNum":"1","skin":"main/btn_zuo.png","anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":517,"x":111,"visible":true,"var":"zuo","stateNum":"1","skin":"main/btn_zuo.png","anchorY":0.5,"anchorX":0.5},
                     "nodeParent":49,
                     "label":"zuo",
                     "isDirectory":false,
@@ -62,7 +62,7 @@
                     "x":30,
                     "type":"Button",
                     "searchKey":"Button,you",
-                    "props":{"y":518,"x":633,"width":63,"visible":false,"var":"you","stateNum":"1","skin":"main/btn_zuo.png","scaleX":-1,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":518,"x":633,"width":63,"visible":true,"var":"you","stateNum":"1","skin":"main/btn_zuo.png","scaleX":-1,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":49,
                     "label":"you",
                     "isDirectory":false,
@@ -77,7 +77,7 @@
                     "x":30,
                     "type":"Box",
                     "searchKey":"Box,roleBox",
-                    "props":{"y":628,"x":368,"var":"roleBox"},
+                    "props":{"y":707,"x":383.5,"var":"roleBox"},
                     "nodeParent":49,
                     "label":"roleBox",
                     "isOpen":true,
@@ -99,7 +99,8 @@
                             "compId":115,
                             "child":[
                                 ]
-                        }]
+                        }],
+                    "$HIDDEN":false
                 },
                 {
                     "x":30,

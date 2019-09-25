@@ -67,6 +67,7 @@ export default class HomeData implements IData{
             this.curEnergy = this.totalEnergy - delta;
             console.log("Session剩余的时间", time , this.curEnergy);
         }
+        this.newStat = 1; 
         this.curEnergy = 20;
     }
 
@@ -116,7 +117,7 @@ export default class HomeData implements IData{
         this.redDiamond = 0;
         this.playerExp = 0;
         this.blueDiamond = 0;
-        this.coins = 0;
+        this.coins = 500;
         this.newStat = 1;
     }
 

@@ -108,8 +108,23 @@ export default class RoleView extends ui.test.jueseUI {
         this.heroLvTypeMap[r1.heroLvType] = r1;
 
         this.showRoleById(1);
+
+        this.zuo.clickHandler = new Laya.Handler( this,this.turnFun , [-1] );
+        this.you.clickHandler = new Laya.Handler( this,this.turnFun , [1] );
     }
 
+    private turnFun( v:number ):void{
+        let now = Session.heroData.nowRoleId;
+        if( v <= 0 ){
+            now = Math.max( now + v , 1 );
+        }else{
+            now = Math.min( now + v , 2 );
+        }
+        Session.heroData.nowRoleId = now;
+        this.showRoleById( now );
+        this.zuo.visible = !(now == 1);
+        this.you.visible = !(now == 2);
+    }
 
     /**切换3D模型 */
     private showRoleById(roleId:number) {
@@ -117,6 +132,7 @@ export default class RoleView extends ui.test.jueseUI {
         Laya.Sprite3D.load("h5/hero/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
             sp3d.transform.localRotationEulerY = 0;
             sp3d.transform.localPositionZ = -3;
+            sp3d.transform.localPositionY = -0.3;
             let aniSprite3d = sp3d.getChildAt(0) as Laya.Sprite3D;
             this._layer3d.addChild(sp3d);
             if (aniSprite3d) {
@@ -219,6 +235,7 @@ export default class RoleView extends ui.test.jueseUI {
      */
     public disFun():void {
         this.updateAll();
+        this.turnFun(0);
     }
 
     public hpFun():void{

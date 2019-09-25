@@ -5,6 +5,7 @@ import MyEffect from "../../../../core/utils/MyEffect";
 import App from "../../../../core/App";
 import SysTalentInfo from "../../../sys/SysTalentInfo";
 import SysTalent from "../../../sys/SysTalent";
+import GuideManager from "../../../guide/GuideManager";
 
 export default class SelectTalent extends ui.test.TalentViewUI{
     public arr:Array<ui.test.TalentZhuanUI> = [];
@@ -24,6 +25,10 @@ export default class SelectTalent extends ui.test.TalentViewUI{
         this.nameImg.alpha = 0;
         this.clickClose.alpha = 0;
         this.box1.visible = false;
+
+        if( Session.homeData.newStat == 3 ){
+            GuideManager.getInstance().hand( this.b1 , 0,0,4 );
+        }
     }
 
     private clickFun( e:ui.test.TalentZhuanUI ):void{
