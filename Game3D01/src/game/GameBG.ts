@@ -237,6 +237,7 @@ export default class GameBG extends Laya.Sprite {
                 else if (GridType.isThorn(gType)) {
                     thorn = GameThorn.getOne();
                     thorn.hbox.setXY(xx, yy);
+                    thorn.pos(xx,yy);
                     this._box.addChild(thorn);
                 }
                 else if (GridType.isRiverScale9Grid(gType) || GridType.isRiverScale9Grid2(gType) || GridType.isRiverRow(gType) || GridType.isRiverCol(gType)) {
