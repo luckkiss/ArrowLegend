@@ -16,9 +16,32 @@ import RollCell from "./RollCell";
 export default class RoleView extends ui.test.jueseUI {
     public nowRoleId:number = 1;
     public autoEvent:AutoEvent = new AutoEvent();
-
+    private _gameScene:Laya.Scene3D;
+    private _layer3d:Laya.Sprite3D;
     constructor() {
         super();
+
+        //创建场景
+		this._gameScene = new Laya.Scene3D();
+        this.roleBox.addChild(this._gameScene);
+        this._layer3d = new Laya.Sprite3D();
+        this._gameScene.addChild(this._layer3d);
+		
+		//创建相机
+		let camera = new Laya.Camera(0, 0.1, 100);
+		this._gameScene.addChild(camera);
+		camera.transform.translate(new Laya.Vector3(0, 0.5, 1));
+        camera.transform.rotate(new Laya.Vector3(-15, 0, 0), true, false);
+        camera.clearFlag = Laya.BaseCamera.CLEARFLAG_DEPTHONLY;
+
+
+		
+		//添加光照
+		let directionLight = new Laya.DirectionLight();
+		this._gameScene.addChild(directionLight);
+		directionLight.color = new Laya.Vector3(1, 1, 1);
+        directionLight.transform.rotate(new Laya.Vector3( -3.14 / 3, 0, 0));
+
         this.autoEvent.setSprite( this );
         this.shengmingniu.clickHandler = new Laya.Handler( this,this.hpFun );
         this.gongjiniu.clickHandler = new Laya.Handler( this,this.atkFun );
@@ -83,7 +106,27 @@ export default class RoleView extends ui.test.jueseUI {
 
         this.heroLvTypeMap[r.heroLvType] = r;
         this.heroLvTypeMap[r1.heroLvType] = r1;
+
+        this.showRoleById(1);
     }
+
+
+    /**切换3D模型 */
+    private showRoleById(roleId:number) {
+        this._layer3d.removeChildren();
+        Laya.Sprite3D.load("h5/hero/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
+            sp3d.transform.localRotationEulerY = 0;
+            sp3d.transform.localPositionZ = -3;
+            let aniSprite3d = sp3d.getChildAt(0) as Laya.Sprite3D;
+            this._layer3d.addChild(sp3d);
+            if (aniSprite3d) {
+                let ani_:Laya.Animator = aniSprite3d.getComponent(Laya.Animator) as Laya.Animator;
+                ani_.speed = 0.5;
+                ani_.play("Idle");
+            }
+        }))
+	}
+
     /**
      * map
      */

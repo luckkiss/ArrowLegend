@@ -14,37 +14,13 @@ import MyTimeGold from "../timegold/MyTimeGold";
 import FlyEffect from "../../../../game/effect/FlyEffect";
 import FlyUpTips from "../../../FlyUpTips";
     export default class WorldView extends ui.test.worldUI {
-    // private _gameScene:Laya.Scene3D;
-
     private list:Laya.List;
     constructor() { 
         super();
-        // this.height = GameBG.height;
-        // this.btn_start.clickHandler = new Laya.Handler(this,this.onStart); 
-        // this.jinbishu.value = "" + MainUI.xiaohao;
-
-        // //创建场景
-		// this._gameScene = new Laya.Scene3D();
-		// this.box.addChild(this._gameScene);
-		
-		// //创建相机
-		// let camera = new Laya.Camera(0, 0.1, 100);
-		// this._gameScene.addChild(camera);
-		// camera.transform.translate(new Laya.Vector3(0, 0.5, 1));
-        // camera.transform.rotate(new Laya.Vector3(-15, 0, 0), true, false);
-        // camera.clearFlag = Laya.BaseCamera.CLEARFLAG_DEPTHONLY;
-		
-		// //添加光照
-		// let directionLight = new Laya.DirectionLight();
-		// this._gameScene.addChild(directionLight);
-		// directionLight.color = new Laya.Vector3(1, 1, 1);
-        // directionLight.transform.rotate(new Laya.Vector3( -3.14 / 3, 0, 0));
-        
-        // this.box.addChild(this.btn_start);
-        // this.on(Laya.Event.DISPLAY,this,this.onDis);
-
         this.box.y = this.box.y + App.top;
         this.box1.y = this.box1.y + App.top;
+
+        this.box1.mouseThrough = true;
 
         this.list = new Laya.List();
         this.list.pos(this.box.x,this.box.y);
@@ -69,6 +45,14 @@ import FlyUpTips from "../../../FlyUpTips";
         Laya.stage.on( GameEvent.ADD_COIN , this , this.addCoinFun );
         Laya.stage.on( GameEvent.APP_ENERGY ,  this, this.reducePowerFun );
         //Laya.stage.on( Laya.Event.CLICK ,this,this.reducePowerFun , [1] );
+
+        this.on(Laya.Event.CLICK,this,this.onClick);
+
+        this.addChild(this.box1);
+    }
+
+    private onClick(e:Laya.Event):void{
+        console.log("================",e.target);
     }
 
     public reducePowerFun( v:number ):void{
@@ -117,31 +101,7 @@ import FlyUpTips from "../../../FlyUpTips";
         cell.update( this.list.getItem(index) );
     }
 
-    // onComplete1() {
-    //     let dude:Laya.Sprite3D = this._gameScene.addChild(Laya.Loader.getRes("h5/heroview/hero.lh")) as Laya.Sprite3D;
-	// 	let scale = new Laya.Vector3(0.3, 0.3, 0.3);
-    //     dude.transform.localScale = scale;
-    //     dude.transform.localRotationEulerY = 0;
-    //     let aniSprite3d = dude.getChildAt(0) as Laya.Sprite3D;
-    //     if (aniSprite3d) {
-    //         let ani_:Laya.Animator = aniSprite3d.getComponent(Laya.Animator) as Laya.Animator;
-    //         ani_.speed = 0.5;
-    //         ani_.play("Idle");
-    //     }
-	// }
-
-    // private layer3d: Laya.Sprite3D 
     private onDis():void{
-        // let sys:SysChapter = App.tableManager.getDataByNameAndId(SysChapter.NAME,Session.homeData.chapterId);
-        // this.baioti.text = Session.homeData.chapterId + "." + sys.name;
-        // this.biaoti2.text = this.baioti.text;
-        // this.zuigao.text = "最高层数:" + Session.homeData.mapIndex + "/" + SysMap.getTotal(Session.homeData.chapterId);
-
-        // this.baioti.visible = false;
-        // this.biaoti2.visible = false;
-        // this.zuigao.visible = false;
-
-        // this.onComplete1();
 
         let indexTo:number = Session.homeData.chapterId - 1;
         indexTo = Math.max( indexTo , 0 );
@@ -157,18 +117,6 @@ import FlyUpTips from "../../../FlyUpTips";
         cell.mapBtn.scale( 0.0,0.0 );
         let t = new Laya.Tween();
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
-        //Laya.timer.once( 200, this,this.callFun );
-        //this.addCoinFun( 1000 );
     }
 
-    private callFun():void{
-        //console.log( "aaa" , Session.homeData.chapterId );
-        //this.list.scrollTo( Session.homeData.chapterId - 1 );
-        
-    }
-
-    // private onStart():void
-    // {
-    //     Laya.stage.event(GameEvent.START_BATTLE);
-    // }
 }
