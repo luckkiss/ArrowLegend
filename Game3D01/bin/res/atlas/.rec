@@ -35,7 +35,7 @@ P 761AF61D jingyantiaoguang.png
 P 08F8B30F jingyantiaoshang.png
 P A653A0FF lanying.png
 P C5032B85 lvkuang.png
-R 318AA8BE mogui.scene
+R EF83E9C8 mogui.scene
 P 9FF2060E qianshu.png
 P AFF0FC23 renlankuang.png
 P 66D52362 renyan.png
@@ -44,7 +44,7 @@ P 81B51E22 rockerBg.png
 P 2648BCEB rollDir.png
 P 6EC0F896 sanjiao.png
 P 824F858E tantan.jpg
-R DB93F7CA tianshi.scene
+R 47F587D7 tianshi.scene
 P 61E5E0A4 tianshiying.png
 P 83DF0706 xiaoguan.png
 P 7332C14C xiongmao.png
@@ -120,6 +120,8 @@ P 97D6AC6C juese_tiaoxia.png
 P 9CF797EA juese_yixuanze.png
 P 123B6FB5 juese_zi.png
 P FE0517C5 juesekuai.png
+P BA751DA8 levelUp.png
+R B94C26C2 levelUp.sk
 P 0E45DFDB max.png
 P F5818180 monster_caster_01.png
 P D53EE759 monster_caster_02.png
@@ -213,7 +215,7 @@ P 7C58C490 shuangbei.png
 P 492175B9 shuaxin.png
 P 5C9A5072 shukuang.png
 P BFA5A81B SStian.png
-P FB648920 suo.png
+P EFFB76F1 suo.png
 P C67861EC suo2.png
 P 10DF5693 tili.png
 P D0FB581B tishilan.png

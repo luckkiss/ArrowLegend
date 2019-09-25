@@ -56,17 +56,27 @@ export default class MainView extends Laya.Box {
     private setView(index: number):void
     {
         let view: Laya.View = this.views[index];
-        view.removeSelf();
-        
+        Laya.Tween.clearTween(this.content);
+        if(this.curIndex == 1)
+        {
+            (this.views[this.curIndex] as RoleView).hideLayer(index > this.curIndex);
+        }
+
         this.content.addChild(view);
         view.bottom = 0;
+        let xx:number;
         if (this.curIndex != null)  {
-            var xx:number = index > this.curIndex ? GameConfig.width : -GameConfig.width;
+            xx = index > this.curIndex ? GameConfig.width : -GameConfig.width;
             view.x = xx;
-            Laya.Tween.clearTween(this.content);
+            
             Laya.Tween.to(this.content, { x: -xx }, 300 , null, new Laya.Handler(this, this.onCom, [view]));
         }
         this.curIndex = index;
+
+        if(this.curIndex == 1)
+        {
+            (this.views[1] as RoleView).showLayer(xx > 0);
+        }
     }
 
     private onCom(view: Laya.View): void {

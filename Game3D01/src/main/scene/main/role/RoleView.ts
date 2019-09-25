@@ -141,7 +141,24 @@ export default class RoleView extends ui.test.jueseUI {
                 ani_.play("Idle");
             }
         }))
-	}
+    }
+    
+    showLayer(isLeft:boolean):void
+    {
+        this._layer3d.transform.localPositionX = isLeft ? 2: -2;
+        Laya.Tween.to(this._layer3d.transform,{localPositionX:0},300,null,new Laya.Handler(this,this.onMoveCom));
+    }
+
+    hideLayer(isLeft:boolean):void
+    {
+        this._layer3d.transform.localPositionX = 0;
+        Laya.Tween.to(this._layer3d.transform,{localPositionX:isLeft ? -2: 2},300,null,new Laya.Handler(this,this.onMoveCom));
+    }
+
+    private onMoveCom():void
+    {
+        console.log("模型的位置",this._layer3d.transform.localPositionX);
+    }
 
     /**
      * map
@@ -164,10 +181,10 @@ export default class RoleView extends ui.test.jueseUI {
      */
     public heroLvUpFun():void{
         this.lvEff.visible = true;
-        this.lvEff.ani1.gotoAndStop(0);
-        this.lvEff.ani1.interval = 1000/60;
-        this.lvEff.ani1.play( 0,false );
-        this.lvEff.ani1.on( Laya.Event.COMPLETE ,this,this.efFun );
+        // this.lvEff.ani1.gotoAndStop(0);
+        // this.lvEff.ani1.interval = 1000/60;
+        // this.lvEff.ani1.play( 0,false );
+        // this.lvEff.ani1.on( Laya.Event.COMPLETE ,this,this.efFun );
     }
 
     public efFun():void{

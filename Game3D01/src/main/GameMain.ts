@@ -36,7 +36,7 @@ export default class GameMain {
         if(Session.homeData.isGuide){
             Game.battleLoader.load();
         }else{
-            Game.scenneM.showMain();
+            Game.showMain();
             Game.cookie.getCookie(CookieKey.CURRENT_BATTLE, (res) => {
                 if (res)  {
                     Game.alert.onShow("是否继续未完成的战斗?", new Laya.Handler(this, this.onContinue, [res]), new Laya.Handler(this, this.onCancel));

@@ -273,10 +273,36 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             this.onClick( this.btns[this._selectIndex] , 10 );
         }
 
+<<<<<<< HEAD
         public open( v:number ):void{
             let a = this.btns[v];
             let t = new Laya.Tween();
             t.to( a , { alpha:0 ,  scaleX:4 , scaleY:4 } , 200 , Laya.Ease.strongOut );
+=======
+        updateBtns():void
+        {
+            let len = this.btns.length;
+            for(let i = 0; i < len; i++)
+            {
+                let btn:Laya.Button = this.btns[i];
+                btn.tag = this.opens[i];
+                if(this.opens[i] == 1)
+                {
+                    btn.stateNum = 2;
+                    btn.width = 132;
+                    btn.height = 136;
+                    btn.scale(1,1);
+                    btn.skin = 'main/btn_' + i + '.png';
+                }
+                else{
+                    btn.stateNum = 1;
+                    btn.width = 38;
+                    btn.height = 55;
+                    btn.skin = 'main/suo.png';
+                    btn.scale(1.2,1.2);
+                }
+            }
+>>>>>>> b2aea88c2f0658febcef838d2b270697132388bc
         }
 
         private onClick(clickBtn:Laya.Button,  delay:number = 500):void
