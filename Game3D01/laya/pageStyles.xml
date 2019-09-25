@@ -31,7 +31,7 @@
    <item name="test/GameOver.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/battlestop.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/SkillGrid.scene" props="" ifExport="内嵌模式" aName=""/>
-   <item name="test/Loading.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="test/homeLoading.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/Reborth.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/initView.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/goHome.scene" props="" ifExport="内嵌模式" aName=""/>
@@ -70,4 +70,5 @@
    <item name="test/ReducePower.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/juese_zuanguang.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/newhand1.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="game/homeloading.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

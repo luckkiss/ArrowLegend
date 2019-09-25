@@ -26,7 +26,7 @@
 			{
 				"type":"Sprite3D",
 				"props":{
-					"name":"renjian (1)",
+					"name":"greenball (2)",
 					"active":true,
 					"isStatic":false,
 					"layer":0,
@@ -37,22 +37,22 @@
 					],
 					"rotation":[
 						0,
-						-1,
 						0,
-						0
+						0,
+						-1
 					],
 					"scale":[
-						3.877285,
-						3.877286,
-						3.877286
+						3.019832,
+						3.01983,
+						3.01983
 					]
 				},
 				"components":[],
 				"child":[
 					{
-						"type":"Sprite3D",
+						"type":"TrailSprite3D",
 						"props":{
-							"name":"qiu",
+							"name":"Trail",
 							"active":true,
 							"isStatic":false,
 							"layer":0,
@@ -71,95 +71,6 @@
 								1,
 								1,
 								1
-							]
-						},
-						"components":[],
-						"child":[
-							{
-								"type":"MeshSprite3D",
-								"props":{
-									"name":"jian",
-									"active":true,
-									"isStatic":false,
-									"layer":0,
-									"position":[
-										0,
-										0,
-										0
-									],
-									"rotation":[
-										0,
-										0,
-										0,
-										-1
-									],
-									"scale":[
-										1,
-										1,
-										1
-									],
-									"meshPath":"Assets/sword/FBX/jian-pPlane2.lm",
-									"enableRender":true,
-									"materials":[
-										{
-											"path":"Assets/sword/Materials/jian.lmat"
-										}
-									]
-								},
-								"components":[],
-								"child":[]
-							},
-							{
-								"type":"Sprite3D",
-								"props":{
-									"name":"Gua",
-									"active":true,
-									"isStatic":false,
-									"layer":0,
-									"position":[
-										0,
-										0.01,
-										-0.222
-									],
-									"rotation":[
-										0,
-										0,
-										0,
-										-1
-									],
-									"scale":[
-										1,
-										1,
-										1
-									]
-								},
-								"components":[],
-								"child":[]
-							}
-						]
-					},
-					{
-						"type":"TrailSprite3D",
-						"props":{
-							"name":"Trail",
-							"active":true,
-							"isStatic":false,
-							"layer":0,
-							"position":[
-								0,
-								0,
-								0.099
-							],
-							"rotation":[
-								0,
-								1,
-								0,
-								0
-							],
-							"scale":[
-								0.5097324,
-								0.5097324,
-								0.5097324
 							],
 							"time":0.2,
 							"minVertexDistance":0.1,
@@ -198,38 +109,38 @@
 										"time":0,
 										"value":[
 											1,
-											1,
-											1
+											0.6827586,
+											0
 										]
 									},
 									{
 										"time":0.2500038,
 										"value":[
-											0.7279412,
-											0.7279412,
-											0.7279412
+											0.8823529,
+											0.512946,
+											0.04541522
 										]
 									},
 									{
 										"time":0.5000076,
 										"value":[
-											0.8382353,
-											0.8382353,
-											0.8382353
+											0.9705882,
+											0.4217037,
+											0
 										]
 									},
 									{
 										"time":0.7499962,
 										"value":[
-											0.5955882,
-											0.5955882,
-											0.5955882
+											0.5441177,
+											0.263119,
+											0.008001738
 										]
 									},
 									{
 										"time":1,
 										"value":[
-											0,
+											0.1470588,
 											0,
 											0
 										]
@@ -267,6 +178,68 @@
 						},
 						"components":[],
 						"child":[]
+					},
+					{
+						"type":"Sprite3D",
+						"props":{
+							"name":"qiu",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								0,
+								0,
+								0
+							],
+							"rotation":[
+								0,
+								0,
+								0,
+								-1
+							],
+							"scale":[
+								1,
+								1,
+								1
+							]
+						},
+						"components":[],
+						"child":[
+							{
+								"type":"MeshSprite3D",
+								"props":{
+									"name":"zidanqiu",
+									"active":true,
+									"isStatic":false,
+									"layer":0,
+									"position":[
+										0,
+										0.01358203,
+										0.007568359
+									],
+									"rotation":[
+										0,
+										0,
+										0,
+										-1
+									],
+									"scale":[
+										1.5,
+										1.5,
+										1.5
+									],
+									"meshPath":"Assets/yuzidan/FBX/yuzi-pPlane2.lm",
+									"enableRender":true,
+									"materials":[
+										{
+											"path":"Assets/yuzidan/Materials/zidanqiu.lmat"
+										}
+									]
+								},
+								"components":[],
+								"child":[]
+							}
+						]
 					}
 				]
 			}

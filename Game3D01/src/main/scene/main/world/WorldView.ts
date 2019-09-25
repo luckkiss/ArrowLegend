@@ -118,7 +118,7 @@ import GuideManager from "../../../guide/GuideManager";
         cell.mapBtn.scale( 0.0,0.0 );
         let t = new Laya.Tween();
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
-
+ 
         if( Session.homeData.newStat == 1 ){
             this.initNew();
         }

@@ -21,10 +21,10 @@
 		"textures":[
 			{
 				"name":"albedoTexture",
-				"path":"../Texture/RegularTex-1.jpg",
+				"path":"../Texture/MagmaDemon-Blue.jpg",
 				"constructParams":[
-					256,
-					256,
+					1024,
+					1024,
 					0,
 					true
 				],
