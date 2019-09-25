@@ -123,7 +123,7 @@ export default class GameBG extends Laya.Sprite {
             GameBG.mw + dy > d2.y
     }
 
-    private _box: Sprite = new Sprite();
+    _box: Sprite = new Sprite();
     private _top: Image = new Image();
     private _bossImg: Image = new Image();
     private _bottom: Image = new Image();

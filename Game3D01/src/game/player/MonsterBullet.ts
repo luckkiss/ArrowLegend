@@ -47,12 +47,12 @@ export default class MonsterBullet extends GamePro {
             var bullet: Laya.Sprite3D;
             bullet = (Laya.Sprite3D.instantiate(Laya.loader.getRes("h5/bullets/" + sb.bulletMode + "/monster.lh"))) as Laya.Sprite3D;
             console.log("子弹id",this.sysBullet.id,this.sysBullet.bulletMode);
-            if(this.sysBullet.id != 10 && this.sysBullet.id != 11)//处理弓箭的，弓箭就不转了
+            if(this.sysBullet.id != 10 && this.sysBullet.id != 11 && this.sysBullet.id != 20)//处理弓箭的，弓箭就不转了
             {
                 (bullet.getChildAt(0) as Laya.Sprite3D).transform.localRotationEulerY = -bullet.transform.localRotationEulerY;
                 bullet.addComponent(BulletRotateScript);
             }
-            MemoryManager.ins.add(bullet.url);
+            // MemoryManager.ins.add(bullet.url);
             // Game.monsterResClones.push(bullet);
             
             this.setSp3d(bullet);
