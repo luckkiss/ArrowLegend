@@ -31,6 +31,11 @@ export default class HomeData implements IData{
 
     isPass:boolean = false;
 
+    /**
+     * 新手引导的状态
+     */
+    public newStat = 0;
+
     public setChapterId( value:number ):void{
         this.chapterId = value;
         Session.rankData.saveWorldRank();
