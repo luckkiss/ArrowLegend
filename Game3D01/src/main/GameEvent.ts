@@ -23,4 +23,6 @@ export default class GameEvent{
     static ADD_COIN:string = "ADD_COIN";
 
     static APP_ENERGY:string = "APP_ENERGY";
+
+    static SHOW_MAIN:string = "SHOW_MAIN";
 }

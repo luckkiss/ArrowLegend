@@ -141,7 +141,17 @@ export default class RoleView extends ui.test.jueseUI {
                 ani_.play("Idle");
             }
         }))
-	}
+    }
+    
+    move3dLayer(isLeft:boolean):void
+    {
+        this._layer3d.transform.localPositionX = isLeft ? -1.5 : 1.5;
+        Laya.Tween.to(this._layer3d.transform,{localPositionX:0},400,null,new Laya.Handler(this,this.onCom));
+    }
+
+    private onCom():void
+    {
+    }
 
     /**
      * map
@@ -164,10 +174,10 @@ export default class RoleView extends ui.test.jueseUI {
      */
     public heroLvUpFun():void{
         this.lvEff.visible = true;
-        this.lvEff.ani1.gotoAndStop(0);
-        this.lvEff.ani1.interval = 1000/60;
-        this.lvEff.ani1.play( 0,false );
-        this.lvEff.ani1.on( Laya.Event.COMPLETE ,this,this.efFun );
+        // this.lvEff.ani1.gotoAndStop(0);
+        // this.lvEff.ani1.interval = 1000/60;
+        // this.lvEff.ani1.play( 0,false );
+        // this.lvEff.ani1.on( Laya.Event.COMPLETE ,this,this.efFun );
     }
 
     public efFun():void{

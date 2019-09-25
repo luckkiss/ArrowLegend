@@ -344,13 +344,21 @@ export default class Game {
         Game.skillManager.clear();
         Game.battleLoader.index = 1;
         Game.rebornTimes = 2;
-        Game.hero.reset();
-        Game.hero.resetAI();
+        if(Game.hero)
+        {
+            Game.hero.reset();
+            Game.hero.resetAI();
+        }
+        
         Game.battleExp = 0;
         Game.battleLoader.clearMonster();
         Game.scenneM.showMain();
 
-        Game.map0.Eharr.length = 0;
+        if(Game.map0)
+        {
+            Game.map0.Eharr.length = 0;
+        }
+        
         Game.AiArr.length = 0;
 
         Game.playBgMusic();
@@ -362,6 +370,8 @@ export default class Game {
             Game.showCoinsNum = 0;
         }
         Game.showBlueNum = Game.showRedNum = 0;
+
+        Laya.stage.event(GameEvent.SHOW_MAIN);
     }
 
     static playBgMusic():void
