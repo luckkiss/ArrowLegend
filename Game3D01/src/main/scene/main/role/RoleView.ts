@@ -143,14 +143,21 @@ export default class RoleView extends ui.test.jueseUI {
         }))
     }
     
-    move3dLayer(isLeft:boolean):void
+    showLayer(isLeft:boolean):void
     {
-        this._layer3d.transform.localPositionX = isLeft ? -1.5 : 1.5;
-        Laya.Tween.to(this._layer3d.transform,{localPositionX:0},400,null,new Laya.Handler(this,this.onCom));
+        this._layer3d.transform.localPositionX = isLeft ? 2: -2;
+        Laya.Tween.to(this._layer3d.transform,{localPositionX:0},300,null,new Laya.Handler(this,this.onMoveCom));
     }
 
-    private onCom():void
+    hideLayer(isLeft:boolean):void
     {
+        this._layer3d.transform.localPositionX = 0;
+        Laya.Tween.to(this._layer3d.transform,{localPositionX:isLeft ? -2: 2},300,null,new Laya.Handler(this,this.onMoveCom));
+    }
+
+    private onMoveCom():void
+    {
+        console.log("模型的位置",this._layer3d.transform.localPositionX);
     }
 
     /**

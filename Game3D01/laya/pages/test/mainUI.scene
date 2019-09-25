@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":43,
+    "selecteID":40,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":null,"height":106},
     "nodeParent":-1,
@@ -18,7 +18,7 @@
             "x":15,
             "type":"Image",
             "searchKey":"Image",
-            "props":{"y":0,"x":0,"width":820,"skin":"main/touxiangdi.png","sizeGrid":"0,85,0,54","height":106},
+            "props":{"y":-214,"x":0,"width":820,"skin":"main/touxiangdi.png","sizeGrid":"0,85,0,54","height":320},
             "nodeParent":2,
             "label":"Image",
             "isDirectory":false,
@@ -27,7 +27,7 @@
             "compId":40,
             "child":[
                 ],
-            "$HIDDEN":true
+            "$HIDDEN":false
         },
         {
             "x":15,
