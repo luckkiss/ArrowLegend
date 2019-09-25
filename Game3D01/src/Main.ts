@@ -3,8 +3,6 @@ import GameBG from "./game/GameBG";
 import GameMain from "./main/GameMain";
 import { ui } from "./ui/layaMaxUI"
 import App from "./core/App";
-import LoginHttp from "./net/LoginHttp";
-import ReceiverHttp from "./net/ReceiverHttp";
 import PlatformID from "./platforms/PlatformID";
 import { BasePlatform } from "./platforms/BasePlatform";
 import HitType from "./game/ai/HitType";
@@ -42,18 +40,17 @@ import Game from "./game/Game";
 import WudiBuff from "./game/skill/player/WudiBuff";
 import ShitouAI from "./game/ai/ShitouAI";
 import FlyGameMove2 from "./game/move/FlyGameMove2";
-import TestCookie from "./gameCookie/TestCookie";
-import WXCookie from "./gameCookie/WXCookie";
-import { BaseCookie } from "./gameCookie/BaseCookie";
-import CookieKey from "./gameCookie/CookieKey";
 import MyEffect from "./core/utils/MyEffect";
 import Session from "./main/Session";
 import ZipLoader from "./core/utils/ZipLoader";
 import GameEvent from "./main/GameEvent";
 import NPC_1001_view from "./main/scene/battle/npc/NPC_1001_view";
 import HomeLoading from "./main/HomeLoading";
+import InitView from "./main/InitView";
 
 class Main {
+	private _initView: InitView;
+	private homePage: HomeLoading;
 	constructor() {
 		if (window["Laya3D"]) Laya3D.init(GameBG.width, GameBG.height);
 		else Laya.init(GameBG.width, GameBG.height, Laya["WebGL"]);
@@ -79,9 +76,6 @@ class Main {
 			Laya.Browser.window.wx.getSystemInfo({
 				success(res) {
 					let model = res.model;
-					if (model.search('iPhone X') != -1) {
-						
-					}
 					GameBG.height = GameBG.width / res.windowWidth * res.windowHeight;
 				}
 			});
@@ -93,110 +87,35 @@ class Main {
 			Laya.stage.alignH = "center";
 		}
 
-		this._initView = new ui.test.initViewUI();
+		this._initView = new InitView();
+		Laya.stage.once(GameEvent.INIT_COM,this,this.onInitCom);
 		Laya.stage.addChild(this._initView);
-		this._initView.initTxt.text = "0%";
-
-		Laya.loader.load("h5/config.json", new Laya.Handler(this, this.configFun));
 
 		App.init();
 		MyEffect.initBtnEffect();
-	}
-
-	private configFun(): void {
-		let config = Laya.loader.getRes("h5/config.json");
-		App.platformId = config.platformId;
-		App.serverIP = config.platforms[App.platformId];
-		this.loadRes();
 	}
 
 	private zipFun(arr: any[]): void {
 		GameMain.initDialog();
 		GameMain.initTable(arr);
 		Session.init();
+		this.authSetting();
 		Laya.stage.event(GameEvent.CONFIG_OVER);
 	}
 
-	private loadRes(): void {
-		Laya.loader.load(
-			[
-				{ url: "loading/loadingClip.png", type: Laya.Loader.IMAGE },
-				{ url: "loading/logo.png", type: Laya.Loader.IMAGE },
-				{ url: "h5/tables.zip", type: Laya.Loader.BUFFER },
-				{ url: "loading/jiazai.jpg", type: Laya.Loader.IMAGE },
-				{ url: "loading/btn_kaishi.png", type: Laya.Loader.IMAGE },
-				{ url: "loading/zhudi.jpg", type: Laya.Loader.IMAGE },
-				{ url: "loading/zhudi2.png", type: Laya.Loader.IMAGE }
-			],
-			new Laya.Handler(this, this.onInitCom), new Laya.Handler(this, this.onInitProgress));
-	}
-
-	private _initView: ui.test.initViewUI;
-
-	private onInitProgress(value: number): void {
-		value = value * 100;
-		this._initView.initTxt.text = "" + value.toFixed(0) + "%";
-	}
-
-	private homePage: HomeLoading;
-
 	private onInitCom(): void {
+		Laya.stage.addChild(App.layerManager);
+		App.soundManager.pre = "h5/sounds/";
 		ZipLoader.instance.zipFun(Laya.loader.getRes("h5/tables.zip"), new Laya.Handler(this, this.zipFun));
 		this.regClass();
-		let bc: BaseCookie;
-		if (App.platformId != PlatformID.WX) {
-			bc = new TestCookie();
-		}
-		else if (App.platformId == PlatformID.WX) {
-			bc = new WXCookie();
-		}
-		Game.cookie = bc;
-
-		App.soundManager.pre = "h5/sounds/";
-		Laya.stage.addChild(App.layerManager);
-
-		Game.cookie.getCookie(CookieKey.MUSIC_SWITCH, (res) => {
-			if (res == null) {
-				Game.cookie.setCookie(CookieKey.MUSIC_SWITCH, { "state": 1 });
-				App.soundManager.setMusicVolume(1);
-			}
-			else {
-				App.soundManager.setMusicVolume(res.state);
-			}
-		});
-
-		Game.cookie.getCookie(CookieKey.SOUND_SWITCH, (res) => {
-			if (res == null) {
-				Game.cookie.setCookie(CookieKey.SOUND_SWITCH, { "state": 1 });
-				App.soundManager.setSoundVolume(1);
-			}
-			else {
-				App.soundManager.setSoundVolume(res.state);
-			}
-		});
-
-		Game.playBgMusic();
-
-		this.authSetting();
 	}
 
 	private curBP: BasePlatform;
 	private authSetting(): void {
-		this._initView && this._initView.removeSelf();
-
 		if (!this.homePage) {
 			this.homePage = new HomeLoading();
 		}
 		Laya.stage.addChild(this.homePage);
-
-		Game.cookie.getCookie(CookieKey.USER_ID, (res) => {
-			if (res == null) {
-			}
-			else {
-				App.soundManager.setMusicVolume(res.state);
-				this.homePage.vvv.t1.text = res.userId;
-			}
-		});
 
 		let BP = Laya.ClassUtils.getRegClass("p" + App.platformId);
 		if (!this.curBP) {
@@ -204,6 +123,8 @@ class Main {
 		}
 		this.curBP.checkUpdate();
 		this.curBP.getUserInfo(this.getUserInfoSuccess.bind(this));
+
+		this._initView && this._initView.removeSelf();
 	}
 
 	private isSuccess: boolean = false;
@@ -254,7 +175,6 @@ class Main {
 		REG("p" + PlatformID.TEST, TestPlatform);
 		REG("p" + PlatformID.H5, TestPlatform);
 		REG("p" + PlatformID.WX, WXPlatform);
-
 		//buff
 		//无敌
 		REG("BUFF" + BuffID.WUDI_5009, WudiBuff);

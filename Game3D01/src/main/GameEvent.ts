@@ -1,4 +1,5 @@
 export default class GameEvent{
+    static INIT_COM:string = "INIT_COMPLETE";
     static START_BATTLE:string = "START_BATTLE";
     static MEMORY_WARNING:string = "MEMORY_WARNING";
     static CONFIG_OVER:string = "CONFIG_OVER";

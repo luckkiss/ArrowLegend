@@ -4,6 +4,8 @@ import ReceiverHttp from "../net/ReceiverHttp";
 import GameMain from "./GameMain";
 import App from "../core/App";
 import PlatformID from "../platforms/PlatformID";
+import Game from "../game/Game";
+import CookieKey from "../gameCookie/CookieKey";
     export default class HomeLoading extends ui.game.homePageUI {
     
     private rect:Laya.Rectangle;
@@ -20,6 +22,15 @@ import PlatformID from "../platforms/PlatformID";
         this.loadingBox.visible = false;
         this.startBtn.visible = true;
         this.vvv.visible = (App.platformId == PlatformID.TEST || App.platformId == PlatformID.H5);
+
+        Game.cookie.getCookie(CookieKey.USER_ID, (res) => {
+			if (res == null) {
+			}
+			else {
+				App.soundManager.setMusicVolume(res.state);
+				this.vvv.t1.text = res.userId;
+			}
+		});
     }
 
     load():void
