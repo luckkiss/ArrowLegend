@@ -52,7 +52,7 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
 
         this.addChild(this.box1);
 
-        Laya.stage.on( GameEvent.SHOW_MAIN ,  this, this.showMain );
+        Laya.stage.on( GameEvent.SHOW_MAIN , this, this.showMain );
     }
 
     public showMain():void{
@@ -92,7 +92,7 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
     }
 
     private sign7clickFun():void{
-        FlyUpTips.setTips("暂未开启");
+        FlyUpTips.setTips("敬请期待");
     }
 
     private addCoinFun( v:number ):void {

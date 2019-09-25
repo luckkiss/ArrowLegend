@@ -121,10 +121,10 @@ export default class HomeData implements IData{
         this.battleLv = 1;
         this.playerLv = 1;
         this.coins = 0;
-        this.redDiamond = 0;
+        this.redDiamond = 1;
         this.playerExp = 0;
-        this.blueDiamond = 0;
-        this.coins = 500;
+        this.blueDiamond = 1;
+        this.coins = 1000;
         this.newStat = 1;
         this.openBtn = ["1","-1","-1","-1","1"];
     }

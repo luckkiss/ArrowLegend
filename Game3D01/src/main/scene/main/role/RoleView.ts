@@ -13,6 +13,8 @@ import FlyUpTips from "../../../FlyUpTips";
 import WorldCell from "../world/WorldCell";
 import FlyEffect from "../../../../game/effect/FlyEffect";
 import RollCell from "./RollCell";
+import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
+import Game from "../../../../game/Game";
 export default class RoleView extends ui.test.jueseUI {
     public nowRoleId:number = 1;
     public autoEvent:AutoEvent = new AutoEvent();
@@ -43,8 +45,12 @@ export default class RoleView extends ui.test.jueseUI {
         directionLight.transform.rotate(new Laya.Vector3( -3.14 / 3, 0, 0));
 
         this.autoEvent.setSprite( this );
-        this.shengmingniu.clickHandler = new Laya.Handler( this,this.hpFun );
-        this.gongjiniu.clickHandler = new Laya.Handler( this,this.atkFun );
+        
+        this.shengmingniu.clickHandler = new Laya.Handler( this,this.hpFun, [this.shengmingniu] );
+        this.gongjiniu.clickHandler = new Laya.Handler( this,this.atkFun, [this.gongjiniu] );
+        
+ 
+        
         this.updateAll();
         this.on(Laya.Event.DISPLAY,this,this.disFun);
         
@@ -118,17 +124,29 @@ export default class RoleView extends ui.test.jueseUI {
         if( v <= 0 ){
             now = Math.max( now + v , 1 );
         }else{
-            now = Math.min( now + v , 2 );
+            now = Math.min( now + v , 3 );
         }
         Session.heroData.nowRoleId = now;
-        this.showRoleById( now );
+        if( now == 3 ){
+            this.showRoleById( -1 );
+        }else{
+            this.showRoleById( now );
+        }
         this.zuo.visible = !(now == 1);
-        this.you.visible = !(now == 2);
+        this.you.visible = !(now == 3);
+
+        this.nowRoleId = now;
+        this.updateAll();
     }
 
     /**切换3D模型 */
     private showRoleById(roleId:number) {
         this._layer3d.removeChildren();
+        if( roleId == -1 ){
+            this.qidai.visible = true;
+            return;
+        }
+        this.qidai.visible = false;
         Laya.Sprite3D.load("h5/hero/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
             sp3d.transform.localRotationEulerY = 0;
             sp3d.transform.localPositionZ = -3;
@@ -140,7 +158,7 @@ export default class RoleView extends ui.test.jueseUI {
                 ani_.speed = 0.5;
                 ani_.play("Idle");
             }
-        }))
+        }));
     }
     
     showLayer(isLeft:boolean):void
@@ -181,10 +199,21 @@ export default class RoleView extends ui.test.jueseUI {
      */
     public heroLvUpFun():void{
         this.lvEff.visible = true;
+        this.lvEff.sk1.play( 0 , false , false, 0 );
+        Laya.timer.frameLoop( 1,this,this.floopFun , [this.lvEff.sk1] );
+        //this.lvEff.sk1.index
         // this.lvEff.ani1.gotoAndStop(0);
         // this.lvEff.ani1.interval = 1000/60;
         // this.lvEff.ani1.play( 0,false );
         // this.lvEff.ani1.on( Laya.Event.COMPLETE ,this,this.efFun );
+    }
+
+    public floopFun(sk:laya.ani.bone.Skeleton):void{
+        if( sk.index == sk.total ){
+            sk.stop();
+            this.lvEff.visible = false;
+            Laya.timer.clear( this,this.floopFun );
+        }
     }
 
     public efFun():void{
@@ -253,14 +282,24 @@ export default class RoleView extends ui.test.jueseUI {
     public disFun():void {
         this.updateAll();
         this.turnFun(0);
+
+        if( Session.homeData.newStat == Guide_Type.click_hp ){
+            GuideManager.getInstance().hand( this.shengmingniu , this.shengmingniu.width/2 , this.shengmingniu.height/2 , Guide_Type.over , 600 , true );
+        }
     }
 
-    public hpFun():void{
+    public hpFun( btn:Laya.Button ):void{
+        if( btn.visible == false ){
+            return;
+        }
         let res = Session.heroData.lvUp( this.nowRoleId , HeroLvType.HP );
         this.tip(res);
     }
 
-    public atkFun():void{
+    public atkFun( btn:Laya.Button ):void{
+        if( btn.visible == false ){
+            return;
+        }
         let res = Session.heroData.lvUp( this.nowRoleId , HeroLvType.ATK );
         this.tip(res);
     }
@@ -274,6 +313,8 @@ export default class RoleView extends ui.test.jueseUI {
             FlyUpTips.setTips("金币不够");
         }else if( res == 5 ){
             FlyUpTips.setTips("升级到头了");
+        }else if( res == 0 ) {
+            Game.playSound( "fx_slot_lucky.wav" );
         }
     }
 

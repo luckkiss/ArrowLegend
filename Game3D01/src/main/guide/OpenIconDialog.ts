@@ -6,6 +6,9 @@ export default class OpenIconDialog extends ui.test.OpenIconUI{
     public openIndex:number = 0;
     constructor( openIndex:number ){
         super();
+
+        Laya.MouseManager.enabled = false;
+
         this.openIndex = openIndex;
 
         this.icon.skin = null;

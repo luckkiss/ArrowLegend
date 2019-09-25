@@ -6,6 +6,7 @@ import App from "../../../../core/App";
 import SysTalentInfo from "../../../sys/SysTalentInfo";
 import SysTalent from "../../../sys/SysTalent";
 import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
+import Game from "../../../../game/Game";
 
 export default class SelectTalent extends ui.test.TalentViewUI{
     public arr:Array<ui.test.TalentZhuanUI> = [];
@@ -27,7 +28,7 @@ export default class SelectTalent extends ui.test.TalentViewUI{
         this.box1.visible = false;
 
         if( Session.homeData.newStat == Guide_Type.select_talent ){
-            GuideManager.getInstance().hand( this.b1 , this.b1.width/2,this.b1.height/2 + 10,4 , 400 , true );
+            GuideManager.getInstance().hand( this.b1 , this.b1.width/2,this.b1.height/2 + 10, Guide_Type.open_role  , 400 , true );
         }
     }
 
@@ -35,6 +36,9 @@ export default class SelectTalent extends ui.test.TalentViewUI{
     }
 
     private clickFun( e:ui.test.TalentZhuanUI ):void{
+
+        Game.playSound( "fx_card.wav" );
+
         let now = Math.floor( Math.random() * 9 ) + 1;
         if( Session.homeData.newStat == 4 ){
             now = 1;

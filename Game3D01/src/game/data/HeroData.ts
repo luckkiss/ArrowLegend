@@ -43,7 +43,7 @@ export default class HeroData implements IData{
     
     public initData(data:any):void{
         let arr:SysRoleBase[] = App.tableManager.getTable(SysRoleBase.NAME);
-        for( let k of arr ){ 
+        for( let k of arr ){
             let hd = new HeroBaseData();
             hd.id = k.id;
             hd.initData();
