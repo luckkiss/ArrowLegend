@@ -15,9 +15,6 @@ import GameScaleAnimator4 from "./game/ai/GameScaleAnimator4";
 import NPC_1001 from "./main/scene/battle/npc/NPC_1001";
 import NPC_1002 from "./main/scene/battle/npc/NPC_1002";
 import NPC_1003 from "./main/scene/battle/npc/NPC_1003";
-// import NPC_1001_view from "./main/scene/battle/npc/NPC_1001_view";
-// import NPC_1002_view from "./main/scene/battle/npc/NPC_1002_view";
-// import NPC_1003_view from "./main/scene/battle/npc/NPC_1003_view";
 import AttackType from "./game/ai/AttackType";
 import AIType from "./game/ai/AIType";
 import BaseAI from "./game/ai/BaseAi";
@@ -217,54 +214,7 @@ class Main {
 		this.isSuccess = true;
 		this.homePage.load();
 		console.log("授权成功，开始加载");
-
-		// this.homePage && this.homePage.removeSelf();
-		// this.loading = new ui.test.LoadingUI();
-		// this.loading.mouseEnabled = true;
-		// Laya.stage.addChild(this.loading);
-		// // this.loading.clip.play();
-		// this.loading.txt.text = "0%";
-
-		// Laya.loader.load([
-		// 	{ url: "res/atlas/main.atlas", type: Laya.Loader.ATLAS },
-		// 	{ url: "res/atlas/guide.atlas", type: Laya.Loader.ATLAS },
-		// 	{ url: "res/atlas/zhaohuan.atlas", type: Laya.Loader.ATLAS },
-		// 	// { url: "res/atlas/shezhi.atlas", type: Laya.Loader.ATLAS },
-		// 	// { url: "res/atlas/tianfu.atlas", type: Laya.Loader.ATLAS },
-		// 	{ url: "h5/tables.zip", type: Laya.Loader.BUFFER }
-		// ], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
 	}
-
-
-	// private loading: ui.test.LoadingUI;
-	// private onHandler(): void {
-	// 	console.log("加载完成");
-	// 	this.curBP.checkUpdate();
-	// 	new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
-	// }
-
-	// private onSuccess(data): void {
-	// 	console.log("登录成功");
-	// 	ReceiverHttp.create(new Laya.Handler(this, this.onReceive)).send();
-	// }
-
-
-	// private isInit: boolean = false;
-	// private onReceive(data): void {
-	// 	if (this.isInit) {
-	// 		return;
-	// 	}
-	// 	console.log("获取玩家数据成功" + data);
-	// 	this.isInit = true;
-	// 	new GameMain();
-	// 	this.loading.removeSelf();
-	// 	// this.loading.clip.stop();
-	// }
-
-	// private onProgress(value: number): void {
-	// 	value = value * 100;
-	// 	this.loading.txt.text = "" + value.toFixed(0) + "%";
-	// }
 
 	private regClass(): void {
 		var REG: Function = Laya.ClassUtils.regClass;
