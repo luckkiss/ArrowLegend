@@ -45,6 +45,17 @@ export module ui.game {
         }
     }
     REG("ui.game.homePageUI",homePageUI);
+    export class LoadingUI extends View {
+		public clip:Laya.Clip;
+		public txt:Laya.Label;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"width":750,"height":1700,"bgColor":"#ffffff"},"compId":3},{"type":"Box","props":{"width":156,"scaleY":1.5,"scaleX":1.5,"height":156,"centerY":0,"centerX":0},"compId":5,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"clip","skin":"loading/loadingClip.png","interval":150,"clipY":4,"clipX":4,"autoPlay":true},"compId":10},{"type":"Label","props":{"y":58,"x":0,"width":156,"var":"txt","text":"10%","height":40,"fontSize":36,"color":"#b7b7b7","bold":true,"align":"center"},"compId":7}]}],"loadList":["loading/loadingClip.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(LoadingUI.uiView);
+        }
+    }
+    REG("ui.game.LoadingUI",LoadingUI);
     export class mainSceneUI extends View {
 		public mainBox:Laya.Box;
 		public topBox:Laya.Box;
@@ -340,6 +351,16 @@ export module ui.test {
         }
     }
     REG("ui.test.HeroFootUI",HeroFootUI);
+    export class homeLoadingUI extends Scene {
+		public txt:Laya.Label;
+        public static  uiView:any ={"type":"Scene","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":-5,"x":0,"width":750,"height":1700,"bgColor":"#ffffff"},"compId":3,"child":[{"type":"Image","props":{"skin":"loading/jiazai.jpg","alpha":1},"compId":12}]},{"type":"Box","props":{"width":156,"scaleY":1.5,"scaleX":1.5,"height":156,"centerY":678,"centerX":302},"compId":5,"child":[{"type":"Label","props":{"y":24,"x":0,"width":156,"var":"txt","text":"10%","height":40,"fontSize":30,"color":"#ffffff","bold":true,"align":"center"},"compId":7},{"type":"Sprite","props":{"y":28,"x":-233,"texture":"loading/shouci.png"},"compId":14}]},{"type":"Sprite","props":{"y":417.5,"x":134,"texture":"loading/logo.png"},"compId":13},{"type":"Sprite","props":{"y":1237,"x":0,"width":750,"texture":"loading/jianduxia.png","height":26},"compId":15},{"type":"Sprite","props":{"y":1237,"x":0,"width":750,"texture":"loading/jiandushang.png","height":26},"compId":16},{"type":"Sprite","props":{"y":1233.5,"x":749,"texture":"loading/dan.png"},"compId":17}],"loadList":["loading/jiazai.jpg","loading/shouci.png","loading/logo.png","loading/jianduxia.png","loading/jiandushang.png","loading/dan.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(homeLoadingUI.uiView);
+        }
+    }
+    REG("ui.test.homeLoadingUI",homeLoadingUI);
     export class hongtanUI extends Scene {
         public static  uiView:any ={"type":"Scene","props":{"width":750,"height":1334},"loadList":[],"loadList3D":[]};
         constructor(){ super()}
@@ -463,17 +484,6 @@ export module ui.test {
         }
     }
     REG("ui.test.LightUI",LightUI);
-    export class LoadingUI extends Scene {
-		public clip:Laya.Clip;
-		public txt:Laya.Label;
-        public static  uiView:any ={"type":"Scene","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"width":750,"height":1700,"bgColor":"#ffffff"},"compId":3},{"type":"Box","props":{"width":156,"scaleY":1.5,"scaleX":1.5,"height":156,"centerY":0,"centerX":0},"compId":5,"child":[{"type":"Clip","props":{"y":0,"x":0,"var":"clip","skin":"loading/loadingClip.png","interval":150,"clipY":4,"clipX":4,"autoPlay":true},"compId":10},{"type":"Label","props":{"y":58,"x":0,"width":156,"var":"txt","text":"10%","height":40,"fontSize":36,"color":"#b7b7b7","bold":true,"align":"center"},"compId":7}]}],"loadList":["loading/loadingClip.png"],"loadList3D":[]};
-        constructor(){ super()}
-        createChildren():void {
-            super.createChildren();
-            this.createView(LoadingUI.uiView);
-        }
-    }
-    REG("ui.test.LoadingUI",LoadingUI);
     export class LoginViewUI extends View {
 		public t1:Laya.TextInput;
         public static  uiView:any ={"type":"View","props":{"width":750,"height":500},"compId":2,"child":[{"type":"TextInput","props":{"y":121,"x":236,"width":278,"var":"t1","prompt":"输入用户名","height":83,"fontSize":40,"bgColor":"#ffffff"},"compId":3}],"loadList":[],"loadList3D":[]};
