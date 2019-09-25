@@ -227,7 +227,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             super();
             
             this.opens = Session.homeData.openBtn;
-            this.opens = ["1","1","-1","-1","1"];
+            //this.opens = ["1","-1","-1","-1","1"];
             this.size(750,122);
             this.addChild(this.bgBox);
             this.curBg.skin = 'main/dazhao.png';
@@ -273,6 +273,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             this.onClick( this.btns[this._selectIndex] , 10 );
         }
 
+
         updateBtns():void
         {
             let len = this.btns.length;
@@ -298,12 +299,20 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             }
         }
 
+        public open( v:number ):void{
+            let a = this.btns[v];
+            let t = new Laya.Tween();
+            t.to( a , { alpha:0 ,  scaleX:4 , scaleY:4 } , 200 , Laya.Ease.strongOut );
+        }
+        
+
         private onClick(clickBtn:Laya.Button,  delay:number = 500):void
         {
             if(clickBtn.tag == "-1")
             {
                 clickBtn.mouseEnabled = false;
                 ShakeUtils.execute(clickBtn,300,2);
+                FlyUpTips.setTips( "敬请期待" );
                 setTimeout(() => {
                     clickBtn.mouseEnabled = true;
                 }, 300);
@@ -331,6 +340,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             }
             Laya.Tween.to(this.curBg,{x:tmp.x},delay,Laya.Ease.cubicInOut);
             Laya.stage.event("switchView");
+            
         }
 
         public get selectIndex():number
@@ -348,6 +358,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             let t = new Laya.Tween();
             let b = this.btns[v];
             this.btns[v] = s;
+            Session.homeData.openBtn[v] = "1";
             let p = b.localToGlobal( new Laya.Point( b.width/2 , b.height/2 ) );
             t.to( s , { x:p.x , y:p.y } , 600 , Laya.Ease.strongOut ,  new Laya.Handler(this,this.flyFun , [s,b,v] )  );
         }
@@ -359,9 +370,15 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             s.pos( b.x,b.y );
             b.removeSelf();
             s.clickHandler = new Laya.Handler(this,this.onClick,[s]);
-
+            
             if( Session.homeData.newStat == Guide_Type.click_talent ){
                 GuideManager.getInstance().hand( s , s.width/2 ,s.height/2 , Guide_Type.talent_lv_up , 1000 );
+            }else if( Session.homeData.newStat == Guide_Type.open_role ){
+                GuideManager.getInstance().hand( s , s.width/2 ,s.height/2 , Guide_Type.click_hp , 1000 );
             }
+
+            Laya.timer.once( 1000 , null , ()=>{
+                Laya.MouseManager.enabled = true;
+            } );
         }
     }

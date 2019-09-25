@@ -51,6 +51,20 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         this.on(Laya.Event.CLICK,this,this.onClick);
 
         this.addChild(this.box1);
+
+        Laya.stage.on( GameEvent.SHOW_MAIN , this, this.showMain );
+    }
+
+    public showMain():void{
+        Laya.timer.once( 600 ,  null , ()=>{
+            if( Session.homeData.newStat == Guide_Type.click_talent ){
+                let dp = new OpenIconDialog( 2 );
+                dp.popup( false, false );
+            }else if( Session.homeData.newStat == Guide_Type.open_role ){
+                let dp = new OpenIconDialog( 1 );
+                dp.popup( false, false );
+            }
+        } );
     }
 
     private onClick(e:Laya.Event):void{
@@ -78,7 +92,7 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
     }
 
     private sign7clickFun():void{
-        FlyUpTips.setTips("暂未开启");
+        FlyUpTips.setTips("敬请期待");
     }
 
     private addCoinFun( v:number ):void {
@@ -120,13 +134,7 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         let t = new Laya.Tween();
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
  
-        if( Session.homeData.newStat == Guide_Type.click_talent ){
-            let dp = new OpenIconDialog( 2 );
-            dp.popup( false, false );
-        }else if( Session.homeData.newStat == Guide_Type.open_role ){
-            let dp = new OpenIconDialog( 1 );
-            dp.popup( false, false );
-        }
+        
 
         // Laya.timer.once( 2000 ,  null , ()=>{
         //     this.initNew();

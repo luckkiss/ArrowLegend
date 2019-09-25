@@ -112,6 +112,10 @@ export default class TalentView extends ui.test.talentUI {
             FlyUpTips.setTips( "金币不够" );
             return;
         }
+        Laya.MouseManager.enabled = false;
+        Laya.timer.once( 300 , null , ()=>{
+            Laya.MouseManager.enabled = true;    
+        } );
         let d = new SelectTalent();
         d.popup(false);
     }

@@ -117,9 +117,11 @@ export default class RollCell{
         if( have >= cost ){
             //如果钻石够了 就显示升级按钮
             this.vs2.selectedIndex = 1;
+            this.lvUpBtn.mouseEnabled = true;
         }else{
             //钻石不够 继续显示进度条
             this.vs2.selectedIndex = 0;
+            this.lvUpBtn.mouseEnabled = false;
         }
     }
 }

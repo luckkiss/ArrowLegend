@@ -54,6 +54,7 @@ export default class GuideManager{
         let cc = r1.contains( Laya.stage.mouseX , Laya.stage.mouseY );
         if( cc ){
             Session.homeData.newStat = this.nextStat;
+            Session.saveData();
             this.target.event( Laya.Event.CLICK , e );
             this.handMv.visible = false;
             if( this.autoStop  )  {
@@ -71,5 +72,7 @@ export enum Guide_Type{
     click_talent = 1,
     talent_lv_up = 2,
     select_talent = 3,
-    open_role = 4
+    open_role = 4,
+    click_hp = 5,
+    over = 6
 }
