@@ -261,7 +261,7 @@ class Main {
 		if (this.isInit) {
 			return;
 		}
-		console.log("获取玩家数据成功");
+		console.log("获取玩家数据成功" + data);
 		this.isInit = true;
 		new GameMain();
 		this.loading.removeSelf();

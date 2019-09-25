@@ -67,6 +67,7 @@ export default class HomeData implements IData{
             this.curEnergy = this.totalEnergy - delta;
             console.log("Session剩余的时间", time , this.curEnergy);
         }
+        this.curEnergy = 20;
     }
 
     /**
@@ -82,8 +83,8 @@ export default class HomeData implements IData{
         data.playerLv = this.playerLv;
         data.coins = this.coins;
         data.playerExp = this.playerExp;
-        data.chapterId = data.chapterId;
-        data.mapIndex = data.mapIndex;
+        data.chapterId = this.chapterId;
+        data.mapIndex = this.mapIndex;
         if(Game.battleLoader.chapterId >= this.chapterId)
         {
             if( Game.battleLoader.index > this.mapIndex ) {
