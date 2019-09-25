@@ -5,7 +5,7 @@ import MyEffect from "../../../../core/utils/MyEffect";
 import App from "../../../../core/App";
 import SysTalentInfo from "../../../sys/SysTalentInfo";
 import SysTalent from "../../../sys/SysTalent";
-import GuideManager from "../../../guide/GuideManager";
+import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
 
 export default class SelectTalent extends ui.test.TalentViewUI{
     public arr:Array<ui.test.TalentZhuanUI> = [];
@@ -26,17 +26,19 @@ export default class SelectTalent extends ui.test.TalentViewUI{
         this.clickClose.alpha = 0;
         this.box1.visible = false;
 
-        Laya.timer.once( 400,this,this.tFun );
+        if( Session.homeData.newStat == Guide_Type.select_talent ){
+            GuideManager.getInstance().hand( this.b1 , this.b1.width/2,this.b1.height/2 + 10,4 , 400 , true );
+        }
     }
 
     private tFun():void{
-        if( Session.homeData.newStat == 3 ){
-            GuideManager.getInstance().hand( this.b1 , this.b1.width/2,this.b1.height/2 + 10,4 );
-        }
     }
 
     private clickFun( e:ui.test.TalentZhuanUI ):void{
         let now = Math.floor( Math.random() * 9 ) + 1;
+        if( Session.homeData.newStat == 4 ){
+            now = 1;
+        }
         let tid:number = now;
         let obj = Session.talentData.getImgData( now );
         

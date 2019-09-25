@@ -11,7 +11,7 @@ import SelectTalent from "./SelectTalent";
 import TalentCell2 from "./TalentCell2";
 import SysTalent from "../../../sys/SysTalent";
 import MyEffect from "../../../../core/utils/MyEffect";
-import GuideManager from "../../../guide/GuideManager";
+import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
 
 export default class TalentView extends ui.test.talentUI {
 
@@ -108,13 +108,17 @@ export default class TalentView extends ui.test.talentUI {
             FlyUpTips.setTips( "请您提升君主等级" );
             return;
         }
+        if( Session.talentData.canLvUp() == -1 ){
+            FlyUpTips.setTips( "金币不够" );
+            return;
+        }
         let d = new SelectTalent();
         d.popup(false);
     }
 
     public disFun():void{
-        if( Session.homeData.newStat == 2 ){
-            GuideManager.getInstance().hand( this.shengmingniu , 0 , 0 , 3 );
+        if( Session.homeData.newStat == Guide_Type.talent_lv_up ){
+            GuideManager.getInstance().hand( this.shengmingniu , this.shengmingniu.width/2 , this.shengmingniu.height/2  , Guide_Type.select_talent , 600 );
         }
         this.tipBox.visible = false;
         this.refresh();

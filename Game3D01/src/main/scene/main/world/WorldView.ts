@@ -13,7 +13,8 @@ import GameMain from "../../../GameMain";
 import MyTimeGold from "../timegold/MyTimeGold";
 import FlyEffect from "../../../../game/effect/FlyEffect";
 import FlyUpTips from "../../../FlyUpTips";
-import GuideManager from "../../../guide/GuideManager";
+import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
+import OpenIconDialog from "../../../guide/OpenIconDialog";
     export default class WorldView extends ui.test.worldUI {
     private list:Laya.List;
     constructor() { 
@@ -119,12 +120,16 @@ import GuideManager from "../../../guide/GuideManager";
         let t = new Laya.Tween();
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
  
-        if( Session.homeData.newStat == 1 ){
-            this.initNew();
+        if( Session.homeData.newStat == Guide_Type.click_talent ){
+            let dp = new OpenIconDialog( 2 );
+            dp.popup( false, false );
+        }else if( Session.homeData.newStat == Guide_Type.open_role ){
+            let dp = new OpenIconDialog( 1 );
+            dp.popup( false, false );
         }
-    }
 
-    public initNew():void{
-        GuideManager.getInstance().hand( Game.scenneM.main.mainUI.bottomUI.btns[2] ,0 ,0 , 2 );
+        // Laya.timer.once( 2000 ,  null , ()=>{
+        //     this.initNew();
+        // } );
     }
 }

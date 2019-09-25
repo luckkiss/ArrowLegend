@@ -52,6 +52,7 @@ class Main {
 	private _initView: InitView;
 	private homePage: HomeLoading;
 	constructor() {
+		UIConfig.popupBgAlpha = 0.8;
 		if (window["Laya3D"]) Laya3D.init(GameBG.width, GameBG.height);
 		else Laya.init(GameBG.width, GameBG.height, Laya["WebGL"]);
 		Laya["Physics"] && Laya["Physics"].enable();

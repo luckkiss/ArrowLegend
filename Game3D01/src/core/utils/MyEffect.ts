@@ -59,9 +59,10 @@ export default class MyEffect{
     }
 
     public static flash( e:Laya.Sprite , time:number = 500 ):void{
+        e.alpha = 0;
         let t = new Laya.TimeLine();
-        t.to( e , { alpha:0 } , time );
-        t.to( e , { alpha:1}  , time );
+        t.to( e , { alpha:1 } , time );
+        t.to( e , { alpha:0}  , time );
         t.play(0,true);
         MyEffect.clearTween( e );
     }
@@ -79,4 +80,23 @@ export default class MyEffect{
         t.play();
     }
 
+    public static bigSmall( sp:Laya.Sprite , big:number ,small:number ):void{
+        let t = new Laya.TimeLine();
+        t.to( sp , { scaleX:big , scaleY:big } , 100 );
+        t.to( sp , { scaleX:small , scaleY:small } , 300 , Laya.Ease.backOut );
+        t.play();
+    }
+
+    /**
+     * 先缩小 再弹出
+     * @param v 
+     * @param s 
+     * @param time 
+     * @param delay 
+     */
+    public static popup( v:Laya.Sprite , s:number , time:number , delay:number ):void{
+        let t = new Laya.Tween();
+        v.scale(0,0);
+        t.to( v , { scaleX:s , scaleY:s } , time , Laya.Ease.backOut , null, delay );
+    }
 }

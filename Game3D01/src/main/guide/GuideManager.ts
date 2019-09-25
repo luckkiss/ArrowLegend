@@ -26,20 +26,25 @@ export default class GuideManager{
 
     public target:Laya.Sprite = null;
     public nextStat:number = 0;
+    public autoStop:boolean = false;
 
-    public hand( target:Laya.Sprite , x:number = 0 , y:number = 0 , nextStat:number  ):void{
-        //return;
-        this.target = target;
-        this.nextStat = nextStat;
-        this.handMv.visible = true;
-        Laya.stage.addChild( this.handMv );
-        this.handMv.zOrder = 1000;
-        let p = target.localToGlobal( new Laya.Point(0,0) );
-        this.handMv.pos( p.x , p.y );
-        this.handMv.lightClip.play();
-        this.handMv.ani1.play( 0 , true );
-        Laya.stage.on( Laya.Event.CLICK ,this , this.clickFun );
-        Laya.stage.addChild( this.maskLayer );
+    public hand( target:Laya.Sprite , x:number = 0 , y:number = 0 , nextStat:number , delay:number = 0  , autoStop:boolean = false ):void{
+        Laya.timer.once( delay , this, ()=>{
+            this.autoStop = autoStop;
+            this.target = target;
+            this.nextStat = nextStat;
+            this.handMv.visible = true;
+            Laya.stage.addChild( this.handMv );
+            this.handMv.zOrder = 1000;
+            let p = target.localToGlobal( new Laya.Point(0,0) );
+            this.handMv.pos( p.x + x , p.y + y );
+            this.handMv.lightClip.interval = 1000 / 15;
+            this.handMv.lightClip.play();
+            this.handMv.ani1.interval = 1000/10;
+            this.handMv.ani1.play( 0 , true );
+            Laya.stage.on( Laya.Event.CLICK ,this , this.clickFun );
+            Laya.stage.addChild( this.maskLayer );
+        } );
     }
 
     public clickFun( e:Laya.Event ):void{
@@ -51,10 +56,20 @@ export default class GuideManager{
             Session.homeData.newStat = this.nextStat;
             this.target.event( Laya.Event.CLICK , e );
             this.handMv.visible = false;
+            if( this.autoStop  )  {
+                this.removeMask();
+            }
         }
     }
 
     public removeMask():void{
         this.maskLayer.removeSelf();
     }
+}
+
+export enum Guide_Type{
+    click_talent = 1,
+    talent_lv_up = 2,
+    select_talent = 3,
+    open_role = 4
 }

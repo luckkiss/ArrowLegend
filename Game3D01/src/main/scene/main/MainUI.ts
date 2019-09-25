@@ -11,6 +11,8 @@ import SenderHttp from "../../../net/SenderHttp";
 import App from "../../../core/App";
 import SysHero from "../../sys/SysHero";
 import GameEvent from "../../GameEvent";
+import MyEffect from "../../../core/utils/MyEffect";
+import GuideManager, { Guide_Type } from "../../guide/GuideManager";
     export default class MainUI extends Laya.Box {
         topUI:TopUI;
         public bottomUI:BottomUI;
@@ -219,9 +221,13 @@ import GameEvent from "../../GameEvent";
 
         private _selectIndex:number = 0;
 
-        private opens:number[] = [1,1,1,-1,1];
+        public opens:string[];
+        
         constructor(){
             super();
+            
+            this.opens = Session.homeData.openBtn;
+            this.opens = ["1","-1","-1","-1","1"];
             this.size(750,122);
             this.addChild(this.bgBox);
             this.curBg.skin = 'main/dazhao.png';
@@ -239,7 +245,8 @@ import GameEvent from "../../GameEvent";
                 let btn:Laya.Button = new Laya.Button();
                 
                 btn.tag = this.opens[i];
-                if(this.opens[i] == 1)
+                
+                if(this.opens[i] == "1")
                 {
                     btn.stateNum = 2;
                     btn.width = 132;
@@ -266,6 +273,12 @@ import GameEvent from "../../GameEvent";
             this.onClick( this.btns[this._selectIndex] , 10 );
         }
 
+<<<<<<< HEAD
+        public open( v:number ):void{
+            let a = this.btns[v];
+            let t = new Laya.Tween();
+            t.to( a , { alpha:0 ,  scaleX:4 , scaleY:4 } , 200 , Laya.Ease.strongOut );
+=======
         updateBtns():void
         {
             let len = this.btns.length;
@@ -289,11 +302,12 @@ import GameEvent from "../../GameEvent";
                     btn.scale(1.2,1.2);
                 }
             }
+>>>>>>> b2aea88c2f0658febcef838d2b270697132388bc
         }
 
         private onClick(clickBtn:Laya.Button,  delay:number = 500):void
         {
-            if(clickBtn.tag == -1)
+            if(clickBtn.tag == "-1")
             {
                 clickBtn.mouseEnabled = false;
                 ShakeUtils.execute(clickBtn,300,2);
@@ -329,5 +343,32 @@ import GameEvent from "../../GameEvent";
         public get selectIndex():number
         {
             return this._selectIndex;
+        }
+
+        /**
+         * 
+         * @param s 
+         * @param v 飞到第几个
+         */
+        public fly( s:Laya.Button , v:number ):void{
+            s.selected = false;
+            let t = new Laya.Tween();
+            let b = this.btns[v];
+            this.btns[v] = s;
+            let p = b.localToGlobal( new Laya.Point( b.width/2 , b.height/2 ) );
+            t.to( s , { x:p.x , y:p.y } , 600 , Laya.Ease.strongOut ,  new Laya.Handler(this,this.flyFun , [s,b,v] )  );
+        }
+
+        public flyFun( s:Laya.Button , b:Laya.Button , flyNum:number ):void{
+            MyEffect.bigSmall( s , 3 , 1 );
+            
+            b.parent.addChild( s );
+            s.pos( b.x,b.y );
+            b.removeSelf();
+            s.clickHandler = new Laya.Handler(this,this.onClick,[s]);
+
+            if( Session.homeData.newStat == Guide_Type.click_talent ){
+                GuideManager.getInstance().hand( s , s.width/2 ,s.height/2 , Guide_Type.talent_lv_up , 1000 );
+            }
         }
     }
