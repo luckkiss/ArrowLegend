@@ -120,8 +120,11 @@ import GuideManager from "../../../guide/GuideManager";
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
 
         if( Session.homeData.newStat == 1 ){
-            GuideManager.getInstance().hand( Game.scenneM.main.mainUI.bottomUI.btns[2] ,0 ,0 );
+            this.initNew();
         }
     }
 
+    public initNew():void{
+        GuideManager.getInstance().hand( Game.scenneM.main.mainUI.bottomUI.btns[2] ,0 ,0 , 2 );
+    }
 }

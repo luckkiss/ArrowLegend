@@ -31,11 +31,12 @@ export default class GameMain {
 
     private zipFun(): void {
         Game.alert = new GameAlert();
-        Game.scenneM.showMain();
+        
         Game.battleLoader.preload();
         if(Session.homeData.isGuide){
             Game.battleLoader.load();
         }else{
+            Game.scenneM.showMain();
             Game.cookie.getCookie(CookieKey.CURRENT_BATTLE, (res) => {
                 if (res)  {
                     Game.alert.onShow("是否继续未完成的战斗?", new Laya.Handler(this, this.onContinue, [res]), new Laya.Handler(this, this.onCancel));

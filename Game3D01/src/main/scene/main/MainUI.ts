@@ -259,13 +259,14 @@ import GameEvent from "../../GameEvent";
                 btn.anchorX = 0.5;
                 btn.anchorY = 0.5;
                 btn.x = bg.x + 63;
+                //btn.on(Laya.Event.CLICK ,  this,this.onClick,[btn] ) ; //clickHandler = new Laya.Handler(this,this.onClick,[btn]);
                 btn.clickHandler = new Laya.Handler(this,this.onClick,[btn]);
                 this.btns.push(btn);
             }
-            this.onClick(this.btns[this._selectIndex],10);
+            this.onClick( this.btns[this._selectIndex] , 10 );
         }
 
-        private onClick(clickBtn:Laya.Button,delay:number = 500):void
+        private onClick(clickBtn:Laya.Button,  delay:number = 500):void
         {
             if(clickBtn.tag == -1)
             {

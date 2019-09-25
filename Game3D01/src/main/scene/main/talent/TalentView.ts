@@ -11,6 +11,7 @@ import SelectTalent from "./SelectTalent";
 import TalentCell2 from "./TalentCell2";
 import SysTalent from "../../../sys/SysTalent";
 import MyEffect from "../../../../core/utils/MyEffect";
+import GuideManager from "../../../guide/GuideManager";
 
 export default class TalentView extends ui.test.talentUI {
 
@@ -112,6 +113,9 @@ export default class TalentView extends ui.test.talentUI {
     }
 
     public disFun():void{
+        if( Session.homeData.newStat == 2 ){
+            GuideManager.getInstance().hand( this.shengmingniu , 0 , 0 , 3 );
+        }
         this.tipBox.visible = false;
         this.refresh();
     }
