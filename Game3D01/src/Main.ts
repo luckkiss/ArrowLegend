@@ -54,6 +54,7 @@ import Session from "./main/Session";
 import ZipLoader from "./core/utils/ZipLoader";
 import GameEvent from "./main/GameEvent";
 import NPC_1001_view from "./main/scene/battle/npc/NPC_1001_view";
+import HomeLoading from "./main/HomeLoading";
 
 class Main {
 	constructor() {
@@ -140,22 +141,11 @@ class Main {
 		this._initView.initTxt.text = "" + value.toFixed(0) + "%";
 	}
 
-	private homePage: ui.game.homePageUI;
+	private homePage: HomeLoading;
 
 	private onInitCom(): void {
 		ZipLoader.instance.zipFun(Laya.loader.getRes("h5/tables.zip"), new Laya.Handler(this, this.zipFun));
 		this.regClass();
-
-		// this._initView.initTxt.text = "";
-
-		if (!this.homePage) {
-			this.homePage = new ui.game.homePageUI();
-		}
-		Laya.stage.addChild(this.homePage);
-
-
-		// // wx.clearStorage()
-
 		let bc: BaseCookie;
 		if (App.platformId != PlatformID.WX) {
 			bc = new TestCookie();
@@ -164,15 +154,6 @@ class Main {
 			bc = new WXCookie();
 		}
 		Game.cookie = bc;
-
-		Game.cookie.getCookie(CookieKey.USER_ID, (res) => {
-			if (res == null) {
-			}
-			else {
-				App.soundManager.setMusicVolume(res.state);
-				this.homePage.vvv.t1.text = res.userId;
-			}
-		});
 
 		App.soundManager.pre = "h5/sounds/";
 		Laya.stage.addChild(App.layerManager);
@@ -206,11 +187,25 @@ class Main {
 	private authSetting(): void {
 		this._initView && this._initView.removeSelf();
 
+		if (!this.homePage) {
+			this.homePage = new HomeLoading();
+		}
+		Laya.stage.addChild(this.homePage);
+
+		Game.cookie.getCookie(CookieKey.USER_ID, (res) => {
+			if (res == null) {
+			}
+			else {
+				App.soundManager.setMusicVolume(res.state);
+				this.homePage.vvv.t1.text = res.userId;
+			}
+		});
+
 		let BP = Laya.ClassUtils.getRegClass("p" + App.platformId);
 		if (!this.curBP) {
 			this.curBP = new BP();
 		}
-		this.homePage.vvv.visible = (App.platformId == PlatformID.TEST || App.platformId == PlatformID.H5);
+		this.curBP.checkUpdate();
 		this.curBP.getUserInfo(this.getUserInfoSuccess.bind(this));
 	}
 
@@ -220,58 +215,56 @@ class Main {
 			return;
 		}
 		this.isSuccess = true;
+		this.homePage.load();
 		console.log("授权成功，开始加载");
-		this.homePage && this.homePage.removeSelf();
-		this.loading = new ui.test.LoadingUI();
-		this.loading.mouseEnabled = true;
-		Laya.stage.addChild(this.loading);
-		// this.loading.clip.play();
-		this.loading.txt.text = "0%";
 
-		Laya.loader.load([
-			{ url: "res/atlas/main.atlas", type: Laya.Loader.ATLAS },
-			{ url: "res/atlas/guide.atlas", type: Laya.Loader.ATLAS },
-			{ url: "res/atlas/zhaohuan.atlas", type: Laya.Loader.ATLAS },
-			// { url: "res/atlas/shezhi.atlas", type: Laya.Loader.ATLAS },
-			// { url: "res/atlas/tianfu.atlas", type: Laya.Loader.ATLAS },
-			{ url: "h5/tables.zip", type: Laya.Loader.BUFFER }
-		], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
+		// this.homePage && this.homePage.removeSelf();
+		// this.loading = new ui.test.LoadingUI();
+		// this.loading.mouseEnabled = true;
+		// Laya.stage.addChild(this.loading);
+		// // this.loading.clip.play();
+		// this.loading.txt.text = "0%";
 
-		//Laya.loader.load([{ url: "allJson.json", type: "plf" }], Laya.Handler.create(this, function (): void {
-
-		//}));
+		// Laya.loader.load([
+		// 	{ url: "res/atlas/main.atlas", type: Laya.Loader.ATLAS },
+		// 	{ url: "res/atlas/guide.atlas", type: Laya.Loader.ATLAS },
+		// 	{ url: "res/atlas/zhaohuan.atlas", type: Laya.Loader.ATLAS },
+		// 	// { url: "res/atlas/shezhi.atlas", type: Laya.Loader.ATLAS },
+		// 	// { url: "res/atlas/tianfu.atlas", type: Laya.Loader.ATLAS },
+		// 	{ url: "h5/tables.zip", type: Laya.Loader.BUFFER }
+		// ], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
 	}
 
 
-	private loading: ui.test.LoadingUI;
-	private onHandler(): void {
-		console.log("加载完成");
-		this.curBP.checkUpdate();
-		new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
-	}
+	// private loading: ui.test.LoadingUI;
+	// private onHandler(): void {
+	// 	console.log("加载完成");
+	// 	this.curBP.checkUpdate();
+	// 	new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
+	// }
 
-	private onSuccess(data): void {
-		console.log("登录成功");
-		ReceiverHttp.create(new Laya.Handler(this, this.onReceive)).send();
-	}
+	// private onSuccess(data): void {
+	// 	console.log("登录成功");
+	// 	ReceiverHttp.create(new Laya.Handler(this, this.onReceive)).send();
+	// }
 
 
-	private isInit: boolean = false;
-	private onReceive(data): void {
-		if (this.isInit) {
-			return;
-		}
-		console.log("获取玩家数据成功" + data);
-		this.isInit = true;
-		new GameMain();
-		this.loading.removeSelf();
-		// this.loading.clip.stop();
-	}
+	// private isInit: boolean = false;
+	// private onReceive(data): void {
+	// 	if (this.isInit) {
+	// 		return;
+	// 	}
+	// 	console.log("获取玩家数据成功" + data);
+	// 	this.isInit = true;
+	// 	new GameMain();
+	// 	this.loading.removeSelf();
+	// 	// this.loading.clip.stop();
+	// }
 
-	private onProgress(value: number): void {
-		value = value * 100;
-		this.loading.txt.text = "" + value.toFixed(0) + "%";
-	}
+	// private onProgress(value: number): void {
+	// 	value = value * 100;
+	// 	this.loading.txt.text = "" + value.toFixed(0) + "%";
+	// }
 
 	private regClass(): void {
 		var REG: Function = Laya.ClassUtils.regClass;

@@ -2,6 +2,10 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
+<<<<<<< HEAD:Game3D01/laya/pages/game/Loading.scene
+=======
+    "selecteID":3,
+>>>>>>> 11abb4c7edb3725ca12ffbb880af46a4532b0d7b:Game3D01/laya/pages/test/Loading.scene
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#eae2e2","height":1334},
     "nodeParent":-1,

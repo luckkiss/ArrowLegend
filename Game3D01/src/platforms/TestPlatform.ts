@@ -4,6 +4,7 @@ import { ui } from "../ui/layaMaxUI";
 import LoginHttp from "../net/LoginHttp";
 import App from "../core/App";
 import CookieKey from "../gameCookie/CookieKey";
+import HomeLoading from "../main/HomeLoading";
 
 export default class TestPlatform extends BasePlatform{
     checkUpdate():void
@@ -22,7 +23,7 @@ export default class TestPlatform extends BasePlatform{
     {
         this.cb = callback;
         // callback && callback();
-        let uu:ui.game.homePageUI = <any>Laya.stage.getChildAt( 0 );
+        let uu:HomeLoading = <any>Laya.stage.getChildByName("HomeLoading");
         Laya.stage.once( Laya.Event.CLICK ,this,this.clickFun , [uu.vvv.t1] );
     }
 
