@@ -19,39 +19,34 @@ export default class GameOverView extends ui.test.GameOverUI {
 
     constructor() {
         super();
-        App.sdkManager.initAdBtn(this.fuhuo,AD_TYPE.AD_BATTLE10);
+        App.sdkManager.initAdBtn(this.fuhuo, AD_TYPE.AD_BATTLE10);
         this.on(Laya.Event.DISPLAY, this, this.onDis);
         this.on(Laya.Event.CLICK, this, this.onCloseView);
 
-        this.fuhuo.clickHandler = new Laya.Handler(this,this.onReward10);
+        this.fuhuo.clickHandler = new Laya.Handler(this, this.onReward10);
     }
 
-    private onReward10():void
-    {
-        App.sdkManager.playAdVideo(AD_TYPE.AD_BATTLE10,new Laya.Handler(this,this.onRewardSuccess))
+    private onReward10(): void  {
+        App.sdkManager.playAdVideo(AD_TYPE.AD_BATTLE10, new Laya.Handler(this, this.onRewardSuccess))
     }
 
-    private onRewardSuccess():void
-    {
+    private onRewardSuccess(): void  {
         Game.showCoinsNum = Game.showCoinsNum * 10;
         Game.showBlueNum = Game.showBlueNum * 10;
         Game.showRedNum = Game.showRedNum * 10;
-        Session.homeData.setGoldByType(Game.showBlueNum,GoldType.BLUE_DIAMONG);
-        Session.homeData.setGoldByType(Game.showRedNum,GoldType.RED_DIAMONG);
-        console.log("10倍奖励",Game.showCoinsNum,Game.showBlueNum,Game.showRedNum);
+        Session.homeData.setGoldByType(Game.showBlueNum, GoldType.BLUE_DIAMONG);
+        Session.homeData.setGoldByType(Game.showRedNum, GoldType.RED_DIAMONG);
+        console.log("10倍奖励", Game.showCoinsNum, Game.showBlueNum, Game.showRedNum);
         Session.saveData();
     }
 
     private onCloseView(): void {
-        if (!this._isCom)  {
-            return;
-        }
         this.removeSelf();
         Game.showMain();
     }
 
-    private _isCom: boolean = false;
     private onDis(): void {
+        Laya.MouseManager.enabled = false;
         this.oldLv = Session.homeData.playerLv;
         let sys: SysHero = App.tableManager.getDataByNameAndId(SysHero.NAME, this.oldLv);
         this.oldPercent = Session.homeData.playerExp / sys.roleExp;
@@ -67,7 +62,7 @@ export default class GameOverView extends ui.test.GameOverUI {
         this.newPercent = this.newExp / sys.roleExp;
         this.newPercent = Math.min(1, this.newPercent);
 
-        this._isCom = false;
+        
         this.lanBox.removeSelf();
         this.ziBox.removeSelf();
         this.coinBox.removeSelf();
@@ -79,35 +74,37 @@ export default class GameOverView extends ui.test.GameOverUI {
 
         this.topBox.visible = true;
         this.topBox.scale(2.5, 2.5);
-        Laya.Tween.to(this.topBox, { scaleX: 1, scaleY: 1 }, 200, null, new Laya.Handler(this, this.onNext));
+        this.topBox.alpha = 0;
+        Laya.Tween.to(this.topBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext));
 
         this.cengshu.value = this.oldLv + "";
         this.dengji.value = this.oldLv + "";
-
-
-        Laya.timer.frameLoop(1, this, this.onLoop);
     }
 
 
     private onNext(): void {
         this.lightView.visible = true;
-        this.isChange = false;
-        setTimeout(() => {
-            this.expBox.visible = true;
-            this.updateExp();
-        }, 100);
+        this.lightView.scale(2.5, 2.5);
+        this.lightView.alpha = 0;
+        Laya.Tween.to(this.lightView, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext1));
     }
 
-    private updateExp(): void  {
-        if (this.newLv == this.oldLv)  {
+    private onNext1(): void  {
+        this.isChange = false;
+        this.expBox.visible = true;
+        this.updateExp();
+    }
+
+    private updateExp(): void {
+        if (this.newLv == this.oldLv) {
             Laya.timer.frameLoop(1, this, this.onLoopExp);
         }
-        else  {
+        else {
             Laya.timer.frameLoop(1, this, this.onLoopLv);
         }
     }
 
-    private onLoopLv(): void  {
+    private onLoopLv(): void {
         this.lastWidth += 5;
         if (this.lastWidth >= this.expBar.width) {
             this.lastWidth = 0;
@@ -116,7 +113,7 @@ export default class GameOverView extends ui.test.GameOverUI {
             this.dengji.value = this.oldLv + "";
             this.isChange = true;
 
-            if (this.oldLv >= this.newLv)  {
+            if (this.oldLv >= this.newLv) {
                 Laya.timer.clear(this, this.onLoopLv);
                 Laya.timer.frameLoop(1, this, this.onLoopExp);
             }
@@ -131,53 +128,93 @@ export default class GameOverView extends ui.test.GameOverUI {
         if (this.lastWidth >= this.expBar.width * this.newPercent) {
             this.lastWidth = this.expBar.width * this.newPercent;
             Laya.timer.clear(this, this.onLoopExp);
-            let hh = 780;
-            setTimeout(() => {
-                this.lingqu.visible = true;
-                if (Game.showBlueNum > 0) {
-                    this.addChild(this.lanBox);
-                    this.lanzuan.value = "+" + Game.showBlueNum;
-                    this.lanBox.x = 260;
-                    this.lanBox.y = hh;
-                    hh += 100;
-                }
-                if (Game.showRedNum > 0) {
-                    this.hongzuan.value = "+" + Game.showRedNum;
-                    this.addChild(this.ziBox);
-                    this.ziBox.x = 260;
-                    this.ziBox.y = hh;
-                    hh += 100;
-                }
-                if (Game.showCoinsNum > 0) {
-                    this.coinClip.value = "+" + Game.showCoinsNum;
-                    let deltaNum:number = Math.floor(Game.showCoinsNum * Session.talentData.lineGold / 100);
-                    this.deltaCoin.value = "+" + deltaNum;
-                    this.deltaCoin.visible = deltaNum > 0;
-                    this.addChild(this.coinBox);
-                    this.coinBox.x = 260;
-                    this.coinBox.y = hh;
-                    hh += 100;
-                }
 
-                this.fuhuo.y = hh;
-            }, 200);
-            setTimeout(() => {
-                this.fuhuo.visible = true;
-
-                Session.homeData.addPlayerExp(Game.battleExp);
-                Session.saveData();
-                this._isCom = true;
-
-                if (this.isChange)  {
-                    Laya.stage.event(GameEvent.LV_UP_VIEW);
-                }
-            }, 300);
+            this.hh = 780;
+            this.lingqu.visible = true;
+            this.lingqu.scale(2.5, 2.5);
+            this.lingqu.alpha = 0;
+            Laya.Tween.to(this.lingqu, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext2));
         }
         this.setmask();
     }
 
-    private setmask():void
-    {
+    private hh: number;
+
+    private onNext2(): void  {
+        if (Game.showBlueNum > 0) {
+            this.addChild(this.lanBox);
+            this.lanzuan.value = "+" + Game.showBlueNum;
+            this.lanBox.x = 260;
+            this.lanBox.y = this.hh;
+            this.hh += 100;
+
+            this.lanBox.visible = true;
+            this.lanBox.scale(2.5, 2.5);
+            this.lanBox.alpha = 0;
+            Laya.Tween.to(this.lanBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext3));
+        }
+        else  {
+            this.onNext3();
+        }
+    }
+
+    private onNext3(): void  {
+        if (Game.showRedNum > 0) {
+            this.hongzuan.value = "+" + Game.showRedNum;
+            this.addChild(this.ziBox);
+            this.ziBox.x = 260;
+            this.ziBox.y = this.hh;
+            this.hh += 100;
+
+            this.ziBox.visible = true;
+            this.ziBox.scale(2.5, 2.5);
+            this.ziBox.alpha = 0;
+            Laya.Tween.to(this.ziBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext4));
+        }
+        else  {
+            this.onNext4();
+        }
+    }
+
+    private onNext4(): void  {
+        if (Game.showCoinsNum > 0) {
+            this.coinClip.value = "+" + Game.showCoinsNum;
+            let deltaNum: number = Math.floor(Game.showCoinsNum * Session.talentData.lineGold / 100);
+            this.deltaCoin.value = "+" + deltaNum;
+            this.deltaCoin.visible = deltaNum > 0;
+            this.addChild(this.coinBox);
+            this.coinBox.x = 260;
+            this.coinBox.y = this.hh;
+            this.hh += 100;
+
+            this.coinBox.visible = true;
+            this.coinBox.scale(2.5, 2.5);
+            this.coinBox.alpha = 0;
+            Laya.Tween.to(this.coinBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext5));
+        }
+        else  {
+            this.onNext5();
+        }
+    }
+
+    private onNext5(): void  {
+        this.fuhuo.y = this.hh;
+        this.fuhuo.visible = true;
+        this.fuhuo.scale(2.5, 2.5);
+        this.fuhuo.alpha = 0;
+        Laya.Tween.to(this.fuhuo, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext6));
+    }
+
+    private onNext6(): void  {
+        Session.homeData.addPlayerExp(Game.battleExp);
+        Session.saveData();
+        Laya.MouseManager.enabled = true;
+        if (this.isChange) {
+            Laya.stage.event(GameEvent.LV_UP_VIEW);
+        }
+    }
+
+    private setmask(): void  {
         this.lastWidth = Math.max(1, this.lastWidth);
         this.maskSpr.graphics.clear();
         this.maskSpr.graphics.drawRect(0, 0, this.lastWidth, this.expBar.height, "#fff000");
