@@ -5,7 +5,9 @@ export default class SysHero{
     static NAME:string = 'sys_hero.txt';
     public id:number = 0;
     public roleExp:number = 0;
-
+    blueDiamond:number = 0;
+    redDiamond:number = 0;
+    gold:number = 0;
 
 
     static getNewLv(exp:number):number[]

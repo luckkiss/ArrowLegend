@@ -22,6 +22,7 @@ export default class SysEnemy {
     public enemyLevel:number = 0;
     public dropGold:number = 0;
     public dropExp:number = 0;
+    public heroExp:number = 0;
     public dropItem:number = 0;
     
 }

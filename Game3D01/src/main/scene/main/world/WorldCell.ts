@@ -27,7 +27,7 @@ export default class WorldCell extends ui.test.worldCellUI {
             Game.battleLoader.chapterId = this.sys.id;
             SysChapter.randomDiamond(Game.battleLoader.chapterId);
             Game.battleCoins = 0;
-            Game.battleExp = 0;
+            Game.battleExp = Game.heroExp = 0;
             Hero.udpateHeroData();
             
             MyEffect.scaleEffect( this.mapBtn );

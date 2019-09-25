@@ -13,10 +13,10 @@ export default class GameOverView extends ui.test.GameOverUI {
     private oldLv: number;
     private newLv: number;
     private newExp: number;
-    private isChange: boolean;
     private oldPercent: number;
     private newPercent: number;
 
+    private delayTime:number = 200;
     constructor() {
         super();
         App.sdkManager.initAdBtn(this.fuhuo, AD_TYPE.AD_BATTLE10);
@@ -34,8 +34,9 @@ export default class GameOverView extends ui.test.GameOverUI {
         Game.showCoinsNum = Game.showCoinsNum * 10;
         Game.showBlueNum = Game.showBlueNum * 10;
         Game.showRedNum = Game.showRedNum * 10;
-        Session.homeData.setGoldByType(Game.showBlueNum, GoldType.BLUE_DIAMONG);
-        Session.homeData.setGoldByType(Game.showRedNum, GoldType.RED_DIAMONG);
+        Session.homeData.changeGold(GoldType.GOLD,Game.showCoinsNum);
+        Session.homeData.changeGold(GoldType.BLUE_DIAMONG,Game.showBlueNum);
+        Session.homeData.changeGold(GoldType.RED_DIAMONG,Game.showRedNum);
         console.log("10倍奖励", Game.showCoinsNum, Game.showBlueNum, Game.showRedNum);
         Session.saveData();
     }
@@ -46,6 +47,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onDis(): void {
+        Laya.timer.frameLoop(1,this,this.onLoop);
         Laya.MouseManager.enabled = false;
         this.oldLv = Session.homeData.playerLv;
         let sys: SysHero = App.tableManager.getDataByNameAndId(SysHero.NAME, this.oldLv);
@@ -55,12 +57,14 @@ export default class GameOverView extends ui.test.GameOverUI {
 
         this.setmask();
 
-        let arr: number[] = SysHero.getNewLv(Game.battleExp);
+        let arr: number[] = SysHero.getNewLv(Game.heroExp);
         this.newLv = arr[0];
         this.newExp = arr[1];
         sys = App.tableManager.getDataByNameAndId(SysHero.NAME, this.newLv);
         this.newPercent = this.newExp / sys.roleExp;
         this.newPercent = Math.min(1, this.newPercent);
+
+        this.bigBox.y = Laya.stage.height / 2;
 
         
         this.lanBox.removeSelf();
@@ -75,7 +79,7 @@ export default class GameOverView extends ui.test.GameOverUI {
         this.topBox.visible = true;
         this.topBox.scale(2.5, 2.5);
         this.topBox.alpha = 0;
-        Laya.Tween.to(this.topBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext));
+        Laya.Tween.to(this.topBox, { scaleX: 1, scaleY: 1, alpha: 1 }, this.delayTime, null, new Laya.Handler(this, this.onNext));
 
         this.cengshu.value = this.oldLv + "";
         this.dengji.value = this.oldLv + "";
@@ -86,13 +90,17 @@ export default class GameOverView extends ui.test.GameOverUI {
         this.lightView.visible = true;
         this.lightView.scale(2.5, 2.5);
         this.lightView.alpha = 0;
-        Laya.Tween.to(this.lightView, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext1));
+        Laya.Tween.to(this.lightView, { scaleX: 1, scaleY: 1, alpha: 1 }, this.delayTime, null, new Laya.Handler(this, this.onNext1));
     }
 
     private onNext1(): void  {
-        this.isChange = false;
         this.expBox.visible = true;
         this.updateExp();
+    }
+
+    moveBigBox():void
+    {
+        Laya.Tween.to(this.bigBox,{y:366},this.delayTime,null,new Laya.Handler(this,this.updateExp));
     }
 
     private updateExp(): void {
@@ -111,12 +119,13 @@ export default class GameOverView extends ui.test.GameOverUI {
             this.oldLv++;
             this.cengshu.value = this.oldLv + "";
             this.dengji.value = this.oldLv + "";
-            this.isChange = true;
 
-            if (this.oldLv >= this.newLv) {
-                Laya.timer.clear(this, this.onLoopLv);
-                Laya.timer.frameLoop(1, this, this.onLoopExp);
-            }
+            Laya.timer.clear(this, this.onLoopLv);
+            Laya.stage.event(GameEvent.LV_UP_VIEW);
+            // if (this.oldLv >= this.newLv) {
+                
+            //     Laya.timer.frameLoop(1, this, this.onLoopExp);
+            // }
         }
 
         this.setmask();
@@ -133,7 +142,7 @@ export default class GameOverView extends ui.test.GameOverUI {
             this.lingqu.visible = true;
             this.lingqu.scale(2.5, 2.5);
             this.lingqu.alpha = 0;
-            Laya.Tween.to(this.lingqu, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext2));
+            Laya.Tween.to(this.lingqu, { scaleX: 1, scaleY: 1, alpha: 1 }, this.delayTime, null, new Laya.Handler(this, this.onNext2));
         }
         this.setmask();
     }
@@ -144,14 +153,14 @@ export default class GameOverView extends ui.test.GameOverUI {
         if (Game.showBlueNum > 0) {
             this.addChild(this.lanBox);
             this.lanzuan.value = "+" + Game.showBlueNum;
-            this.lanBox.x = 260;
+            this.lanBox.x = 343;
             this.lanBox.y = this.hh;
             this.hh += 100;
 
             this.lanBox.visible = true;
             this.lanBox.scale(2.5, 2.5);
             this.lanBox.alpha = 0;
-            Laya.Tween.to(this.lanBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext3));
+            Laya.Tween.to(this.lanBox, { scaleX: 1, scaleY: 1, alpha: 1 }, this.delayTime, null, new Laya.Handler(this, this.onNext3));
         }
         else  {
             this.onNext3();
@@ -162,14 +171,14 @@ export default class GameOverView extends ui.test.GameOverUI {
         if (Game.showRedNum > 0) {
             this.hongzuan.value = "+" + Game.showRedNum;
             this.addChild(this.ziBox);
-            this.ziBox.x = 260;
+            this.ziBox.x = 343;
             this.ziBox.y = this.hh;
             this.hh += 100;
 
             this.ziBox.visible = true;
             this.ziBox.scale(2.5, 2.5);
             this.ziBox.alpha = 0;
-            Laya.Tween.to(this.ziBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext4));
+            Laya.Tween.to(this.ziBox, { scaleX: 1, scaleY: 1, alpha: 1 }, this.delayTime, null, new Laya.Handler(this, this.onNext4));
         }
         else  {
             this.onNext4();
@@ -183,14 +192,14 @@ export default class GameOverView extends ui.test.GameOverUI {
             this.deltaCoin.value = "+" + deltaNum;
             this.deltaCoin.visible = deltaNum > 0;
             this.addChild(this.coinBox);
-            this.coinBox.x = 260;
+            this.coinBox.x = 343;
             this.coinBox.y = this.hh;
             this.hh += 100;
 
             this.coinBox.visible = true;
             this.coinBox.scale(2.5, 2.5);
             this.coinBox.alpha = 0;
-            Laya.Tween.to(this.coinBox, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext5));
+            Laya.Tween.to(this.coinBox, { scaleX: 1, scaleY: 1, alpha: 1 }, this.delayTime, null, new Laya.Handler(this, this.onNext5));
         }
         else  {
             this.onNext5();
@@ -202,16 +211,13 @@ export default class GameOverView extends ui.test.GameOverUI {
         this.fuhuo.visible = true;
         this.fuhuo.scale(2.5, 2.5);
         this.fuhuo.alpha = 0;
-        Laya.Tween.to(this.fuhuo, { scaleX: 1, scaleY: 1, alpha: 1 }, 200, null, new Laya.Handler(this, this.onNext6));
+        Laya.Tween.to(this.fuhuo, { scaleX: 1, scaleY: 1, alpha: 1 }, this.delayTime, null, new Laya.Handler(this, this.onNext6));
     }
 
     private onNext6(): void  {
-        Session.homeData.addPlayerExp(Game.battleExp);
+        Session.homeData.addPlayerExp(Game.heroExp);
         Session.saveData();
         Laya.MouseManager.enabled = true;
-        if (this.isChange) {
-            Laya.stage.event(GameEvent.LV_UP_VIEW);
-        }
     }
 
     private setmask(): void  {

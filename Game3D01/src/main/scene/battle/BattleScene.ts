@@ -94,22 +94,26 @@ export default class BattleScene extends Laya.Sprite {
 
         Laya.stage.on(GameEvent.PASS_CHAPTER,this,this.onOver);
         Laya.stage.on(GameEvent.LV_UP_VIEW,this,this.onLvup);
+        Laya.stage.on(GameEvent.LV_UP_VIEW_2,this,this.onLvup2);
         Laya.stage.on(GameEvent.MEMORY_WARNING,this,this.onRelease);
         Laya.stage.on(Game.Event_NPC, this, this.showNpcView);
 
         // this.on(Laya.Event.UNDISPLAY,this,this.unDis);
     }
 
+    private onLvup2():void
+    {
+        this._gameOver && this._gameOver.moveBigBox();
+    }
+
     private _lvupView:LvUpView;
     private onLvup():void
     {
-        this._gameOver && this._gameOver.removeSelf();
         if(!this._lvupView)
         {
             this._lvupView = new LvUpView();
         }
         this.addChild(this._lvupView);
-        Game.state = 1;
     }
 
     private onRelease():void

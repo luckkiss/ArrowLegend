@@ -154,6 +154,11 @@ export default class Monster extends GamePro {
             }
         }
 
+        if(this.sysEnemy.heroExp > 0)
+        {
+            Game.heroExp += this.sysEnemy.dropExp;
+        }
+
         let skill4001: SysSkill = Game.skillManager.isHas(4001);//嗜血
         if (skill4001)  {
             let buff4001: SysBuff = App.tableManager.getDataByNameAndId(SysBuff.NAME, skill4001.skillEffect1);

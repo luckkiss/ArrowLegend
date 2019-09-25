@@ -136,6 +136,7 @@ export default class SdkManager {
         if( Laya.Browser.onMiniGame ){
             this.adMap[AD_TYPE.AD_REBORTH] = "adunit-dd859bd89e519faa";
             this.adMap[AD_TYPE.AD_BATTLE10] = "adunit-fb55742c910f9809";
+            this.adMap[AD_TYPE.AD_CHANGE_SKILL] = "adunit-dd78193a76256a8b"
             // this.adMap[SdkSession.GET_PET] = "adunit-237729103790be65";
             // this.adMap[SdkSession.TIME_GOLD] = "adunit-7b46c29d0d9cf9b3";
             // this.adMap[SdkSession.TREASURE] = "adunit-d4c57c5c9ae67d48";

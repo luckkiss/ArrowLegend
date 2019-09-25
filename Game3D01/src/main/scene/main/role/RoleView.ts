@@ -131,8 +131,11 @@ export default class RoleView extends ui.test.jueseUI {
         this._layer3d.removeChildren();
         Laya.Sprite3D.load("h5/hero/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
             sp3d.transform.localRotationEulerY = 0;
+            var scale = 1;
+            sp3d.transform.localScale = new Laya.Vector3(scale, scale, scale);
             sp3d.transform.localPositionZ = -3;
             sp3d.transform.localPositionY = -0.3;
+            sp3d.transform.localPositionX = 0;
             let aniSprite3d = sp3d.getChildAt(0) as Laya.Sprite3D;
             this._layer3d.addChild(sp3d);
             if (aniSprite3d) {
