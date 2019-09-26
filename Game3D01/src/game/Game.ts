@@ -33,8 +33,8 @@ import SysChapter from "../main/sys/SysChapter";
 import Coin from "./player/Coin";
 
 export default class Game {
-    static codeVer:string = "1.1.2.190926";
-    static resVer:string = "1.1.2.190926";
+    static codeVer:string = "1.1.2.19092605";
+    static resVer:string = "1.1.2.19092605";
 
     //战斗中的临时数据
     static level:number;

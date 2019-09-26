@@ -28,7 +28,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
 
             this.bottomUI = new BottomUI();
             this.addChild(this.bottomUI);
-            this.bottomUI.bottom = -2;
+            this.bottomUI.y = 1334-122;
 
             let img:Laya.Image = new Laya.Image();
             img.skin = "main/jianhei.png";
