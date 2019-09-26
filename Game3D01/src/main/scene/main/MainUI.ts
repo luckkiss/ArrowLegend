@@ -35,8 +35,9 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             this.addChild(img);
             img.width = 800;
             img.anchorX = 0.5;
-            img.y = this.bottomUI.y - 93;
+            img.y = this.bottomUI.y - 50;
             img.x = 375;
+            img.height = 50;
 
             this.addChild(this.bottomUI);
         
@@ -252,7 +253,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
                     btn.width = 132;
                     btn.height = 136;
                     btn.skin = 'main/btn_' + i + '.png';
-                    btn.y = bg.y + 40;
+                    btn.y = bg.y + 55;
                 }
                 else{
                     btn.stateNum = 1;

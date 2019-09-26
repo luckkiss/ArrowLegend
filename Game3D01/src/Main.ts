@@ -92,7 +92,7 @@ class Main {
 		let bg = new ui.test.StageBgUI();
 		Laya.stage.addChild( bg );
 		bg.centerY = 0;
-		bg.zOrder = 1000;
+		bg.zOrder = -10;
 		bg.mouseEnabled = false;
 	}
 
