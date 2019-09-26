@@ -33,16 +33,16 @@ import SysChapter from "../main/sys/SysChapter";
 import Coin from "./player/Coin";
 
 export default class Game {
-    static codeVer:string = "1.1.2.0926";
-    static resVer:string = "1.1.2.0926";
+    static codeVer:string = "1.1.2.09261622";
+    static resVer:string = "1.1.2.09261622";
 
     /**本地资源 */
 	static nativefiles:string[] = [
+        "loading/jianduxia.png",
+        "loading/jiandushang.png",
+        "loading/jiazai.jpg",
         "loading/btn_kaishi.png", 
         "loading/dan.png", 
-        "loading/jiandushang.png",
-        "loading/jianduxia.png",
-        "loading/jiazai.jpg",
         "loading/loadingClip.png",
         "loading/logo.png",
         "loading/shouci.png",
