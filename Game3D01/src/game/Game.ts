@@ -38,11 +38,11 @@ export default class Game {
 
     /**本地资源 */
 	static nativefiles:string[] = [
+        "loading/jianduxia.png",
+        "loading/jiandushang.png",
+        "loading/jiazai.jpg",
         "loading/btn_kaishi.png", 
         "loading/dan.png", 
-        "loading/jiandushang.png",
-        "loading/jianduxia.png",
-        "loading/jiazai.jpg",
         "loading/loadingClip.png",
         "loading/logo.png",
         "loading/shouci.png",
