@@ -67,7 +67,7 @@ class Main {
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
-		if (GameConfig.stat) Laya.Stat.show();
+		Laya.Stat.show();
 
 		console.log("代码版本",Game.codeVer);
 		console.log("代码版本",Game.resVer);

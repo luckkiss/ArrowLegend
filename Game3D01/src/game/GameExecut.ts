@@ -61,9 +61,11 @@ export default class GameExecut extends Laya.EventDispatcher {
             }
 
             if (arr[0] instanceof Hero) {
-                Game.openDoor();
-                Game.map0.checkDoor();
-                
+                if(Game.state == 0)
+                {
+                    Game.openDoor();
+                    Game.map0.checkDoor();
+                }
                 // if (Game.bg.npcId > 0) {
                 //     Game.bg.checkNpc();
                 // }

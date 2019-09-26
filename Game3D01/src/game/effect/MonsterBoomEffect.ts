@@ -14,15 +14,11 @@ export default class MonsterBoomEffect{
     static addEffect(pro: GamePro,tScale:number = 1):MonsterBoomEffect
     {
         let effect:MonsterBoomEffect = Laya.Pool.getItemByClass(MonsterBoomEffect.TAG,MonsterBoomEffect);
-        // let effect:MonsterBoomEffect = new MonsterBoomEffect();
         effect.player = pro;
-        effect.sp3d.transform.localPosition = pro.sp3d.transform.localPosition;
-        Game.layer3d.addChild(effect.sp3d);
-        effect.sp3d.transform.localScale = new Laya.Vector3(tScale,tScale,tScale);
-
+        effect.player.sp3d.addChild(effect.sp3d);
         setTimeout(() => {
             effect.recover();
-        }, 1000);
+        }, 500);
         return effect;
     }
 

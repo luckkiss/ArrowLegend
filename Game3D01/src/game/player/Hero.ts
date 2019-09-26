@@ -172,7 +172,7 @@ export default class Hero extends GamePro {
         this.isDie = false;
         this.setKeyNum(1);
         this.acstr = "";
-        let sp: Laya.Sprite3D = Laya.loader.getRes("h5/hero/1/hero.lh");
+        let sp: Laya.Sprite3D = Laya.loader.getRes("h5/hero/" + Session.heroData.nowRoleId + "/hero.lh");
         Game.layer3d.addChild(sp);
         //var scale = 1.2;
         var scale = 1.4;
@@ -181,6 +181,7 @@ export default class Hero extends GamePro {
 
         this.play("Idle");
         this.setSpeed(Hero.curHeroData.moveSpeed);
+        console.log("玩家移动速度",Hero.curHeroData.moveSpeed);
 
         // this.addWeapon();
 

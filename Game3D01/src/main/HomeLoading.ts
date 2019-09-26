@@ -43,11 +43,7 @@ import CookieKey from "../gameCookie/CookieKey";
         this.txt.text = "0%";
         Laya.loader.load([
 			{ url: "res/atlas/main.atlas", type: Laya.Loader.ATLAS },
-			{ url: "res/atlas/guide.atlas", type: Laya.Loader.ATLAS },
-			{ url: "res/atlas/zhaohuan.atlas", type: Laya.Loader.ATLAS },
-			// { url: "res/atlas/shezhi.atlas", type: Laya.Loader.ATLAS },
-			// { url: "res/atlas/tianfu.atlas", type: Laya.Loader.ATLAS },
-			{ url: "h5/tables.zip", type: Laya.Loader.BUFFER }
+			{ url: "res/atlas/zhaohuan.atlas", type: Laya.Loader.ATLAS }
 		], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
     }
 
