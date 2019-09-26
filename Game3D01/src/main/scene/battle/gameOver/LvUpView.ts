@@ -48,7 +48,7 @@ export default class LvUpView extends ui.test.shengjiUI {
         this.coinBox.visible = false;
         this.rebornBtn.visible = false;
 
-        this.hh = 780;
+        this.hh = 800;
 
         this.dunpaiBox.visible = true;
         this.dunpaiBox.scale(2.5, 2.5);

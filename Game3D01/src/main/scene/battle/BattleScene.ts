@@ -103,7 +103,7 @@ export default class BattleScene extends Laya.Sprite {
 
     private onLvup2():void
     {
-        this._gameOver && this._gameOver.moveBigBox();
+        this._gameOver && this._gameOver.updateExp();
     }
 
     private _lvupView:LvUpView;

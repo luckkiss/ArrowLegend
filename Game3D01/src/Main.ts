@@ -70,10 +70,10 @@ class Main {
 
 		console.log("代码版本",Game.codeVer);
 		console.log("代码版本",Game.resVer);
+		App.top = 90;
 		if (Laya.Browser.window.wx) {
 			Laya.URL.basePath = "https://img.kuwan511.com/arrowLegend/" + Game.resVer + "/";
 			Laya.MiniAdpter.nativefiles = ["loading/jiazai.jpg", "loading/btn_kaishi.png", "loading/loadingClip.png","loading/logo.png","loading/zhudi.jpg","loading/zhudi2.png"];
-			App.top = 85;
 			Laya.Browser.window.wx.getSystemInfo({
 				success(res) {
 					let model = res.model;

@@ -98,14 +98,11 @@ export default class GameOverView extends ui.test.GameOverUI {
         this.updateExp();
     }
 
-    moveBigBox():void
-    {
-        Laya.Tween.to(this.bigBox,{y:366},this.delayTime,null,new Laya.Handler(this,this.updateExp));
-    }
-
-    private updateExp(): void {
+    updateExp(): void {
         if (this.newLv == this.oldLv) {
-            Laya.timer.frameLoop(1, this, this.onLoopExp);
+            Laya.Tween.to(this.bigBox,{y:366},this.delayTime,null,new Laya.Handler(this,()=>{
+                Laya.timer.frameLoop(1, this, this.onLoopExp);
+            }));
         }
         else {
             Laya.timer.frameLoop(1, this, this.onLoopLv);
@@ -138,7 +135,7 @@ export default class GameOverView extends ui.test.GameOverUI {
             this.lastWidth = this.expBar.width * this.newPercent;
             Laya.timer.clear(this, this.onLoopExp);
 
-            this.hh = 780;
+            this.hh = 800;
             this.lingqu.visible = true;
             this.lingqu.scale(2.5, 2.5);
             this.lingqu.alpha = 0;
