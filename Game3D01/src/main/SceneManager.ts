@@ -17,6 +17,9 @@ export default class SceneManager {
         Game.isStartBattle = false;
         App.layerManager.sceneLayer.removeChildren();
         App.layerManager.sceneLayer.addChild(this.main);
+
+        //this.main.alpha = 0.5;
+
         this.battle && this.battle._top && this.battle._top.reset();
         this.battle && this.battle.up(null);
     }

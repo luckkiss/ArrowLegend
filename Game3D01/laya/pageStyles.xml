@@ -75,4 +75,5 @@
    <item name="game/homeLoading.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/Loading.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="game/boomRect.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="test/StageBg.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

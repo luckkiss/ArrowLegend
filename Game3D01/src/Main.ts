@@ -62,7 +62,7 @@ class Main {
 		Laya.stage.bgColor = "#000000";
 		Laya.stage.scaleMode = Laya.Stage.SCALE_FIXED_WIDTH;
 		//Laya.stage.screenMode = GameConfig.screenMode;
-		Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
+		Laya.stage.screenMode = Laya.Stage.SCREEN_VERTICAL;
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
@@ -70,7 +70,7 @@ class Main {
 
 		console.log("代码版本",Game.codeVer);
 		console.log("代码版本",Game.resVer);
-		App.top = 90;
+		//App.top = 90;
 		if (Laya.Browser.window.wx) {
 			Laya.URL.basePath = "https://img.kuwan511.com/arrowLegend/" + Game.resVer + "/";
 			Laya.MiniAdpter.nativefiles = ["loading/jiazai.jpg", "loading/btn_kaishi.png", "loading/loadingClip.png","loading/logo.png","loading/zhudi.jpg","loading/zhudi2.png"];
@@ -82,12 +82,6 @@ class Main {
 			});
 		}
 
-		if (Laya.Browser.onMiniGame == false) {
-			Laya.stage.scaleMode = Laya.Stage.SCALE_SHOWALL;
-			//Laya.stage.scaleMode = Laya.Stage.SCALE_NOSCALE;
-			Laya.stage.alignH = "center";
-		}
-
 		this._initView = new InitView();
 		Laya.stage.once(GameEvent.INIT_COM,this,this.onInitCom);
 		Laya.stage.addChild(this._initView);
@@ -95,12 +89,11 @@ class Main {
 		App.init();
 		MyEffect.initBtnEffect();
 
-		let topImg = new Laya.Image("main/512.jpg");
-		Laya.stage.addChild( topImg );
-
-		let bottomImg = new Laya.Image("main/512.jpg");
-		Laya.stage.addChild( bottomImg );
-		bottomImg.y = Laya.stage.height - 256;
+		let bg = new ui.test.StageBgUI();
+		Laya.stage.addChild( bg );
+		bg.centerY = 0;
+		bg.zOrder = 1000;
+		bg.mouseEnabled = false;
 	}
 
 	private zipFun(arr: any[]): void {
@@ -113,6 +106,8 @@ class Main {
 
 	private onInitCom(): void {
 		Laya.stage.addChild(App.layerManager);
+		App.layerManager.y = (Laya.stage.height - Laya.stage.designHeight )/2;
+		
 		App.soundManager.pre = "h5/sounds/";
 		ZipLoader.instance.zipFun(Laya.loader.getRes("h5/tables.zip"), new Laya.Handler(this, this.zipFun));
 		this.regClass();

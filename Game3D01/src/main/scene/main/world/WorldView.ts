@@ -19,7 +19,7 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
     private list:Laya.List;
     constructor() { 
         super();
-        this.box.y = this.box.y + App.top;
+        //this.box.y = this.box.y + App.top;
         this.box1.y = this.box1.y + App.top;
 
         this.box1.mouseThrough = true;
@@ -28,7 +28,7 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         this.list.pos(this.box.x,this.box.y);
         this.addChild(this.list);
         this.list.itemRender = WorldCell;
-        this.list.size( Laya.stage.width , Laya.stage.height - 170 );
+        this.list.size( Laya.stage.width , this.box.height );
         // this.list.repeatX = 1;
         // this.list.repeatY = 2;
         this.list.vScrollBarSkin = "";
