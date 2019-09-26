@@ -51,6 +51,7 @@ import InitView from "./main/InitView";
 class Main {
 	private _initView: InitView;
 	private homePage: HomeLoading;
+
 	constructor() {
 		UIConfig.popupBgAlpha = 0.8;
 		if (window["Laya3D"]) Laya3D.init(GameBG.width, GameBG.height);
@@ -73,7 +74,7 @@ class Main {
 		//App.top = 90;
 		if (Laya.Browser.window.wx) {
 			Laya.URL.basePath = "https://img.kuwan511.com/arrowLegend/" + Game.resVer + "/";
-			Laya.MiniAdpter.nativefiles = ["loading/jiazai.jpg", "loading/btn_kaishi.png", "loading/loadingClip.png","loading/logo.png","loading/zhudi.jpg","loading/zhudi2.png"];
+			Laya.MiniAdpter.nativefiles = Game.nativefiles;
 			Laya.Browser.window.wx.getSystemInfo({
 				success(res) {
 					let model = res.model;

@@ -24,7 +24,7 @@ export default class TestPlatform extends BasePlatform{
         this.cb = callback;
         // callback && callback();
         let uu:HomeLoading = <any>Laya.stage.getChildByName("HomeLoading");
-        Laya.stage.once( Laya.Event.CLICK ,this,this.clickFun , [uu.vvv.t1] );
+        Laya.stage.once( Laya.Event.CLICK ,this,this.clickFun , [uu.idTxt] );
     }
 
     clickFun( t:Laya.TextInput ):void{

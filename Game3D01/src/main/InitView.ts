@@ -24,23 +24,8 @@ export default class InitView extends ui.test.initViewUI{
 		let config = Laya.loader.getRes("h5/config.json");
 		App.platformId = config.platformId;
 		App.serverIP = config.platforms[App.platformId];
-		Laya.loader.load(
-			[
-				{ url: "loading/loadingClip.png", type: Laya.Loader.IMAGE },
-				{ url: "loading/logo.png", type: Laya.Loader.IMAGE },
-				{ url: "h5/tables.zip", type: Laya.Loader.BUFFER },
-				{ url: "loading/jiazai.jpg", type: Laya.Loader.IMAGE },
-				{ url: "loading/btn_kaishi.png", type: Laya.Loader.IMAGE },
-				{ url: "loading/zhudi.jpg", type: Laya.Loader.IMAGE },
-				{ url: "loading/zhudi2.png", type: Laya.Loader.IMAGE }
-			],
-			new Laya.Handler(this, this.onInitCom), new Laya.Handler(this, this.onInitProgress));
-    }
 
-
-    private onInitCom():void
-    {
-        let bc: BaseCookie;
+		let bc: BaseCookie;
 		if (App.platformId != PlatformID.WX) {
 			bc = new TestCookie();
 		}
@@ -69,6 +54,18 @@ export default class InitView extends ui.test.initViewUI{
 			}
 		});
 		Game.playBgMusic();
+
+		let arr:any[] = [{ url: "h5/tables.zip", type: Laya.Loader.BUFFER }];
+		for(let i = 0; i < Game.nativefiles.length; i++)
+		{
+			arr.push({ url: Game.nativefiles[i], type: Laya.Loader.IMAGE });
+		}
+		Laya.loader.load(arr,new Laya.Handler(this, this.onInitCom), new Laya.Handler(this, this.onInitProgress));
+    }
+
+
+    private onInitCom():void
+    {
         Laya.stage.event(GameEvent.INIT_COM);
     }
 
