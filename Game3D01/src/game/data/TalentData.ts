@@ -185,4 +185,8 @@ export default class TalentData implements IData {
         }
         return 0;
     }
+
+    public canLvUp2():boolean{
+        return true;
+    }
 }

@@ -42,6 +42,10 @@ export default class HomeData implements IData{
         Session.rankData.saveFriendRank();
     }
 
+    /**
+     * 设置数据
+     * @param data 
+     */
     public setData(data:any):void{
         this.totalEnergy = data.totalEnergy;
         this.maxEngergy = data.maxEngergy;
@@ -74,6 +78,7 @@ export default class HomeData implements IData{
         }else{
             this.openBtn = data.openBtn.split(",");
         }
+        this.adPower = data.adPower;
     }
 
     /**
@@ -102,6 +107,7 @@ export default class HomeData implements IData{
         data.isGuide = this.isGuide;
         data.newStat = this.newStat;
         data.openBtn = this.openBtn.join(",");
+        data.adPower = this.adPower;
     }
 
     /**
@@ -125,7 +131,13 @@ export default class HomeData implements IData{
         this.coins = 1000;
         this.newStat = 1;
         this.openBtn = ["1","-1","-1","-1","1"];
+        this.adPower = 0;
     }
+
+    /**
+     * 今天看了多少次
+     */
+    public adPower:number = 0;
 
     public openBtn:Array<string> = [];
 

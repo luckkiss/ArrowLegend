@@ -145,6 +145,10 @@ export default class HeroData implements IData{
         Session.saveData();
         return 0;
     }
+
+    public canLvUp():boolean{
+        return true;
+    }
 }
 
 export enum HeroLvType{
