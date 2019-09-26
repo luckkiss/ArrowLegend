@@ -121,12 +121,12 @@ export default class BattleLoader {
             if(arr.length > 0)
             {
                 Laya.Pool.clearBySign(tagArr[i]);
-                console.log("清理资源",tagArr[i]);
+                // console.log("清理资源",tagArr[i]);
             }
         }
 
         Laya.Resource.destroyUnusedResources();
-        console.log("释放显存");
+        // console.log("释放显存");
     }
 
     

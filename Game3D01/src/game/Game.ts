@@ -104,7 +104,7 @@ export default class Game {
             Game.selectFoot.transform.localScale = new Laya.Vector3(curScale, curScale, curScale);
         }
         else  {
-            console.log("克隆体没有了？");
+            // console.log("克隆体没有了？");
         }
     }
 

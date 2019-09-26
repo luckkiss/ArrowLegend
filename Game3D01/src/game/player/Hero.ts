@@ -23,7 +23,7 @@ export default class Hero extends GamePro {
     static udpateHeroData():void
     {
         Hero.curHeroData = Session.heroData.getHeroData(Session.heroData.nowRoleId);
-        console.log("获取玩家数据",Session.heroData.nowRoleId,Hero.curHeroData);
+        // console.log("获取玩家数据",Session.heroData.nowRoleId,Hero.curHeroData);
     }
 
     static bornX:number;
@@ -104,10 +104,6 @@ export default class Hero extends GamePro {
         setTimeout(() => {
             this._addEff && this._addEff.removeSelf(); 
         }, 300);
-    }
-
-    private updateAttackSpeed(): void {
-        console.log("修改攻速");
     }
 
     public reset(): void {
@@ -219,7 +215,6 @@ export default class Hero extends GamePro {
         }, 500);
 
         Laya.stage.on(Game.Event_ADD_HP, this, this.addBlood);
-        Laya.stage.on(Game.Event_UPDATE_ATTACK_SPEED, this, this.updateAttackSpeed);
 
         this.updateUI();
     }

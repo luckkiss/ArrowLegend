@@ -48,8 +48,6 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         Laya.stage.on( GameEvent.APP_ENERGY ,  this, this.reducePowerFun );
         //Laya.stage.on( Laya.Event.CLICK ,this,this.reducePowerFun , [1] );
 
-        this.on(Laya.Event.CLICK,this,this.onClick);
-
         this.addChild(this.box1);
 
         Laya.stage.on( GameEvent.SHOW_MAIN , this, this.showMain );
@@ -65,10 +63,6 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
                 dp.popup( false, false );
             }
         } );
-    }
-
-    private onClick(e:Laya.Event):void{
-        console.log("================",e.target);
     }
 
     public reducePowerFun( v:number ):void{
@@ -133,11 +127,5 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         cell.mapBtn.scale( 0.0,0.0 );
         let t = new Laya.Tween();
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
- 
-        
-
-        // Laya.timer.once( 2000 ,  null , ()=>{
-        //     this.initNew();
-        // } );
     }
 }

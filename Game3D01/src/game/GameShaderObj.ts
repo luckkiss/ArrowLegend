@@ -22,7 +22,7 @@ export default class GameShaderObj extends Laya.EventDispatcher {
     public setShader0(sp3d:Laya.Sprite3D,type:number):void{
         if(type==8000 && !GameShaderObj.sp){
             GameShaderObj.sp = sp3d;
-            console.log(sp3d);
+            // console.log(sp3d);
             
         }
     }

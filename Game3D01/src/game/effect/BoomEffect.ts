@@ -51,7 +51,7 @@ export default class BoomEffect {
             effect.pro = pro;
             effect.effectId = sys.boomEffect;
             effect.sp3d = Laya.Sprite3D.instantiate(Laya.loader.getRes("h5/bulletsEffect/" + sys.boomEffect + "/monster.lh"));
-            console.log("创建新的怪物子弹爆炸特效");
+            // console.log("创建新的怪物子弹爆炸特效");
         }
         effect.sp3d.transform.localPositionX = pro.sp3d.transform.localPositionX;
         effect.sp3d.transform.localPositionZ = pro.sp3d.transform.localPositionZ;

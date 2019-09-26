@@ -18,7 +18,7 @@ export default class DieEffect{
         if(!effect.sp3d)
         {
             effect.sp3d = Laya.Sprite3D.instantiate(Laya.loader.getRes("h5/effects/monsterDie/monster.lh"));
-            console.log("创建新的死亡特效");
+            // console.log("创建新的死亡特效");
         }
         
         effect.sp3d.transform.localRotationEulerY = 45;
