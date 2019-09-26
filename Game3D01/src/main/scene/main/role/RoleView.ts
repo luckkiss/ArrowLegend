@@ -51,7 +51,7 @@ export default class RoleView extends ui.test.jueseUI {
         
  
         
-        this.updateAll();
+       
         this.on(Laya.Event.DISPLAY,this,this.disFun);
         
         this.jia.clickHandler = new Laya.Handler( this,this.jiaFun , [GoldType.RED_DIAMONG , this.redImg , this.xueshu , HeroLvType.HP ]  );
@@ -92,6 +92,7 @@ export default class RoleView extends ui.test.jueseUI {
         r.heroBaseFc = this.shengmingshu;
         r.heroAddFc = this.hpAddFc;
         r.lvUpBtn = this.shengmingniu;
+        r.lv = this.lv1;
 
         let r1 = new RollCell();
         r1.heroLvType = HeroLvType.ATK;
@@ -109,6 +110,7 @@ export default class RoleView extends ui.test.jueseUI {
         r1.heroBaseFc = this.gongjishu;
         r1.heroAddFc = this.atkAddFc;
         r1.lvUpBtn = this.gongjiniu;
+        r1.lv = this.lv2;
 
         this.heroLvTypeMap[r.heroLvType] = r;
         this.heroLvTypeMap[r1.heroLvType] = r1;
@@ -117,6 +119,8 @@ export default class RoleView extends ui.test.jueseUI {
 
         this.zuo.clickHandler = new Laya.Handler( this,this.turnFun , [-1] );
         this.you.clickHandler = new Laya.Handler( this,this.turnFun , [1] );
+
+        this.updateAll();
     }
 
     private turnFun( v:number ):void{
@@ -322,9 +326,22 @@ export default class RoleView extends ui.test.jueseUI {
             cell.setData( this.nowRoleId );
         }
         this.setSkill( this.nowRoleId );
+        if( SysRoleBase.have( this.nowRoleId ) == false ){
+            this.xuan.visible = false;
+        }else{
+            this.xuan.visible = true;
+        }
     }
 
     public setSkill( roleId:number ):void{
+        if( SysRoleBase.have( roleId ) == false){
+            this.skillLabel.text = "";
+            this.jinengming.text = "";
+            this.jinengtubiao.skin = "main/kawen.png";
+            
+            return;
+        }
+
         let sys = SysRoleBase.getSys( roleId );
         let sysSkill:SysSkill = App.tableManager.getDataByNameAndId( SysSkill.NAME,sys.baseSkill );
         this.skillLabel.text = sysSkill.skillInfo;

@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":130,
+    "selectedBox":114,
+    "selecteID":132,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334,"centerY":0},
     "nodeParent":-1,
-    "maxID":131,
+    "maxID":133,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -50,13 +50,14 @@
                     "props":{"y":923,"x":360,"width":250,"var":"shengmingniu","stateNum":"1","skin":"main/btn_lv.png","sizeGrid":"41,31,38,33","height":91,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":31,
                     "label":"shengmingniu",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":114,
                     "child":[
                         {
+                            "x":45,
                             "type":"FontClip",
                             "searchKey":"FontClip,qianshu",
                             "props":{"y":24,"x":44,"width":386,"var":"qianshu","value":"1299","skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:cdef","scaleY":0.3,"scaleX":0.3,"height":115,"align":"right"},
@@ -70,6 +71,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image",
                             "props":{"y":24,"x":158,"skin":"main/dongjin.png"},

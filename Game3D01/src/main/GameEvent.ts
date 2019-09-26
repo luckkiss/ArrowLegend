@@ -27,5 +27,5 @@ export default class GameEvent{
 
     static SHOW_MAIN:string = "SHOW_MAIN";
 
-
+    static RED_UPDATE:string = "RED_UPDATE";
 }

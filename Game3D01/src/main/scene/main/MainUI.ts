@@ -13,6 +13,7 @@ import SysHero from "../../sys/SysHero";
 import GameEvent from "../../GameEvent";
 import MyEffect from "../../../core/utils/MyEffect";
 import GuideManager, { Guide_Type } from "../../guide/GuideManager";
+import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
     export default class MainUI extends Laya.Box {
         topUI:TopUI;
         public bottomUI:BottomUI;
@@ -81,6 +82,14 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             // this.topBox.y = App.top;
             this.on(Laya.Event.DISPLAY,this,this.onDis);
             Laya.stage.on(GameEvent.WX_ON_SHOW,this,this.onDis);
+
+            this.jia.on( Laya.Event.CLICK,this,this.addTiFun );
+        }
+
+        public addTiFun():void{
+            let d = new NoResDialog();
+            d.setType( NoResDialogType.tili );
+            d.popup();
         }
 
         private onDis():void
@@ -244,7 +253,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
                 bg.x = i * bg.width;
                 this.bgs.push(bg);
                 let btn:Laya.Button = new Laya.Button();
-                
+                this.makeBtn(btn);
                 btn.tag = this.opens[i];
                 
                 if(this.opens[i] == "1")
@@ -272,8 +281,42 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
                 this.btns.push(btn);
             }
             this.onClick( this.btns[this._selectIndex] , 10 );
+
+            Laya.stage.on( GameEvent.RED_UPDATE ,this,this.updateRed );
+            Laya.stage.on( GameEvent.GOLD_CHANGE , this,this.updateRed );
+            Laya.stage.on( GameEvent.PLAYER_INFO_UPDATE , this, this.updateRed );
+
+            this.updateRed();
         }
 
+          /**
+         * 刷新红点
+         */
+        public updateRed():void{
+            this.setBtn( this.btns[1] , Session.heroData.canLvUp() , 1 );
+            this.setBtn( this.btns[2] , Session.talentData.canLvUp2() ,2 );
+        }
+
+        private setBtn( b:Laya.Button , v:boolean , index:number ):void{
+            if( Session.homeData.openBtn[index] != "1" ){
+                return;
+            } 
+            
+            let r:ui.test.RedPointViewUI = <any>b.getChildByName("red");
+            r.visible = v;
+            if( r.visible ){
+                r.ani1.play(0,true);
+            }
+        }
+
+        public makeBtn( b:Laya.Button ):void{
+            let r = new ui.test.RedPointViewUI();
+            b.addChild(r);
+            r.name = "red";
+            r.pos( 80 , -10 );
+            r.zOrder = 100;
+            r.visible = false;
+        }
 
         updateBtns():void
         {
@@ -369,6 +412,7 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
             
             b.parent.addChild( s );
             s.pos( b.x,b.y );
+            this.makeBtn( s );
             b.removeSelf();
             s.clickHandler = new Laya.Handler(this,this.onClick,[s]);
             
@@ -382,4 +426,8 @@ import GuideManager, { Guide_Type } from "../../guide/GuideManager";
                 Laya.MouseManager.enabled = true;
             } );
         }
+
+      
+
+       
     }

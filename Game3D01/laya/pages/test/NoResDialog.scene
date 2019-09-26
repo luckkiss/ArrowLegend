@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Dialog",
-    "selectedBox":2,
+    "selectedBox":38,
     "selecteID":9,
     "searchKey":"Dialog",
     "props":{"width":600,"sceneColor":"#000000","isModal":true,"height":400},
     "nodeParent":-1,
-    "maxID":33,
+    "maxID":41,
     "label":"Dialog",
     "isOpen":true,
     "isDirectory":true,
@@ -26,7 +26,8 @@
             "hasChild":false,
             "compId":18,
             "child":[
-                ]
+                ],
+            "$LOCKED":true
         },
         {
             "x":15,
@@ -45,10 +46,10 @@
         {
             "x":15,
             "type":"Button",
-            "searchKey":"Button",
-            "props":{"y":12,"x":537,"stateNum":"1","skin":"main/btn_guanbi.png"},
+            "searchKey":"Button,close",
+            "props":{"y":12,"x":537,"stateNum":"1","skin":"main/btn_guanbi.png","name":"close"},
             "nodeParent":2,
-            "label":"Button",
+            "label":"close",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -59,10 +60,10 @@
         {
             "x":15,
             "type":"Text",
-            "searchKey":"Text",
-            "props":{"y":86,"x":6,"width":594,"text":"体力不足","height":36,"fontSize":36,"color":"#ffffff","bold":true,"align":"center"},
+            "searchKey":"Text,title",
+            "props":{"y":93,"x":6,"width":588,"var":"title","text":"体力不足","height":36,"fontSize":36,"color":"#ffffff","bold":true,"align":"center"},
             "nodeParent":2,
-            "label":"Text",
+            "label":"title",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
@@ -75,7 +76,7 @@
             "x":15,
             "type":"Button",
             "searchKey":"Button,fuhuo",
-            "props":{"y":377,"x":303,"width":358,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","scaleY":1,"scaleX":1,"height":100,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":397,"x":303,"width":358,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","scaleY":1,"scaleX":1,"height":100,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"fuhuo",
             "isOpen":true,
@@ -102,7 +103,7 @@
                     "x":30,
                     "type":"Label",
                     "searchKey":"Label,deshuliang",
-                    "props":{"y":30,"x":159,"width":122,"var":"deshuliang","text":"免费获得","height":40,"fontSize":28,"color":"#ffffff","align":"left"},
+                    "props":{"y":23,"x":150,"width":122,"var":"deshuliang","text":"免费获得","height":40,"fontSize":36,"color":"#ffffff","bold":true,"align":"left"},
                     "nodeParent":30,
                     "label":"deshuliang",
                     "isDirectory":false,
@@ -116,32 +117,103 @@
         },
         {
             "x":15,
-            "type":"Text",
-            "searchKey":"Text",
-            "props":{"y":272,"x":280,"text":"0/3","fontSize":36,"color":"#ffffff","bold":true,"align":"center"},
+            "type":"ViewStack",
+            "searchKey":"ViewStack,vs",
+            "props":{"y":116,"x":6,"var":"vs"},
             "nodeParent":2,
-            "label":"Text",
-            "isDirectory":false,
+            "label":"vs",
+            "isOpen":true,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":12,
+            "hasChild":true,
+            "compId":40,
             "child":[
-                ],
-            "$LOCKED":false
-        },
-        {
-            "x":15,
-            "type":"Sprite",
-            "searchKey":"Sprite",
-            "props":{"y":160,"x":256,"texture":"main/tili.png","scaleY":3,"scaleX":3},
-            "nodeParent":2,
-            "label":"Sprite",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":9,
-            "child":[
-                ]
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,item0",
+                    "props":{"y":38,"x":2,"width":535,"name":"item0","height":174},
+                    "nodeParent":40,
+                    "label":"item0",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":38,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Sprite",
+                            "searchKey":"Sprite,xin",
+                            "props":{"y":14,"x":244,"var":"xin","texture":"main/daxin.png"},
+                            "nodeParent":38,
+                            "label":"xin",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":9,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Text",
+                            "searchKey":"Text,l1",
+                            "props":{"y":138,"x":110,"width":380,"var":"l1","text":"剩余次数:0/3","height":36,"fontSize":36,"color":"#ffffff","bold":true,"align":"center"},
+                            "nodeParent":38,
+                            "label":"l1",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":12,
+                            "child":[
+                                ],
+                            "$LOCKED":false
+                        }],
+                    "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "searchKey":"Box,item1",
+                    "props":{"x":213,"width":184,"name":"item1","height":218},
+                    "nodeParent":40,
+                    "label":"item1",
+                    "isOpen":false,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":39,
+                    "child":[
+                        {
+                            "type":"UIView",
+                            "source":"test/GoldView.scene",
+                            "searchKey":"UIView,dia",
+                            "props":{"var":"dia","scaleY":0.6,"scaleX":0.6},
+                            "nodeParent":39,
+                            "label":"dia",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":36,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "type":"FontClip",
+                            "searchKey":"FontClip,item1,fc",
+                            "props":{"y":184,"x":-196,"width":1950,"var":"fc","value":"11:11","skin":"main/redFont.png","sheet":"123456 7890-+ /:abcd","scaleY":0.3,"scaleX":0.3,"name":"item1","height":100,"align":"center"},
+                            "nodeParent":39,
+                            "label":"item1",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":35,
+                            "child":[
+                                ]
+                        }],
+                    "$HIDDEN":true
+                }]
         }],
     "animations":[
         {

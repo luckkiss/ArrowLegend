@@ -1,6 +1,7 @@
 import { ui } from "../../ui/layaMaxUI";
 import MyEffect from "../../core/utils/MyEffect";
 import Game from "../../game/Game";
+import App from "../../core/App";
 
 export default class OpenIconDialog extends ui.test.OpenIconUI{
     public openIndex:number = 0;
@@ -20,8 +21,10 @@ export default class OpenIconDialog extends ui.test.OpenIconUI{
         }
 
         this.icon.anchorX = this.icon.anchorY = 0.5;
-        this.icon.x += (this.icon.width/2 * 1.5);
-        this.icon.y += (this.icon.height/2 * 1.5);
+        // this.icon.x += (this.icon.width/2 * 1.5);
+        // this.icon.y += (this.icon.height/2 * 1.5);
+
+        //console.log( this.icon.height , this.icon.width );
 
         MyEffect.rotation( this.light , 4000 );
         this.light.alpha = 0;
@@ -29,11 +32,15 @@ export default class OpenIconDialog extends ui.test.OpenIconUI{
         MyEffect.popup( this.title ,  1 , 300, 600 );
         
         Laya.timer.once( 1400 , this,this.cFun );
-
-        let p = this.icon.localToGlobal( new Laya.Point(0,0) );
-        this.icon.x = p.x; //+ this.icon.width/2 * 1.5;
-        this.icon.y = p.y; //+ this.icon.height/2 * 1.5;
+        //this.icon.pos(0,0);
+        let p = this.icon.localToGlobal( new Laya.Point( this.icon.width/2 , this.icon.height /2 ) );
+        //console.log( p );
+        this.icon.x = p.x;// + this.icon.width/2 * 1.5;
+        this.icon.y = p.y + Game.scenneM.main.y;// + this.icon.height * 1.5;
+        //App.layerManager.guideLayer.addChild( this.icon );
         Laya.stage.addChild( this.icon );
+        //this.icon.x = 0;
+        //this.icon.y = 0;//做上交
         this.icon.zOrder = 1000;
         MyEffect.popup( this.icon , 1.5 , 300, 1100 );
     }
