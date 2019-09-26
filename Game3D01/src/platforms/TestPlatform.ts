@@ -28,6 +28,10 @@ export default class TestPlatform extends BasePlatform{
     }
 
     clickFun( t:Laya.TextInput ):void{
+        if(t.text == "")
+        {
+            return;
+        }
         LoginHttp.FRONT = "test" + t.text;
         Game.cookie.setCookie(CookieKey.USER_ID, { "userId": t.text });
         this.cb && this.cb();
