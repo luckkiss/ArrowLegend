@@ -94,6 +94,13 @@ class Main {
 
 		App.init();
 		MyEffect.initBtnEffect();
+
+		let topImg = new Laya.Image("main/512.jpg");
+		Laya.stage.addChild( topImg );
+
+		let bottomImg = new Laya.Image("main/512.jpg");
+		Laya.stage.addChild( bottomImg );
+		bottomImg.y = Laya.stage.height - 256;
 	}
 
 	private zipFun(arr: any[]): void {
