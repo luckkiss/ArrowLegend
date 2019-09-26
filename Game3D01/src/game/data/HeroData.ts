@@ -147,6 +147,40 @@ export default class HeroData implements IData{
     }
 
     public canLvUp():boolean{
+        let arr = App.tableManager.getTable(SysRoleBase.NAME);
+        for( let a of arr ){    
+            if( this.test( a.id , HeroLvType.HP ) ){
+                return true;
+            }
+            if( this.test( a.id , HeroLvType.ATK ) ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public test( heroId:number , type:HeroLvType ):boolean{
+        let hd:HeroBaseData = this.heroMap[heroId];
+        let lv = hd.getLv( type );
+        let sys:SysRoleUp = SysRoleUp.getSysRole( heroId , lv );
+        let cost = sys.getCost(type);
+        let goldType = sys.getCostType(type);
+        if( Session.homeData.getGoldByType( goldType ) < cost ){
+            return false;
+        }
+        let nowLv = lv + 1;
+        let nowSys = SysRoleUp.getSysRole( heroId , nowLv );
+        if( nowSys == null ){
+            //已经到头了 无法升级
+            return false;
+        }
+        if( Session.homeData.getGoldByType( GoldType.GOLD ) < sys.costGold ){
+            return false;
+        }
+        let sysRB:SysRoleBase = App.tableManager.getDataByNameAndId( SysRoleBase.NAME , heroId );
+        if( nowLv > sysRB.roleLimt ){
+            return false;
+        }
         return true;
     }
 }

@@ -282,7 +282,31 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
             }
             this.onClick( this.btns[this._selectIndex] , 10 );
 
+            Laya.stage.on( GameEvent.RED_UPDATE ,this,this.updateRed );
+            Laya.stage.on( GameEvent.GOLD_CHANGE , this,this.updateRed );
+            Laya.stage.on( GameEvent.PLAYER_INFO_UPDATE , this, this.updateRed );
+
+            this.updateRed();
+        }
+
+          /**
+         * 刷新红点
+         */
+        public updateRed():void{
+            this.setBtn( this.btns[1] , Session.heroData.canLvUp() , 1 );
+            this.setBtn( this.btns[2] , Session.talentData.canLvUp2() ,2 );
+        }
+
+        private setBtn( b:Laya.Button , v:boolean , index:number ):void{
+            if( Session.homeData.openBtn[index] != "1" ){
+                return;
+            } 
             
+            let r:ui.test.RedPointViewUI = <any>b.getChildByName("red");
+            r.visible = v;
+            if( r.visible ){
+                r.ani1.play(0,true);
+            }
         }
 
         public makeBtn( b:Laya.Button ):void{
@@ -290,6 +314,7 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
             b.addChild(r);
             r.name = "red";
             r.pos( 80 , -10 );
+            r.zOrder = 100;
             r.visible = false;
         }
 
@@ -402,19 +427,7 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
             } );
         }
 
-        /**
-         * 刷新红点
-         */
-        public updateRed():void{
-            this.setBtn( this.btns[1] , Session.heroData.canLvUp() );
-            this.setBtn( this.btns[2] , Session.talentData.canLvUp2() );
-        }
+      
 
-        private setBtn( b:Laya.Button , v:boolean ):void{
-            let r:ui.test.RedPointViewUI = <any>b.getChildByName("red");
-            r.visible = v;
-            if( r.visible ){
-                r.ani1.play(0,true);
-            }
-        }
+       
     }

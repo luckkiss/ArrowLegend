@@ -38,4 +38,14 @@ export default class SysRoleBase{
             return this.baseHp;
         }
     }
+
+    public static have( id:number ):boolean{
+        let arr = App.tableManager.getTable( SysRoleBase.NAME );
+        for( let a of arr ){
+            if( a.id == id ){
+                return true;
+            }
+        }
+        return false;
+    }
 }

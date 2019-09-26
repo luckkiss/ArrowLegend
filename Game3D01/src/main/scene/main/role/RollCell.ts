@@ -4,6 +4,7 @@ import MyEffect from "../../../../core/utils/MyEffect";
 import SysRoleBase from "../../../sys/SysRolebase";
 import SysRoleUp from "../../../sys/SysRoleUp";
 import Session from "../../../Session";
+import { ui } from "../../../../ui/layaMaxUI";
 
 export default class RollCell{
     
@@ -64,6 +65,8 @@ export default class RollCell{
      * 升级按钮
      */
     public lvUpBtn:Laya.Button;
+    
+    public lv:ui.test.juese_2UI;
 
     /**
      * 设置当前的进度
@@ -85,7 +88,26 @@ export default class RollCell{
         t.to( this.lvUpBtn , { scaleX:1,scaleY:1 } , 400 , Laya.Ease.backOut );
     }
 
-    public setData( roleId:number ):void{
+    public setData( roleId:number ):void
+    {
+        let haveRold = SysRoleBase.have( roleId );
+        if( haveRold ){
+            this.vs2.visible = true;
+            this.vs1.visible = true;
+            this.heroAddFc.visible = true;
+            this.lv.visible = true;
+            
+        }else{
+            this.vs2.visible = false;
+            this.vs1.visible = false;
+            this.heroBaseFc.value = "0";
+            this.heroAddFc.visible = false;
+            
+            this.nowLvAddfc.value = "+0";
+            this.lv.visible = false;
+            return;
+        }
+
         let lv = Session.heroData.getHeroLv( roleId , this.heroLvType );
         let sysRoleBase = SysRoleBase.getSys( roleId );
         let sysRoleUp = SysRoleUp.getSysRole( roleId , lv );

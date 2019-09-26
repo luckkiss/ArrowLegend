@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":114,
+    "selectedBox":114,
+    "selecteID":132,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":1334,"centerY":0},
     "nodeParent":-1,
@@ -81,21 +81,6 @@
                             "isAniNode":true,
                             "hasChild":false,
                             "compId":117,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "x":45,
-                            "type":"UIView",
-                            "source":"test/RedPointView.scene",
-                            "searchKey":"UIView,red",
-                            "props":{"y":-50,"x":212,"var":"red"},
-                            "nodeParent":114,
-                            "label":"red",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":132,
                             "child":[
                                 ]
                         }]
