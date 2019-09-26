@@ -120,6 +120,8 @@ export default class RoleView extends ui.test.jueseUI {
         this.zuo.clickHandler = new Laya.Handler( this,this.turnFun , [-1] );
         this.you.clickHandler = new Laya.Handler( this,this.turnFun , [1] );
 
+        this.zuo.visible = this.you.visible = false;
+
         this.updateAll();
     }
 
