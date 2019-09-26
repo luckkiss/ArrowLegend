@@ -31,13 +31,13 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onRewardSuccess(): void  {
-        Game.showCoinsNum = Game.showCoinsNum * 10;
-        Game.showBlueNum = Game.showBlueNum * 10;
-        Game.showRedNum = Game.showRedNum * 10;
+        Game.showCoinsNum = Game.showCoinsNum * 5;
+        Game.showBlueNum = Game.showBlueNum * 5;
+        Game.showRedNum = Game.showRedNum * 5;
         Session.homeData.changeGold(GoldType.GOLD,Game.showCoinsNum);
         Session.homeData.changeGold(GoldType.BLUE_DIAMONG,Game.showBlueNum);
         Session.homeData.changeGold(GoldType.RED_DIAMONG,Game.showRedNum);
-        console.log("10倍奖励", Game.showCoinsNum, Game.showBlueNum, Game.showRedNum);
+        console.log("5倍奖励", Game.showCoinsNum, Game.showBlueNum, Game.showRedNum);
         Session.saveData();
     }
 

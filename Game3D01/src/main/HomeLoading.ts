@@ -21,14 +21,14 @@ import CookieKey from "../gameCookie/CookieKey";
     {
         this.loadingBox.visible = false;
         this.startBtn.visible = true;
-        this.vvv.visible = (App.platformId == PlatformID.TEST || App.platformId == PlatformID.H5);
+        this.idTxt.visible = (App.platformId == PlatformID.TEST || App.platformId == PlatformID.H5);
 
         Game.cookie.getCookie(CookieKey.USER_ID, (res) => {
 			if (res == null) {
 			}
 			else {
 				App.soundManager.setMusicVolume(res.state);
-				this.vvv.t1.text = res.userId;
+				this.idTxt.text = res.userId;
 			}
 		});
     }

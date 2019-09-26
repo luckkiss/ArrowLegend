@@ -33,8 +33,20 @@ import SysChapter from "../main/sys/SysChapter";
 import Coin from "./player/Coin";
 
 export default class Game {
-    static codeVer:string = "1.1.2.19092605";
-    static resVer:string = "1.1.2.19092605";
+    static codeVer:string = "1.1.2.0926";
+    static resVer:string = "1.1.2.0926";
+
+    /**本地资源 */
+	static nativefiles:string[] = [
+        "loading/btn_kaishi.png", 
+        "loading/dan.png", 
+        "loading/jiandushang.png",
+        "loading/jianduxia.png",
+        "loading/jiazai.jpg",
+        "loading/loadingClip.png",
+        "loading/logo.png",
+        "loading/shouci.png",
+        "loading/zhudi.jpg"];
 
     //战斗中的临时数据
     static level:number;
