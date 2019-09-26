@@ -107,7 +107,6 @@ class Main {
 
 	private onInitCom(): void {
 		Laya.stage.addChild(App.layerManager);
-		App.layerManager.y = (Laya.stage.height - Laya.stage.designHeight )/2;
 		
 		App.soundManager.pre = "h5/sounds/";
 		ZipLoader.instance.zipFun(Laya.loader.getRes("h5/tables.zip"), new Laya.Handler(this, this.zipFun));

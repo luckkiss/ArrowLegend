@@ -228,6 +228,10 @@ export default class GameBG extends Laya.Sprite {
         for (let j = 0; j < GameBG.MAP_ROW; j++) {
             this.bgh += GameBG.ww;
             for (let i = 0; i < GameBG.MAP_COL; i++) {
+                if(k > GameBG.arr0.length)
+                {
+                    break;
+                }
                 gType = GameBG.arr0[k];
                 let xx = i * GameBG.ww;//- (ww/2);
                 let yy = j * GameBG.ww;
@@ -235,6 +239,8 @@ export default class GameBG extends Laya.Sprite {
                 var grid: BgGrid;
                 if (GridType.isRiverPoint(gType)) {
                     grid = BgGrid.getOne(GameBG.BG_TYPE + '/100.png');
+                    grid.pos(xx,yy);
+                    this._box.addChild(grid);
                 }
                 else if (GridType.isThorn(gType)) {
                     thorn = GameThorn.getOne();
@@ -243,11 +249,14 @@ export default class GameBG extends Laya.Sprite {
                     this._box.addChild(thorn);
                 }
                 else if (GridType.isRiverScale9Grid(gType) || GridType.isRiverScale9Grid2(gType) || GridType.isRiverRow(gType) || GridType.isRiverCol(gType)) {
-                    gType = Math.floor(gType / 100) * 100 + gType % 10;
                     grid = BgGrid.getOne(GameBG.BG_TYPE + '/' + gType + '.png');
+                    grid.pos(xx,yy);
+                    this._box.addChild(grid);
                 }
                 else if (GridType.isFlower(gType))  {
                     grid = BgGrid.getOne(GameBG.BG_TYPE + '/' + gType + '.png');
+                    grid.pos(xx,yy);
+                    this._box.addChild(grid);
                 }
                 else if (GridType.isSawHeng(gType))//横锯子
                 {
@@ -301,11 +310,6 @@ export default class GameBG extends Laya.Sprite {
                     Hero.bornX = xx;
                     Hero.bornY = yy;
                     // console.log("主角出生位置",xx,yy);
-                }
-                if(grid)
-                {
-                    grid.pos(xx,yy);
-                    this._box.addChild(grid);
                 }
                 k++;
             }
@@ -504,7 +508,8 @@ export class BgGrid extends Laya.Image
 
     static getOne(imgUrl:string):BgGrid
     {
-        let grid:BgGrid = Laya.Pool.getItemByClass(BgGrid.TAG + imgUrl,BgGrid);
+        // let grid:BgGrid = Laya.Pool.getItemByClass(BgGrid.TAG + imgUrl,BgGrid);
+        let grid:BgGrid = new BgGrid();
         grid.onInit(imgUrl);
         grid.imgUrl = imgUrl;
         return grid;

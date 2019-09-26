@@ -18,6 +18,8 @@ export default class SceneManager {
         App.layerManager.sceneLayer.removeChildren();
         App.layerManager.sceneLayer.addChild(this.main);
 
+        this.main.y = (Laya.stage.height - Laya.stage.designHeight )/2;
+
         //this.main.alpha = 0.5;
 
         this.battle && this.battle._top && this.battle._top.reset();
