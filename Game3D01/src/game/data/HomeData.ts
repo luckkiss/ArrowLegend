@@ -57,8 +57,8 @@ export default class HomeData implements IData{
         this.battleLv = data.battleLv;
         this.playerLv = data.playerLv;
         this.coins = data.coins;
-        this.blueDiamond = data.blueDiamond;
-        this.redDiamond = data.redDiamond;
+        this.blueDiamond = (data.blueDiamond?data.blueDiamond:0);
+        this.redDiamond = (data.redDiamond?data.redDiamond:0);
         this.playerExp = data.playerExp;
         this.isGuide = data.isGuide;
         if(this.playerExp == null)
