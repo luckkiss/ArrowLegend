@@ -300,7 +300,7 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
         private setBtn( b:Laya.Button , v:boolean , index:number ):void{
             if( Session.homeData.openBtn[index] != "1" ){
                 return;
-            } 
+            }
             
             let r:ui.test.RedPointViewUI = <any>b.getChildByName("red");
             r.visible = v;

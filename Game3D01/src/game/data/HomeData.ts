@@ -7,6 +7,7 @@ import App from "../../core/App";
 import SysHero from "../../main/sys/SysHero";
 import SysMap from "../../main/sys/SysMap";
 import Session from "../../main/Session";
+import { Guide_Type } from "../../main/guide/GuideManager";
 
 export default class HomeData implements IData{
     isGuide:boolean;
@@ -56,6 +57,8 @@ export default class HomeData implements IData{
         this.battleLv = data.battleLv;
         this.playerLv = data.playerLv;
         this.coins = data.coins;
+        this.blueDiamond = data.blueDiamond;
+        this.redDiamond = data.redDiamond;
         this.playerExp = data.playerExp;
         this.isGuide = data.isGuide;
         if(this.playerExp == null)
@@ -71,7 +74,9 @@ export default class HomeData implements IData{
             this.curEnergy = this.totalEnergy - delta;
             console.log("Session剩余的时间", time , this.curEnergy);
         }
-        this.newStat = data.newStat;
+        
+        this.newStat = (data.newStat?data.newStat:Guide_Type.over);
+        
         this.curEnergy = 20;
         if( data.openBtn == null ){
             this.openBtn = ["1","1","1","-1","1"];
@@ -93,6 +98,8 @@ export default class HomeData implements IData{
         data.battleLv = this.battleLv;
         data.playerLv = this.playerLv;
         data.coins = this.coins;
+        data.blueDiamond = this.blueDiamond;
+        data.redDiamond = this.redDiamond;
         data.playerExp = this.playerExp;
         data.chapterId = this.chapterId;
         data.mapIndex = this.mapIndex;
@@ -125,9 +132,9 @@ export default class HomeData implements IData{
         this.battleLv = 1;
         this.playerLv = 1;
         this.coins = 0;
-        this.redDiamond = 1;
+        this.redDiamond = 10;
         this.playerExp = 0;
-        this.blueDiamond = 1;
+        this.blueDiamond = 10;
         this.coins = 1000;
         this.newStat = 1;
         this.openBtn = ["1","-1","-1","-1","1"];
