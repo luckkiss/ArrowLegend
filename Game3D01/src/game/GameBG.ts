@@ -176,7 +176,6 @@ export default class GameBG extends Laya.Sprite {
     private startX: number;
     public drawR(hasBoss: boolean = false): void {
         this.npcId = 0;
-        var img: Image;
         var ww: number = GameBG.ww;
         var k: number = 0;
         let sp: Sprite;
@@ -185,17 +184,21 @@ export default class GameBG extends Laya.Sprite {
         this.addChild(this.saw);
 
         let index3: number = 0;
+        let rowBox:Laya.Box;
         for (let j = 0; j < GameBG.MAP_ROW; j++) {
             if (GameBG.MAP_COL % 2 == 0)  {
                 index3++;
             }
+            rowBox = new Laya.Box();
+            rowBox.cacheAs = "bitmap";
+            rowBox.y = j * ww;
+            this._box.addChild(rowBox);
             for (let i = 0; i < GameBG.MAP_COL; i++) {
-                img = new Image();
-                img.skin = (index3 % 2 == 0) ? GameBG.BG_TYPE + "/10.png" : GameBG.BG_TYPE + "/11.png";
-                this._box.addChild(img);
+                let gSkin = (index3 % 2 == 0) ? GameBG.BG_TYPE + "/10.png" : GameBG.BG_TYPE + "/11.png";
+                var img: BgGrid = BgGrid.getOne(gSkin);
                 img.size(64, 64);
-                img.x = i * ww;//- (ww/2);
-                img.y = j * ww;
+                img.x = i * ww;
+                rowBox.addChild(img);
                 index3++;
             }
         }
@@ -204,15 +207,14 @@ export default class GameBG extends Laya.Sprite {
         for (let j = 0; j < GameBG.MAP_ROW; j++) {
             for (let i = 0; i < GameBG.MAP_COL; i++) {
                 gType = GameBG.arr0[k];
-                var shadow: Laya.Image = new Laya.Image();
                 if ((GridType.isWall(gType) || (gType >= 1 && gType <= 10)))  {
-                    shadow.skin = GameBG.BG_TYPE + '/y' + GameCube.getType(gType) + '.png';
+                    let shadow:BgGrid = BgGrid.getOne(GameBG.BG_TYPE + '/y' + GameCube.getType(gType) + '.png');
                     shadow.x = i * ww;
                     shadow.y = j * ww;
                     this._box.addChild(shadow);
                 }
                 else if (GridType.isFence(gType))  {
-                    shadow.skin = 'bg/lanying.png';
+                    let shadow:BgGrid = BgGrid.getOne("bg/lanying.png");
                     shadow.width = 200;
                     shadow.x = i * ww - 64;
                     shadow.y = j * ww + 50;
@@ -230,9 +232,9 @@ export default class GameBG extends Laya.Sprite {
                 let xx = i * GameBG.ww;//- (ww/2);
                 let yy = j * GameBG.ww;
                 var thorn: GameThorn;
-                var grid: Image = new Image();
+                var grid: BgGrid;
                 if (GridType.isRiverPoint(gType)) {
-                    grid.skin = GameBG.BG_TYPE + '/100.png';
+                    grid = BgGrid.getOne(GameBG.BG_TYPE + '/100.png');
                 }
                 else if (GridType.isThorn(gType)) {
                     thorn = GameThorn.getOne();
@@ -242,10 +244,10 @@ export default class GameBG extends Laya.Sprite {
                 }
                 else if (GridType.isRiverScale9Grid(gType) || GridType.isRiverScale9Grid2(gType) || GridType.isRiverRow(gType) || GridType.isRiverCol(gType)) {
                     gType = Math.floor(gType / 100) * 100 + gType % 10;
-                    grid.skin = GameBG.BG_TYPE + '/' + gType + '.png';
+                    grid = BgGrid.getOne(GameBG.BG_TYPE + '/' + gType + '.png');
                 }
                 else if (GridType.isFlower(gType))  {
-                    grid.skin = GameBG.BG_TYPE + '/' + gType + '.png';
+                    grid = BgGrid.getOne(GameBG.BG_TYPE + '/' + gType + '.png');
                 }
                 else if (GridType.isSawHeng(gType))//横锯子
                 {
@@ -300,8 +302,11 @@ export default class GameBG extends Laya.Sprite {
                     Hero.bornY = yy;
                     // console.log("主角出生位置",xx,yy);
                 }
-                grid.pos(xx,yy);
-                this._box.addChild(grid);
+                if(grid)
+                {
+                    grid.pos(xx,yy);
+                    this._box.addChild(grid);
+                }
                 k++;
             }
         }
@@ -470,3 +475,38 @@ export default class GameBG extends Laya.Sprite {
     }
 }
 
+
+
+export class BgGrid extends Laya.Image
+{
+    static TAG:string = "BgGrid_";
+    imgUrl:string;
+    constructor()
+    {
+        super();
+        this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
+    }
+
+    onInit(imgUrl:string):void
+    {
+        if(this.imgUrl)
+        {
+            return;
+        }
+        this.skin = imgUrl;
+        this.imgUrl = imgUrl;
+    }
+
+    private onUndis():void
+    {
+        Laya.Pool.recover(BgGrid.TAG + this.imgUrl,this);
+    }
+
+    static getOne(imgUrl:string):BgGrid
+    {
+        let grid:BgGrid = Laya.Pool.getItemByClass(BgGrid.TAG + imgUrl,BgGrid);
+        grid.onInit(imgUrl);
+        grid.imgUrl = imgUrl;
+        return grid;
+    }
+}

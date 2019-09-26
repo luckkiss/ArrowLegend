@@ -4,25 +4,31 @@ export default class BitmapNumber extends Laya.FontClip {
         super(); 
     }
 
-    update(skin:string,sheet:string,tScale:number):void
+    imgUrl:string;
+    onInit(skin:string,sheet:string):void
     {
+        if(this.imgUrl)
+        {
+            return;
+        }
+        this.imgUrl = skin;
         this.skin = skin;
         this.sheet = sheet;
-        this.scale(tScale,tScale);
         this.anchorX = this.anchorY = 0.5;
     }
 
     static getFontClip(tScale:number = 1,skin:string = "main/clipshuzi.png",sheet?:string):BitmapNumber
     {
-        let bn:BitmapNumber = Laya.Pool.getItemByClass(BitmapNumber.TAG,BitmapNumber);
-        bn.update(skin,sheet ? sheet : "123456 7890-+ /:cdef",tScale ? tScale : 1);
+        let bn:BitmapNumber = Laya.Pool.getItemByClass(BitmapNumber.TAG + skin,BitmapNumber);
+        bn.onInit(skin,sheet ? sheet : "123456 7890-+ /:cdef");
+        bn.scale(tScale ? tScale : 1,tScale ? tScale : 1);
         return bn;
     }
 
     recover():void
     {
         this.removeSelf();
-        Laya.Pool.recover(BitmapNumber.TAG,this);
+        Laya.Pool.recover(BitmapNumber.TAG + this.imgUrl,this);
     }
 
 }
