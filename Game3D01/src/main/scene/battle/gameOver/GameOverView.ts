@@ -21,29 +21,50 @@ export default class GameOverView extends ui.test.GameOverUI {
         super();
         App.sdkManager.initAdBtn(this.fuhuo, AD_TYPE.AD_BATTLE10);
         this.on(Laya.Event.DISPLAY, this, this.onDis);
-        this.on(Laya.Event.CLICK, this, this.onCloseView);
-
-        this.fuhuo.clickHandler = new Laya.Handler(this, this.onReward10);
-    }
-
-    private onReward10(): void  {
-        App.sdkManager.playAdVideo(AD_TYPE.AD_BATTLE10, new Laya.Handler(this, this.onRewardSuccess))
+        this.on(Laya.Event.CLICK, this, this.onClick);
     }
 
     private onRewardSuccess(): void  {
         Game.showCoinsNum = Game.showCoinsNum * 5;
         Game.showBlueNum = Game.showBlueNum * 5;
         Game.showRedNum = Game.showRedNum * 5;
+
+        this.lanzuan.value = "+" + Game.showBlueNum;
+
+        this.hongzuan.value = "+" + Game.showRedNum;
+
+        this.coinClip.value = "+" + Game.showCoinsNum;
+        let deltaNum: number = Math.floor(Game.showCoinsNum * Session.talentData.lineGold / 100);
+        this.deltaCoin.value = "+" + deltaNum;
+        this.deltaCoin.visible = deltaNum > 0;
+
         Session.homeData.changeGold(GoldType.GOLD,Game.showCoinsNum);
         Session.homeData.changeGold(GoldType.BLUE_DIAMONG,Game.showBlueNum);
         Session.homeData.changeGold(GoldType.RED_DIAMONG,Game.showRedNum);
         console.log("5倍奖励", Game.showCoinsNum, Game.showBlueNum, Game.showRedNum);
         Session.saveData();
+
+        setTimeout(() => {
+            this.onCloseView();
+        }, 300);
     }
 
-    private onCloseView(): void {
+    private onCloseView():void
+    {
         this.removeSelf();
         Game.showMain();
+    }
+
+    private onClick(e:Laya.Event): void {
+        if(e.target == this.fuhuo)
+        {
+            App.sdkManager.playAdVideo(AD_TYPE.AD_BATTLE10, new Laya.Handler(this, this.onRewardSuccess));
+        }
+        else
+        {
+            this.removeSelf();
+            Game.showMain();
+        }
     }
 
     private onDis(): void {

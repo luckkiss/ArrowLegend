@@ -38,11 +38,12 @@ import SysBuff from "../../../sys/SysBuff";
         {
             Game.executor.stop_();
             // this.baioti.text = "本次冒险升到了" + Game.hero.playerData.level + "级";
-            let sys:SysNpc = App.tableManager.getDataByNameAndId(SysNpc.NAME,1001);
+            let id:number = Game.battleLoader.chapterId == 1 ? 1006 : 1001;
+            let sys:SysNpc = App.tableManager.getDataByNameAndId(SysNpc.NAME,id);
             this.box1.scaleX = 1;
             this.box2.scaleX = 1;
     
-            this.grid1.update(Game.skillManager.getRandomSkillByNpcId(1001));
+            this.grid1.update(Game.skillManager.getRandomSkillByNpcId(id));
             this.grid2.update(sys.skillId);
         }
     

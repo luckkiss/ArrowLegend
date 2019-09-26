@@ -186,13 +186,16 @@ export default class BattleLoader {
     public preload():void
     {
         let arr:string[] = [
-            // "h5/mapbg/1.jpg",
-            // "res/atlas/xiongmao.atlas",
             "res/atlas/shengli.atlas",
             "res/atlas/texiao/jiaxue.atlas",
             "res/atlas/bg.atlas",
             "res/atlas/jiesuan.atlas"
         ];
+
+        if(Session.homeData.isGuide)
+        {
+            arr.push("res/atlas/guide.atlas");
+        }
         Laya.loader.load(arr,Laya.Handler.create(this,this.onCompletePre));
     }
 
@@ -206,8 +209,11 @@ export default class BattleLoader {
         let pubRes = [
             "h5/zhalan/hero.lh","h5/effects/door/monster.lh",
             "h5/effects/foot/hero.lh", "h5/effects/head/monster.lh","h5/bulletsEffect/20000/monster.lh",
-            "h5/bullets/skill/5009/monster.lh", "h5/bullets/20000/monster.lh", "h5/hero/1/hero.lh"//主角
+            "h5/bullets/skill/5009/monster.lh", "h5/bullets/20000/monster.lh"
         ];
+
+        pubRes.push("h5/hero/" + Session.heroData.nowRoleId + "/hero.lh");
+
         if(Session.homeData.isGuide)
         {
             pubRes.push("h5/effects/guide/monster.lh");
@@ -249,19 +255,6 @@ export default class BattleLoader {
         GameBG.BG_TYPE_NUM = bgType;
         GameBG.BG_TYPE = "map_" + bgType;
         Laya.loader.clearRes("h5/mapConfig/" + this._configId + ".json");//清理map.json
-        this.onBgComplete();
-        // if(this.bgRes[GameBG.BG_TYPE_NUM])
-        // {
-        //     this.onBgComplete();
-        // }
-        // else
-        // {
-        //     Laya.loader.load("h5/mapbg/"+GameBG.BG_TYPE_NUM+".jpg",Laya.Handler.create(this,this.onBgComplete));
-        // }
-    }
-
-    private onBgComplete():void
-    {
         this.bgRes[GameBG.BG_TYPE_NUM] = GameBG.BG_TYPE_NUM;
         this.onLoadMonster();
     }
@@ -351,6 +344,10 @@ export default class BattleLoader {
             }
         }
 
+        if(Laya.loader.getRes("h5/hero/" + Session.heroData.nowRoleId + "/hero.lh") == null)
+        {
+            this.resAry.push("h5/hero/" + Session.heroData.nowRoleId + "/hero.lh");
+        }
 
         this._isMonsterLoaded = false;
         console.log('资源列表', this.resAry);

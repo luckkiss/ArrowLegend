@@ -50,14 +50,19 @@ import { AD_TYPE } from "../../../ADType";
         this.box1.scaleX = 1;
         this.box2.scaleX = 1;
 
-        this.grid1.update(Game.skillManager.getRandomSkillByNpcId(1004));
-        this.grid2.update(Game.skillManager.getRandomSkillByNpcId(1004));
+        this.setSkill();
     }
 
     private onChangeSkill():void
     {
-        this.grid1.update(Game.skillManager.getRandomSkillByNpcId(1004));
-        this.grid2.update(Game.skillManager.getRandomSkillByNpcId(1004));
+        this.setSkill();
+    }
+
+    private setSkill():void
+    {
+        let id:number = Game.battleLoader.chapterId == 1 ? 1005 : 1004;
+        this.grid1.update(Game.skillManager.getRandomSkillByNpcId(id));
+        this.grid2.update(Game.skillManager.getRandomSkillByNpcId(id));
     }
 
 
