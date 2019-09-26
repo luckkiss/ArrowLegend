@@ -33,8 +33,8 @@ import SysChapter from "../main/sys/SysChapter";
 import Coin from "./player/Coin";
 
 export default class Game {
-    static codeVer:string = "1.1.1.19092402";
-    static resVer:string = "1.1.1.190924";
+    static codeVer:string = "1.1.2.190926";
+    static resVer:string = "1.1.2.190926";
 
     //战斗中的临时数据
     static level:number;
@@ -104,7 +104,7 @@ export default class Game {
             Game.selectFoot.transform.localScale = new Laya.Vector3(curScale, curScale, curScale);
         }
         else  {
-            console.log("克隆体没有了？");
+            // console.log("克隆体没有了？");
         }
     }
 
@@ -329,6 +329,8 @@ export default class Game {
     static battleCoins: number = 0;
     static battleExp:number = 0;
 
+    static heroExp:number = 0;
+
 
     static showCoinsNum:number = 0;
 
@@ -350,7 +352,7 @@ export default class Game {
             Game.hero.resetAI();
         }
         
-        Game.battleExp = 0;
+        Game.battleExp = Game.heroExp = 0;
         Game.battleLoader.clearMonster();
         Game.scenneM.showMain();
 

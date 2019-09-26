@@ -286,7 +286,7 @@ export default class GameBG extends Laya.Sprite {
                             this.npcDic[this.npcId] = this._npcAni;
                         }
                         this.showNpc();
-                        console.log("显示npc", this.npcId);
+                        // console.log("显示npc", this.npcId);
                     }
                 }
 
@@ -298,7 +298,7 @@ export default class GameBG extends Laya.Sprite {
                 else if (gType == BattleFlagID.HERO)  {
                     Hero.bornX = xx;
                     Hero.bornY = yy;
-                    console.log("主角出生位置",xx,yy);
+                    // console.log("主角出生位置",xx,yy);
                 }
                 grid.pos(xx,yy);
                 this._box.addChild(grid);

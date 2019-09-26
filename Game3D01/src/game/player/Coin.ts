@@ -135,7 +135,7 @@ export default class Coin extends GamePro {
             let sys:SysItem = App.tableManager.getDataByNameAndId(SysItem.NAME,Coin.TYPE_HEART);
             let addValue:number = sys.addHp + Session.talentData.addItemhp;
             Game.hero.addBlood(addValue);
-            console.log("红心恢复血量",200,Session.talentData.addItemhp);
+            // console.log("红心恢复血量",200,Session.talentData.addItemhp);
             SysChapter.heartNum--;
         }
         this.curLen = 0;

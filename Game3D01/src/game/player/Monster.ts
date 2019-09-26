@@ -117,7 +117,7 @@ export default class Monster extends GamePro {
     }
 
     public hurt(hurt: number, isCrit: boolean,isBuff:boolean = false): void {
-        // Game.playSound("monsterHit.mp3");
+        Game.playSound("monsterHit.mp3");
         super.hurt(hurt, isCrit);
         if(this.sysEnemy.isBoss)
         {
@@ -146,7 +146,7 @@ export default class Monster extends GamePro {
                 let skill3001: SysSkill = Game.skillManager.isHas(3001);//聪明
                 let addNum: number = 0;
                 if (skill3001)  {
-                    console.log(skill3001.skillName);
+                    // console.log(skill3001.skillName);
                     let buff3001: SysBuff = App.tableManager.getDataByNameAndId(SysBuff.NAME, skill3001.skillEffect1);
                     addNum = Math.ceil(this.sysEnemy.dropExp * buff3001.addExp / 1000);
                 }
@@ -154,11 +154,16 @@ export default class Monster extends GamePro {
             }
         }
 
+        if(this.sysEnemy.heroExp > 0)
+        {
+            Game.heroExp += this.sysEnemy.dropExp;
+        }
+
         let skill4001: SysSkill = Game.skillManager.isHas(4001);//嗜血
         if (skill4001)  {
             let buff4001: SysBuff = App.tableManager.getDataByNameAndId(SysBuff.NAME, skill4001.skillEffect1);
             Game.hero.addBlood(Math.floor(Game.hero.gamedata.maxhp * buff4001.addHp / 1000));
-            console.log(skill4001.skillName);
+            // console.log(skill4001.skillName);
         }
 
         Game.dropDiamond(this);
@@ -221,7 +226,7 @@ export default class Monster extends GamePro {
             var sp: Laya.Sprite3D = Laya.Sprite3D.instantiate(Laya.loader.getRes("h5/monsters/" + sysEnemy.enemymode + "/monster.lh"));
             MemoryManager.ins.add(sp.url);
             gpro.setSp3d(sp,GameBG.ww * 0.8);
-            console.log("克隆一个怪");
+            // console.log("克隆一个怪");
         }
         
         gpro.hurtValue = sysEnemy.enemyAttack;
@@ -246,10 +251,10 @@ export default class Monster extends GamePro {
         gpro.initBlood(hp);
 
         var MonAI: any = Laya.ClassUtils.getClass(AttackType.TAG + sysEnemy.enemyAi);
-        console.log("当前怪的AI", sysEnemy.id,sysEnemy.enemymode, sysEnemy.txt, sysEnemy.enemyAi, MonAI,MOVE);
-        if (MonAI == null) {
-            console.log('没有这个怪的AI', sysEnemy.id);
-        }
+        // console.log("当前怪的AI", sysEnemy.id,sysEnemy.enemymode, sysEnemy.txt, sysEnemy.enemyAi, MonAI,MOVE);
+        // if (MonAI == null) {
+        //     console.log('没有这个怪的AI', sysEnemy.id);
+        // }
 
         gpro.setGameAi(new MonAI(gpro));
 
@@ -265,7 +270,7 @@ export default class Monster extends GamePro {
         //     gpro._bulletShadow.visible = true;
         //     gpro.bloodUI.visible = true;
         // }, 1100);
-        console.log("ai的长度",Game.AiArr.length);
+        // console.log("ai的长度",Game.AiArr.length);
         return gpro;
     }
 }

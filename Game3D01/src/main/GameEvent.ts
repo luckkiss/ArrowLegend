@@ -19,10 +19,13 @@ export default class GameEvent{
     static PASS_CHAPTER:string = "PASS_CHAPTER";
 
     static LV_UP_VIEW:string = "LV_UP_VIEW";
+    static LV_UP_VIEW_2:string = "LV_UP_VIEW_2";
 
     static ADD_COIN:string = "ADD_COIN";
 
     static APP_ENERGY:string = "APP_ENERGY";
 
     static SHOW_MAIN:string = "SHOW_MAIN";
+
+
 }

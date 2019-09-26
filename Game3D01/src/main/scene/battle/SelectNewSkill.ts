@@ -6,6 +6,7 @@ import App from "../../../core/App";
 import SysBuff from "../../sys/SysBuff";
 import SysNpc from "../../sys/SysNpc";
 import Session from "../../Session";
+import { AD_TYPE } from "../../../ADType";
     export default class SelectNewSkill extends ui.test.battlestopUI {
 
     private grid1:SkillGrid;
@@ -16,12 +17,18 @@ import Session from "../../Session";
         this.grid1 = new SkillGrid(new Laya.Handler(this,this.onClick));
         this.grid2 = new SkillGrid(new Laya.Handler(this,this.onClick));
 
-        this.queding.visible = false;
-
         this.box1.addChild(this.grid1);
         this.box2.addChild(this.grid2);
 
+        App.sdkManager.initAdBtn(this.queding,AD_TYPE.AD_CHANGE_SKILL);
+        this.queding.clickHandler = new Laya.Handler(this,this.showAD);
+
         this.on(Laya.Event.DISPLAY,this,this.onDis);
+    }
+
+    private showAD():void
+    {
+        App.sdkManager.playAdVideo(AD_TYPE.AD_CHANGE_SKILL,new Laya.Handler(this,this.onChangeSkill))
     }
 
     private onClick(sys:SysSkill):void
@@ -43,6 +50,12 @@ import Session from "../../Session";
         this.box1.scaleX = 1;
         this.box2.scaleX = 1;
 
+        this.grid1.update(Game.skillManager.getRandomSkillByNpcId(1004));
+        this.grid2.update(Game.skillManager.getRandomSkillByNpcId(1004));
+    }
+
+    private onChangeSkill():void
+    {
         this.grid1.update(Game.skillManager.getRandomSkillByNpcId(1004));
         this.grid2.update(Game.skillManager.getRandomSkillByNpcId(1004));
     }

@@ -63,7 +63,7 @@ export default class PlayerSkillManager {
                 this.skillList.push(data);
                 data.curTimes++;
             }
-            console.log(data.skillName, "添加技能");
+            // console.log(data.skillName, "添加技能");
         }
 
         if (this.skinSkills.indexOf(data.id) != -1)  {
