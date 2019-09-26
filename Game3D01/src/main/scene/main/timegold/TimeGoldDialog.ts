@@ -13,6 +13,7 @@ export default class TimeGoldDialog extends ui.test.TimeGoldUI{
         this.LingBtn.on( Laya.Event.CLICK,this,this.normalClick );
         this.AdLingBtn.on( Laya.Event.CLICK,this,this.adClick );
         this.init();
+        this.v3bei.ani1.play( 0, true );
     }
 
     private adClick():void{

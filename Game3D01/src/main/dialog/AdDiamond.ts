@@ -11,6 +11,7 @@ import { HeroLvType } from "../../game/data/HeroData";
 export default class AdDiamond extends ui.test.juese_tishiUI{
     constructor(){
         super();
+        this.bg.height = Laya.stage.height;
         RotationEffect.play( this.light );
         this.rebornBtn.clickHandler = new Laya.Handler(this,this.clickFun);
     }
