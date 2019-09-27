@@ -20,8 +20,10 @@ import { AD_TYPE } from "../../../ADType";
         this.box1.addChild(this.grid1);
         this.box2.addChild(this.grid2);
 
-        App.sdkManager.initAdBtn(this.queding,AD_TYPE.AD_CHANGE_SKILL);
-        this.queding.clickHandler = new Laya.Handler(this,this.showAD);
+        this.queding.deshuliang.text = "刷新"
+
+        App.sdkManager.initAdBtn(this.queding.fuhuo,AD_TYPE.AD_CHANGE_SKILL);
+        this.queding.fuhuo.clickHandler = new Laya.Handler(this,this.showAD);
 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
     }

@@ -6,7 +6,7 @@
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#a4a0a0","height":1334},
     "nodeParent":-1,
-    "maxID":36,
+    "maxID":37,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -103,43 +103,18 @@
                 },
                 {
                     "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,queding",
-                    "props":{"y":793,"x":328,"width":303,"var":"queding","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,32,0,34","height":91,"anchorY":0.5,"anchorX":0.5},
+                    "type":"UIView",
+                    "source":"test/guanggao.scene",
+                    "searchKey":"UIView,queding",
+                    "props":{"y":744,"x":149,"var":"queding"},
                     "nodeParent":22,
                     "label":"queding",
-                    "isOpen":false,
-                    "isDirectory":true,
+                    "isDirectory":false,
                     "isAniNode":true,
-                    "hasChild":true,
-                    "compId":30,
+                    "hasChild":false,
+                    "compId":36,
                     "child":[
-                        {
-                            "type":"Image",
-                            "searchKey":"Image",
-                            "props":{"y":20.5,"x":89,"skin":"main/action.png","scaleY":0.6,"scaleX":0.6},
-                            "nodeParent":30,
-                            "label":"Image",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":31,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "type":"Image",
-                            "searchKey":"Image",
-                            "props":{"y":22,"x":131,"skin":"main/shuaxin.png","scaleY":0.6,"scaleX":0.6},
-                            "nodeParent":30,
-                            "label":"Image",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":33,
-                            "child":[
-                                ]
-                        }]
+                        ]
                 }]
         }],
     "animations":[
