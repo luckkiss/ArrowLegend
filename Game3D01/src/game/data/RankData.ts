@@ -1,6 +1,7 @@
 import IData from "./IData";
 import App from "../../core/App";
 import Session from "../../main/Session";
+import SysMap from "../../main/sys/SysMap";
 export default class RankData implements IData{
     constructor(){
         
@@ -26,7 +27,7 @@ export default class RankData implements IData{
         let obj:any = {};
         obj.skey = Session.SKEY;
         obj.name = "荒野女枪";
-        obj.scorestr = Session.homeData.chapterId;
+        obj.scorestr = this.getStageNum();
         obj.url = "main/suo.png";
         obj.item = 0;
         if( Laya.Browser.onMiniGame == false ){
@@ -41,9 +42,14 @@ export default class RankData implements IData{
         App.http( App.serverIP + "gamex3/saveRank" , obj , "post" );
     }
 
-    // public getStageNum():number{
-    //     sys
-    // }
+    public getStageNum():number{
+        let t = 0;
+        for( let i :number = 1; i <  Session.homeData.chapterId; i++  ){
+            t += SysMap.getTotal( i );    
+        }
+        t += Session.homeData.mapIndex;
+        return t;
+    }
 
     public getRank( caller:any  , listener:Function  ):void {
         let obj:any = {};
