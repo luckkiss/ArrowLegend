@@ -2,7 +2,7 @@
     "x":0,
     "type":"Dialog",
     "selectedBox":2,
-    "selecteID":40,
+    "selecteID":18,
     "searchKey":"Dialog",
     "props":{"width":600,"sceneColor":"#000000","isModal":true,"height":400},
     "nodeParent":-1,
@@ -27,7 +27,7 @@
             "compId":18,
             "child":[
                 ],
-            "$LOCKED":true
+            "$LOCKED":false
         },
         {
             "x":15,

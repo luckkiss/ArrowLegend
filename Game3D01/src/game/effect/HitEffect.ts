@@ -16,7 +16,11 @@ export default class HitEffect{
     {
         let effect:HitEffect = Laya.Pool.getItemByClass(HitEffect.TAG,HitEffect);
         effect.player = player;
-        effect.player.sp3d.addChild(effect.sp3d);
+        if(effect.player && effect.player.sp3d)
+        {
+            effect.player.sp3d.addChild(effect.sp3d);
+        }
+        
         setTimeout(() => {
             effect.recover();
         }, 500);

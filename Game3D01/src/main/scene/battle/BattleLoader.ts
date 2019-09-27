@@ -178,7 +178,7 @@ export default class BattleLoader {
             }
             this._configId = configId;
         }
-        // this._configId = 101001;
+        // this._configId = 301901;
         console.log("当前地图", this._mapId, this._configId);
         Laya.loader.load("h5/mapConfig/" + this._configId + ".json", new Laya.Handler(this, this.loadBg));
     }
@@ -192,10 +192,10 @@ export default class BattleLoader {
             "res/atlas/jiesuan.atlas"
         ];
 
-        if(Session.homeData.isGuide)
-        {
-            arr.push("res/atlas/guide.atlas");
-        }
+        // if(Session.homeData.isGuide)
+        // {
+        //     arr.push();
+        // }
         Laya.loader.load(arr,Laya.Handler.create(this,this.onCompletePre));
     }
 

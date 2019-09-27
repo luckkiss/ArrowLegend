@@ -31,7 +31,8 @@ export default class Hero extends GamePro {
 
     constructor() {
         super(GameProType.Hero, 0);
-        this.reset();
+        this.resetBlood();
+        this.resetSkill();
         this.unBlocking = true;
         this.setGameMove(new PlaneGameMove());
         this.setGameAi(new HeroAI());
@@ -106,8 +107,14 @@ export default class Hero extends GamePro {
         }, 300);
     }
 
-    public reset(): void {
+    /**重置血量 */
+    resetBlood(): void {
         this.gamedata.hp = this.gamedata.maxhp = Hero.curHeroData.hp;
+    }
+
+    /**重置技能 */
+    resetSkill():void
+    {
         this.buffAry.length = 0;
         Game.skillManager.clear();
         Game.skillManager.addSkill(App.tableManager.getDataByNameAndId(SysSkill.NAME,Hero.curHeroData.initSkillId));
@@ -299,7 +306,7 @@ export default class Hero extends GamePro {
         this.isDie = false;
         this.setKeyNum(1);
         this.acstr = "";
-        this.reset();
+        this.resetBlood();
         this.initBlood(Game.hero.gamedata.hp);
         this.play("Idle");
         this.startAi();

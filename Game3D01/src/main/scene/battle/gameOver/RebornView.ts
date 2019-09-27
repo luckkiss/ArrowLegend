@@ -46,7 +46,6 @@ export default class RebornView extends ui.test.ReborthUI {
     
     private onClose(): void  {
         Laya.timer.clear(this,this.onLoop2);
-        Game.cookie.removeCookie(CookieKey.CURRENT_BATTLE);
         this.removeSelf();
         Game.rebornTimes = 0;
         Laya.stage.event(Game.Event_MAIN_DIE);

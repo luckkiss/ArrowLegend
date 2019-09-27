@@ -402,6 +402,8 @@ export default class BattleScene extends Laya.Sprite {
                 this._guideArea = new GuideActionArea();
             }
             this.addChild(this._guideArea);
+            this._guideArea.y = Laya.stage.height - this._guideArea.height;
+            // this._guideArea.bottom = 0;
             // Game.bg.showGuidePointer();
             // this.guideCircle.transform.localPositionX = 0;
             Game.layer3d.addChild(this.guideCircle);

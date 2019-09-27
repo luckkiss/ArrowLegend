@@ -1,7 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
+    "selectedBox":36,
+    "selecteID":38,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#e7dbda","height":1334},
     "nodeParent":-1,
@@ -371,13 +372,14 @@
                     "props":{"y":1139,"x":375,"width":421,"visible":false,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","height":100,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":8,
                     "label":"fuhuo",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":36,
                     "child":[
                         {
+                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite",
                             "props":{"y":4,"x":123,"texture":"main/action.png"},
@@ -391,9 +393,10 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,deshuliang",
-                            "props":{"y":30,"x":183,"width":122,"var":"deshuliang","text":"十倍领取","height":40,"fontSize":28,"color":"#ffffff","align":"left"},
+                            "props":{"y":30,"x":183,"width":122,"var":"deshuliang","text":"2倍领取","height":40,"fontSize":28,"color":"#ffffff","align":"left"},
                             "nodeParent":36,
                             "label":"deshuliang",
                             "isDirectory":false,

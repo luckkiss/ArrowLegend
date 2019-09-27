@@ -33,8 +33,8 @@ import SysChapter from "../main/sys/SysChapter";
 import Coin from "./player/Coin";
 
 export default class Game {
-    static codeVer:string = "1.1.2.09261622";
-    static resVer:string = "1.1.2.09261622";
+    static codeVer:string = "1.1.2.09261952";
+    static resVer:string = "1.1.2.09262127";
 
     /**本地资源 */
 	static nativefiles:string[] = [
@@ -220,6 +220,13 @@ export default class Game {
             if(!Session.homeData.isPass)
             {
                 Game.battleLoader.index++;
+                if(Game.battleLoader.chapterId == Session.homeData.chapterId)
+                {
+                    if(Session.homeData.mapIndex < Game.battleLoader.index)
+                    {
+                        Session.homeData.mapIndex = Game.battleLoader.index - 1;
+                    }
+                }
             }
         }
 
@@ -352,7 +359,7 @@ export default class Game {
 
     static showMain():void
     {
-        Game.cookie.removeCookie(CookieKey.CURRENT_BATTLE);
+        // Game.cookie.removeCookie(CookieKey.CURRENT_BATTLE);
         Game.selectFoot && Game.selectFoot.removeSelf();
         Game.selectHead && Game.selectHead.removeSelf();
         Game.skillManager.clear();
@@ -360,7 +367,8 @@ export default class Game {
         Game.rebornTimes = 2;
         if(Game.hero)
         {
-            Game.hero.reset();
+            Game.hero.resetBlood();
+            Game.hero.resetSkill();
             Game.hero.resetAI();
         }
         

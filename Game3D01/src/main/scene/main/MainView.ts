@@ -53,8 +53,10 @@ export default class MainView extends Laya.Box {
         }
     }
 
+    private lastView:Laya.View;
     private setView(index: number):void
     {
+        this.lastView = this.views[this.curIndex];
         let view: Laya.View = this.views[index];
         Laya.Tween.clearTween(this.content);
         if(this.curIndex == 1)
@@ -82,5 +84,6 @@ export default class MainView extends Laya.Box {
     private onCom(view: Laya.View): void {
         this.content.x = 0;
         view.x = 0;
+        this.lastView && this.lastView.removeSelf();
     }
 }

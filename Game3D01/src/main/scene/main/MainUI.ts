@@ -84,6 +84,7 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
             Laya.stage.on(GameEvent.WX_ON_SHOW,this,this.onDis);
 
             this.jia.on( Laya.Event.CLICK,this,this.addTiFun );
+            this.jia.visible = false;
         }
 
         public addTiFun():void{
