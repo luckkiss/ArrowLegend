@@ -69,6 +69,7 @@ export default class WorldCell extends ui.test.worldCellUI {
             {
                 this.cengshuTxt.text = "最高层数:" + maxCeng + "/" + maxCeng;
             }
+            console.log("刷新关卡",Session.homeData.mapIndex,sysChapter.id,Session.homeData.chapterId);
         }
     }
 

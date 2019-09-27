@@ -103,6 +103,7 @@ export default class HomeData implements IData{
         data.playerExp = this.playerExp;
         data.chapterId = this.chapterId;
         data.mapIndex = this.mapIndex;
+        console.log("当前的层数",data.mapIndex);
         if(Game.battleLoader.chapterId >= this.chapterId)
         {
             if( Game.battleLoader.index > this.mapIndex ) {

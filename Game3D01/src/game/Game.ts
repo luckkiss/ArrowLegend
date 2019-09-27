@@ -220,6 +220,13 @@ export default class Game {
             if(!Session.homeData.isPass)
             {
                 Game.battleLoader.index++;
+                if(Game.battleLoader.chapterId == Session.homeData.chapterId)
+                {
+                    if(Session.homeData.mapIndex < Game.battleLoader.index)
+                    {
+                        Session.homeData.mapIndex = Game.battleLoader.index - 1;
+                    }
+                }
             }
         }
 
@@ -352,7 +359,7 @@ export default class Game {
 
     static showMain():void
     {
-        Game.cookie.removeCookie(CookieKey.CURRENT_BATTLE);
+        // Game.cookie.removeCookie(CookieKey.CURRENT_BATTLE);
         Game.selectFoot && Game.selectFoot.removeSelf();
         Game.selectHead && Game.selectHead.removeSelf();
         Game.skillManager.clear();

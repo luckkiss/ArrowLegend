@@ -353,6 +353,17 @@ export module ui.test {
         }
     }
     REG("ui.test.guangUI",guangUI);
+    export class guanggaoUI extends Scene {
+		public fuhuo:Laya.Button;
+		public deshuliang:Laya.Label;
+        public static  uiView:any ={"type":"Scene","props":{},"compId":2,"child":[{"type":"Button","props":{"y":0,"x":0,"width":358,"var":"fuhuo","stateNum":1,"skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","scaleY":1,"scaleX":1,"height":100,"anchorY":0.5,"anchorX":0.5},"compId":3,"child":[{"type":"Sprite","props":{"y":4,"x":90,"texture":"main/action.png"},"compId":4},{"type":"Label","props":{"y":30,"x":159,"width":122,"var":"deshuliang","text":"免费获得","height":40,"fontSize":28,"color":"#ffffff","align":"left"},"compId":5}]}],"loadList":["main/btn_zi.png","main/action.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(guanggaoUI.uiView);
+        }
+    }
+    REG("ui.test.guanggaoUI",guanggaoUI);
     export class HengjuUI extends View {
 		public huoxing:Laya.Clip;
 		public box:Laya.Box;

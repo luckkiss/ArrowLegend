@@ -8,6 +8,7 @@ import GameEvent from "../../../GameEvent";
 import SysChapter from "../../../sys/SysChapter";
 import { AD_TYPE } from "../../../../ADType";
 import { GoldType } from "../../../../game/data/HomeData";
+import CookieKey from "../../../../gameCookie/CookieKey";
 export default class GameOverView extends ui.test.GameOverUI {
     private maskSpr: Laya.Sprite = new Laya.Sprite();
     private oldLv: number;
@@ -68,6 +69,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onDis(): void {
+        Game.cookie.removeCookie(CookieKey.CURRENT_BATTLE);
         Laya.timer.frameLoop(1,this,this.onLoop);
         Laya.MouseManager.enabled = false;
         this.oldLv = Session.homeData.playerLv;
