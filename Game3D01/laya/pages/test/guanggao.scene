@@ -1,5 +1,4 @@
 {
-    "x":0,
     "type":"Scene",
     "selectedBox":2,
     "selecteID":3,
@@ -15,7 +14,6 @@
     "compId":2,
     "child":[
         {
-            "x":15,
             "type":"Button",
             "searchKey":"Button,fuhuo",
             "props":{"y":0,"x":0,"width":358,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","scaleY":1,"scaleX":1,"height":100,"anchorY":0.5,"anchorX":0.5},
@@ -28,7 +26,6 @@
             "compId":3,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"y":4,"x":90,"texture":"main/action.png"},
@@ -42,7 +39,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label,deshuliang",
                     "props":{"y":30,"x":159,"width":122,"var":"deshuliang","text":"免费获得","height":40,"fontSize":28,"color":"#ffffff","align":"left"},
@@ -60,7 +56,111 @@
     "animations":[
         {
             "nodes":[
-                ],
+                {
+                    "target":3,
+                    "keyframes":{
+                        "scaleY":[
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleY",
+                                "index":0
+                            },
+                            {
+                                "value":1.2,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleY",
+                                "index":4
+                            },
+                            {
+                                "value":0.9,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleY",
+                                "index":7
+                            },
+                            {
+                                "value":1.1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleY",
+                                "index":11
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleY",
+                                "index":15
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "label":null,
+                                "key":"scaleY",
+                                "index":30
+                            }],
+                        "scaleX":[
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleX",
+                                "index":0
+                            },
+                            {
+                                "value":1.2,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleX",
+                                "index":4
+                            },
+                            {
+                                "value":0.9,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleX",
+                                "index":7
+                            },
+                            {
+                                "value":1.1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleX",
+                                "index":11
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"scaleX",
+                                "index":15
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "label":null,
+                                "key":"scaleX",
+                                "index":30
+                            }]
+                    }
+                }],
             "name":"ani1",
             "id":1,
             "frameRate":24,
