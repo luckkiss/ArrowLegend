@@ -449,6 +449,14 @@ export default class GamePro extends Laya.EventDispatcher {
     }
 
     public move2D(n: number, hd: boolean = true): boolean {
+        if(this.gamedata.proType == GameProType.RockGolem_Blue)
+        {
+            if(this.gamedata.hp <= 0)
+            {
+                //死了就不移动了
+                return;
+            }
+        }
         if(this.isIce)
         {
             return;
