@@ -15,6 +15,7 @@ import FlyEffect from "../../../../game/effect/FlyEffect";
 import RollCell from "./RollCell";
 import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
 import Game from "../../../../game/Game";
+import GameMain from "../../../GameMain";
 export default class RoleView extends ui.test.jueseUI {
     public nowRoleId:number = 1;
     public autoEvent:AutoEvent = new AutoEvent();
@@ -120,7 +121,7 @@ export default class RoleView extends ui.test.jueseUI {
         this.zuo.clickHandler = new Laya.Handler( this,this.turnFun , [-1] );
         this.you.clickHandler = new Laya.Handler( this,this.turnFun , [1] );
 
-        this.zuo.visible = this.you.visible = false;
+        //this.zuo.visible = this.you.visible = false;
 
         this.updateAll();
     }
@@ -138,8 +139,8 @@ export default class RoleView extends ui.test.jueseUI {
         }else{
             this.showRoleById( now );
         }
-        // this.zuo.visible = !(now == 1);
-        // this.you.visible = !(now == 3);
+        this.zuo.visible = !(now == 1);
+        this.you.visible = !(now == 3);
 
         this.nowRoleId = now;
         this.updateAll();
@@ -315,6 +316,7 @@ export default class RoleView extends ui.test.jueseUI {
             FlyUpTips.setTips("升级到头了");
         }else if( res == 4 ){
             FlyUpTips.setTips("金币不够");
+            App.dialogManager.open( GameMain.TIME_GOLD );
         }else if( res == 5 ){
             FlyUpTips.setTips("升级到头了");
         }else if( res == 0 ) {

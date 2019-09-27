@@ -22,6 +22,7 @@ import Session from "./Session";
 import TimeGoldDialog from "./scene/main/timegold/TimeGoldDialog";
 import RankDialog from "./scene/main/rank/RankDialog";
 import SysItem from "./sys/SysItem";
+import { Guide_Type } from "./guide/GuideManager";
 
 export default class GameMain {
     constructor() {
@@ -37,8 +38,13 @@ export default class GameMain {
             Game.battleLoader.load();
         }else{
             Game.showMain();
+
+            if( Session.homeData.newStat != Guide_Type.over ){
+                return;
+            }
             Game.cookie.getCookie(CookieKey.CURRENT_BATTLE, (res) => {
                 if (res)  {
+
                     Game.alert.onShow("是否继续未完成的战斗?", new Laya.Handler(this, this.onContinue, [res]), new Laya.Handler(this, this.onCancel));
                 }
             });

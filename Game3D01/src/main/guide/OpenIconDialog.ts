@@ -8,6 +8,8 @@ export default class OpenIconDialog extends ui.test.OpenIconUI{
     constructor( openIndex:number ){
         super();
 
+        this.light.cacheAs = "bitmap";
+
         Laya.MouseManager.enabled = false;
 
         this.openIndex = openIndex;

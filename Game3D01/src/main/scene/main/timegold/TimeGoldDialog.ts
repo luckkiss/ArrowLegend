@@ -34,7 +34,7 @@ export default class TimeGoldDialog extends ui.test.TimeGoldUI{
         //App.dialog( MyGameInit.NewGetItemDialog , true ,  this.timeGoldSession.gold );
         //this.timeGoldSession.rewardGold(false);
         Session.timeGoldData.rewardGold(false);
-        this.init(); 
+        this.init();
     }
 
     // public aa():void{
