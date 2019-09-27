@@ -26,6 +26,23 @@ export default class TimeGoldDialog extends ui.test.TimeGoldUI{
     }
 
     public normalClick():void{
+        let t = new ui.test.TestViewUI();
+		Laya.stage.addChild( t );
+        t.pos( 200 , 200 );
+        let f = new Laya.ColorFilter();
+        //f.adjustBrightness(100);//brightness adjustColor(100,100,100,180);
+        f.setColor( "#ffffff" );
+        t.s1.filters = [ f ];
+
+        let t1 = new Laya.Tween();
+        t1.to( t.s1 , {alpha:0} , 400 , null, null,  1000 );
+        
+        MyEffect.bigSmall( t.box , 2, 1  );
+
+        return;
+    
+    
+    
         if ( Session.timeGoldData.gold == 0) {
             this.close();
             return;
@@ -35,6 +52,10 @@ export default class TimeGoldDialog extends ui.test.TimeGoldUI{
         //this.timeGoldSession.rewardGold(false);
         Session.timeGoldData.rewardGold(false);
         this.init();
+
+
+
+
     }
 
     public adFun(stat: number): void {
