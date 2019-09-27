@@ -28,4 +28,8 @@ export default class GameEvent{
     static SHOW_MAIN:string = "SHOW_MAIN";
 
     static RED_UPDATE:string = "RED_UPDATE";
+
+    static NEW_DAY:string = "NEW_DAY";
+
+    static AD_OVER:string = "AD_OVER";
 }

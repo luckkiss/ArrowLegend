@@ -174,7 +174,7 @@ P 429F2BC1 btn_zuo.png
 P 5CF7DEFA changhong.png
 P 7E543FB5 changhong2.png
 P F878E648 clip_shuzi.png
-P 8A48BAA7 clipshuzi.png
+R 8A48BAA7 clipshuzi.png
 P 8498FFA8 dabiao.png
 P F218CE56 daxin.png
 P B8C3270F dazhao.png
@@ -185,9 +185,9 @@ P 081D1B14 dongjin.png
 P D6F6405B dunpai.png
 P 47AAA150 fenxiangbiao.png
 P FE74867E fuhuodi2.jpg
-P 257A340C greenFont.png
+R 257A340C greenFont.png
 P F211986B guangdian.png
-P 87EC5AD8 guangzhuan1.png
+R 87EC5AD8 guangzhuan1.png
 P 5ACB0596 guanjikuang.png
 P 375AA97B haibo.png
 P 87C3577F hei.jpg
@@ -214,7 +214,7 @@ P DF0111DA qing.png
 P 1D522270 quantiao.png
 P 92C4F8F3 queding.png
 P 4070A1DA quxiao.png
-P 7912E984 redFont.png
+R 7912E984 redFont.png
 P 69A16447 sanbei.png
 P AD7FCD1D shamolvzhou.png
 P A88CEF17 shandianjia.png

@@ -1,3 +1,5 @@
+import App from "../App";
+
 /*
 * name;
 */
@@ -8,13 +10,12 @@ export default class SoundManager{
 
     public setMusicVolume(value:number):void
     {
-        Laya.SoundManager.musicMuted = value == 0;
-        
+        App.gameSoundManager.setBgmMuted( value == 0 );
     }
 
     public setSoundVolume(value:number):void
     {
-        Laya.SoundManager.soundMuted = value == 0;
+        App.gameSoundManager.setEffMuted( value == 0 );
     }
 
     
@@ -25,6 +26,13 @@ export default class SoundManager{
         this.soundName = soundName;
         this.isMusic = isMusic;
         var url:string = this.pre + soundName;
+
+        if( isMusic ){
+            App.gameSoundManager.playBgm( url );
+        }else{
+            App.gameSoundManager.playEffect( url );
+        }
+        return;
         if(Laya.loader.getRes(url))
         {
             this.onLoadCom(url,isMusic);
