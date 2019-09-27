@@ -152,6 +152,7 @@ export default class SdkManager {
                 this.lastAdSucTime = Laya.Browser.now();
                 this.exeHandler();
                 this.log( LogType.AD_SUC_OVER );
+                App.sendEvent( GameEvent.AD_OVER );
             }
         });
         this.ad.onError( err => {

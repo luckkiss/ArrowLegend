@@ -47,6 +47,7 @@ import GameEvent from "./main/GameEvent";
 import NPC_1001_view from "./main/scene/battle/npc/NPC_1001_view";
 import HomeLoading from "./main/HomeLoading";
 import InitView from "./main/InitView";
+import GameSoundManager from "./core/manager/GameSoundManager";
 
 class Main {
 	private _initView: InitView;
@@ -83,6 +84,8 @@ class Main {
 			});
 		}
 
+		
+
 		this._initView = new InitView();
 		Laya.stage.once(GameEvent.INIT_COM,this,this.onInitCom);
 		Laya.stage.addChild(this._initView);
@@ -111,6 +114,8 @@ class Main {
 		App.soundManager.pre = "h5/sounds/";
 		ZipLoader.instance.zipFun(Laya.loader.getRes("h5/tables.zip"), new Laya.Handler(this, this.zipFun));
 		this.regClass();
+
+		App.gameSoundManager.reg( GameSoundManager.BTN ,  App.soundManager.pre + "fx_button.wav" );
 	}
 
 	private curBP: BasePlatform;

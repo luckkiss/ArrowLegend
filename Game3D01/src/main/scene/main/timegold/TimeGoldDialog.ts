@@ -25,7 +25,7 @@ export default class TimeGoldDialog extends ui.test.TimeGoldUI{
         //this.sdkSession.playAdVideo(SdkSession.TIME_GOLD, new Laya.Handler(this, this.adFun));
     }
 
-    public normalClick():void{
+    public normalClick():void {
         if ( Session.timeGoldData.gold == 0) {
             this.close();
             return;
@@ -34,8 +34,24 @@ export default class TimeGoldDialog extends ui.test.TimeGoldUI{
         //App.dialog( MyGameInit.NewGetItemDialog , true ,  this.timeGoldSession.gold );
         //this.timeGoldSession.rewardGold(false);
         Session.timeGoldData.rewardGold(false);
-        this.init();
+        this.init(); 
     }
+
+    // public aa():void{
+    //     let t = new ui.test.TestViewUI();
+    //     t.zOrder = 1000;
+    //     t.pos( Laya.stage.width * Math.random()  , Laya.stage.height * Math.random()  );
+    //     let f = new Laya.ColorFilter();
+    //     //f.adjustBrightness(100);//brightness adjustColor(100,100,100,180);
+    //     f.setColor( "#ffffff" );
+    //     t.s1.filters = [ f ];
+    //     Laya.timer.once( 3000 * Math.random() , null , ()=>{
+    //         Laya.stage.addChild( t );
+    //         let t1 = new Laya.Tween();
+    //         t1.to( t.s1 , {alpha:0} , 400 );
+    //         MyEffect.bigSmall( t.box , 2, 1  );
+    //     } );
+    // }
 
     public adFun(stat: number): void {
         if ( Session.timeGoldData.gold == 0 ) {

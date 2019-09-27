@@ -4,6 +4,7 @@ import BitmapNumber from "./display/BitmapNumber";
 import SoundManager from "./manager/SoundManager";
 import SdkManager from "./manager/SdkManager";
 import DialogManager from "./manager/DialogManager";
+import GameSoundManager from "./manager/GameSoundManager";
 
 export default class App{
     static top:number = 10;
@@ -17,12 +18,14 @@ export default class App{
     static sdkManager:SdkManager = null;
     static eventManager:Laya.EventDispatcher = new Laya.EventDispatcher();
     static dialogManager:DialogManager = new DialogManager();
+    static gameSoundManager:GameSoundManager = null;
 
     static init():void{
         App.layerManager = new LayerManager();
         App.tableManager = new TableManager();
         App.soundManager = new SoundManager();
-        App.sdkManager = new SdkManager();        
+        App.sdkManager = new SdkManager();
+        App.gameSoundManager = new GameSoundManager();
     }
 
     static sendEvent( event:string ,data?:any):void{

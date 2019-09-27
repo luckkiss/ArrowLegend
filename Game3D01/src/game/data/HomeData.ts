@@ -37,6 +37,15 @@ export default class HomeData implements IData{
      */
     public newStat = 0;
 
+
+    public constructor(){
+        Laya.stage.on( GameEvent.NEW_DAY , this,this.newDayFun );
+    }
+
+    public newDayFun():void{
+        this.adPower = 0;
+    }
+
     public setChapterId( value:number ):void{
         this.chapterId = value;
         Session.rankData.saveWorldRank();
@@ -83,8 +92,32 @@ export default class HomeData implements IData{
         }else{
             this.openBtn = data.openBtn.split(",");
         }
-        this.adPower = data.adPower;
+        this.adPower = (data.adPower?data.adPower:0);
+
+        if( data.loginTime == null ){
+            App.sendEvent( GameEvent.NEW_DAY);
+        }else{
+            let last = new Date( data.loginTime );
+            let now = new Date();
+            if( now.getDate() != last.getDate() ){
+                App.sendEvent( GameEvent.NEW_DAY );
+            }
+        }
+        this.timeFun( 0 );
+        data.loginTime = Date.now();
     }
+
+    public timeFun( send:number ):void{
+        if( send == 1){
+            App.sendEvent( GameEvent.NEW_DAY );
+        }
+        let now = new Date();
+        let h = 60 * 60 * 1000;
+        let time:number = 24 * h - now.getHours() * h - now.getMinutes() * 60 * 1000 - now.getSeconds() * 1000;
+        Laya.timer.once( time + 1000 ,this,this.timeFun , [1] );
+    }
+
+    public loginTime:number = 0;
 
     /**
      * 存储数据
@@ -143,7 +176,7 @@ export default class HomeData implements IData{
     }
 
     /**
-     * 今天看了多少次
+     * 今天看了多少次恢复体力的广告
      */
     public adPower:number = 0;
 

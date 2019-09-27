@@ -985,6 +985,19 @@ export module ui.test {
         }
     }
     REG("ui.test.talent_1UI",talent_1UI);
+    export class TestViewUI extends View {
+		public ani1:Laya.FrameAnimation;
+		public box:Laya.Box;
+		public s2:Laya.Sprite;
+		public s1:Laya.Sprite;
+        public static  uiView:any ={"type":"View","props":{"width":300,"height":300},"compId":2,"child":[{"type":"Box","props":{"y":81,"x":74,"width":93,"var":"box","pivotY":47,"pivotX":47,"height":93},"compId":5,"child":[{"type":"Sprite","props":{"y":48,"x":45,"width":90,"var":"s2","texture":"main/baoshi2.png","pivotY":48,"pivotX":45,"height":96},"compId":3},{"type":"Sprite","props":{"y":48,"x":45,"width":90,"var":"s1","texture":"main/baoshi2.png","pivotY":48,"pivotX":45,"height":96},"compId":4}]}],"animations":[{"nodes":[{"target":5,"keyframes":{"y":[{"value":81,"tweenMethod":"backIn","tween":true,"target":5,"key":"y","index":0},{"value":239,"tweenMethod":"linearNone","tween":false,"target":5,"key":"y","index":40}],"x":[{"value":74,"tweenMethod":"backIn","tween":true,"target":5,"key":"x","index":0},{"value":236,"tweenMethod":"backIn","tween":true,"target":5,"key":"x","index":40}]}}],"name":"ani1","id":1,"frameRate":24,"action":0}],"loadList":["main/baoshi2.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(TestViewUI.uiView);
+        }
+    }
+    REG("ui.test.TestViewUI",TestViewUI);
     export class TianFuCellUI extends View {
 		public bg1:Laya.Image;
 		public box2:Laya.Sprite;

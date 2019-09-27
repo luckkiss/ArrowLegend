@@ -31,6 +31,9 @@ export default class TalentView extends ui.test.talentUI {
 
         this.list.renderHandler = new Laya.Handler( this,this.renderFun );
         //this.list.selectHandler = new Laya.Handler( this,this.selectFun );
+
+        
+		
     }
 
     public selectFun(index:number):void{
