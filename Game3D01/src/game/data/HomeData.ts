@@ -41,6 +41,13 @@ export default class HomeData implements IData{
     public constructor(){
         Laya.stage.on( GameEvent.NEW_DAY , this,this.newDayFun );
         Laya.stage.on( GameEvent.AD_OVER ,this,this.adOverFun );
+        Laya.stage.on( GameEvent.PASS_CHAPTER , this, this.openFun );
+    }
+
+    public openId:number = -1;
+
+    public openFun():void{
+        this.openId = Session.homeData.chapterId;
     }
 
     public adOverFun():void{
@@ -51,11 +58,7 @@ export default class HomeData implements IData{
         this.adPower = 0;
     }
 
-<<<<<<< HEAD
-    public setChapterId( value:number  ):void{
-=======
     public setChapterId( value:number,index:number):void{
->>>>>>> d315926fc3dc00acdbecb6bef7eaa0e5ff53f1b0
         this.chapterId = value;
         Session.rankData.saveWorldRank();
         Session.rankData.saveFriendRank();

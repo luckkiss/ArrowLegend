@@ -165,7 +165,6 @@ export default class RoleView extends ui.test.jueseUI {
             }else {
                 this.vs109.visible = true;
                 let sys = SysRoleBase.getSys( now );
-                sys.videoLock = 8;
                 if( Session.homeData.adTimes >= sys.videoLock ){
                     //次数够了
                     this.vs109.selectedIndex = 2;

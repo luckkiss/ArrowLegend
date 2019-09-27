@@ -44,7 +44,7 @@ export default class RankData implements IData{
 
     public getStageNum():number{
         let t = 0;
-        for( let i :number = 1; i <  Session.homeData.chapterId; i++  ){
+        for( let i :number = 1; i < Session.homeData.chapterId; i++  ){
             t += SysMap.getTotal( i );    
         }
         t += Session.homeData.mapIndex;

@@ -108,7 +108,14 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
     }
 
     private updateItem(cell: WorldCell, index: number): void  {
-        cell.update( this.list.getItem(index) );
+        let sysChapter:SysChapter = this.list.getItem(index);
+
+        if(  sysChapter && sysChapter.id == Session.homeData.openId ){
+            cell.update( sysChapter , true );
+            cell.open();
+        }else{
+            cell.update( sysChapter );
+        }
     }
 
     private onDis():void{
@@ -122,10 +129,12 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         arr1.push( null );
         this.list.array = arr1;
         this.list.scrollTo( indexTo );
-
+        
         let cell:ui.test.worldCellUI = <any>this.list.getCell( indexTo );
         cell.mapBtn.scale( 0.0,0.0 );
         let t = new Laya.Tween();
         t.to( cell.mapBtn , {scaleX:1,scaleY:1} , 500 , Laya.Ease.backOut , null , 200 );
+
+        Session.homeData.openId = -1;
     }
 }

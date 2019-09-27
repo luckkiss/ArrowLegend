@@ -39,8 +39,12 @@ export default class WorldCell extends ui.test.worldCellUI {
         }
     }
 
-    public update(sysChapter:SysChapter):void
+    public sys1:SysChapter = null;
+
+    public update(sysChapter:SysChapter , force:boolean = false ):void
     {
+        this.sys1 = sysChapter;
+        
         if( sysChapter == null ){
             this.openBox.visible = false;
             this.noOpenImg.visible = true;
@@ -53,24 +57,30 @@ export default class WorldCell extends ui.test.worldCellUI {
 
         this.sys = sysChapter;
         this.suo.visible = Session.homeData.chapterId < sysChapter.id;
+        if( force ){
+            this.suo.visible = false;
+        }
         this.mapBtn.gray = this.suo.visible;
         this.cengshuTxt.text = "";
         this.titleTxt.skin = "chapters/chapter_title_" + this.sys.id + ".png";
         this.mapBtn.skin = "chapters/chapter_img_" + this.sys.id + ".png";
         this.box1.visible = !this.suo.visible;
-        if(!this.suo.visible)
-        {
+        if(!this.suo.visible) {
             let maxCeng:number =  SysMap.getTotal(this.sys.id);
-            if(sysChapter.id == Session.homeData.chapterId)
-            {
+            if( sysChapter.id == Session.homeData.chapterId ) {
                 this.cengshuTxt.text = "最高层数:" + Session.homeData.mapIndex + "/" + maxCeng;
-            }
-            else
-            {
+            } else {
                 this.cengshuTxt.text = "最高层数:" + maxCeng + "/" + maxCeng;
             }
-            console.log("刷新关卡",Session.homeData.mapIndex,sysChapter.id,Session.homeData.chapterId);
         }
     }
 
+    public open():void{
+        let t = new Laya.Tween();
+        t.to( this.suo , { scaleX : 5,  scaleY :5 ,alpha :0 } ,  600 , null , new Laya.Handler(this,this.comfun) );
+    }
+
+    public comfun():void{
+        this.update( this.sys1 );
+    }
 }
