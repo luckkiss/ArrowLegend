@@ -33,8 +33,8 @@ import SysChapter from "../main/sys/SysChapter";
 import Coin from "./player/Coin";
 
 export default class Game {
-    static codeVer:string = "1.1.2.09271709";
-    static resVer:string = "1.1.2.09262127";
+    static codeVer:string = "1.1.2.09271931";
+    static resVer:string = "1.1.2.09271931";
 
     /**本地资源 */
 	static nativefiles:string[] = [
