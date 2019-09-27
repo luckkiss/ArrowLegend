@@ -20,7 +20,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     private delayTime:number = 200;
     constructor() {
         super();
-        App.sdkManager.initAdBtn(this.fuhuo.fuhuo, AD_TYPE.AD_BATTLE10);
+        App.sdkManager.initAdBtn(this.fuhuoBtn.fuhuo, AD_TYPE.AD_BATTLE10);
         this.on(Laya.Event.DISPLAY, this, this.onDis);
         this.on(Laya.Event.CLICK, this, this.onClick);
     }
@@ -57,7 +57,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onClick(e:Laya.Event): void {
-        if(e.target == this.fuhuo.fuhuo)
+        if(e.target == this.fuhuoBtn.fuhuo)
         {
             App.sdkManager.playAdVideo(AD_TYPE.AD_BATTLE10, new Laya.Handler(this, this.onRewardSuccess));
         }
@@ -173,7 +173,7 @@ export default class GameOverView extends ui.test.GameOverUI {
         if (Game.showBlueNum > 0) {
             this.addChild(this.lanBox);
             this.lanzuan.value = "+" + Game.showBlueNum;
-            this.lanBox.x = 343;
+            this.lanBox.x = 375;
             this.lanBox.y = this.hh;
             this.hh += 100;
 
@@ -191,7 +191,7 @@ export default class GameOverView extends ui.test.GameOverUI {
         if (Game.showRedNum > 0) {
             this.hongzuan.value = "+" + Game.showRedNum;
             this.addChild(this.ziBox);
-            this.ziBox.x = 343;
+            this.ziBox.x = 375;
             this.ziBox.y = this.hh;
             this.hh += 100;
 
@@ -212,7 +212,7 @@ export default class GameOverView extends ui.test.GameOverUI {
             this.deltaCoin.value = "+" + deltaNum;
             this.deltaCoin.visible = deltaNum > 0;
             this.addChild(this.coinBox);
-            this.coinBox.x = 343;
+            this.coinBox.x = 375;
             this.coinBox.y = this.hh;
             this.hh += 100;
 
@@ -227,7 +227,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onNext5(): void  {
-        this.fuhuo.y = this.hh + 30;
+        this.fuhuo.y = this.hh - 30;
         this.fuhuo.visible = true;
         this.fuhuo.scale(2.5, 2.5);
         this.fuhuo.alpha = 0;

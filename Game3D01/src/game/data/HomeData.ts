@@ -46,7 +46,7 @@ export default class HomeData implements IData{
         this.adPower = 0;
     }
 
-    public setChapterId( value:number ):void{
+    public setChapterId( value:number,index:number):void{
         this.chapterId = value;
         Session.rankData.saveWorldRank();
         Session.rankData.saveFriendRank();

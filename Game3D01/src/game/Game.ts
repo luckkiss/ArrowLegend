@@ -188,7 +188,7 @@ export default class Game {
             if(Game.battleLoader.chapterId >= Session.homeData.chapterId)
             {
                 Session.homeData.chapterId++;
-                Session.homeData.setChapterId(Session.homeData.chapterId);
+                Session.homeData.setChapterId(Session.homeData.chapterId,0);
             }
             Game.battleLoader.index = 0;
             Session.homeData.mapIndex = 0;
@@ -213,7 +213,7 @@ export default class Game {
             Game.battleLoader.index = 1;
             Game.battleLoader.chapterId = 1;
             SysChapter.randomDiamond(Game.battleLoader.chapterId);
-            Session.homeData.setChapterId(Session.homeData.chapterId);
+            Session.homeData.setChapterId(Session.homeData.chapterId,1);
         }
         else
         {
@@ -225,6 +225,7 @@ export default class Game {
                     if(Session.homeData.mapIndex < Game.battleLoader.index)
                     {
                         Session.homeData.mapIndex = Game.battleLoader.index - 1;
+                        Session.homeData.setChapterId(Session.homeData.chapterId,Session.homeData.mapIndex);
                     }
                 }
             }

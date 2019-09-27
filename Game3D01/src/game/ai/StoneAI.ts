@@ -29,7 +29,10 @@ export default class StoneAI extends FlowerAI {
         super(pro);
 
         this.callSkill = new CallSkill(this.skillISbs[0]);
-        this.windSkill = new WindSkill(this.skillISbs[1]);
+        if(this.skillISbs.length > 1)
+        {
+            this.windSkill = new WindSkill(this.skillISbs[1]);
+        }
         this.cd = this.sysEnemy.enemySpeed;
         this.nextTime = Game.executor.getWorldNow() + this.cd;
     }
@@ -83,6 +86,10 @@ export default class StoneAI extends FlowerAI {
                     {
                         this.normalAttack();
                     }
+                }
+                else
+                {
+                    this.normalAttack();
                 }
             }
         }
