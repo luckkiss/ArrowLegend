@@ -24,18 +24,17 @@ export default class TestPlatform extends BasePlatform{
         this.cb = callback;
         // callback && callback();
         let uu:HomeLoading = <any>Laya.stage.getChildByName("HomeLoading");
-        uu.once( Laya.Event.CLICK ,this,this.clickFun);
+        uu.on( Laya.Event.CLICK ,this,this.clickFun);
     }
 
     clickFun( e:Laya.Event ):void{
-        let uu:HomeLoading = <any>Laya.stage.getChildByName("HomeLoading");
-        if(e.target == uu.idTxt)
+        if(e.target instanceof HomeLoading)
         {
-            return;
+            let uu:HomeLoading = <any>Laya.stage.getChildByName("HomeLoading");
+            LoginHttp.FRONT = "test" + uu.idTxt.text;
+            Game.cookie.setCookie(CookieKey.USER_ID, { "userId": uu.idTxt.text });
+            this.cb && this.cb();
         }
-        LoginHttp.FRONT = "test" + uu.idTxt.text + Date.now();
-        Game.cookie.setCookie(CookieKey.USER_ID, { "userId": uu.idTxt.text });
-        this.cb && this.cb();
     }
 
     onShare(callback):void

@@ -360,7 +360,8 @@ export default class Game {
         Game.rebornTimes = 2;
         if(Game.hero)
         {
-            Game.hero.reset();
+            Game.hero.resetBlood();
+            Game.hero.resetSkill();
             Game.hero.resetAI();
         }
         
