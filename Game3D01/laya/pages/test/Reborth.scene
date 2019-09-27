@@ -6,7 +6,7 @@
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#000000","height":1334},
     "nodeParent":-1,
-    "maxID":43,
+    "maxID":44,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -45,15 +45,16 @@
             "child":[
                 {
                     "x":30,
-                    "type":"Sprite",
-                    "searchKey":"Sprite",
-                    "props":{"y":59,"x":75,"width":600,"texture":"main/fuhuodi2.jpg","height":400},
+                    "type":"UIView",
+                    "source":"test/BaseTipDialog.scene",
+                    "searchKey":"UIView,bgv",
+                    "props":{"y":53,"x":75.5,"var":"bgv"},
                     "nodeParent":6,
-                    "label":"Sprite",
+                    "label":"bgv",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
-                    "compId":12,
+                    "compId":43,
                     "child":[
                         ]
                 },
@@ -87,20 +88,6 @@
                 },
                 {
                     "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,closeBtn",
-                    "props":{"y":68,"x":614,"var":"closeBtn","stateNum":"1","skin":"main/btn_guanbi.png"},
-                    "nodeParent":6,
-                    "label":"closeBtn",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":11,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
                     "type":"Label",
                     "searchKey":"Label",
                     "props":{"y":360,"x":276,"width":167,"text":"剩余次数：","height":40,"fontSize":36,"color":"#ffffff","align":"center"},
@@ -131,7 +118,7 @@
                     "x":30,
                     "type":"Image",
                     "searchKey":"Image",
-                    "props":{"y":65,"x":331,"skin":"main/biaotifuhuo.png"},
+                    "props":{"y":68,"x":331,"skin":"main/biaotifuhuo.png"},
                     "nodeParent":6,
                     "label":"Image",
                     "isDirectory":false,

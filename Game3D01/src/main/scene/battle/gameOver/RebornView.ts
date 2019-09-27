@@ -8,7 +8,7 @@ export default class RebornView extends ui.test.ReborthUI {
 
     constructor() {
         super();
-        this.closeBtn.clickHandler = new Laya.Handler(this, this.onClose);
+        this.bgv.cBtn.clickHandler = new Laya.Handler(this, this.onClose);
         this.fuhuo.clickHandler = new Laya.Handler(this,this.onFuhuo);
         App.sdkManager.initAdBtn(this.fuhuo,AD_TYPE.AD_REBORTH);
         this.shape = new Laya.Sprite();

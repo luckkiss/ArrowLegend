@@ -16,6 +16,7 @@ import RollCell from "./RollCell";
 import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
 import Game from "../../../../game/Game";
 import GameMain from "../../../GameMain";
+import NoResDialog, { NoResDialogType } from "../../../dialog/NoResDialog";
 export default class RoleView extends ui.test.jueseUI {
     public nowRoleId:number = 1;
     public autoEvent:AutoEvent = new AutoEvent();
@@ -243,13 +244,21 @@ export default class RoleView extends ui.test.jueseUI {
      * @param goldType 
      */
     public jiaFun( goldType:GoldType , flyTarget:Laya.Image , fc:Laya.FontClip , type:HeroLvType  ):void{
-        let d = new AdDiamond();
-        d.heroType = type;
-        d.setGoldType( goldType );
-        d.popup();
+        // let d = new AdDiamond();
+        // d.heroType = type;
+        // d.setGoldType( goldType );
+        // d.popup();
 
+        let dia = new NoResDialog();
+        if( goldType == GoldType.RED_DIAMONG ){
+            dia.setType( NoResDialogType.red );
+        }else{
+            dia.setType( NoResDialogType.blue );
+        }
+        
+        dia.popup();
         this.oldNum = Session.homeData.getGoldByType( goldType );
-        d.on( AdDiamond.CHANGE_GOLD_EVENT , this, this.flyGoldFun , [flyTarget , fc , type ] );
+        dia.on( AdDiamond.CHANGE_GOLD_EVENT , this, this.flyGoldFun , [flyTarget , fc , type ] );
     }
 
     public flyGoldFun( flyTarget:Laya.Image , fc:Laya.FontClip , type:HeroLvType , y:GoldType , v:number ):void{
