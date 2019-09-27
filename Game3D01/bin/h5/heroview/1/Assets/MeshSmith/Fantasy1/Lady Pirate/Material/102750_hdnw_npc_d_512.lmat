@@ -2,7 +2,7 @@
 	"version":"LAYAMATERIAL:02",
 	"props":{
 		"type":"Laya.UnlitMaterial",
-		"name":"102710_hdnw_npc_d_512",
+		"name":"102750_hdnw_npc_d_512",
 		"renderStates":[
 			{
 				"cull":2,
@@ -17,7 +17,7 @@
 		"alphaTest":false,
 		"alphaTestValue":0.5,
 		"renderQueue":2000,
-		"albedoIntensity":1.1,
+		"albedoIntensity":1,
 		"textures":[
 			{
 				"name":"albedoTexture",

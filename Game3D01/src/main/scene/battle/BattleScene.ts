@@ -343,10 +343,6 @@ export default class BattleScene extends Laya.Sprite {
         Game.ro.resetPos();
         this.addChild(Game.ro);
 
-        if(!Game.hero)
-        {
-            Game.hero = new Hero();
-        }
         Game.hero.init();
         Game.lastLevel = Game.level;
         Game.bg.updateY();
