@@ -57,7 +57,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onClick(e:Laya.Event): void {
-        if(e.target == this.fuhuo)
+        if(e.target == this.fuhuo.fuhuo)
         {
             App.sdkManager.playAdVideo(AD_TYPE.AD_BATTLE10, new Laya.Handler(this, this.onRewardSuccess));
         }
