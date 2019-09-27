@@ -36,7 +36,7 @@ export default class Hero extends GamePro {
         this.unBlocking = true;
         this.setGameMove(new PlaneGameMove());
         this.setGameAi(new HeroAI());
-        // this.busi = true;
+        this.busi = true;
     }
 
     addBuff(buffId:number):void
