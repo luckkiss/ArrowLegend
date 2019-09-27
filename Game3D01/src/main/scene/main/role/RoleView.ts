@@ -255,7 +255,6 @@ export default class RoleView extends ui.test.jueseUI {
         }else{
             dia.setType( NoResDialogType.blue );
         }
-        
         dia.popup();
         this.oldNum = Session.homeData.getGoldByType( goldType );
         dia.on( AdDiamond.CHANGE_GOLD_EVENT , this, this.flyGoldFun , [flyTarget , fc , type ] );
