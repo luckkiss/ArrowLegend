@@ -250,6 +250,7 @@ export default class RoleView extends ui.test.jueseUI {
         // d.popup();
 
         let dia = new NoResDialog();
+        dia.heroType = type;
         if( goldType == GoldType.RED_DIAMONG ){
             dia.setType( NoResDialogType.red );
         }else{

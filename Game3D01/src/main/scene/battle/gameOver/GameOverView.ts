@@ -20,7 +20,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     private delayTime:number = 200;
     constructor() {
         super();
-        App.sdkManager.initAdBtn(this.fuhuo, AD_TYPE.AD_BATTLE10);
+        App.sdkManager.initAdBtn(this.fuhuo.fuhuo, AD_TYPE.AD_BATTLE10);
         this.on(Laya.Event.DISPLAY, this, this.onDis);
         this.on(Laya.Event.CLICK, this, this.onClick);
     }
