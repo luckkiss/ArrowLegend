@@ -85,12 +85,11 @@ class Main {
 		}
 
 		
-
+		App.init();
+		App.soundManager.pre = "h5/sounds/";
 		this._initView = new InitView();
 		Laya.stage.once(GameEvent.INIT_COM,this,this.onInitCom);
 		Laya.stage.addChild(this._initView);
-
-		App.init();
 		MyEffect.initBtnEffect();
 
 		let bg = new ui.test.StageBgUI();
@@ -111,7 +110,7 @@ class Main {
 	private onInitCom(): void {
 		Laya.stage.addChild(App.layerManager);
 		
-		App.soundManager.pre = "h5/sounds/";
+		
 		ZipLoader.instance.zipFun(Laya.loader.getRes("h5/tables.zip"), new Laya.Handler(this, this.zipFun));
 		this.regClass();
 
