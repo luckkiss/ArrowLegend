@@ -91,6 +91,12 @@ export default class RollCell{
     public setData( roleId:number ):void
     {
         let haveRold = SysRoleBase.have( roleId );
+        let sys = SysRoleBase.getSys( roleId );
+        let isLock:boolean = false;
+        if( sys && Session.homeData.adTimes < sys.videoLock ){
+            haveRold = false;
+            isLock = true;
+        }
         if( haveRold ){
             this.vs2.visible = true;
             this.vs1.visible = true;
@@ -101,7 +107,6 @@ export default class RollCell{
             }else{
                 this.lv.visible = false;
             }
-
         }else{
             this.vs2.visible = false;
             this.vs1.visible = false;
@@ -110,7 +115,10 @@ export default class RollCell{
             
             this.nowLvAddfc.value = "+0";
             this.lv.visible = false;
-            return;
+
+            if( isLock == false ){
+                return;    
+            }
         }
 
         let lv = Session.heroData.getHeroLv( roleId , this.heroLvType );
@@ -124,7 +132,11 @@ export default class RollCell{
         this.heroBaseFc.value = sysRoleBase.getValue( this.heroLvType ) + "";
         this.heroAddFc.value =  "+" + SysRoleUp.getAddValue( roleId , lv , this.heroLvType );
         this.heroAddFc.x =  this.heroBaseFc.x + this.heroBaseFc.value.length * 23 + 10;
-        
+
+        if( isLock ){
+            return;
+        }
+
         //按钮里的
         this.lvUpBtnGoldText.text = sysRoleUp.costGold + "";
 
