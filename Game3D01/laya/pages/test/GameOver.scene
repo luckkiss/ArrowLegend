@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":36,
-    "selecteID":38,
+    "selectedBox":2,
+    "selecteID":36,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#e7dbda","height":1334},
     "nodeParent":-1,
@@ -364,50 +364,6 @@
                             "child":[
                                 ]
                         }]
-                },
-                {
-                    "x":30,
-                    "type":"Button",
-                    "searchKey":"Button,fuhuo",
-                    "props":{"y":1139,"x":375,"width":421,"visible":false,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","height":100,"anchorY":0.5,"anchorX":0.5},
-                    "nodeParent":8,
-                    "label":"fuhuo",
-                    "isOpen":true,
-                    "isDirectory":true,
-                    "isAniNode":true,
-                    "hasChild":true,
-                    "compId":36,
-                    "child":[
-                        {
-                            "x":45,
-                            "type":"Sprite",
-                            "searchKey":"Sprite",
-                            "props":{"y":4,"x":123,"texture":"main/action.png"},
-                            "nodeParent":36,
-                            "label":"Sprite",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":37,
-                            "child":[
-                                ]
-                        },
-                        {
-                            "x":45,
-                            "type":"Label",
-                            "searchKey":"Label,deshuliang",
-                            "props":{"y":30,"x":183,"width":122,"var":"deshuliang","text":"2倍领取","height":40,"fontSize":28,"color":"#ffffff","align":"left"},
-                            "nodeParent":36,
-                            "label":"deshuliang",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":38,
-                            "child":[
-                                ]
-                        }],
-                    "$LOCKED":false,
-                    "$HIDDEN":false
                 }],
             "$LOCKED":false
         },
@@ -418,14 +374,13 @@
             "props":{"y":800,"x":343,"width":256,"var":"lanBox","height":78,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"lanBox",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":74,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"y":3,"x":0,"texture":"juese/jiangbeihei.png","scaleY":0.3,"scaleX":0.3},
@@ -439,7 +394,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"texture":"juese/jiangbei.png","scaleY":0.3,"scaleX":0.3},
@@ -453,7 +407,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"FontClip",
                     "searchKey":"FontClip,lanzuan",
                     "props":{"y":24,"x":120,"width":500,"var":"lanzuan","value":"+120","skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:cdef","scaleY":0.4,"scaleX":0.4,"height":120,"align":"left"},
@@ -475,14 +428,13 @@
             "props":{"y":900,"x":343,"width":256,"var":"ziBox","height":78,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"ziBox",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":75,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"y":3,"texture":"juese/jiangbeihei.png","scaleY":0.3,"scaleX":0.3},
@@ -496,7 +448,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":0,"texture":"juese/jiangbei1.png","scaleY":0.3,"scaleX":0.3},
@@ -510,7 +461,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"FontClip",
                     "searchKey":"FontClip,hongzuan",
                     "props":{"y":24,"x":120,"width":500,"var":"hongzuan","value":"+120","skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:cdef","scaleY":0.4,"scaleX":0.4,"height":120,"align":"left"},
@@ -532,17 +482,16 @@
             "props":{"y":1000,"x":343,"width":256,"var":"coinBox","height":78,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"coinBox",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":76,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
-                    "props":{"y":0,"x":0,"texture":"juese/jiangbi.png","scaleY":0.35,"scaleX":0.35},
+                    "props":{"y":-14,"x":0,"texture":"juese/jiangbi.png","scaleY":0.35,"scaleX":0.35},
                     "nodeParent":76,
                     "label":"Sprite",
                     "isDirectory":false,
@@ -553,7 +502,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"FontClip",
                     "searchKey":"FontClip,coinClip",
                     "props":{"y":24,"x":120,"width":500,"var":"coinClip","value":"+120","skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:cdef","scaleY":0.4,"scaleX":0.4,"height":120,"align":"left"},
@@ -568,7 +516,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"FontClip",
                     "searchKey":"FontClip,deltaCoin",
                     "props":{"y":24,"x":310,"width":500,"var":"deltaCoin","value":"+120","skin":"main/greenFont.png","sheet":"123456 7890-+ /:cdef","scaleY":0.4,"scaleX":0.4,"height":120,"align":"left"},
@@ -582,6 +529,48 @@
                     "child":[
                         ]
                 }]
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button,fuhuo",
+            "props":{"y":1130,"x":375,"width":421,"visible":false,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","height":100,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"fuhuo",
+            "isOpen":false,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":36,
+            "child":[
+                {
+                    "type":"Sprite",
+                    "searchKey":"Sprite",
+                    "props":{"y":4,"x":123,"texture":"main/action.png"},
+                    "nodeParent":36,
+                    "label":"Sprite",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":37,
+                    "child":[
+                        ]
+                },
+                {
+                    "type":"Label",
+                    "searchKey":"Label,deshuliang",
+                    "props":{"y":17,"x":197,"width":158,"var":"deshuliang","text":"2倍领取","height":40,"fontSize":36,"color":"#ffffff","bold":true,"align":"left"},
+                    "nodeParent":36,
+                    "label":"deshuliang",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":38,
+                    "child":[
+                        ]
+                }],
+            "$LOCKED":false,
+            "$HIDDEN":false
         }],
     "animations":[
         {

@@ -32,4 +32,6 @@ export default class GameEvent{
     static NEW_DAY:string = "NEW_DAY";
 
     static AD_OVER:string = "AD_OVER";
+
+    static AD_UPDATE_POWER:string = "AD_UPDATE_POWER";
 }

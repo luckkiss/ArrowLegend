@@ -136,7 +136,7 @@ export default class LvUpView extends ui.test.shengjiUI {
 
     private onNext5():void
     {
-        this.rebornBtn.y = this.hh;
+        this.rebornBtn.y = this.hh + 30;
         this.rebornBtn.visible = true;
         this.rebornBtn.scale(2.5, 2.5);
         this.rebornBtn.alpha = 0;

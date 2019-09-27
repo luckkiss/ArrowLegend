@@ -227,7 +227,7 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onNext5(): void  {
-        this.fuhuo.y = this.hh;
+        this.fuhuo.y = this.hh + 30;
         this.fuhuo.visible = true;
         this.fuhuo.scale(2.5, 2.5);
         this.fuhuo.alpha = 0;

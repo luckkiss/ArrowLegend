@@ -100,6 +100,10 @@ export default class FlowerAI extends BaseAI {
     }
 
     startAttack(): void {
+        if(this.pro.gamedata.hp <= 0)
+        {
+            return;
+        }
         // console.log("开始攻击");
         this.shooting._sysBullet = null;
 
