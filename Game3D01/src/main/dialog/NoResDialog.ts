@@ -2,6 +2,7 @@ import { ui } from "../../ui/layaMaxUI";
 import App from "../../core/App";
 import { AD_TYPE } from "../../ADType";
 import Session from "../Session";
+import GameEvent from "../GameEvent";
 
 export default class NoResDialog extends ui.test.NoResDialogUI{
     constructor(){
@@ -36,9 +37,10 @@ export default class NoResDialog extends ui.test.NoResDialogUI{
     public overFun():void{
         Session.homeData.adPower++;
         this.close();
-        Session.saveData();
         Session.homeData.curEnergy = 20;
         Session.homeData.lastTime = 0;
+        Session.saveData();
+        App.sendEvent(GameEvent.AD_UPDATE_POWER);
     }
 }
 

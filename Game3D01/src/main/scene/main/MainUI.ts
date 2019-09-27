@@ -25,6 +25,8 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
 
             this.topUI = new TopUI();
             this.addChild(this.topUI);
+
+            Laya.stage.on(GameEvent.AD_UPDATE_POWER,this,this.onUpdatePower);
             //this.topUI.y = App.top - 1;
 
             this.bottomUI = new BottomUI();
@@ -43,6 +45,12 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
             this.addChild(this.bottomUI);
         
             this.mouseThrough = true;
+        }
+
+        private onUpdatePower():void
+        {
+            this.topUI.removeSelf();
+            this.addChild(this.topUI);
         }
 
         public appEnergy():void
@@ -189,12 +197,16 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
             value = Math.max(0.1,value);
 
             // DisplayUtils.updateBlood(this.mo, value, 100);
-
+            
             if(this.homeData.curEnergy < this.homeData.totalEnergy)
             {
-                Laya.timer.clear(this,this.onLoop);
                 Laya.timer.loop(1000,this,this.onLoop);
                 this.onLoop();
+            }
+            else
+            {
+                this.timerClip.visible = false;
+                Laya.timer.clear(this,this.onLoop);
             }
         }
 
