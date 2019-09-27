@@ -323,9 +323,11 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
 
         public makeBtn( b:Laya.Button ):void{
             let r = new ui.test.RedPointViewUI();
+            r.scale( 0.8,0.8 );
             b.addChild(r);
+
             r.name = "red";
-            r.pos( 80 , -10 );
+            r.pos( 90 , -20 );
             r.zOrder = 100;
             r.visible = false;
         }

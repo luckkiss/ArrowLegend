@@ -81,4 +81,6 @@
    <item name="test/RedPointView.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/BottomBox.scene" props="" ifExport="内嵌模式" aName=""/>
    <item name="test/TestView.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="test/guanggao.scene" props="" ifExport="内嵌模式" aName=""/>
+   <item name="test/BaseTipDialog.scene" props="" ifExport="内嵌模式" aName=""/>
 </page>

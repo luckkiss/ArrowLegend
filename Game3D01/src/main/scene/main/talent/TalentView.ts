@@ -12,6 +12,7 @@ import TalentCell2 from "./TalentCell2";
 import SysTalent from "../../../sys/SysTalent";
 import MyEffect from "../../../../core/utils/MyEffect";
 import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
+import GameMain from "../../../GameMain";
 
 export default class TalentView extends ui.test.talentUI {
 
@@ -113,6 +114,7 @@ export default class TalentView extends ui.test.talentUI {
         }
         if( Session.talentData.canLvUp() == -1 ){
             FlyUpTips.setTips( "金币不够" );
+            App.dialogManager.open( GameMain.TIME_GOLD );
             return;
         }
         Laya.MouseManager.enabled = false;
