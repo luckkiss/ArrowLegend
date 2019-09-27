@@ -41,6 +41,13 @@ export default class HomeData implements IData{
     public constructor(){
         Laya.stage.on( GameEvent.NEW_DAY , this,this.newDayFun );
         Laya.stage.on( GameEvent.AD_OVER ,this,this.adOverFun );
+        Laya.stage.on( GameEvent.PASS_CHAPTER , this, this.openFun );
+    }
+
+    public openId:number = -1;
+
+    public openFun():void{
+        this.openId = Session.homeData.chapterId;
     }
 
     public adOverFun():void{

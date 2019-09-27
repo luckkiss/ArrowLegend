@@ -165,7 +165,6 @@ export default class RoleView extends ui.test.jueseUI {
             }else {
                 this.vs109.visible = true;
                 let sys = SysRoleBase.getSys( now );
-                sys.videoLock = 8;
                 if( Session.homeData.adTimes >= sys.videoLock ){
                     //次数够了
                     this.vs109.selectedIndex = 2;
@@ -185,9 +184,11 @@ export default class RoleView extends ui.test.jueseUI {
         }
     }
 
-    public seleHeroFun( now:number ):void{
+    public seleHeroFun( now:number ):void {
         Session.heroData.nowRoleId = now;
         this.setNowRoleId( now );
+        this.xuan.ani1.interval = 1000 / 45;
+        this.xuan.ani1.play( 0, false );
     }
 
     /**切换3D模型 */

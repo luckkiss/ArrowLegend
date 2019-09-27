@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":145,
-    "selecteID":138,
+    "selectedBox":1,
+    "selecteID":119,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#c6abab","height":1334},
     "nodeParent":-1,
-    "maxID":147,
+    "maxID":149,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -1104,34 +1104,18 @@
                     "child":[
                         {
                             "x":45,
-                            "type":"Image",
-                            "searchKey":"Image,item0,xuan",
-                            "props":{"y":-0.5,"x":45,"var":"xuan","skin":"juese/juese_yixuanze.png","name":"item0"},
-                            "nodeParent":145,
-                            "label":"item0",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":45,
-                            "child":[
-                                ],
-                            "$HIDDEN":true
-                        },
-                        {
-                            "x":45,
                             "type":"Box",
                             "searchKey":"Box,item1",
                             "props":{"y":1.5,"x":-12,"name":"item1"},
                             "nodeParent":145,
                             "label":"item1",
-                            "isOpen":true,
+                            "isOpen":false,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":138,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image",
                                     "props":{"y":22,"x":41,"width":331,"skin":"bg/bosstiaoxia.png","sizeGrid":"0,20,0,20","height":42},
@@ -1145,7 +1129,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Sprite",
                                     "searchKey":"Sprite,zitiao",
                                     "props":{"y":24,"x":44,"var":"zitiao","texture":"juese/suipianshang.png"},
@@ -1159,7 +1142,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Sprite",
                                     "searchKey":"Sprite",
                                     "props":{"texture":"juese/suipian.png"},
@@ -1173,7 +1155,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"FontClip",
                                     "searchKey":"FontClip,hongzuan",
                                     "props":{"y":25,"x":128,"width":599,"var":"hongzuan","value":"123/900","skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:cdef","scaleY":0.3,"scaleX":0.3,"height":120,"align":"center"},
@@ -1188,7 +1169,6 @@
                                         ]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Text",
                                     "searchKey":"Text",
                                     "props":{"y":78,"x":71,"text":"累计观看视频50次","fontSize":30,"color":"#ffffff","bold":true,"align":"center"},
@@ -1201,7 +1181,7 @@
                                     "child":[
                                         ]
                                 }],
-                            "$HIDDEN":false
+                            "$HIDDEN":true
                         },
                         {
                             "x":45,
@@ -1230,6 +1210,21 @@
                                         ]
                                 }],
                             "$HIDDEN":true
+                        },
+                        {
+                            "x":45,
+                            "type":"UIView",
+                            "source":"test/yixuanze.scene",
+                            "searchKey":"UIView,item0,xuan",
+                            "props":{"y":-19.5,"x":35,"var":"xuan","name":"item0"},
+                            "nodeParent":145,
+                            "label":"item0",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":148,
+                            "child":[
+                                ]
                         }]
                 }]
         }],
