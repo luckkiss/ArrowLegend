@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":6,
+    "selecteID":43,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#000000","height":1334},
     "nodeParent":-1,
-    "maxID":43,
+    "maxID":44,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -45,11 +45,11 @@
             "child":[
                 {
                     "x":30,
-                    "type":"Sprite",
-                    "searchKey":"Sprite",
-                    "props":{"y":59,"x":75,"width":600,"texture":"main/fuhuodi2.jpg","height":400},
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":59,"x":75,"width":600,"skin":"main/fuhuodi2.jpg","height":400},
                     "nodeParent":6,
-                    "label":"Sprite",
+                    "label":"Image",
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -159,49 +159,6 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "searchKey":"Button,fuhuo",
-            "props":{"y":870,"x":375,"width":358,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","scaleY":1,"scaleX":1,"height":100,"anchorY":0.5,"anchorX":0.5},
-            "nodeParent":2,
-            "label":"fuhuo",
-            "isOpen":true,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":36,
-            "child":[
-                {
-                    "x":30,
-                    "type":"Sprite",
-                    "searchKey":"Sprite",
-                    "props":{"y":4,"x":90,"texture":"main/action.png"},
-                    "nodeParent":36,
-                    "label":"Sprite",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":37,
-                    "child":[
-                        ]
-                },
-                {
-                    "x":30,
-                    "type":"Label",
-                    "searchKey":"Label,deshuliang",
-                    "props":{"y":30,"x":150,"width":122,"var":"deshuliang","text":"免费复活","height":40,"fontSize":28,"color":"#ffffff","align":"left"},
-                    "nodeParent":36,
-                    "label":"deshuliang",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":38,
-                    "child":[
-                        ]
-                }],
-            "$HIDDEN":false
-        },
-        {
-            "x":15,
             "type":"Image",
             "searchKey":"Image,jindu",
             "props":{"y":586,"x":296,"var":"jindu","skin":"main/quantiao.png"},
@@ -225,6 +182,21 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":42,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"UIView",
+            "source":"test/guanggao.scene",
+            "searchKey":"UIView,fuhuo",
+            "props":{"y":868,"x":375,"var":"fuhuo"},
+            "nodeParent":2,
+            "label":"fuhuo",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":43,
             "child":[
                 ]
         }],

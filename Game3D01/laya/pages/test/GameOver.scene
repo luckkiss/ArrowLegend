@@ -2,11 +2,11 @@
     "x":0,
     "type":"View",
     "selectedBox":2,
-    "selecteID":36,
+    "selecteID":88,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#e7dbda","height":1334},
     "nodeParent":-1,
-    "maxID":88,
+    "maxID":89,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -532,45 +532,18 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "searchKey":"Button,fuhuo",
-            "props":{"y":1130,"x":375,"width":421,"visible":false,"var":"fuhuo","stateNum":"1","skin":"main/btn_zi.png","sizeGrid":"0,27,0,28","height":100,"anchorY":0.5,"anchorX":0.5},
+            "type":"UIView",
+            "source":"test/guanggao.scene",
+            "searchKey":"UIView,fuhuo",
+            "props":{"y":1130,"x":388,"var":"fuhuo"},
             "nodeParent":2,
             "label":"fuhuo",
-            "isOpen":false,
-            "isDirectory":true,
+            "isDirectory":false,
             "isAniNode":true,
-            "hasChild":true,
-            "compId":36,
+            "hasChild":false,
+            "compId":88,
             "child":[
-                {
-                    "type":"Sprite",
-                    "searchKey":"Sprite",
-                    "props":{"y":4,"x":123,"texture":"main/action.png"},
-                    "nodeParent":36,
-                    "label":"Sprite",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":37,
-                    "child":[
-                        ]
-                },
-                {
-                    "type":"Label",
-                    "searchKey":"Label,deshuliang",
-                    "props":{"y":17,"x":197,"width":158,"var":"deshuliang","text":"2倍领取","height":40,"fontSize":36,"color":"#ffffff","bold":true,"align":"left"},
-                    "nodeParent":36,
-                    "label":"deshuliang",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":38,
-                    "child":[
-                        ]
-                }],
-            "$LOCKED":false,
-            "$HIDDEN":false
+                ]
         }],
     "animations":[
         {
