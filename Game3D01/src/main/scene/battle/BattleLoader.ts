@@ -192,10 +192,10 @@ export default class BattleLoader {
             "res/atlas/jiesuan.atlas"
         ];
 
-        if(Session.homeData.isGuide)
-        {
-            arr.push("res/atlas/guide.atlas");
-        }
+        // if(Session.homeData.isGuide)
+        // {
+        //     arr.push();
+        // }
         Laya.loader.load(arr,Laya.Handler.create(this,this.onCompletePre));
     }
 

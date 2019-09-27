@@ -138,8 +138,8 @@ export default class RoleView extends ui.test.jueseUI {
         }else{
             this.showRoleById( now );
         }
-        this.zuo.visible = !(now == 1);
-        this.you.visible = !(now == 3);
+        // this.zuo.visible = !(now == 1);
+        // this.you.visible = !(now == 3);
 
         this.nowRoleId = now;
         this.updateAll();

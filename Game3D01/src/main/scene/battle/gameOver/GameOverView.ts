@@ -25,9 +25,9 @@ export default class GameOverView extends ui.test.GameOverUI {
     }
 
     private onRewardSuccess(): void  {
-        Game.showCoinsNum = Game.showCoinsNum * 5;
-        Game.showBlueNum = Game.showBlueNum * 5;
-        Game.showRedNum = Game.showRedNum * 5;
+        Game.showCoinsNum = Game.showCoinsNum * 2;
+        Game.showBlueNum = Game.showBlueNum * 2;
+        Game.showRedNum = Game.showRedNum * 2;
 
         this.lanzuan.value = "+" + Game.showBlueNum;
 
