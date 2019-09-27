@@ -294,7 +294,7 @@ export default class GameBG extends Laya.Sprite {
                             this.npcDic[this.npcId] = this._npcAni;
                         }
                         else  {
-                            this.npcDic[this.npcId] = this._npcAni;
+                            this._npcAni = this.npcDic[this.npcId];
                         }
                         this.showNpc();
                         // console.log("显示npc", this.npcId);
@@ -370,6 +370,7 @@ export default class GameBG extends Laya.Sprite {
 
     private showNpc(): void  {
         if (this._npcAni)  {
+            this._npcAni.scale(1,1);
             Game.topLayer.addChild(this._npcAni);
             this._npcAni.pos(this.npcP.x, this.npcP.y - 800);
 

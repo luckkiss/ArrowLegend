@@ -178,7 +178,6 @@ export default class BattleLoader {
             }
             this._configId = configId;
         }
-        // this._configId = 301901;
         console.log("当前地图", this._mapId, this._configId);
         Laya.loader.load("h5/mapConfig/" + this._configId + ".json", new Laya.Handler(this, this.loadBg));
     }

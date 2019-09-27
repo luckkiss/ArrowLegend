@@ -65,9 +65,9 @@ export default class BaseAI extends GameAI {
     exeAI(pro: GamePro): boolean {
 
         if (this.pro.gamedata.hp <= 0) {
-            return;
+            return false;
         }
-        if (!this.run_) return;
+        if (!this.run_) return false;
         this.now = Game.executor.getWorldNow();
 
         this.setShader();
