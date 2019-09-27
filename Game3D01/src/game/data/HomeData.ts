@@ -40,6 +40,11 @@ export default class HomeData implements IData{
 
     public constructor(){
         Laya.stage.on( GameEvent.NEW_DAY , this,this.newDayFun );
+        Laya.stage.on( GameEvent.AD_OVER ,this,this.adOverFun );
+    }
+
+    public adOverFun():void{
+        this.adTimes++;
     }
 
     public newDayFun():void{
@@ -105,6 +110,8 @@ export default class HomeData implements IData{
         }
         this.timeFun( 0 );
         data.loginTime = Date.now();
+
+        this.adTimes = (data.adTimes?data.adTimes:0);
     }
 
     public timeFun( send:number ):void{
@@ -149,6 +156,7 @@ export default class HomeData implements IData{
         data.newStat = this.newStat;
         data.openBtn = this.openBtn.join(",");
         data.adPower = this.adPower;
+        data.adTimes = this.adTimes;
     }
 
     /**
@@ -173,7 +181,13 @@ export default class HomeData implements IData{
         this.newStat = 1;
         this.openBtn = ["1","-1","-1","-1","1"];
         this.adPower = 0;
+        this.adTimes = 0;
     }
+
+    /**
+     * 广告次数
+     */
+    public adTimes:number = 0;
 
     /**
      * 今天看了多少次恢复体力的广告

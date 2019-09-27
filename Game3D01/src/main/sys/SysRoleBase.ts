@@ -21,6 +21,11 @@ export default class SysRoleBase{
      */
     public roleLimt:number = 0;
     
+    /**
+     * 看视频次数
+     */
+    public videoLock:number = 0;
+
     public static getSys(id:number):SysRoleBase{
         let arr = App.tableManager.getTable( SysRoleBase.NAME );
         for( let k of arr ){

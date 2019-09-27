@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":119,
+    "selectedBox":145,
+    "selecteID":138,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#c6abab","height":1334},
     "nodeParent":-1,
-    "maxID":128,
+    "maxID":147,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -116,21 +116,6 @@
                     "compId":117,
                     "child":[
                         ]
-                },
-                {
-                    "x":30,
-                    "type":"Image",
-                    "searchKey":"Image,xuan",
-                    "props":{"y":407,"x":243,"var":"xuan","skin":"juese/juese_yixuanze.png"},
-                    "nodeParent":119,
-                    "label":"xuan",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":45,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
                 },
                 {
                     "x":30,
@@ -1102,7 +1087,150 @@
                     "compId":97,
                     "child":[
                         ],
-                    "$HIDDEN":false
+                    "$HIDDEN":true
+                },
+                {
+                    "x":30,
+                    "type":"ViewStack",
+                    "searchKey":"ViewStack,vs109",
+                    "props":{"y":407,"x":204,"width":387,"var":"vs109","height":116},
+                    "nodeParent":119,
+                    "label":"vs109",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":145,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image,item0,xuan",
+                            "props":{"y":-0.5,"x":45,"var":"xuan","skin":"juese/juese_yixuanze.png","name":"item0"},
+                            "nodeParent":145,
+                            "label":"item0",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":45,
+                            "child":[
+                                ],
+                            "$HIDDEN":true
+                        },
+                        {
+                            "x":45,
+                            "type":"Box",
+                            "searchKey":"Box,item1",
+                            "props":{"y":1.5,"x":-12,"name":"item1"},
+                            "nodeParent":145,
+                            "label":"item1",
+                            "isOpen":true,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":138,
+                            "child":[
+                                {
+                                    "x":60,
+                                    "type":"Image",
+                                    "searchKey":"Image",
+                                    "props":{"y":22,"x":41,"width":331,"skin":"bg/bosstiaoxia.png","sizeGrid":"0,20,0,20","height":42},
+                                    "nodeParent":138,
+                                    "label":"Image",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":140,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Sprite",
+                                    "searchKey":"Sprite,zitiao",
+                                    "props":{"y":24,"x":44,"var":"zitiao","texture":"juese/suipianshang.png"},
+                                    "nodeParent":138,
+                                    "label":"zitiao",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":141,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Sprite",
+                                    "searchKey":"Sprite",
+                                    "props":{"texture":"juese/suipian.png"},
+                                    "nodeParent":138,
+                                    "label":"Sprite",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":142,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "x":60,
+                                    "type":"FontClip",
+                                    "searchKey":"FontClip,hongzuan",
+                                    "props":{"y":25,"x":128,"width":599,"var":"hongzuan","value":"123/900","skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:cdef","scaleY":0.3,"scaleX":0.3,"height":120,"align":"center"},
+                                    "nodeParent":138,
+                                    "label":"hongzuan",
+                                    "isOpen":true,
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":143,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "x":60,
+                                    "type":"Text",
+                                    "searchKey":"Text",
+                                    "props":{"y":78,"x":71,"text":"累计观看视频50次","fontSize":30,"color":"#ffffff","bold":true,"align":"center"},
+                                    "nodeParent":138,
+                                    "label":"Text",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":146,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":false
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,item2,fuhuo",
+                            "props":{"y":50.5,"x":176,"width":280,"var":"fuhuo","stateNum":"1","skin":"main/btn_lv.png","sizeGrid":"0,27,0,28","scaleY":1,"scaleX":1,"name":"item2","height":100,"anchorY":0.5,"anchorX":0.5},
+                            "nodeParent":145,
+                            "label":"item2",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":139,
+                            "child":[
+                                {
+                                    "type":"Sprite",
+                                    "searchKey":"Sprite",
+                                    "props":{"y":25.5,"x":74.5,"texture":"main/xuanzezi.png"},
+                                    "nodeParent":139,
+                                    "label":"Sprite",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":144,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":true
+                        }]
                 }]
         }],
     "animations":[
