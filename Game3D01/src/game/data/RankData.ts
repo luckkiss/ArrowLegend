@@ -41,6 +41,10 @@ export default class RankData implements IData{
         App.http( App.serverIP + "gamex3/saveRank" , obj , "post" );
     }
 
+    // public getStageNum():number{
+    //     sys
+    // }
+
     public getRank( caller:any  , listener:Function  ):void {
         let obj:any = {};
         obj.skey = Session.SKEY;

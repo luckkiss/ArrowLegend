@@ -95,8 +95,13 @@ export default class RollCell{
             this.vs2.visible = true;
             this.vs1.visible = true;
             this.heroAddFc.visible = true;
-            this.lv.visible = true;
-            
+            if( Session.heroData.test( roleId , this.heroLvType ) ){
+                this.lv.ani1.play( 0, true );
+                this.lv.visible = true;
+            }else{
+                this.lv.visible = false;
+            }
+
         }else{
             this.vs2.visible = false;
             this.vs1.visible = false;

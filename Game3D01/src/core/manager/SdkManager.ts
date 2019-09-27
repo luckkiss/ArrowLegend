@@ -194,6 +194,7 @@ export default class SdkManager {
         this.currentAdType = code;
         if( Laya.Browser.onMiniGame == false ){
             h.runWith(1);
+            App.sendEvent( GameEvent.AD_OVER );
             return;
         }
         if( this.adStat == 2 || this.ad == null ){
