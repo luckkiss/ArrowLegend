@@ -8,6 +8,7 @@ import SysHero from "../../main/sys/SysHero";
 import SysMap from "../../main/sys/SysMap";
 import Session from "../../main/Session";
 import { Guide_Type } from "../../main/guide/GuideManager";
+import Log from "../../Log";
 
 export default class HomeData implements IData{
     isGuide:boolean;
@@ -37,6 +38,9 @@ export default class HomeData implements IData{
      */
     public newStat = 0;
 
+    public setNewStat( value:number ):void{
+        Log.log( value );
+    }
 
     public constructor(){
         Laya.stage.on( GameEvent.NEW_DAY , this,this.newDayFun );

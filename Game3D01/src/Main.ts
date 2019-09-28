@@ -109,11 +109,8 @@ class Main {
 
 	private onInitCom(): void {
 		Laya.stage.addChild(App.layerManager);
-		
-		
 		ZipLoader.instance.zipFun(Laya.loader.getRes("h5/tables.zip"), new Laya.Handler(this, this.zipFun));
 		this.regClass();
-
 		App.gameSoundManager.reg( GameSoundManager.BTN ,  App.soundManager.pre + "fx_button.wav" );
 	}
 

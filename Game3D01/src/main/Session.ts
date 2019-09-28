@@ -10,6 +10,7 @@ import HeroData from "../game/data/HeroData";
 import Monster from "../game/player/Monster";
 import TimeGoldData from "../game/data/TimeGoldData";
 import RankData from "../game/data/RankData";
+import Log, { LOG_TYPE } from "../Log";
 
 export default class Session{
     static SKEY:string;
@@ -59,11 +60,13 @@ export default class Session{
             for( let i of Session.IDataArr ){
                 i.setData( Session.gameData );
             }
+            Log.log( LOG_TYPE.LOGIN );
         } else {
             for( let i of Session.IDataArr ){
                 i.initData( Session.gameData );
             }
             Session.saveData();
+            Log.log( LOG_TYPE.REG );
         }
     }
 

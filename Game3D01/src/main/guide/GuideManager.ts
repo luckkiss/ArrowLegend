@@ -1,5 +1,6 @@
 import { ui } from "../../ui/layaMaxUI";
 import Session from "../Session";
+import Log from "../../Log";
 
 export default class GuideManager{
     
@@ -54,6 +55,7 @@ export default class GuideManager{
         let cc = r1.contains( Laya.stage.mouseX , Laya.stage.mouseY );
         if( cc ){
             Session.homeData.newStat = this.nextStat;
+            Log.log( 1000 + this.nextStat );
             Session.saveData();
             this.target.event( Laya.Event.CLICK , e );
             this.handMv.visible = false;
