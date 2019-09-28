@@ -17,6 +17,7 @@ import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
 import Game from "../../../../game/Game";
 import GameMain from "../../../GameMain";
 import NoResDialog, { NoResDialogType } from "../../../dialog/NoResDialog";
+import Hero from "../../../../game/player/Hero";
 export default class RoleView extends ui.test.jueseUI {
     public nowRoleId:number = 1;
     public autoEvent:AutoEvent = new AutoEvent();
@@ -199,7 +200,7 @@ export default class RoleView extends ui.test.jueseUI {
             return;
         }
         this.qidai.visible = false;
-        Laya.Sprite3D.load("h5/hero/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
+        Laya.Sprite3D.load("h5/heroview/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
             sp3d.transform.localRotationEulerY = 0;
             var scale = 0.85;
             var xx = 0;
@@ -220,6 +221,8 @@ export default class RoleView extends ui.test.jueseUI {
                 ani_.speed = 0.5;
                 ani_.play("Idle");
             }
+
+            Hero.udpateHeroData();
         }));
     }
     
