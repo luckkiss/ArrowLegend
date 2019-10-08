@@ -62,10 +62,15 @@ export default class App{
     public static http( url:string , data:any , method:string,caller:any = null ,listener:Function = null,args:Array<any> = null ):Laya.HttpRequest{
         var http = new Laya.HttpRequest();
         let arr:Array<string> = [];
-        for( let k in data ){
-            arr.push( k + "=" + data[k] );
+        let str:string = "";
+        if( typeof data === 'string' ){
+            str = data;
+        }else{
+            for( let k in data ){
+                arr.push( k + "=" + data[k] );
+            }
+            str = arr.join("&");
         }
-        let str:string = arr.join("&");
         if( method == "GET" ){
             url = url + "?" + str;
             data = null;
