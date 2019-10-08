@@ -74,6 +74,7 @@ export default class MoveAndHitAi extends BaseAI {
             }
 
         } else {
+            this.pro.play(GameAI.Run);
             if (GameHitBox.faceToLenth(this.pro.hbox, Game.hero.hbox) > GameBG.ww2) {
 
                 let a: number = GameHitBox.faceTo3D(this.pro.hbox, Game.hero.hbox);
