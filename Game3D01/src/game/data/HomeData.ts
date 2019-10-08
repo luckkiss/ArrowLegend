@@ -102,7 +102,6 @@ export default class HomeData implements IData{
         
         this.newStat = (data.newStat?data.newStat:Guide_Type.over);
         
-        this.curEnergy = 20;
         if( data.openBtn == null ){
             this.openBtn = ["1","1","1","-1","1"];
         }else{

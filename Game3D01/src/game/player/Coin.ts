@@ -62,7 +62,9 @@ export default class Coin extends GamePro {
             if (sp)  {
                 coin.sp3d.addComponent(FootRotateScript);
             }
+            // Laya.StaticBatchManager.combine(Game.layer3dCoins);
         }
+
         return coin;
     }
 
@@ -84,7 +86,7 @@ export default class Coin extends GamePro {
         this.setSpeed(2);
         this.rotation(r);
         this.startAi();
-        Game.layer3d.addChild(this.sp3d);
+        Game.layer3dCoins.addChild(this.sp3d);
         Game.footLayer.addChild(this._bulletShadow)
     }
 
@@ -117,7 +119,7 @@ export default class Coin extends GamePro {
         this.sp3d && this.sp3d.removeSelf();
         if(this.id == Coin.TYPE_COIN)
         {
-            Game.showCoinsNum++;
+            Game.showCoinsNum += 2;
             Laya.stage.event(Game.Event_COINS);
         }
         else if(this.id == Coin.TYPE_BLUE)

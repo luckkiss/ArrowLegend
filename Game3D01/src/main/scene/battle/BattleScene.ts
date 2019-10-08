@@ -37,6 +37,7 @@ import GuideTalk from "../../guide/GuideTalk";
 import GuideActionArea from "../../guide/GuideActionArea";
 import HeroBullet from "../../../game/player/HeroBullet";
 import LvUpView from "./gameOver/LvUpView";
+import LogType from "../../../core/manager/LogType";
 export default class BattleScene extends Laya.Sprite {
 
     _top: TopUI;
@@ -56,11 +57,15 @@ export default class BattleScene extends Laya.Sprite {
         Game.map0 = map0;
         //脚底层
         this.addChild(Game.footLayer);
-        this.addChild(Game.frontLayer);
+        Game.footLayer.cacheAs = "bitmap";
+        // this.addChild(Game.frontLayer);
         //添加3D场景
         var scene: Laya.Scene3D = this.addChild(new Laya.Scene3D()) as Laya.Scene3D;
         scene.addChild(Game.layer3d);
         Game.scene3d = scene;
+        //添加3D场景
+        scene.addChild(Game.layer3dCube);
+        scene.addChild(Game.layer3dCoins);
         //血条层
         this.addChild(Game.bloodLayer);
 
@@ -317,7 +322,7 @@ export default class BattleScene extends Laya.Sprite {
                 k++;
             }
         }
-
+        Laya.StaticBatchManager.combine(Game.layer3dCube);
         this._top.setBoss(isHasBoss,bossEnemy);
 
         // Laya.timer.loop(5000,this,()=>{
@@ -361,6 +366,7 @@ export default class BattleScene extends Laya.Sprite {
         // Game.skillManager.addSkill(App.tableManager.getDataByNameAndId(SysSkill.NAME,1009));
 
         this.setGuide("滑动摇杆，控制角色到达指定位置。",1);
+        App.sdkManager.log(LogType.BATTLE_GUIDE,"滑动摇杆，控制角色到达指定位置。");
 
         Laya.MouseManager.multiTouchEnabled = false;
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.md);
@@ -404,6 +410,7 @@ export default class BattleScene extends Laya.Sprite {
             // this.guideCircle.transform.localPositionX = 0;
             Game.layer3d.addChild(this.guideCircle);
             Session.guideId = 3;
+            App.sdkManager.log(LogType.BATTLE_GUIDE,"最佳控制区域");
             
         }
         else if(Session.guideId == 2)
@@ -417,6 +424,7 @@ export default class BattleScene extends Laya.Sprite {
                 this.guideMonster.show();
                 Session.guideId = 4;
                 this.guideCircle && this.guideCircle.removeSelf();
+                App.sdkManager.log(LogType.BATTLE_GUIDE,"显示引导怪");
             }, 800);
 
             
@@ -426,19 +434,6 @@ export default class BattleScene extends Laya.Sprite {
         }
     }
 
-    private index:number = 0;
-    private doorLoop():void
-    {
-        if(this.index % 2 == 0)
-        {
-            Game.door.transform.localPositionY = 0;
-        }
-        else
-        {
-            Game.door.transform.localPositionY = -500;
-        }
-        this.index++
-    }
     private onOpenDoor(e: Laya.Event): void {
         if (e.nativeEvent.keyCode == 111) {
             // Game.openDoor();

@@ -251,7 +251,7 @@ export default class Monster extends GamePro {
         gpro.initBlood(hp);
 
         var MonAI: any = Laya.ClassUtils.getClass(AttackType.TAG + sysEnemy.enemyAi);
-        // console.log("当前怪的AI", sysEnemy.id,sysEnemy.enemymode, sysEnemy.txt, sysEnemy.enemyAi, MonAI,MOVE);
+        console.log("当前怪的AI", sysEnemy.id,sysEnemy.enemymode, sysEnemy.txt, sysEnemy.enemyAi, MonAI,MOVE);
         // if (MonAI == null) {
         //     console.log('没有这个怪的AI', sysEnemy.id);
         // }

@@ -18,8 +18,10 @@ export default class MoveAndHitAi extends BaseAI {
         if(MoveAndHitAi.timdex>=4){
             MoveAndHitAi.timdex = 0;
         }
-        this.cd = Game.executor.getWorldNow() + MoveAndHitAi.timdex*500;
+        this.cd = Game.executor.getWorldNow() + MoveAndHitAi.timdex*pro.sysEnemy.enemySpeed;
         MoveAndHitAi.timdex++;
+        var a: number = GameHitBox.faceTo3D(this.pro.hbox, Game.hero.hbox);
+        this.pro.rotation(a);
     }
 
     exeAI(pro: GamePro): boolean {
@@ -33,20 +35,29 @@ export default class MoveAndHitAi extends BaseAI {
         if (this.status == 0 && this.now >= this.cd) {
             var a: number = GameHitBox.faceTo3D(this.pro.hbox, Game.hero.hbox);
             this.pro.rotation(a);
+            this.pro.setSpeed(sys.moveSpeed);
             this.cd = this.now + sys.enemySpeed;
             this.status = 1;
+            this.pro.play(GameAI.Run);
+
+            
+            // this.cd = this.now + sys.enemySpeed;
+            // this.status = 1;
+            // if (this.pro.acstr != GameAI.NormalAttack) {
+            //     this.pro.play(GameAI.NormalAttack);
+            // }
+        }
+        else if (this.status == 1 && this.now >= this.cd) {
+           var a: number = GameHitBox.faceTo3D(this.pro.hbox, Game.hero.hbox);
+            this.pro.rotation(a);
+            this.cd = this.now + sys.enemySpeed;
+            this.status = 0;
             if (this.pro.acstr != GameAI.NormalAttack) {
                 this.pro.play(GameAI.NormalAttack);
             }
         }
-        else if (this.status == 1 && this.now >= this.cd) {
-            this.pro.setSpeed(sys.moveSpeed);
-            this.cd = this.now + sys.enemySpeed;
-            this.status = 0;
-            this.pro.play(GameAI.Run);
-        }
 
-        if (this.status == 1) {
+        if (this.status == 0) {
             if (this.pro.acstr == GameAI.NormalAttack) {
                 if (this.pro.normalizedTime > 0.4 && this.pro.normalizedTime < 1) {
                     this.pro.setSpeed(8);

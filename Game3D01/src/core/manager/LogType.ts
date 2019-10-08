@@ -103,4 +103,23 @@ export default class LogType{
      * 点关
      */
     public static NEWER_CLICK_STAGE:number = 1009;
+
+    /**小关 */
+    static MAP_INDEX:number = 1010;
+    /**大关 */
+    static CHAPTER_INDEX:number = 1011;
+    /**复活 */
+    static REBORTH_TIMES:number = 1012;
+    /**战斗引导 */
+    static BATTLE_GUIDE:number = 1013;
+    /**显示登陆按钮 */
+    static SHOW_LOGIN_BTN:number = 1014;
+
+    /**开始加载 */
+    static START_LOADING:number = 1015;
+    /**开始战斗有引导加载 */
+    static START_LOADING_GUIDE:number = 1016;
+
+    /**显示主界面 */
+    static SHOW_MAIN:number = 1017;
 }

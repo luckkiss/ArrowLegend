@@ -48,6 +48,7 @@ import NPC_1001_view from "./main/scene/battle/npc/NPC_1001_view";
 import HomeLoading from "./main/HomeLoading";
 import InitView from "./main/InitView";
 import GameSoundManager from "./core/manager/GameSoundManager";
+import LogType from "./core/manager/LogType";
 
 class Main {
 	private _initView: InitView;
@@ -120,6 +121,7 @@ class Main {
 			this.homePage = new HomeLoading();
 		}
 		Laya.stage.addChild(this.homePage);
+		App.sdkManager.log(LogType.SHOW_LOGIN_BTN,"显示登陆按钮");
 
 		let BP = Laya.ClassUtils.getRegClass("p" + App.platformId);
 		if (!this.curBP) {
@@ -137,6 +139,7 @@ class Main {
 			return;
 		}
 		this.isSuccess = true;
+		App.sdkManager.log(LogType.START_LOADING,"开始加载资源");
 		this.homePage.load();
 		console.log("授权成功，开始加载");
 	}

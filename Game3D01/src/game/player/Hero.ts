@@ -15,6 +15,7 @@ import BloodEffect from "../effect/BloodEffect";
 import Session from "../../main/Session";
 import { ui } from "../../ui/layaMaxUI";
 import Equip from "../data/Equip";
+import LogType from "../../core/manager/LogType";
 
 export default class Hero extends GamePro {
 
@@ -316,6 +317,8 @@ export default class Hero extends GamePro {
         setTimeout(() => {
             this.setWudi(false);
         }, 2000);
+
+        App.sdkManager.log(LogType.REBORTH_TIMES,Game.rebornTimes+"");
     }
 
     onDie(key): void {

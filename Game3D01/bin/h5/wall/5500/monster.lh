@@ -28,7 +28,7 @@
 				"props":{
 					"name":"tong (1)",
 					"active":true,
-					"isStatic":false,
+					"isStatic":true,
 					"layer":0,
 					"position":[
 						0,

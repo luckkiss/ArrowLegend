@@ -7,6 +7,8 @@ import FlyUpTips from "../../../FlyUpTips";
 import SysMap from "../../../sys/SysMap";
 import Hero from "../../../../game/player/Hero";
 import MyEffect from "../../../../core/utils/MyEffect";
+import App from "../../../../core/App";
+import LogType from "../../../../core/manager/LogType";
 
 export default class WorldCell extends ui.test.worldCellUI {
     private sys:SysChapter;
@@ -32,6 +34,8 @@ export default class WorldCell extends ui.test.worldCellUI {
             
             MyEffect.scaleEffect( this.mapBtn );
             Laya.stage.event(GameEvent.START_BATTLE);
+
+            App.sdkManager.log(LogType.CHAPTER_INDEX,this.sys.id+"");
         }
         else
         {

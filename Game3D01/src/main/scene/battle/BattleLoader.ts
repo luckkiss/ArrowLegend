@@ -13,7 +13,6 @@ import CoinEffect from "../../../game/effect/CoinEffect";
 import Session from "../../Session";
 import BoomEffect from "../../../game/effect/BoomEffect";
 import DieEffect from "../../../game/effect/DieEffect";
-import HitEffect from "../../../game/effect/HitEffect";
 import MonsterBoomEffect from "../../../game/effect/MonsterBoomEffect";
 import Coin from "../../../game/player/Coin";
 import Monster from "../../../game/player/Monster";
