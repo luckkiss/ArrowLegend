@@ -14,10 +14,10 @@
 			}
 		],
 		"enableVertexColor":false,
-		"alphaTest":true,
+		"alphaTest":false,
 		"alphaTestValue":0.5,
-		"renderQueue":2450,
-		"albedoIntensity":1.06,
+		"renderQueue":2000,
+		"albedoIntensity":1.55,
 		"textures":[
 			{
 				"name":"albedoTexture",

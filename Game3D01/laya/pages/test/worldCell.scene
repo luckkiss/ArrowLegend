@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":2,
-    "selecteID":27,
+    "selectedBox":36,
+    "selecteID":8,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#ffffff","height":900},
     "nodeParent":-1,
@@ -28,7 +28,6 @@
             "compId":27,
             "child":[
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"texture":"main/xuxian.png"},
@@ -42,7 +41,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":50,"texture":"main/xuxian.png"},
@@ -56,7 +54,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":100,"texture":"main/xuxian.png"},
@@ -70,7 +67,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":150,"texture":"main/xuxian.png"},
@@ -84,7 +80,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":200,"texture":"main/xuxian.png"},
@@ -98,7 +93,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":250,"texture":"main/xuxian.png"},
@@ -112,7 +106,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":300,"texture":"main/xuxian.png"},
@@ -126,7 +119,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":350,"texture":"main/xuxian.png"},
@@ -140,7 +132,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":400,"texture":"main/xuxian.png"},
@@ -154,7 +145,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":450,"texture":"main/xuxian.png"},
@@ -168,7 +158,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":500,"texture":"main/xuxian.png"},
@@ -182,7 +171,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":550,"texture":"main/xuxian.png"},
@@ -196,7 +184,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":600,"texture":"main/xuxian.png"},
@@ -210,7 +197,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":650,"texture":"main/xuxian.png"},
@@ -224,7 +210,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"x":700,"texture":"main/xuxian.png"},
@@ -301,13 +286,14 @@
             "props":{"y":208,"x":40.5,"width":680,"var":"openBox","height":656},
             "nodeParent":2,
             "label":"openBox",
-            "isOpen":null,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":36,
             "child":[
                 {
+                    "x":30,
                     "type":"Button",
                     "searchKey":"Button,mapBtn",
                     "props":{"y":355,"x":342,"width":684,"var":"mapBtn","stateNum":"1","skin":"chapters/chapter_img_1.png","height":531,"anchorY":0.5,"anchorX":0.5},
@@ -321,9 +307,10 @@
                         ]
                 },
                 {
-                    "type":"Sprite",
-                    "searchKey":"Sprite,suo",
-                    "props":{"y":316,"x":302,"var":"suo","texture":"main/suo2.png"},
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image,suo",
+                    "props":{"y":364,"x":341,"var":"suo","skin":"main/suo2.png","anchorY":0.5,"anchorX":0.5},
                     "nodeParent":36,
                     "label":"suo",
                     "isDirectory":false,
@@ -334,6 +321,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,box1",
                     "props":{"x":203,"width":288,"var":"box1","skin":"main/yuanhei.png","sizeGrid":"0,28,0,30","height":64},
@@ -346,6 +334,7 @@
                     "compId":31,
                     "child":[
                         {
+                            "x":45,
                             "type":"Label",
                             "searchKey":"Label,cengshuTxt",
                             "props":{"y":0,"x":1,"width":286,"var":"cengshuTxt","valign":"middle","text":"最高层数","height":64,"fontSize":36,"color":"#f6ecec","align":"center"},
@@ -360,6 +349,7 @@
                         }]
                 },
                 {
+                    "x":30,
                     "type":"Box",
                     "searchKey":"Box,clickBox",
                     "props":{"y":158,"x":171,"width":345,"var":"clickBox","height":373},
@@ -371,7 +361,7 @@
                     "compId":33,
                     "child":[
                         ],
-                    "$HIDDEN":false
+                    "$HIDDEN":true
                 }]
         }],
     "animations":[

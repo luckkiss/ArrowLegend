@@ -30,6 +30,7 @@ export default class HeroData implements IData{
             hd.setString( v );
             this.heroMap[hd.id] = hd;
         }
+        this.nowRoleId = (data.nowRoleId?data.nowRoleId:1);
     }
     
     public saveData(data:any):void{
@@ -39,6 +40,7 @@ export default class HeroData implements IData{
             arr.push( hd.getString() );
         }
         data.heroData = arr.join(".");
+        data.nowRoleId = this.nowRoleId;
     }
     
     public initData(data:any):void{
@@ -49,6 +51,7 @@ export default class HeroData implements IData{
             hd.initData();
             this.heroMap[hd.id] = hd;
         }
+        this.nowRoleId = 1;
     }
 
     /**

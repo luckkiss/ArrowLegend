@@ -17,6 +17,7 @@ import GuideManager, { Guide_Type } from "../../../guide/GuideManager";
 import Game from "../../../../game/Game";
 import GameMain from "../../../GameMain";
 import NoResDialog, { NoResDialogType } from "../../../dialog/NoResDialog";
+import Hero from "../../../../game/player/Hero";
 export default class RoleView extends ui.test.jueseUI {
     public nowRoleId:number = 1;
     public autoEvent:AutoEvent = new AutoEvent();
@@ -117,51 +118,102 @@ export default class RoleView extends ui.test.jueseUI {
         this.heroLvTypeMap[r.heroLvType] = r;
         this.heroLvTypeMap[r1.heroLvType] = r1;
 
-        this.showRoleById(1);
+        //this.showRoleById(1);
 
         this.zuo.clickHandler = new Laya.Handler( this,this.turnFun , [-1] );
-        this.you.clickHandler = new Laya.Handler( this,this.turnFun , [1] );
-
-        //this.zuo.visible = this.you.visible = false;
-
+        this.you.clickHandler = new Laya.Handler( this,this.turnFun , [1]  );
         this.updateAll();
+
+        Laya.stage.on( GameEvent.AD_OVER, this,this.adOverFun );
+    }
+
+    private adOverFun():void{
+        Laya.timer.callLater( this,this.clFun );
+    }
+
+    private clFun():void{
+        this.setNowRoleId( this.nowRoleId );
     }
 
     private turnFun( v:number ):void{
-        let now = Session.heroData.nowRoleId;
+        let now = this.nowRoleId;
         if( v <= 0 ){
             now = Math.max( now + v , 1 );
         }else{
             now = Math.min( now + v , 3 );
         }
-        Session.heroData.nowRoleId = now;
-        if( now == 3 ){
-            this.showRoleById( -1 );
-        }else{
-            this.showRoleById( now );
-        }
+        this.setNowRoleId( now );
+    }
+
+    public setNowRoleId( now:number ):void{
+        this.nowRoleId = now;
+        this.showRoleById( now );
+        
         this.zuo.visible = !(now == 1);
         this.you.visible = !(now == 3);
 
-        this.nowRoleId = now;
         this.updateAll();
+        
+        this.fuhuo.mouseEnabled = false;
+
+        if( now == 3 ){
+            this.vs109.visible = false;
+        }else{
+            if( Session.heroData.nowRoleId == now ){
+                //如果是已经装备了
+                this.vs109.visible = true;
+                this.vs109.selectedIndex = 0;
+            }else {
+                this.vs109.visible = true;
+                let sys = SysRoleBase.getSys( now );
+                if( Session.homeData.adTimes >= sys.videoLock ){
+                    //次数够了
+                    this.vs109.selectedIndex = 2;
+                    this.fuhuo.mouseEnabled = true;
+                    this.fuhuo.clickHandler = new Laya.Handler( this,this.seleHeroFun, [now] );
+                }else{
+                    //显示进度
+                    this.vs109.selectedIndex = 1;
+                    this.hongzuan.value = Session.homeData.adTimes + "/" + sys.videoLock;
+                    let per = Session.homeData.adTimes / sys.videoLock;
+                    this.zitiao.scrollRect = new Laya.Rectangle( 0 , 0, this.zitiao.width * per , this.zitiao.height );
+                    if( per == 0 ){
+                        this.zitiao.visible = false;
+                    }
+                }
+            }
+        }
+    }
+
+    public seleHeroFun( now:number ):void {
+        Session.heroData.nowRoleId = now;
+        this.setNowRoleId( now );
+        this.xuan.ani1.interval = 1000 / 45;
+        this.xuan.ani1.play( 0, false );
     }
 
     /**切换3D模型 */
     private showRoleById(roleId:number) {
         this._layer3d.removeChildren();
-        if( roleId == -1 ){
+        if( roleId == 3 ){
             this.qidai.visible = true;
             return;
         }
         this.qidai.visible = false;
-        Laya.Sprite3D.load("h5/hero/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
+        Laya.Sprite3D.load("h5/heroview/" + roleId + "/hero.lh",new Laya.Handler(this,(sp3d:Laya.Sprite3D)=>{
             sp3d.transform.localRotationEulerY = 0;
-            var scale = 1;
+            var scale = 0.85;
+            var xx = 0;
+            if(  roleId == 2 ){
+                xx = 0.05;
+                //scale = 0.7;
+                sp3d.transform.localRotationEulerY = 15;
+            }
             sp3d.transform.localScale = new Laya.Vector3(scale, scale, scale);
             sp3d.transform.localPositionZ = -3;
-            sp3d.transform.localPositionY = -0.3;
-            sp3d.transform.localPositionX = 0;
+            sp3d.transform.localPositionY = -0.4;
+            sp3d.transform.localPositionX = xx;
+            
             let aniSprite3d = sp3d.getChildAt(0) as Laya.Sprite3D;
             this._layer3d.addChild(sp3d);
             if (aniSprite3d) {
@@ -169,6 +221,8 @@ export default class RoleView extends ui.test.jueseUI {
                 ani_.speed = 0.5;
                 ani_.play("Idle");
             }
+
+            Hero.udpateHeroData();
         }));
     }
     
@@ -295,8 +349,7 @@ export default class RoleView extends ui.test.jueseUI {
      */
     public disFun():void {
         this.updateAll();
-        this.turnFun(0);
-
+        this.setNowRoleId( Session.heroData.nowRoleId );
         if( Session.homeData.newStat == Guide_Type.click_hp ){
             GuideManager.getInstance().hand( this.shengmingniu , this.shengmingniu.width/2 , this.shengmingniu.height/2 , Guide_Type.over , 600 , true );
         }
@@ -339,11 +392,11 @@ export default class RoleView extends ui.test.jueseUI {
             cell.setData( this.nowRoleId );
         }
         this.setSkill( this.nowRoleId );
-        if( SysRoleBase.have( this.nowRoleId ) == false ){
-            this.xuan.visible = false;
-        }else{
-            this.xuan.visible = true;
-        }
+        // if( SysRoleBase.have( this.nowRoleId ) == false ){
+        //     this.xuan.visible = false;
+        // }else{
+        //     this.xuan.visible = true;
+        // }
     }
 
     public setSkill( roleId:number ):void{

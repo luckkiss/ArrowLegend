@@ -3,6 +3,7 @@ import GameEvent from "../../main/GameEvent";
 import LogType from "./LogType";
 import FlyUpTips from "../../main/FlyUpTips";
 import { AD_TYPE } from "../../ADType";
+import Log from "../../Log";
 
 export default class SdkManager {
     public haveRight:boolean = false;
@@ -124,8 +125,8 @@ export default class SdkManager {
 
     public adMap:any = {};
 
-    public log( type:number ,content:string = "" ):void{
-        
+    public log( type:number , content:string = "" ):void{
+        Log.log( type , content );
     }
     
     initAd():void {
@@ -151,7 +152,7 @@ export default class SdkManager {
             if ( res && res.isEnded || res===undefined ){
                 this.lastAdSucTime = Laya.Browser.now();
                 this.exeHandler();
-                this.log( LogType.AD_SUC_OVER );
+                this.log( LogType.AD_SUC_OVER , this.currentAdType + "" );
                 App.sendEvent( GameEvent.AD_OVER );
             }
         });
@@ -194,6 +195,7 @@ export default class SdkManager {
         this.currentAdType = code;
         if( Laya.Browser.onMiniGame == false ){
             h.runWith(1);
+            App.sendEvent( GameEvent.AD_OVER );
             return;
         }
         if( this.adStat == 2 || this.ad == null ){

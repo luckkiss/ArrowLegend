@@ -8,6 +8,7 @@ import SysHero from "../../main/sys/SysHero";
 import SysMap from "../../main/sys/SysMap";
 import Session from "../../main/Session";
 import { Guide_Type } from "../../main/guide/GuideManager";
+import Log from "../../Log";
 
 export default class HomeData implements IData{
     isGuide:boolean;
@@ -37,16 +38,31 @@ export default class HomeData implements IData{
      */
     public newStat = 0;
 
+    public setNewStat( value:number ):void{
+        Log.log( value );
+    }
 
     public constructor(){
         Laya.stage.on( GameEvent.NEW_DAY , this,this.newDayFun );
+        Laya.stage.on( GameEvent.AD_OVER ,this,this.adOverFun );
+        Laya.stage.on( GameEvent.PASS_CHAPTER , this, this.openFun );
+    }
+
+    public openId:number = -1;
+
+    public openFun():void{
+        this.openId = Session.homeData.chapterId;
+    }
+
+    public adOverFun():void{
+        this.adTimes++;
     }
 
     public newDayFun():void{
         this.adPower = 0;
     }
 
-    public setChapterId( value:number ):void{
+    public setChapterId( value:number,index:number):void{
         this.chapterId = value;
         Session.rankData.saveWorldRank();
         Session.rankData.saveFriendRank();
@@ -86,7 +102,6 @@ export default class HomeData implements IData{
         
         this.newStat = (data.newStat?data.newStat:Guide_Type.over);
         
-        this.curEnergy = 20;
         if( data.openBtn == null ){
             this.openBtn = ["1","1","1","-1","1"];
         }else{
@@ -105,6 +120,8 @@ export default class HomeData implements IData{
         }
         this.timeFun( 0 );
         data.loginTime = Date.now();
+
+        this.adTimes = (data.adTimes?data.adTimes:0);
     }
 
     public timeFun( send:number ):void{
@@ -149,6 +166,7 @@ export default class HomeData implements IData{
         data.newStat = this.newStat;
         data.openBtn = this.openBtn.join(",");
         data.adPower = this.adPower;
+        data.adTimes = this.adTimes;
     }
 
     /**
@@ -173,7 +191,13 @@ export default class HomeData implements IData{
         this.newStat = 1;
         this.openBtn = ["1","-1","-1","-1","1"];
         this.adPower = 0;
+        this.adTimes = 0;
     }
+
+    /**
+     * 广告次数
+     */
+    public adTimes:number = 0;
 
     /**
      * 今天看了多少次恢复体力的广告

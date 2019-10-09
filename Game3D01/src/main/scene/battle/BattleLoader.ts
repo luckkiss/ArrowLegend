@@ -13,7 +13,6 @@ import CoinEffect from "../../../game/effect/CoinEffect";
 import Session from "../../Session";
 import BoomEffect from "../../../game/effect/BoomEffect";
 import DieEffect from "../../../game/effect/DieEffect";
-import HitEffect from "../../../game/effect/HitEffect";
 import MonsterBoomEffect from "../../../game/effect/MonsterBoomEffect";
 import Coin from "../../../game/player/Coin";
 import Monster from "../../../game/player/Monster";
@@ -165,7 +164,7 @@ export default class BattleLoader {
             let configId: number;
             if(Session.homeData.isGuide)
             {
-                configId = 100000;
+            configId = 100000;
             }
             else
             {
@@ -178,6 +177,7 @@ export default class BattleLoader {
             }
             this._configId = configId;
         }
+        // this._configId = 301701;
         console.log("当前地图", this._mapId, this._configId);
         Laya.loader.load("h5/mapConfig/" + this._configId + ".json", new Laya.Handler(this, this.loadBg));
     }

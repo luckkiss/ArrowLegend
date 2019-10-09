@@ -182,23 +182,24 @@ export default class GameBG extends Laya.Sprite {
         let gType: number = 0;
         this.addChild(this._box);
         this.addChild(this.saw);
-
+        this._box.cacheAs = "bitmap"
         let index3: number = 0;
         let rowBox:Laya.Box;
         for (let j = 0; j < GameBG.MAP_ROW; j++) {
             if (GameBG.MAP_COL % 2 == 0)  {
                 index3++;
             }
-            rowBox = new Laya.Box();
-            rowBox.cacheAs = "bitmap";
-            rowBox.y = j * ww;
-            this._box.addChild(rowBox);
+            // rowBox = new Laya.Box();
+            // rowBox.cacheAs = "bitmap";
+            // rowBox.y = j * ww;
+            // this._box.addChild(rowBox);
             for (let i = 0; i < GameBG.MAP_COL; i++) {
                 let gSkin = (index3 % 2 == 0) ? GameBG.BG_TYPE + "/10.png" : GameBG.BG_TYPE + "/11.png";
                 var img: BgGrid = BgGrid.getOne(gSkin);
                 img.size(64, 64);
                 img.x = i * ww;
-                rowBox.addChild(img);
+                img.y = j * ww;
+                this._box.addChild(img);
                 index3++;
             }
         }

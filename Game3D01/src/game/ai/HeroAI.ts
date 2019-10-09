@@ -17,6 +17,7 @@ import App from "../../core/App";
 import GameThorn from "../GameThorn";
 import Session from "../../main/Session";
 import Hero from "../player/Hero";
+import LogType from "../../core/manager/LogType";
 
 export default class HeroAI extends GameAI {
 
@@ -259,6 +260,7 @@ export default class HeroAI extends GameAI {
                 {
                     Game.scenneM.battle && Game.scenneM.battle.up(null);
                     Game.scenneM.battle.setGuide("主角会自动攻击，移动中不会攻击。",2);
+                    App.sdkManager.log(LogType.BATTLE_GUIDE,"主角会自动攻击，移动中不会攻击。");
                     Game.map0.guideHitBox = null;
                     return false;
                 }

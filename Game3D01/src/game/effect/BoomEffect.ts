@@ -39,7 +39,14 @@ export default class BoomEffect {
             effect.boomCircle.pos(pro.hbox.cx, pro.hbox.cy);
             Laya.Tween.to(effect.boomCircle, { alpha: 0 }, 500, null, new Laya.Handler(this, effect.recover));
             if (GameHitBox.faceToLenth(pro.hbox, Game.hero.hbox) <= sys.attackAngle) {
-                pro.hurtValue = (pro as MonsterBullet).enemy.sysEnemy.enemyAttack;
+                if(pro instanceof Monster)
+                {
+                    pro.hurtValue = (pro as Monster).sysEnemy.enemyAttack;
+                }
+                else if(pro instanceof MonsterBullet)
+                {
+                    pro.hurtValue = (pro as MonsterBullet).enemy.sysEnemy.enemyAttack;
+                }
                 Game.hero.hbox.linkPro_.event(Game.Event_Hit, pro);
             }
         }

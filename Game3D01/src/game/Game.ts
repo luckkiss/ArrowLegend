@@ -31,10 +31,11 @@ import SysMap from "../main/sys/SysMap";
 import GameEvent from "../main/GameEvent";
 import SysChapter from "../main/sys/SysChapter";
 import Coin from "./player/Coin";
+import LogType from "../core/manager/LogType";
 
 export default class Game {
-    static codeVer:string = "1.1.2.09271709";
-    static resVer:string = "1.1.2.09262127";
+    static codeVer:string = "1.1.7.1008";
+    static resVer:string = "1.1.7.1008";
 
     /**本地资源 */
 	static nativefiles:string[] = [
@@ -93,6 +94,9 @@ export default class Game {
     static HeroArrows: GamePro[] = [];
     //3d层
     static layer3d: Sprite3D = new Sprite3D();
+    static layer3dCube: Sprite3D = new Sprite3D();
+    static layer3dCoins: Sprite3D = new Sprite3D();
+
     //3d摄像机
     static camera: Camera;
     //临时v3
@@ -179,6 +183,7 @@ export default class Game {
         if (Game.isOpen)  {
             return;
         }
+        App.sdkManager.log(LogType.CHAPTER_INDEX,Game.battleLoader.index+"");
         console.log("开门");
 
         if(Game.battleLoader.index >= SysMap.getTotal(Game.battleLoader.chapterId) && Game.battleLoader._configId != 100000)
@@ -188,7 +193,7 @@ export default class Game {
             if(Game.battleLoader.chapterId >= Session.homeData.chapterId)
             {
                 Session.homeData.chapterId++;
-                Session.homeData.setChapterId(Session.homeData.chapterId);
+                Session.homeData.setChapterId(Session.homeData.chapterId,0);
             }
             Game.battleLoader.index = 0;
             Session.homeData.mapIndex = 0;
@@ -209,11 +214,12 @@ export default class Game {
         {
             Session.homeData.chapterId = 1;
             Game.scenneM.battle.setGuide("通过传送进入下一关。",5);
+            App.sdkManager.log(LogType.BATTLE_GUIDE,"通过传送进入下一关");
             Session.homeData.isGuide = false;
             Game.battleLoader.index = 1;
             Game.battleLoader.chapterId = 1;
             SysChapter.randomDiamond(Game.battleLoader.chapterId);
-            Session.homeData.setChapterId(Session.homeData.chapterId);
+            Session.homeData.setChapterId(Session.homeData.chapterId,1);
         }
         else
         {
@@ -225,6 +231,7 @@ export default class Game {
                     if(Session.homeData.mapIndex < Game.battleLoader.index)
                     {
                         Session.homeData.mapIndex = Game.battleLoader.index - 1;
+                        Session.homeData.setChapterId(Session.homeData.chapterId,Session.homeData.mapIndex);
                     }
                 }
             }

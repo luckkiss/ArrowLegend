@@ -3,7 +3,7 @@
 	"data":{
 		"type":"Sprite3D",
 		"props":{
-			"name":"Demo",
+			"name":"hero",
 			"active":true,
 			"position":[
 				0,
@@ -26,7 +26,7 @@
 			{
 				"type":"Sprite3D",
 				"props":{
-					"name":"Lady Pirate(Clone)",
+					"name":"Lady Pirate",
 					"active":true,
 					"isStatic":false,
 					"layer":0,
@@ -42,16 +42,16 @@
 						-1
 					],
 					"scale":[
-						1.166569,
-						1.166569,
-						1.166569
+						1.061283,
+						1.061284,
+						1.061284
 					]
 				},
 				"components":[
 					{
 						"type":"Animator",
 						"avatar":{
-							"path":"Assets/MeshSmith/Fantasy1/Lady Pirate/Mesh/Lady Pirate-Lady Pirate(Clone)-Lady PirateAvatar.lav",
+							"path":"Assets/MeshSmith/Fantasy1/Lady Pirate/Mesh/Lady Pirate-Lady Pirate-Lady PirateAvatar.lav",
 							"linkSprites":{}
 						},
 						"layers":[
@@ -119,7 +119,7 @@
 								-1
 							],
 							"scale":[
-								0.9999999,
+								1,
 								0.9999999,
 								0.9999999
 							],
@@ -146,7 +146,7 @@
 							},
 							"materials":[
 								{
-									"path":"Assets/MeshSmith/Fantasy1/Lady Pirate/Material/102710_hdnw_npc_d_512.lmat"
+									"path":"Assets/MeshSmith/Fantasy1/Lady Pirate/Material/102750_hdnw_npc_d_512.lmat"
 								}
 							],
 							"meshPath":"Assets/MeshSmith/Fantasy1/Lady Pirate/Mesh/Lady Pirate-102700_hdnw_npc_mo_0.lm"

@@ -23,6 +23,7 @@ import TimeGoldDialog from "./scene/main/timegold/TimeGoldDialog";
 import RankDialog from "./scene/main/rank/RankDialog";
 import SysItem from "./sys/SysItem";
 import { Guide_Type } from "./guide/GuideManager";
+import LogType from "../core/manager/LogType";
 
 export default class GameMain {
     constructor() {
@@ -35,10 +36,11 @@ export default class GameMain {
         
         Game.battleLoader.preload();
         if(Session.homeData.isGuide){
+            App.sdkManager.log(LogType.START_LOADING_GUIDE,"加载进来显示主界面");
             Game.battleLoader.load();
         }else{
             Game.showMain();
-
+            App.sdkManager.log(LogType.SHOW_MAIN,"加载进来显示主界面");
             if( Session.homeData.newStat != Guide_Type.over ){
                 return;
             }

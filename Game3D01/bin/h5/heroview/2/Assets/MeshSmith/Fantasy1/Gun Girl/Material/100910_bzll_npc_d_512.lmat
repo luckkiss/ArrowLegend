@@ -2,10 +2,10 @@
 	"version":"LAYAMATERIAL:02",
 	"props":{
 		"type":"Laya.UnlitMaterial",
-		"name":"jian",
+		"name":"100910_bzll_npc_d_512",
 		"renderStates":[
 			{
-				"cull":0,
+				"cull":2,
 				"blend":0,
 				"srcBlend":1,
 				"dstBlend":0,
@@ -14,18 +14,18 @@
 			}
 		],
 		"enableVertexColor":false,
-		"alphaTest":true,
+		"alphaTest":false,
 		"alphaTestValue":0.5,
-		"renderQueue":2450,
-		"albedoIntensity":1.06,
+		"renderQueue":3000,
+		"albedoIntensity":1,
 		"textures":[
 			{
 				"name":"albedoTexture",
-				"path":"../Textures/jian.png",
+				"path":"../Texture/100940_bzll_npc_d_512.jpg",
 				"constructParams":[
-					32,
-					64,
-					1,
+					512,
+					512,
+					0,
 					true
 				],
 				"propertyParams":{

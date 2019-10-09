@@ -15,6 +15,7 @@ import BloodEffect from "../effect/BloodEffect";
 import Session from "../../main/Session";
 import { ui } from "../../ui/layaMaxUI";
 import Equip from "../data/Equip";
+import LogType from "../../core/manager/LogType";
 
 export default class Hero extends GamePro {
 
@@ -36,7 +37,7 @@ export default class Hero extends GamePro {
         this.unBlocking = true;
         this.setGameMove(new PlaneGameMove());
         this.setGameAi(new HeroAI());
-        this.busi = true;
+        // this.busi = true;
     }
 
     addBuff(buffId:number):void
@@ -196,6 +197,7 @@ export default class Hero extends GamePro {
         this.pos2.x = this.pos2.z = 0;
         this.sp3d.transform.localPositionX = 0;
         this.sp3d.transform.localPositionY = 0;
+        this.sp3d.transform.localPositionZ = 0;
         console.log("出生位置",Hero.bornX,Hero.bornY)
         this.setXY2DBox(Hero.bornX, Hero.bornY);
 
@@ -300,7 +302,6 @@ export default class Hero extends GamePro {
     rebornTime:number;
     reborn():void
     {
-
         Game.rebornTimes--;
         Game.skillManager.removeSkill(4005);
         this.isDie = false;
@@ -316,6 +317,8 @@ export default class Hero extends GamePro {
         setTimeout(() => {
             this.setWudi(false);
         }, 2000);
+
+        App.sdkManager.log(LogType.REBORTH_TIMES,Game.rebornTimes+"");
     }
 
     onDie(key): void {

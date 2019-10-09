@@ -62,11 +62,12 @@ export default class GameSoundManager{
             let wxSound = Laya.Browser.window.wx.createInnerAudioContext();
             wxSound.autoplay = true;
             wxSound.loop = true;
-            if( Laya.ResourceVersion.manifest[url] == null ){
-                wxSound.src = Laya.URL.basePath + url;
-            }else{
-                wxSound.src = Laya.URL.basePath + Laya.ResourceVersion.manifest[url];
-            }
+            wxSound.src = Laya.URL.basePath + url;
+            // if( Laya.ResourceVersion.manifest[url] == null ){
+                
+            // }else{
+            //     wxSound.src = Laya.URL.basePath + Laya.ResourceVersion.manifest[url];
+            // }
             this.currentWxSound = wxSound;
             this.setBgmMuted( this.noBgm );
         }else{
@@ -133,12 +134,13 @@ export class WXSound{
         this.wxSound = Laya.Browser.window.wx.createInnerAudioContext();
         this.wxSound.autoplay = true;
         this.wxSound.loop = false;
+        this.wxSound.src = Laya.URL.basePath + url;
         //this.wxSound.src = Laya.URL.basePath + Laya.ResourceVersion.manifest[url];
-        if( Laya.ResourceVersion.manifest[url] == null ){
-            this.wxSound.src = Laya.URL.basePath + url;
-        }else{
-            this.wxSound.src = Laya.URL.basePath + Laya.ResourceVersion.manifest[url];
-        }
+        // if( Laya.ResourceVersion.manifest[url] == null ){
+        //     this.wxSound.src = Laya.URL.basePath + url;
+        // }else{
+        //     this.wxSound.src = Laya.URL.basePath + Laya.ResourceVersion.manifest[url];
+        // }
 
         this.wxSound.onEnded( ()=>{
             Laya.Pool.recover( this.url , this.wxSound );

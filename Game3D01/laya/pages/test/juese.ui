@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":119,
+    "selectedBox":94,
+    "selecteID":21,
     "searchKey":"View",
     "props":{"width":750,"sceneColor":"#c6abab","height":1334},
     "nodeParent":-1,
-    "maxID":128,
+    "maxID":149,
     "label":"View",
     "isOpen":true,
     "isDirectory":true,
@@ -119,21 +119,6 @@
                 },
                 {
                     "x":30,
-                    "type":"Image",
-                    "searchKey":"Image,xuan",
-                    "props":{"y":407,"x":243,"var":"xuan","skin":"juese/juese_yixuanze.png"},
-                    "nodeParent":119,
-                    "label":"xuan",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":45,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                },
-                {
-                    "x":30,
                     "type":"Box",
                     "searchKey":"Box",
                     "props":{"y":665,"x":0,"width":751,"height":428},
@@ -165,7 +150,7 @@
                             "x":45,
                             "type":"Image",
                             "searchKey":"Image,shengming",
-                            "props":{"y":-14,"x":37,"var":"shengming","skin":"juese/juese_di.png"},
+                            "props":{"y":-14,"x":34,"var":"shengming","skin":"juese/juese_di.png"},
                             "nodeParent":94,
                             "label":"shengming",
                             "isOpen":true,
@@ -507,7 +492,7 @@
                             "x":45,
                             "type":"Image",
                             "searchKey":"Image,gongji",
-                            "props":{"y":-16,"x":266,"var":"gongji","skin":"juese/juese_di.png"},
+                            "props":{"y":-13,"x":276,"var":"gongji","skin":"juese/juese_di.png"},
                             "nodeParent":94,
                             "label":"gongji",
                             "isOpen":true,
@@ -651,7 +636,7 @@
                                     "x":60,
                                     "type":"ViewStack",
                                     "searchKey":"ViewStack,vs12",
-                                    "props":{"y":289,"x":-18,"width":234,"var":"vs12","height":116},
+                                    "props":{"y":290,"x":-18,"width":234,"var":"vs12","height":116},
                                     "nodeParent":23,
                                     "label":"vs12",
                                     "isOpen":true,
@@ -724,7 +709,7 @@
                                             "x":75,
                                             "type":"Box",
                                             "searchKey":"Box,item0,box2",
-                                            "props":{"y":26,"x":14,"width":230,"var":"box2","name":"item0","height":84},
+                                            "props":{"y":16,"x":5,"width":230,"var":"box2","name":"item0","height":84},
                                             "nodeParent":113,
                                             "label":"item0",
                                             "isOpen":true,
@@ -737,7 +722,7 @@
                                                     "x":90,
                                                     "type":"Image",
                                                     "searchKey":"Image",
-                                                    "props":{"y":5,"x":16,"width":151,"skin":"juese/juese_tiaoxia.png","height":40},
+                                                    "props":{"y":9,"x":16,"width":151,"skin":"juese/juese_tiaoxia.png","height":40},
                                                     "nodeParent":73,
                                                     "label":"Image",
                                                     "isDirectory":false,
@@ -752,7 +737,7 @@
                                                     "x":90,
                                                     "type":"Image",
                                                     "searchKey":"Image,tiao2",
-                                                    "props":{"y":4.5,"x":16,"var":"tiao2","skin":"main/juese_tiaoshang.png","height":36},
+                                                    "props":{"y":8.5,"x":17,"var":"tiao2","skin":"main/juese_tiaoshang.png","height":36},
                                                     "nodeParent":73,
                                                     "label":"tiao2",
                                                     "isDirectory":false,
@@ -767,7 +752,7 @@
                                                     "x":90,
                                                     "type":"Button",
                                                     "searchKey":"Button,jia2",
-                                                    "props":{"y":24.5,"x":184,"var":"jia2","stateNum":"1","skin":"juese/btn_jia.png","scaleY":1.2,"scaleX":1.2,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"y":28.5,"x":185,"var":"jia2","stateNum":"1","skin":"juese/btn_jia.png","scaleY":1.2,"scaleX":1.2,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":73,
                                                     "label":"jia2",
                                                     "isDirectory":false,
@@ -782,7 +767,7 @@
                                                     "x":90,
                                                     "type":"Image",
                                                     "searchKey":"Image,blueImg",
-                                                    "props":{"y":24,"x":27,"var":"blueImg","skin":"main/baoshi2.png","anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"y":28,"x":18,"var":"blueImg","skin":"main/baoshi2.png","anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":73,
                                                     "label":"blueImg",
                                                     "isDirectory":false,
@@ -821,7 +806,8 @@
                                                     "hasChild":false,
                                                     "compId":101,
                                                     "child":[
-                                                        ]
+                                                        ],
+                                                    "$HIDDEN":false
                                                 }],
                                             "$HIDDEN":false
                                         }]
@@ -1102,7 +1088,145 @@
                     "compId":97,
                     "child":[
                         ],
-                    "$HIDDEN":false
+                    "$HIDDEN":true
+                },
+                {
+                    "x":30,
+                    "type":"ViewStack",
+                    "searchKey":"ViewStack,vs109",
+                    "props":{"y":407,"x":204,"width":387,"var":"vs109","height":116},
+                    "nodeParent":119,
+                    "label":"vs109",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":145,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"Box",
+                            "searchKey":"Box,item1",
+                            "props":{"y":1.5,"x":-12,"name":"item1"},
+                            "nodeParent":145,
+                            "label":"item1",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":138,
+                            "child":[
+                                {
+                                    "type":"Image",
+                                    "searchKey":"Image",
+                                    "props":{"y":22,"x":41,"width":331,"skin":"bg/bosstiaoxia.png","sizeGrid":"0,20,0,20","height":42},
+                                    "nodeParent":138,
+                                    "label":"Image",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":140,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Sprite",
+                                    "searchKey":"Sprite,zitiao",
+                                    "props":{"y":24,"x":44,"var":"zitiao","texture":"juese/suipianshang.png"},
+                                    "nodeParent":138,
+                                    "label":"zitiao",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":141,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Sprite",
+                                    "searchKey":"Sprite",
+                                    "props":{"texture":"juese/suipian.png"},
+                                    "nodeParent":138,
+                                    "label":"Sprite",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":142,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"FontClip",
+                                    "searchKey":"FontClip,hongzuan",
+                                    "props":{"y":25,"x":128,"width":599,"var":"hongzuan","value":"123/900","skin":"main/clipshuzi.png","sheet":"123456 7890-+ /:cdef","scaleY":0.3,"scaleX":0.3,"height":120,"align":"center"},
+                                    "nodeParent":138,
+                                    "label":"hongzuan",
+                                    "isOpen":true,
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":143,
+                                    "child":[
+                                        ]
+                                },
+                                {
+                                    "type":"Text",
+                                    "searchKey":"Text",
+                                    "props":{"y":78,"x":71,"text":"累计观看视频50次","fontSize":30,"color":"#ffffff","bold":true,"align":"center"},
+                                    "nodeParent":138,
+                                    "label":"Text",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":146,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":true
+                        },
+                        {
+                            "x":45,
+                            "type":"Button",
+                            "searchKey":"Button,item2,fuhuo",
+                            "props":{"y":50.5,"x":176,"width":280,"var":"fuhuo","stateNum":"1","skin":"main/btn_lv.png","sizeGrid":"0,27,0,28","scaleY":1,"scaleX":1,"name":"item2","height":100,"anchorY":0.5,"anchorX":0.5},
+                            "nodeParent":145,
+                            "label":"item2",
+                            "isOpen":false,
+                            "isDirectory":true,
+                            "isAniNode":true,
+                            "hasChild":true,
+                            "compId":139,
+                            "child":[
+                                {
+                                    "type":"Sprite",
+                                    "searchKey":"Sprite",
+                                    "props":{"y":25.5,"x":74.5,"texture":"main/xuanzezi.png"},
+                                    "nodeParent":139,
+                                    "label":"Sprite",
+                                    "isDirectory":false,
+                                    "isAniNode":true,
+                                    "hasChild":false,
+                                    "compId":144,
+                                    "child":[
+                                        ]
+                                }],
+                            "$HIDDEN":true
+                        },
+                        {
+                            "x":45,
+                            "type":"UIView",
+                            "source":"test/yixuanze.scene",
+                            "searchKey":"UIView,item0,xuan",
+                            "props":{"y":-19.5,"x":35,"var":"xuan","name":"item0"},
+                            "nodeParent":145,
+                            "label":"item0",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":148,
+                            "child":[
+                                ]
+                        }]
                 }]
         }],
     "animations":[

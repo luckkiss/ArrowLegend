@@ -16,7 +16,7 @@ export default class HitEffect{
     {
         let effect:HitEffect = Laya.Pool.getItemByClass(HitEffect.TAG,HitEffect);
         effect.player = player;
-        if(effect.player && effect.player.sp3d)
+        if(effect.player && effect.player.sp3d && effect.sp3d && effect.sp3d.transform)
         {
             effect.player.sp3d.addChild(effect.sp3d);
         }

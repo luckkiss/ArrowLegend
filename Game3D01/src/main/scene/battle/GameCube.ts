@@ -19,7 +19,7 @@ export default class GameCube{
                 this.box.transform.scale = Game.cameraCN.boxscale;
             }
         }
-        Game.layer3d.addChild(this.box);
+        Game.layer3dCube.addChild(this.box);
     }
 
     static recover():void

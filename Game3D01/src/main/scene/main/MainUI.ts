@@ -173,6 +173,7 @@ import NoResDialog, { NoResDialogType } from "../../dialog/NoResDialog";
             Game.isStartBattle = true;
             this.homeData.curEnergy -= TopUI.xiaohao;
             App.sendEvent(GameEvent.APP_ENERGY,TopUI.xiaohao);
+            this.updateEnergy();
             Laya.timer.once(800,this,this.onStart);
         }
 
