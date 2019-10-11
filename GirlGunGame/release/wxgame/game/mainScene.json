@@ -1,0 +1,1 @@
+{"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Box","props":{"y":186,"x":0,"width":750,"var":"mainBox","height":1027},"compId":3},{"type":"Box","props":{"width":750,"var":"topBox","top":80,"height":106},"compId":4},{"type":"Box","props":{"width":750,"var":"bottomBox","height":122,"bottom":0},"compId":5}],"loadList":[],"loadList3D":[]}

@@ -1,0 +1,7 @@
+{
+  "code": "export default class MonsterBoomEffect {\r\n    constructor() {\r\n        this.sp3d = Laya.Sprite3D.instantiate(Laya.loader.getRes(\"h5/effects/boom/monster.lh\"));\r\n    }\r\n    static addEffect(pro, tScale = 1) {\r\n        let effect = Laya.Pool.getItemByClass(MonsterBoomEffect.TAG, MonsterBoomEffect);\r\n        effect.player = pro;\r\n        effect.player.sp3d.addChild(effect.sp3d);\r\n        Laya.timer.once(500, this, () => {\r\n            effect.recover();\r\n        });\r\n        return effect;\r\n    }\r\n    recover() {\r\n        this.sp3d && this.sp3d.removeSelf();\r\n        Laya.Pool.recover(MonsterBoomEffect.TAG, this);\r\n    }\r\n}\r\nMonsterBoomEffect.TAG = \"MonsterBoomEffect\";\r\n",
+  "references": [
+    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/GamePro.ts"
+  ]
+}

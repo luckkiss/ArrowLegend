@@ -1,0 +1,12 @@
+{
+  "code": "import { BasePlatform } from \"./BasePlatform\";\r\nimport Game from \"../game/Game\";\r\nimport LoginHttp from \"../net/LoginHttp\";\r\nimport CookieKey from \"../gameCookie/CookieKey\";\r\nimport HomeLoading from \"../main/HomeLoading\";\r\nexport default class TestPlatform extends BasePlatform {\r\n    checkUpdate() {\r\n    }\r\n    login(callback) {\r\n        callback && callback(\"shfdsaomghjgai123fdafda456\");\r\n    }\r\n    getUserInfo(callback) {\r\n        this.cb = callback;\r\n        let uu = Laya.stage.getChildByName(\"HomeLoading\");\r\n        uu.on(Laya.Event.CLICK, this, this.clickFun);\r\n    }\r\n    clickFun(e) {\r\n        if (e.target instanceof HomeLoading) {\r\n            let uu = Laya.stage.getChildByName(\"HomeLoading\");\r\n            LoginHttp.FRONT = \"test\" + uu.idTxt.text;\r\n            Game.cookie.setCookie(CookieKey.USER_ID, { \"userId\": uu.idTxt.text });\r\n            this.cb && this.cb();\r\n        }\r\n    }\r\n    onShare(callback) {\r\n        callback && callback();\r\n        Game.hero.reborn();\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/GirlGunGame/GirlGunGame/src/platforms/BasePlatform.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts",
+    "D:/GirlGunGame/GirlGunGame/src/ui/layaMaxUI.ts",
+    "D:/GirlGunGame/GirlGunGame/src/net/LoginHttp.ts",
+    "D:/GirlGunGame/GirlGunGame/src/core/App.ts",
+    "D:/GirlGunGame/GirlGunGame/src/gameCookie/CookieKey.ts",
+    "D:/GirlGunGame/GirlGunGame/src/main/HomeLoading.ts"
+  ]
+}

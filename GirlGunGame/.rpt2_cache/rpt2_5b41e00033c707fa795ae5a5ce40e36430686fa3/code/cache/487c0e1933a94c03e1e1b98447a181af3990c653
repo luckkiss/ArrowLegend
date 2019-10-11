@@ -1,0 +1,10 @@
+{
+  "code": "import { ui } from \"./../../../../ui/layaMaxUI\";\r\nimport Game from \"../../../../game/Game\";\r\nimport App from \"../../../../core/App\";\r\nimport { AD_TYPE } from \"../../../../ADType\";\r\nexport default class RebornView extends ui.test.ReborthUI {\r\n    constructor() {\r\n        super();\r\n        this.bgv.cBtn.clickHandler = new Laya.Handler(this, this.onClose);\r\n        this.fuhuo.clickHandler = new Laya.Handler(this, this.onFuhuo);\r\n        App.sdkManager.initAdBtn(this.fuhuo, AD_TYPE.AD_REBORTH);\r\n        this.shape = new Laya.Sprite();\r\n        this.on(Laya.Event.DISPLAY, this, this.onDis);\r\n    }\r\n    onFuhuo() {\r\n        Laya.timer.clear(this, this.onLoop2);\r\n        App.sdkManager.playAdVideo(AD_TYPE.AD_REBORTH, new Laya.Handler(this, this.onReborn));\r\n    }\r\n    onDis() {\r\n        this.txt.text = \"\" + Game.rebornTimes;\r\n        this._curTime = 5;\r\n        this.daojishi.text = \"\" + this._curTime;\r\n        Laya.timer.loop(1000, this, this.onLoop2);\r\n    }\r\n    onLoop2() {\r\n        this._curTime--;\r\n        this.daojishi.text = \"\" + this._curTime;\r\n        if (this._curTime <= 0) {\r\n            Laya.timer.clear(this, this.onLoop2);\r\n            this.onClose();\r\n        }\r\n    }\r\n    onClose() {\r\n        Laya.timer.clear(this, this.onLoop2);\r\n        this.removeSelf();\r\n        Game.rebornTimes = 0;\r\n        Laya.stage.event(Game.Event_MAIN_DIE);\r\n    }\r\n    onReborn() {\r\n        Laya.timer.clear(this, this.onLoop2);\r\n        this.removeSelf();\r\n        Game.hero.reborn();\r\n    }\r\n    removeSelf() {\r\n        Game.state = 0;\r\n        return super.removeSelf();\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/GirlGunGame/GirlGunGame/src/ui/layaMaxUI.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts",
+    "D:/GirlGunGame/GirlGunGame/src/core/App.ts",
+    "D:/GirlGunGame/GirlGunGame/src/ADType.ts",
+    "D:/GirlGunGame/GirlGunGame/src/gameCookie/CookieKey.ts"
+  ]
+}

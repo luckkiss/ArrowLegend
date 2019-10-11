@@ -1,0 +1,6 @@
+{
+  "code": "import { HeroLvType } from \"./HeroData\";\r\nexport default class HeroBaseData {\r\n    constructor() {\r\n        this.id = 0;\r\n        this.hpLv = 0;\r\n        this.atkLv = 0;\r\n        this.hpTime = 0;\r\n        this.atkTime = 0;\r\n    }\r\n    getString() {\r\n        return [this.id, this.hpLv, this.atkLv, this.hpTime, this.atkTime].join(\",\");\r\n    }\r\n    setString(str) {\r\n        let arr = str.split(\",\");\r\n        this.id = parseInt(arr[0]);\r\n        this.hpLv = parseInt(arr[1]);\r\n        this.atkLv = parseInt(arr[2]);\r\n        this.hpTime = parseInt(arr[3]);\r\n        this.atkTime = parseInt(arr[4]);\r\n    }\r\n    initData() {\r\n        this.hpLv = 1;\r\n        this.atkLv = 1;\r\n    }\r\n    getLv(type) {\r\n        if (type == HeroLvType.ATK) {\r\n            return this.atkLv;\r\n        }\r\n        if (type == HeroLvType.HP) {\r\n            return this.hpLv;\r\n        }\r\n    }\r\n    setLv(type, lv) {\r\n        if (type == HeroLvType.ATK) {\r\n            this.atkLv = lv;\r\n        }\r\n        if (type == HeroLvType.HP) {\r\n            this.hpLv = lv;\r\n        }\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/GirlGunGame/GirlGunGame/src/game/data/HeroData.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "code": "import BitmapNumber from \"../../core/display/BitmapNumber\";\r\nimport GameBG from \"../GameBG\";\r\nimport Game from \"../Game\";\r\nexport default class BloodEffect {\r\n    constructor() { }\r\n    static add(value, sprite, isCrit, skin) {\r\n        let bitNum = BitmapNumber.getFontClip(0.05, skin);\r\n        if (isCrit) {\r\n            Game.shakeBattle();\r\n        }\r\n        bitNum.value = value;\r\n        let xx = -GameBG.ww2 + Math.random() * GameBG.ww;\r\n        let yy = Math.random() * GameBG.ww;\r\n        sprite.addChild(bitNum);\r\n        bitNum.pos(xx, yy);\r\n        sprite.bloodCount++;\r\n        let tscale = 0.3;\r\n        if (isCrit) {\r\n            tscale = 0.4;\r\n        }\r\n        Laya.Tween.to(bitNum, { y: yy - 100, scaleX: tscale, scaleY: tscale }, 300, Laya.Ease.circOut);\r\n        Laya.timer.once(500, this, () => {\r\n            bitNum.recover();\r\n        });\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/GirlGunGame/GirlGunGame/src/core/display/BitmapNumber.ts",
+    "D:/GirlGunGame/GirlGunGame/src/core/App.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/GameBG.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/Blood.ts",
+    "D:/GirlGunGame/GirlGunGame/src/core/utils/ShakeUtils.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts"
+  ]
+}

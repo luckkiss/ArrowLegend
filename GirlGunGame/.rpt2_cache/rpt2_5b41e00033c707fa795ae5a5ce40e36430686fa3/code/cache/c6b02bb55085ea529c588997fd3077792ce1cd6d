@@ -1,0 +1,11 @@
+{
+  "code": "import Game from \"../Game\";\r\nimport Coin from \"../player/Coin\";\r\nexport default class CoinEffect {\r\n    constructor() {\r\n    }\r\n    static addEffect(monster, goldNum, id) {\r\n        for (let i = 0; i < goldNum; i++) {\r\n            let coin = Coin.getOne(id);\r\n            coin.setPos(monster, 2 * Math.PI / goldNum * i, id);\r\n            if (id == Coin.TYPE_HEART) {\r\n                CoinEffect.hearAry.push(coin);\r\n            }\r\n            else {\r\n                CoinEffect.coinsAry.push(coin);\r\n            }\r\n        }\r\n    }\r\n    static fly() {\r\n        let len = CoinEffect.coinsAry.length;\r\n        if (len > 0) {\r\n            Game.playSound(\"fx_goldget.wav\");\r\n        }\r\n        for (let i = 0; i < len; i++) {\r\n            let coin = CoinEffect.coinsAry.shift();\r\n            coin && coin.fly();\r\n        }\r\n    }\r\n    static flyHeart() {\r\n        let len = CoinEffect.hearAry.length;\r\n        for (let i = 0; i < len; i++) {\r\n            let coin = CoinEffect.hearAry.shift();\r\n            coin && coin.fly();\r\n        }\r\n    }\r\n}\r\nCoinEffect.coinsAry = [];\r\nCoinEffect.hearAry = [];\r\n",
+  "references": [
+    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/player/Monster.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/controllerScript/FootRotateScript.ts",
+    "D:/GirlGunGame/GirlGunGame/src/ui/layaMaxUI.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/player/Coin.ts",
+    "D:/GirlGunGame/GirlGunGame/src/game/GamePro.ts"
+  ]
+}
