@@ -34,8 +34,8 @@ import Coin from "./player/Coin";
 import LogType from "../core/manager/LogType";
 
 export default class Game {
-    static codeVer:string = "1.1.7.1008";
-    static resVer:string = "1.1.7.1008";
+    static codeVer:string = "1.1.7.1009";
+    static resVer:string = "1.1.7.1009";
 
     /**本地资源 */
 	static nativefiles:string[] = [
