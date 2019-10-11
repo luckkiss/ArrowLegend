@@ -366,7 +366,11 @@ export default class BattleScene extends Laya.Sprite {
         // Game.skillManager.addSkill(App.tableManager.getDataByNameAndId(SysSkill.NAME,1009));
 
         this.setGuide("滑动摇杆，控制角色到达指定位置。",1);
-        App.sdkManager.log(LogType.BATTLE_GUIDE,"滑动摇杆，控制角色到达指定位置。");
+        if(Session.homeData.isGuide)
+        {
+            App.sdkManager.log(LogType.BATTLE_GUIDE,"滑动摇杆，控制角色到达指定位置。");
+        }
+        
 
         Laya.MouseManager.multiTouchEnabled = false;
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.md);
@@ -410,8 +414,10 @@ export default class BattleScene extends Laya.Sprite {
             // this.guideCircle.transform.localPositionX = 0;
             Game.layer3d.addChild(this.guideCircle);
             Session.guideId = 3;
-            App.sdkManager.log(LogType.BATTLE_GUIDE,"最佳控制区域");
-            
+            if(Session.homeData.isGuide)
+            {
+                App.sdkManager.log(LogType.BATTLE_GUIDE,"最佳控制区域");
+            }
         }
         else if(Session.guideId == 2)
         {
@@ -424,7 +430,10 @@ export default class BattleScene extends Laya.Sprite {
                 this.guideMonster.show();
                 Session.guideId = 4;
                 this.guideCircle && this.guideCircle.removeSelf();
-                App.sdkManager.log(LogType.BATTLE_GUIDE,"显示引导怪");
+                if(Session.homeData.isGuide)
+                {
+                    App.sdkManager.log(LogType.BATTLE_GUIDE,"显示引导怪");
+                }
             }, 800);
 
             

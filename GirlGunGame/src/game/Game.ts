@@ -35,7 +35,7 @@ import LogType from "../core/manager/LogType";
 import GameCube from "../main/scene/battle/GameCube";
 
 export default class Game {
-    static codeVer:string = "2.1.1.1012";
+    static codeVer:string = "2.1.1.101201";
     static resVer:string = "2.1.1.1012";
 
     /**本地资源 */
@@ -190,7 +190,7 @@ export default class Game {
         if (Game.isOpen)  {
             return;
         }
-        App.sdkManager.log(LogType.CHAPTER_INDEX,Game.battleLoader.index+"");
+        App.sdkManager.log(LogType.MAP_INDEX,Game.battleLoader.index+"");
         console.log("开门");
 
         if(Game.battleLoader.index >= SysMap.getTotal(Game.battleLoader.chapterId) && Game.battleLoader._configId != 100000)
