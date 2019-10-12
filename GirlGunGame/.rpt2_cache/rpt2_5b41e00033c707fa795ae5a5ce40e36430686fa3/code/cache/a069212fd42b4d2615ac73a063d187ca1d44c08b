@@ -1,8 +1,0 @@
-{
-  "code": "export default class HitEffect {\r\n    constructor() {\r\n        let ss = Laya.loader.getRes(\"h5/bulletsEffect/20000/monster.lh\");\r\n        this.sp3d = Laya.Sprite3D.instantiate(ss);\r\n    }\r\n    static addEffect(player) {\r\n        let effect = Laya.Pool.getItemByClass(HitEffect.TAG, HitEffect);\r\n        effect.player = player;\r\n        if (effect.player && effect.player.sp3d && effect.sp3d && effect.sp3d.transform) {\r\n            effect.player.sp3d.addChild(effect.sp3d);\r\n        }\r\n        Laya.timer.once(500, this, () => {\r\n            effect.recover();\r\n        });\r\n        return effect;\r\n    }\r\n    recover() {\r\n        this.sp3d && this.sp3d.removeSelf();\r\n        this.player = null;\r\n        Laya.Pool.recover(HitEffect.TAG, this);\r\n    }\r\n}\r\nHitEffect.TAG = \"HitEffect\";\r\n",
-  "references": [
-    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts",
-    "D:/GirlGunGame/GirlGunGame/src/game/GamePro.ts",
-    "D:/GirlGunGame/GirlGunGame/src/game/GameProType.ts"
-  ]
-}

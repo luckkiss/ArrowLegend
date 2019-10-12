@@ -1,4 +1,0 @@
-{
-  "code": "export var AD_TYPE;\r\n(function (AD_TYPE) {\r\n    AD_TYPE[AD_TYPE[\"AD_DIAMOND\"] = 0] = \"AD_DIAMOND\";\r\n    AD_TYPE[AD_TYPE[\"AD_REBORTH\"] = 1] = \"AD_REBORTH\";\r\n    AD_TYPE[AD_TYPE[\"AD_BATTLE10\"] = 2] = \"AD_BATTLE10\";\r\n    AD_TYPE[AD_TYPE[\"AD_CHANGE_SKILL\"] = 3] = \"AD_CHANGE_SKILL\";\r\n    AD_TYPE[AD_TYPE[\"AD_POWER\"] = 4] = \"AD_POWER\";\r\n})(AD_TYPE || (AD_TYPE = {}));\r\n",
-  "references": []
-}

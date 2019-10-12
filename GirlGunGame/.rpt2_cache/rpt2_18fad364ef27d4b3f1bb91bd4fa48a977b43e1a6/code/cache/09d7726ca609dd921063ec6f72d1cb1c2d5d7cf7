@@ -1,9 +1,0 @@
-{
-  "code": "import Session from \"./main/Session\";\r\nimport App from \"./core/App\";\r\nimport Game from \"./game/Game\";\r\nexport default class Log {\r\n    constructor() {\r\n    }\r\n    static init() {\r\n    }\r\n    static log(type, content = \"\") {\r\n        var arr = [];\r\n        arr.push(Laya.Browser.now());\r\n        arr.push(Game.codeVer);\r\n        arr.push(Session.SKEY);\r\n        arr.push(0);\r\n        arr.push(Log.onlyid);\r\n        arr.push(type);\r\n        arr.push(content);\r\n        arr.push(App.sdkManager.wxName);\r\n        let str = arr.join(\"\\t\");\r\n        App.http(App.serverIP + \"gamex2/gamelog\", \"log=\" + str, \"post\");\r\n    }\r\n}\r\nLog.onlyid = Math.random();\r\nexport var LOG_TYPE;\r\n(function (LOG_TYPE) {\r\n    LOG_TYPE[LOG_TYPE[\"REG\"] = 0] = \"REG\";\r\n    LOG_TYPE[LOG_TYPE[\"LOGIN\"] = 1] = \"LOGIN\";\r\n})(LOG_TYPE || (LOG_TYPE = {}));\r\n",
-  "references": [
-    "D:/GirlGunGame/GirlGunGame/src/main/Session.ts",
-    "D:/GirlGunGame/GirlGunGame/src/core/App.ts",
-    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts",
-    "D:/GirlGunGame/GirlGunGame/src/core/manager/LogType.ts"
-  ]
-}

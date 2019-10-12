@@ -1,7 +1,0 @@
-{
-  "code": "export class GameMove {\r\n    move2d(n, pro, speed, hitStop) { return false; }\r\n    Blocking(pro, vx, vz) {\r\n        return true;\r\n    }\r\n}\r\n",
-  "references": [
-    "D:/GirlGunGame/GirlGunGame/src/game/GamePro.ts",
-    "D:/GirlGunGame/GirlGunGame/src/game/Game.ts"
-  ]
-}

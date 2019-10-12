@@ -1,7 +1,0 @@
-{
-  "code": "import Session from \"../../../Session\";\r\nexport default class MyTimeGold {\r\n    constructor() {\r\n        this.disView = null;\r\n    }\r\n    setUI(a) {\r\n        this.disView = a;\r\n        this.disView.on(Laya.Event.UNDISPLAY, this, this.undisFun);\r\n        this.disView.on(Laya.Event.DISPLAY, this, this.disFun);\r\n        this.disFun();\r\n    }\r\n    disFun() {\r\n        Laya.timer.frameLoop(1, this, this.loopFun);\r\n    }\r\n    undisFun() {\r\n        Laya.timer.clear(this, this.loopFun);\r\n    }\r\n    loopFun() {\r\n        let arr = Session.timeGoldData.getNowTime();\r\n        this.disView.timeFc.value = this.getString(arr[0]) + \":\" + this.getString(arr[1]);\r\n        this.disView.goldFc.value = Session.timeGoldData.gold + \"\";\r\n        let ms = arr[2] * 1000 + arr[3];\r\n        let endA = 360 * ((60000 - ms) / 60000) - 90;\r\n        let a = this.disView.shanbox;\r\n        a.graphics.clear();\r\n        a.graphics.drawPie(a.width / 2, a.height / 2 - 2, 35, -90, endA, \"#ffec1d\");\r\n    }\r\n    getString(value) {\r\n        return value < 10 ? 0 + \"\" + value : value + \"\";\r\n    }\r\n}\r\n",
-  "references": [
-    "D:/gitworker/GirlGunGame/src/ui/layaMaxUI.ts",
-    "D:/gitworker/GirlGunGame/src/main/Session.ts"
-  ]
-}
