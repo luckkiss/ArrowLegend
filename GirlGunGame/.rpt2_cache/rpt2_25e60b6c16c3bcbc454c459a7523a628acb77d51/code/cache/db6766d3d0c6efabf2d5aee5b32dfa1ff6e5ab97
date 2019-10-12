@@ -1,0 +1,4 @@
+{
+  "code": "export default class LogType {\r\n}\r\nLogType.AD_FAIL = 18;\r\nLogType.AD_SUC = 19;\r\nLogType.AD_SUC_OVER = 20;\r\nLogType.AD_FAIL_2 = 21;\r\nLogType.SHOW_GAME_VIEW = 10001;\r\nLogType.CLICK_START_BTN = 10002;\r\nLogType.LOGIN_SUCCESS = 10003;\r\nLogType.NEW_PLAYER = 10004;\r\nLogType.SHOW_MAIN_VIEW = 10005;\r\nLogType.BATTLE_GUIDE_0 = 10006;\r\nLogType.BATTLE_GUIDE_1 = 10007;\r\nLogType.BATTLE_GUIDE_2 = 10008;\r\nLogType.BATTLE_GUIDE_3 = 10009;\r\nLogType.BATTLE_GUIDE_4 = 10010;\r\nLogType.BATTLE_GUIDE_5 = 10011;\r\nLogType.BATTLE_GUIDE_6 = 10012;\r\nLogType.REBORTH_CLICK = 10013;\r\nLogType.REBORTH_SUCCESS = 10014;\r\nLogType.GOTO_FROG = 10015;\r\n",
+  "references": []
+}

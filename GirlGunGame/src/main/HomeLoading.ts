@@ -41,11 +41,8 @@ import CookieKey from "../gameCookie/CookieKey";
         this.barImg.scrollRect = this.rect;
         this.sliderImg.x = this.rect.width;
         this.txt.text = "0%";
-        Laya.loader.load([
-			{ url: "res/atlas/main.atlas", type: Laya.Loader.ATLAS },
-			{ url: "res/atlas/zhaohuan.atlas", type: Laya.Loader.ATLAS },
-			{ url: "res/atlas/guide.atlas", type: Laya.Loader.ATLAS }
-		], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
+        Laya.loader.load(
+			["res/atlas/main.atlas","res/atlas/zhaohuan.atlas","res/atlas/guide.atlas"], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
     }
 
     private onHandler(): void {

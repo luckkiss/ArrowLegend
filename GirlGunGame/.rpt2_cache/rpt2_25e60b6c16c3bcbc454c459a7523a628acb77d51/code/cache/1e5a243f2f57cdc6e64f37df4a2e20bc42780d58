@@ -1,0 +1,12 @@
+{
+  "code": "import BaseSkill from \"./BaseSkill\";\r\nimport Monster from \"../player/Monster\";\r\nimport GameBG from \"../GameBG\";\r\nimport Game from \"../Game\";\r\nimport { GameAI } from \"../ai/GameAI\";\r\nexport default class SplitSkill extends BaseSkill {\r\n    constructor(sys) { super(sys); }\r\n    exeSkill(now, pro) {\r\n        this.pro = pro;\r\n        if (pro.splitTimes < this.sysBullet.splitNum) {\r\n            this.onDieSplit();\r\n            return true;\r\n        }\r\n        return false;\r\n    }\r\n    onDieSplit() {\r\n        console.log(\"分裂\");\r\n        let flag = this.pro.splitTimes + 1;\r\n        let hp = this.pro.gamedata.maxhp / 2;\r\n        let toArr = Game.getRandPos(this.pro, 1);\r\n        let toX = toArr[0] * GameBG.ww;\r\n        let toY = toArr[1] * GameBG.ww;\r\n        let monster1 = Monster.getMonster(this.pro.sysEnemy.id, toX, toY, 0.8, hp);\r\n        monster1.splitTimes = flag;\r\n        monster1.acstr = \"\";\r\n        monster1.play(GameAI.Idle);\r\n        let toArr1 = Game.getRandPos(this.pro, 1);\r\n        let toX1 = toArr1[0] * GameBG.ww;\r\n        let toY1 = toArr1[1] * GameBG.ww;\r\n        let monster2 = Monster.getMonster(this.pro.sysEnemy.id, toX1, toY1, 0.8, hp);\r\n        monster2.splitTimes = flag;\r\n        monster2.acstr = \"\";\r\n        monster2.play(GameAI.Idle);\r\n    }\r\n}\r\n",
+  "references": [
+    "D:/gitworker/GirlGunGame/src/game/skill/BaseSkill.ts",
+    "D:/gitworker/GirlGunGame/src/main/sys/SysBullet.ts",
+    "D:/gitworker/GirlGunGame/src/game/GamePro.ts",
+    "D:/gitworker/GirlGunGame/src/game/player/Monster.ts",
+    "D:/gitworker/GirlGunGame/src/game/GameBG.ts",
+    "D:/gitworker/GirlGunGame/src/game/Game.ts",
+    "D:/gitworker/GirlGunGame/src/game/ai/GameAI.ts"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "code": "import App from \"../../core/App\";\r\nexport default class SysTalentInfo {\r\n    constructor() {\r\n        this.id = 0;\r\n        this.idName = \"\";\r\n        this.talentName = \"\";\r\n        this.talentInfo = \"\";\r\n        this.talentSort = 0;\r\n        this.talentType = 0;\r\n    }\r\n    static getSys() {\r\n        let arr = App.tableManager.getTable(SysTalentInfo.NAME);\r\n        arr.sort(function (a, b) {\r\n            return a.talentSort - b.talentSort;\r\n        });\r\n        return arr;\r\n    }\r\n    getHou() {\r\n        if (this.talentType == 1) {\r\n            return \"\";\r\n        }\r\n        else if (this.talentType == 2) {\r\n            return \"%\";\r\n        }\r\n    }\r\n}\r\nSysTalentInfo.NAME = \"sys_talentinfo.txt\";\r\n",
+  "references": [
+    "D:/gitworker/GirlGunGame/src/core/App.ts"
+  ]
+}

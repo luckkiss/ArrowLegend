@@ -1,0 +1,4 @@
+{
+  "code": "export default class BitmapNumber extends Laya.FontClip {\r\n    constructor() {\r\n        super();\r\n    }\r\n    onInit(skin, sheet) {\r\n        if (this.imgUrl) {\r\n            return;\r\n        }\r\n        this.imgUrl = skin;\r\n        this.skin = skin;\r\n        this.sheet = sheet;\r\n        this.anchorX = this.anchorY = 0.5;\r\n    }\r\n    static getFontClip(tScale = 1, skin = \"main/clipshuzi.png\", sheet) {\r\n        let bn = Laya.Pool.getItemByClass(BitmapNumber.TAG + skin, BitmapNumber);\r\n        bn.onInit(skin, sheet ? sheet : \"123456 7890-+ /:cdef\");\r\n        bn.scale(tScale ? tScale : 1, tScale ? tScale : 1);\r\n        return bn;\r\n    }\r\n    recover() {\r\n        this.removeSelf();\r\n        Laya.Pool.recover(BitmapNumber.TAG + this.imgUrl, this);\r\n    }\r\n}\r\nBitmapNumber.TAG = \"BitmapNumber\";\r\n",
+  "references": []
+}

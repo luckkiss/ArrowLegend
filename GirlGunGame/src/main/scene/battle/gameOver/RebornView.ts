@@ -3,6 +3,7 @@ import Game from "../../../../game/Game";
 import App from "../../../../core/App";
 import { AD_TYPE } from "../../../../ADType";
 import CookieKey from "../../../../gameCookie/CookieKey";
+import LogType from "../../../../core/manager/LogType";
 export default class RebornView extends ui.test.ReborthUI {
     private shape: Laya.Sprite;
 
@@ -20,6 +21,7 @@ export default class RebornView extends ui.test.ReborthUI {
     {
         Laya.timer.clear(this,this.onLoop2);
         App.sdkManager.playAdVideo(AD_TYPE.AD_REBORTH,new Laya.Handler(this,this.onReborn));
+        App.sdkManager.log(LogType.REBORTH_CLICK);
     }
 
 

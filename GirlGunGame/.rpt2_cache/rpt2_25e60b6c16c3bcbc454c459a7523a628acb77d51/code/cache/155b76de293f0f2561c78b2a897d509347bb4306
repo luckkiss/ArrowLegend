@@ -1,0 +1,7 @@
+{
+  "code": "import Session from \"../Session\";\r\nimport App from \"../../core/App\";\r\nexport default class SysHero {\r\n    constructor() {\r\n        this.id = 0;\r\n        this.roleExp = 0;\r\n        this.blueDiamond = 0;\r\n        this.redDiamond = 0;\r\n        this.gold = 0;\r\n    }\r\n    static getNewLv(exp) {\r\n        let oldExp = Session.homeData.playerExp;\r\n        let oldLv = Session.homeData.playerLv;\r\n        let newExp = oldExp + exp;\r\n        let newLv = oldLv;\r\n        while (true) {\r\n            let sys = App.tableManager.getDataByNameAndId(SysHero.NAME, oldLv);\r\n            if (newExp >= sys.roleExp) {\r\n                let nowLv = oldLv + 1;\r\n                if (App.tableManager.getDataByNameAndId(SysHero.NAME, oldLv) == null) {\r\n                    break;\r\n                }\r\n                newLv = nowLv;\r\n                newExp -= sys.roleExp;\r\n            }\r\n            else {\r\n                break;\r\n            }\r\n        }\r\n        console.log(\"加经验后的等级\", newLv, newExp);\r\n        return [newLv, newExp];\r\n    }\r\n}\r\nSysHero.NAME = 'sys_hero.txt';\r\n",
+  "references": [
+    "D:/gitworker/GirlGunGame/src/main/Session.ts",
+    "D:/gitworker/GirlGunGame/src/core/App.ts"
+  ]
+}

@@ -34,8 +34,6 @@ export default class WorldCell extends ui.test.worldCellUI {
             
             MyEffect.scaleEffect( this.mapBtn );
             Laya.stage.event(GameEvent.START_BATTLE);
-
-            App.sdkManager.log(LogType.CHAPTER_INDEX,this.sys.id+"");
         }
         else
         {

@@ -4,6 +4,7 @@ import GamePro from "../GamePro";
 import Monster from "../player/Monster";
 import GameBG from "../GameBG";
 import Game from "../Game";
+import { GameAI } from "../ai/GameAI";
 
 export default class SplitSkill extends BaseSkill {
 
@@ -29,13 +30,17 @@ export default class SplitSkill extends BaseSkill {
         let toArr:number[] = Game.getRandPos(this.pro,1);
         let toX = toArr[0] * GameBG.ww;
         let toY = toArr[1] * GameBG.ww;
-        let monster1: Monster = Monster.getMonster(this.pro.sysEnemy.id, toX, toY, 1, hp);
+        let monster1: Monster = Monster.getMonster(this.pro.sysEnemy.id, toX, toY, 0.8, hp);
         monster1.splitTimes = flag;
+        monster1.acstr = "";
+        monster1.play(GameAI.Idle);
 
         let toArr1:number[] = Game.getRandPos(this.pro,1);
         let toX1 = toArr1[0] * GameBG.ww;
         let toY1 = toArr1[1] * GameBG.ww;
-        let monster2: Monster = Monster.getMonster(this.pro.sysEnemy.id, toX1,toY1, 1, hp);
+        let monster2: Monster = Monster.getMonster(this.pro.sysEnemy.id, toX1,toY1, 0.8, hp);
         monster2.splitTimes = flag;
+        monster2.acstr = "";
+        monster2.play(GameAI.Idle);
     }
 }

@@ -43,6 +43,7 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         this.rankBtn.on( Laya.Event.CLICK,this,this.rankClickFun );
         this.sign7Btn.on( Laya.Event.CLICK,this,this.sign7clickFun );
         this.shareBtn.on( Laya.Event.CLICK,this,this.shareFun );
+        this.frogBtn.on(Laya.Event.CLICK,this,this.gotoFrog);
         //Laya.timer.once( 1000,this,this.tttFun );
         Laya.stage.on( GameEvent.ADD_COIN , this , this.addCoinFun );
         Laya.stage.on( GameEvent.APP_ENERGY ,  this, this.reducePowerFun );
@@ -51,6 +52,20 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
         this.addChild(this.box1);
 
         Laya.stage.on( GameEvent.SHOW_MAIN , this, this.showMain );
+    }
+
+    private gotoFrog():void
+    {
+        if (Laya.Browser.window.wx) {
+            Laya.Browser.window.wx.navigateToMiniProgram({
+                appId: 'wx63d79f4642c0f508',
+                path: '',
+                envVersion: "release",
+                success(res) {
+                  console.log("按钮跳转小游戏成功");
+                }
+              });
+        }
     }
 
     public showMain():void{

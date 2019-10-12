@@ -27,7 +27,7 @@ export default class GameInfrared{
         for (let i = 0; i < this.nn; i++) {
             let redLine:Laya.Image = new Laya.Image();
             redLine.skin = "bg/hongtiao.png"
-            //Game.frontLayer.addChild(redLine);
+            // Game.frontLayer.addChild(redLine);
             redLine.anchorX = 0.5;
             redLine.anchorY = 0.5;
             redLine.alpha = 0.8;
@@ -43,6 +43,7 @@ export default class GameInfrared{
         this.show_ = b;
         this.show_ = false;
         if(this.show_){
+            console.log("显示红线");
             for (let i = 0; i < this.redLines.length; i++) {
                 var e = this.redLines[i];
                 Game.frontLayer.addChild(e);

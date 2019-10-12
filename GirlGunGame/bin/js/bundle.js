@@ -13,7 +13,7 @@
     GameConfig.screenMode = "none";
     GameConfig.alignV = "top";
     GameConfig.alignH = "left";
-    GameConfig.startScene = "game/viewbg.scene";
+    GameConfig.startScene = "game/gameIcon.scene";
     GameConfig.sceneRoot = "";
     GameConfig.debug = false;
     GameConfig.stat = false;
@@ -170,49 +170,25 @@
 
     class LogType {
     }
-    LogType.HEART = 100;
-    LogType.LOGIN_TIME = 0;
-    LogType.ERROR_ITEM_NULL = 1;
-    LogType.LOGIN_INFO = 2;
-    LogType.LOGIN_STATUS = 3;
-    LogType.WX_HIDE = 4;
-    LogType.WX_SHOW = 5;
-    LogType.LOAD_ERROR = 6;
-    LogType.HANGUP_START = 7;
-    LogType.HANGUP_OVER = 8;
-    LogType.PLAYER_DATA = 9;
-    LogType.NEW_PLAYER = 10;
-    LogType.CODE_ERROR = 11;
-    LogType.LOAD_CONFIG = 13;
-    LogType.LOAD_VERSION = 14;
-    LogType.LOAD_fileconfig = 15;
-    LogType.LOAD_CONFIGZIP = 16;
-    LogType.LOAD_CONFIG_ERR = 17;
     LogType.AD_FAIL = 18;
     LogType.AD_SUC = 19;
     LogType.AD_SUC_OVER = 20;
     LogType.AD_FAIL_2 = 21;
-    LogType.OPEN_TASK = 22;
-    LogType.OPEN_TIANFU = 23;
-    LogType.CLOSE_ZHUAN_PAN = 24;
-    LogType.OPEN_ZHUAN = 25;
-    LogType.AD_ZHUAN = 26;
-    LogType.NEWER_FIRST_CLICK = 1000;
-    LogType.NEWER_OPEN_ROLE = 1001;
-    LogType.NEWER_EQUIP = 1002;
-    LogType.NEWER_YUELAIYUEQIANGDA = 1005;
-    LogType.NEWER_HALF = 1006;
-    LogType.NEWER_XINGLAI = 1007;
-    LogType.NEWER_CLICK_CITY = 1008;
-    LogType.NEWER_CLICK_STAGE = 1009;
-    LogType.MAP_INDEX = 1010;
-    LogType.CHAPTER_INDEX = 1011;
-    LogType.REBORTH_TIMES = 1012;
-    LogType.BATTLE_GUIDE = 1013;
-    LogType.SHOW_LOGIN_BTN = 1014;
-    LogType.START_LOADING = 1015;
-    LogType.START_LOADING_GUIDE = 1016;
-    LogType.SHOW_MAIN = 1017;
+    LogType.SHOW_GAME_VIEW = 10001;
+    LogType.CLICK_START_BTN = 10002;
+    LogType.LOGIN_SUCCESS = 10003;
+    LogType.NEW_PLAYER = 10004;
+    LogType.SHOW_MAIN_VIEW = 10005;
+    LogType.BATTLE_GUIDE_0 = 10006;
+    LogType.BATTLE_GUIDE_1 = 10007;
+    LogType.BATTLE_GUIDE_2 = 10008;
+    LogType.BATTLE_GUIDE_3 = 10009;
+    LogType.BATTLE_GUIDE_4 = 10010;
+    LogType.BATTLE_GUIDE_5 = 10011;
+    LogType.BATTLE_GUIDE_6 = 10012;
+    LogType.REBORTH_CLICK = 10013;
+    LogType.REBORTH_SUCCESS = 10014;
+    LogType.GOTO_FROG = 10015;
 
     class FlyUpTips extends Laya.Sprite {
         constructor() {
@@ -303,6 +279,16 @@
             boomRectUI.uiView = { "type": "View", "props": {}, "compId": 2, "child": [{ "type": "Image", "props": { "var": "img", "skin": "bg/boomEff.png", "anchorY": 0.5, "anchorX": 0.5 }, "compId": 3 }], "loadList": ["bg/boomEff.png"], "loadList3D": [] };
             game.boomRectUI = boomRectUI;
             REG("ui.game.boomRectUI", boomRectUI);
+            class gameIconUI extends Laya.View {
+                constructor() { super(); }
+                createChildren() {
+                    super.createChildren();
+                    this.createView(gameIconUI.uiView);
+                }
+            }
+            gameIconUI.uiView = { "type": "View", "props": { "width": 110, "height": 130 }, "compId": 2, "child": [{ "type": "Box", "props": { "y": 0, "x": 0, "width": 110, "height": 130, "bgColor": "#ffffff" }, "compId": 3 }, { "type": "Sprite", "props": { "y": 7, "x": 7, "width": 96, "texture": "loading/frog.jpg", "height": 96 }, "compId": 4 }, { "type": "Image", "props": { "y": 0, "x": 0, "width": 110, "skin": "loading/yuanzhengkong.png", "sizeGrid": "22,25,25,29", "height": 110 }, "compId": 6 }, { "type": "Label", "props": { "width": 110, "text": "青蛙过河", "height": 22, "fontSize": 20, "bottom": 0, "bold": true, "align": "center" }, "compId": 7 }], "loadList": ["loading/frog.jpg", "loading/yuanzhengkong.png"], "loadList3D": [] };
+            game.gameIconUI = gameIconUI;
+            REG("ui.game.gameIconUI", gameIconUI);
             class heheUI extends Laya.Scene {
                 constructor() { super(); }
                 createChildren() {
@@ -1105,7 +1091,7 @@
                     this.createView(worldUI.uiView);
                 }
             }
-            worldUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "viewbg", "props": { "runtime": "ui.game.viewbgUI" }, "compId": 26 }, { "type": "Box", "props": { "y": 141, "x": 0, "width": 750, "var": "box", "height": 1093 }, "compId": 24 }, { "type": "Box", "props": { "y": 158, "x": 22, "width": 705, "var": "box1", "height": 396 }, "compId": 40, "child": [{ "type": "TimeLogo", "props": { "zOrder": 100, "y": 30, "x": 559.2, "var": "timeLogo", "runtime": "ui.test.TimeLogoUI" }, "compId": 27 }, { "type": "Button", "props": { "zOrder": 100, "y": 277, "x": 63.2, "var": "rankBtn", "stateNum": 1, "skin": "main/btn_paihang.png", "scaleY": 0.8, "scaleX": 0.8, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 33 }, { "type": "Button", "props": { "zOrder": 100, "y": 277, "x": 638.2, "var": "sign7Btn", "stateNum": 1, "skin": "main/btn_qiandao.png", "scaleY": 0.8, "scaleX": 0.8, "gray": true, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 34 }, { "type": "Button", "props": { "zOrder": 100, "y": 86, "x": 63.2, "var": "shareBtn", "stateNum": 1, "skin": "main/btn_fenxiang.png", "scaleY": 0.8, "scaleX": 0.8, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 35 }, { "type": "Sprite", "props": { "zOrder": 101, "y": 223, "x": 608.2, "texture": "main/suo2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 39 }] }], "loadList": ["main/btn_paihang.png", "main/btn_qiandao.png", "main/btn_fenxiang.png", "main/suo2.png"], "loadList3D": [] };
+            worldUI.uiView = { "type": "View", "props": { "width": 750, "height": 1334 }, "compId": 2, "child": [{ "type": "viewbg", "props": { "runtime": "ui.game.viewbgUI" }, "compId": 26 }, { "type": "Box", "props": { "y": 141, "x": 0, "width": 750, "var": "box", "height": 1093 }, "compId": 24 }, { "type": "Box", "props": { "y": 158, "x": 22, "width": 705, "var": "box1", "height": 396 }, "compId": 40, "child": [{ "type": "TimeLogo", "props": { "zOrder": 100, "y": 30, "x": 559.2, "var": "timeLogo", "runtime": "ui.test.TimeLogoUI" }, "compId": 27 }, { "type": "Button", "props": { "zOrder": 100, "y": 277, "x": 63.2, "var": "rankBtn", "stateNum": 1, "skin": "main/btn_paihang.png", "scaleY": 0.8, "scaleX": 0.8, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 33 }, { "type": "Button", "props": { "zOrder": 100, "y": 277, "x": 638.2, "var": "sign7Btn", "stateNum": 1, "skin": "main/btn_qiandao.png", "scaleY": 0.8, "scaleX": 0.8, "gray": true, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 34 }, { "type": "Button", "props": { "zOrder": 100, "y": 86, "x": 63.2, "var": "shareBtn", "stateNum": 1, "skin": "main/btn_fenxiang.png", "scaleY": 0.8, "scaleX": 0.8, "anchorY": 0.5, "anchorX": 0.5 }, "compId": 35 }, { "type": "Sprite", "props": { "zOrder": 101, "y": 223, "x": 608.2, "texture": "main/suo2.png", "scaleY": 0.8, "scaleX": 0.8 }, "compId": 39 }, { "type": "gameIcon", "props": { "y": 382, "x": 589.2, "var": "frogBtn", "runtime": "ui.game.gameIconUI" }, "compId": 41 }] }], "loadList": ["main/btn_paihang.png", "main/btn_qiandao.png", "main/btn_fenxiang.png", "main/suo2.png"], "loadList3D": [] };
             test.worldUI = worldUI;
             REG("ui.test.worldUI", worldUI);
             class worldCellUI extends Laya.View {
@@ -2829,7 +2815,7 @@
         }
         send() {
             let obj = Session.gameData;
-            super.send(App.serverIP + "gamex3/save2", "skey=" + Session.SKEY + "&type=0&num=0&gamedata=" + JSON.stringify(obj), "post", "text");
+            super.send(App.serverIP + "gamex3/save2", "skey=" + Session.SKEY + "&type=1&num=" + Game.battleLoader._configId + "&gamedata=" + JSON.stringify(obj), "post", "text");
         }
         onSuccess(data) {
             super.onSuccess(data);
@@ -3264,6 +3250,7 @@
         }
         static parseData(str) {
             if (str != "" && str != "0") {
+                App.sdkManager.log(LogType.NEW_PLAYER);
                 Session.gameData = JSON.parse(str);
                 for (let i of Session.IDataArr) {
                     i.setData(Session.gameData);
@@ -5604,6 +5591,7 @@
             this._isMonsterLoaded = false;
             this.monsterRes = {};
             this.cubeRes = {};
+            this._configId = 0;
             this.monsterId = 0;
             this.curBoTimes = 0;
             this.maxBoTimes = 0;
@@ -5705,6 +5693,7 @@
                 }
                 this._configId = configId;
             }
+            App.sdkManager.log(this._configId);
             console.log("当前地图", this._mapId, this._configId);
             Laya.loader.load("h5/mapConfig/" + this._configId + ".json", new Laya.Handler(this, this.loadBg));
         }
@@ -6254,13 +6243,17 @@
             let toArr = Game.getRandPos(this.pro, 1);
             let toX = toArr[0] * GameBG.ww;
             let toY = toArr[1] * GameBG.ww;
-            let monster1 = Monster.getMonster(this.pro.sysEnemy.id, toX, toY, 1, hp);
+            let monster1 = Monster.getMonster(this.pro.sysEnemy.id, toX, toY, 0.8, hp);
             monster1.splitTimes = flag;
+            monster1.acstr = "";
+            monster1.play(GameAI.Idle);
             let toArr1 = Game.getRandPos(this.pro, 1);
             let toX1 = toArr1[0] * GameBG.ww;
             let toY1 = toArr1[1] * GameBG.ww;
-            let monster2 = Monster.getMonster(this.pro.sysEnemy.id, toX1, toY1, 1, hp);
+            let monster2 = Monster.getMonster(this.pro.sysEnemy.id, toX1, toY1, 0.8, hp);
             monster2.splitTimes = flag;
+            monster2.acstr = "";
+            monster2.play(GameAI.Idle);
         }
     }
 
@@ -7226,7 +7219,7 @@
                     if (Game.map0.guideHitBox && Game.hero.hbox.hit(Game.hero.hbox, Game.map0.guideHitBox)) {
                         Game.scenneM.battle && Game.scenneM.battle.up(null);
                         Game.scenneM.battle.setGuide("主角会自动攻击，移动中不会攻击。", 2);
-                        App.sdkManager.log(LogType.BATTLE_GUIDE, "主角会自动攻击，移动中不会攻击。");
+                        App.sdkManager.log(LogType.BATTLE_GUIDE_3);
                         Game.map0.guideHitBox = null;
                         return false;
                     }
@@ -7533,7 +7526,7 @@
             setTimeout(() => {
                 this.setWudi(false);
             }, 2000);
-            App.sdkManager.log(LogType.REBORTH_TIMES, Game.rebornTimes + "");
+            App.sdkManager.log(LogType.REBORTH_SUCCESS);
         }
         onDie(key) {
             let skill4005 = Game.skillManager.isHas(4005);
@@ -7602,7 +7595,6 @@
                 Hero.udpateHeroData();
                 MyEffect.scaleEffect(this.mapBtn);
                 Laya.stage.event(GameEvent.START_BATTLE);
-                App.sdkManager.log(LogType.CHAPTER_INDEX, this.sys.id + "");
             }
             else {
                 FlyUpTips.setTips("未开启");
@@ -7870,13 +7862,13 @@
             Game.alert = new GameAlert();
             if (Session.homeData.isGuide) {
                 Game.battleLoader.preload();
-                App.sdkManager.log(LogType.START_LOADING_GUIDE, "加载进来显示主界面");
                 Game.battleLoader.load();
+                App.sdkManager.log(LogType.BATTLE_GUIDE_0);
             }
             else {
                 Game.showMain();
                 Game.battleLoader.preload();
-                App.sdkManager.log(LogType.SHOW_MAIN, "加载进来显示主界面");
+                App.sdkManager.log(LogType.SHOW_MAIN_VIEW);
                 if (Session.homeData.newStat != Guide_Type.over) {
                     return;
                 }
@@ -7911,10 +7903,12 @@
             App.tableManager.register(SysTalentInfo.NAME, SysTalentInfo);
             App.tableManager.register(SysTalent.NAME, SysTalent);
             App.tableManager.onParse(arr);
+            let ss = "";
             let mapArr = App.tableManager.getTable(SysMap.NAME);
             let len = mapArr.length;
             for (let i = 0; i < len; i++) {
                 let sysMap = mapArr[i];
+                ss += sysMap.stageGroup + ",";
                 if (SysMap.dic[sysMap.stageId] == null) {
                     SysMap.dic[sysMap.stageId] = [];
                 }
@@ -7926,6 +7920,7 @@
                     return a.id - b.id;
                 });
             }
+            console.log(ss);
         }
         static initDialog() {
             App.dialogManager.register(GameMain.TIME_GOLD, TimeGoldDialog, ["res/atlas/timegold.atlas"]);
@@ -8126,10 +8121,23 @@
             this.rankBtn.on(Laya.Event.CLICK, this, this.rankClickFun);
             this.sign7Btn.on(Laya.Event.CLICK, this, this.sign7clickFun);
             this.shareBtn.on(Laya.Event.CLICK, this, this.shareFun);
+            this.frogBtn.on(Laya.Event.CLICK, this, this.gotoFrog);
             Laya.stage.on(GameEvent.ADD_COIN, this, this.addCoinFun);
             Laya.stage.on(GameEvent.APP_ENERGY, this, this.reducePowerFun);
             this.addChild(this.box1);
             Laya.stage.on(GameEvent.SHOW_MAIN, this, this.showMain);
+        }
+        gotoFrog() {
+            if (Laya.Browser.window.wx) {
+                Laya.Browser.window.wx.navigateToMiniProgram({
+                    appId: 'wx63d79f4642c0f508',
+                    path: '',
+                    envVersion: "release",
+                    success(res) {
+                        console.log("按钮跳转小游戏成功");
+                    }
+                });
+            }
         }
         showMain() {
             Laya.timer.once(600, null, () => {
@@ -9262,6 +9270,10 @@
                 else {
                     Game.battleLoader.load();
                 }
+                if (Game.battleGuide == 9999) {
+                    App.sdkManager.log(LogType.BATTLE_GUIDE_6);
+                    Game.battleGuide = null;
+                }
             }
             return bool;
         }
@@ -10104,6 +10116,7 @@
         onFuhuo() {
             Laya.timer.clear(this, this.onLoop2);
             App.sdkManager.playAdVideo(AD_TYPE.AD_REBORTH, new Laya.Handler(this, this.onReborn));
+            App.sdkManager.log(LogType.REBORTH_CLICK);
         }
         onDis() {
             this.txt.text = "" + Game.rebornTimes;
@@ -10516,7 +10529,9 @@
                 Game.dropDiamond(BattleScene.npcPro);
             }
             this.setGuide("滑动摇杆，控制角色到达指定位置。", 1);
-            App.sdkManager.log(LogType.BATTLE_GUIDE, "滑动摇杆，控制角色到达指定位置。");
+            if (Session.homeData.isGuide) {
+                App.sdkManager.log(LogType.BATTLE_GUIDE_1);
+            }
             Laya.MouseManager.multiTouchEnabled = false;
             Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.md);
             Laya.stage.on(Laya.Event.KEY_PRESS, this, this.onOpenDoor);
@@ -10547,7 +10562,9 @@
                 this._guideArea.y = Laya.stage.height - this._guideArea.height;
                 Game.layer3d.addChild(this.guideCircle);
                 Session.guideId = 3;
-                App.sdkManager.log(LogType.BATTLE_GUIDE, "最佳控制区域");
+                if (Session.homeData.isGuide) {
+                    App.sdkManager.log(LogType.BATTLE_GUIDE_2);
+                }
             }
             else if (Session.guideId == 2) {
                 let zhaohuan = new ui.test.zhaohuanUI();
@@ -10558,7 +10575,9 @@
                     this.guideMonster.show();
                     Session.guideId = 4;
                     this.guideCircle && this.guideCircle.removeSelf();
-                    App.sdkManager.log(LogType.BATTLE_GUIDE, "显示引导怪");
+                    if (Session.homeData.isGuide) {
+                        App.sdkManager.log(LogType.BATTLE_GUIDE_4);
+                    }
                 }, 800);
             }
         }
@@ -10622,7 +10641,6 @@
         showMain() {
             if (!this.main) {
                 this.main = new MainScene();
-                Game.battleLoader.preload();
             }
             Game.isStartBattle = false;
             App.layerManager.sceneLayer.removeChildren();
@@ -10865,7 +10883,6 @@
             if (Game.isOpen) {
                 return;
             }
-            App.sdkManager.log(LogType.CHAPTER_INDEX, Game.battleLoader.index + "");
             console.log("开门");
             if (Game.battleLoader.index >= SysMap.getTotal(Game.battleLoader.chapterId) && Game.battleLoader._configId != 100000) {
                 console.log("通关了");
@@ -10891,12 +10908,13 @@
             if (Session.homeData.isGuide) {
                 Session.homeData.chapterId = 1;
                 Game.scenneM.battle.setGuide("通过传送进入下一关。", 5);
-                App.sdkManager.log(LogType.BATTLE_GUIDE, "通过传送进入下一关");
+                App.sdkManager.log(LogType.BATTLE_GUIDE_5);
                 Session.homeData.isGuide = false;
                 Game.battleLoader.index = 1;
                 Game.battleLoader.chapterId = 1;
                 SysChapter.randomDiamond(Game.battleLoader.chapterId);
                 Session.homeData.setChapterId(Session.homeData.chapterId, 1);
+                Game.battleGuide = 9999;
             }
             else {
                 if (!Session.homeData.isPass) {
@@ -10944,6 +10962,8 @@
             Game.frontLayer.removeChildren();
             Game.footLayer.removeChildren();
             Game.layer3d.removeChildren();
+            Game.layer3dCoins.removeChildren();
+            Game.layer3dCube.removeChildren();
             Game.topLayer.removeChildren();
             Game.selectHead && Game.selectHead.removeSelf();
             Game.selectFoot && Game.selectFoot.removeSelf();
@@ -11061,8 +11081,8 @@
             }
         }
     }
-    Game.codeVer = "2.1.1.1012";
-    Game.resVer = "2.1.1.1012";
+    Game.codeVer = "2.1.1.191013";
+    Game.resVer = "2.1.1.191013";
     Game.nativefiles = [
         "loading/jianduxia.png",
         "loading/jiandushang.png",
@@ -12926,6 +12946,7 @@
             this.show_ = b;
             this.show_ = false;
             if (this.show_) {
+                console.log("显示红线");
                 for (let i = 0; i < this.redLines.length; i++) {
                     var e = this.redLines[i];
                     Game.frontLayer.addChild(e);
@@ -13189,6 +13210,7 @@
             super.send(App.serverIP + "gamex3/gamedata", "skey=" + Session.SKEY, "post", "text");
         }
         onSuccess(data) {
+            App.sdkManager.log(LogType.LOGIN_SUCCESS);
             Session.parseData(data);
             super.onSuccess(data);
             console.log("receive data", data);
@@ -13222,11 +13244,7 @@
             this.barImg.scrollRect = this.rect;
             this.sliderImg.x = this.rect.width;
             this.txt.text = "0%";
-            Laya.loader.load([
-                { url: "res/atlas/main.atlas", type: Laya.Loader.ATLAS },
-                { url: "res/atlas/zhaohuan.atlas", type: Laya.Loader.ATLAS },
-                { url: "res/atlas/guide.atlas", type: Laya.Loader.ATLAS }
-            ], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
+            Laya.loader.load(["res/atlas/main.atlas", "res/atlas/zhaohuan.atlas", "res/atlas/guide.atlas"], new Laya.Handler(this, this.onHandler), new Laya.Handler(this, this.onProgress));
         }
         onHandler() {
             console.log("加载完成");
@@ -13832,7 +13850,7 @@
                 this.homePage = new HomeLoading();
             }
             Laya.stage.addChild(this.homePage);
-            App.sdkManager.log(LogType.SHOW_LOGIN_BTN, "显示登陆按钮");
+            App.sdkManager.log(LogType.SHOW_GAME_VIEW);
             let BP = Laya.ClassUtils.getRegClass("p" + App.platformId);
             if (!this.curBP) {
                 this.curBP = new BP();
@@ -13846,7 +13864,7 @@
                 return;
             }
             this.isSuccess = true;
-            App.sdkManager.log(LogType.START_LOADING, "开始加载资源");
+            App.sdkManager.log(LogType.CLICK_START_BTN);
             this.homePage.load();
             console.log("授权成功，开始加载");
         }

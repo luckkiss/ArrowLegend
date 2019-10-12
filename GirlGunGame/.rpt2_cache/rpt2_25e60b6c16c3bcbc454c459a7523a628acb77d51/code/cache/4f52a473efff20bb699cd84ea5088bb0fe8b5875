@@ -1,0 +1,4 @@
+{
+  "code": "export default class SysItem {\r\n    constructor() {\r\n        this.id = 0;\r\n        this.name = '';\r\n        this.type = 0;\r\n        this.subType = 0;\r\n        this.buyGod = 0;\r\n        this.addHp = 0;\r\n        this.iteamTxt = '';\r\n    }\r\n}\r\nSysItem.NAME = 'sys_iteam.txt';\r\n",
+  "references": []
+}

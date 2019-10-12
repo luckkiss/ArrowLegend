@@ -11,6 +11,8 @@ import Monster from "../game/player/Monster";
 import TimeGoldData from "../game/data/TimeGoldData";
 import RankData from "../game/data/RankData";
 import Log, { LOG_TYPE } from "../Log";
+import App from "../core/App";
+import LogType from "../core/manager/LogType";
 
 export default class Session{
     static SKEY:string;
@@ -56,6 +58,7 @@ export default class Session{
 
     static parseData(str:string):void{
         if(str != "" && str != "0" ){
+            App.sdkManager.log(LogType.NEW_PLAYER);
             Session.gameData = JSON.parse(str);
             for( let i of Session.IDataArr ){
                 i.setData( Session.gameData );

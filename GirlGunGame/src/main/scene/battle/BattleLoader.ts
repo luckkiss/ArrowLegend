@@ -41,7 +41,7 @@ export default class BattleLoader {
      private monsterRes: any = {};
     private cubeRes:any = {};
 
-    _configId: number;
+    _configId: number = 0;
     monsterId: number = 0;
     /**退出再进来数据 */
     continueRes:any;
@@ -177,7 +177,7 @@ export default class BattleLoader {
             }
             this._configId = configId;
         }
-        // this._configId = 301401;
+        App.sdkManager.log(this._configId);
         console.log("当前地图", this._mapId, this._configId);
         Laya.loader.load("h5/mapConfig/" + this._configId + ".json", new Laya.Handler(this, this.loadBg));
     }

@@ -35,8 +35,10 @@ import LogType from "../core/manager/LogType";
 import GameCube from "../main/scene/battle/GameCube";
 
 export default class Game {
-    static codeVer:string = "2.1.1.101201";
-    static resVer:string = "2.1.1.1012";
+    static codeVer:string = "2.1.1.191013";
+    static resVer:string = "2.1.1.191013";
+
+    static battleGuide:number;
 
     /**本地资源 */
 	static nativefiles:string[] = [
@@ -190,7 +192,6 @@ export default class Game {
         if (Game.isOpen)  {
             return;
         }
-        App.sdkManager.log(LogType.MAP_INDEX,Game.battleLoader.index+"");
         console.log("开门");
 
         if(Game.battleLoader.index >= SysMap.getTotal(Game.battleLoader.chapterId) && Game.battleLoader._configId != 100000)
@@ -221,12 +222,13 @@ export default class Game {
         {
             Session.homeData.chapterId = 1;
             Game.scenneM.battle.setGuide("通过传送进入下一关。",5);
-            App.sdkManager.log(LogType.BATTLE_GUIDE,"通过传送进入下一关");
+            App.sdkManager.log(LogType.BATTLE_GUIDE_5);
             Session.homeData.isGuide = false;
             Game.battleLoader.index = 1;
             Game.battleLoader.chapterId = 1;
             SysChapter.randomDiamond(Game.battleLoader.chapterId);
             Session.homeData.setChapterId(Session.homeData.chapterId,1);
+            Game.battleGuide = 9999;
         }
         else
         {
@@ -300,6 +302,8 @@ export default class Game {
         Game.frontLayer.removeChildren();
         Game.footLayer.removeChildren();
         Game.layer3d.removeChildren();
+        Game.layer3dCoins.removeChildren();
+        Game.layer3dCube.removeChildren();
         Game.topLayer.removeChildren();
         Game.selectHead && Game.selectHead.removeSelf();
         Game.selectFoot && Game.selectFoot.removeSelf();

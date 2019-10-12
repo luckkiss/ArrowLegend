@@ -368,7 +368,7 @@ export default class BattleScene extends Laya.Sprite {
         this.setGuide("滑动摇杆，控制角色到达指定位置。",1);
         if(Session.homeData.isGuide)
         {
-            App.sdkManager.log(LogType.BATTLE_GUIDE,"滑动摇杆，控制角色到达指定位置。");
+            App.sdkManager.log(LogType.BATTLE_GUIDE_1);
         }
         
 
@@ -416,7 +416,7 @@ export default class BattleScene extends Laya.Sprite {
             Session.guideId = 3;
             if(Session.homeData.isGuide)
             {
-                App.sdkManager.log(LogType.BATTLE_GUIDE,"最佳控制区域");
+                App.sdkManager.log(LogType.BATTLE_GUIDE_2);
             }
         }
         else if(Session.guideId == 2)
@@ -432,7 +432,7 @@ export default class BattleScene extends Laya.Sprite {
                 this.guideCircle && this.guideCircle.removeSelf();
                 if(Session.homeData.isGuide)
                 {
-                    App.sdkManager.log(LogType.BATTLE_GUIDE,"显示引导怪");
+                    App.sdkManager.log(LogType.BATTLE_GUIDE_4);
                 }
             }, 800);
 

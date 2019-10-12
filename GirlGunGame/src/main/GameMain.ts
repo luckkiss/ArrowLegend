@@ -35,12 +35,12 @@ export default class GameMain {
         Game.alert = new GameAlert();
         if(Session.homeData.isGuide){
             Game.battleLoader.preload();
-            App.sdkManager.log(LogType.START_LOADING_GUIDE,"加载进来显示主界面");
             Game.battleLoader.load();
+            App.sdkManager.log(LogType.BATTLE_GUIDE_0);
         }else{
             Game.showMain();
             Game.battleLoader.preload();
-            App.sdkManager.log(LogType.SHOW_MAIN,"加载进来显示主界面");
+            App.sdkManager.log(LogType.SHOW_MAIN_VIEW);
             if( Session.homeData.newStat != Guide_Type.over ){
                 return;
             }
@@ -82,11 +82,13 @@ export default class GameMain {
         
         App.tableManager.onParse(arr);
 
+        let ss = "";
         let mapArr:SysMap[] = App.tableManager.getTable(SysMap.NAME);
         let len:number = mapArr.length;
         for(let i = 0; i < len; i++)
         {
             let sysMap:SysMap = mapArr[i];
+            ss+=sysMap.stageGroup + ",";
             if(SysMap.dic[sysMap.stageId] == null)
             {
                 SysMap.dic[sysMap.stageId] = [];
@@ -101,6 +103,8 @@ export default class GameMain {
                 return a.id - b.id;
             });
         }
+
+        console.log(ss);
     }
 
     public static TIME_GOLD:string = "TIME_GOLD";

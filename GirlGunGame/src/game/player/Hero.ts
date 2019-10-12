@@ -321,7 +321,7 @@ export default class Hero extends GamePro {
             this.setWudi(false);
         }, 2000);
 
-        App.sdkManager.log(LogType.REBORTH_TIMES,Game.rebornTimes+"");
+        App.sdkManager.log(LogType.REBORTH_SUCCESS);
     }
 
     onDie(key): void {

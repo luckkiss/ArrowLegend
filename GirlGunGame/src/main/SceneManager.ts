@@ -13,7 +13,6 @@ export default class SceneManager {
     showMain(): void {
         if (!this.main)  {
             this.main = new MainScene();
-            Game.battleLoader.preload();
         }
         Game.isStartBattle = false;
         App.layerManager.sceneLayer.removeChildren();

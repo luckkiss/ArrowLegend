@@ -122,7 +122,7 @@ class Main {
 			this.homePage = new HomeLoading();
 		}
 		Laya.stage.addChild(this.homePage);
-		App.sdkManager.log(LogType.SHOW_LOGIN_BTN,"显示登陆按钮");
+		App.sdkManager.log(LogType.SHOW_GAME_VIEW);
 
 		let BP = Laya.ClassUtils.getRegClass("p" + App.platformId);
 		if (!this.curBP) {
@@ -140,7 +140,7 @@ class Main {
 			return;
 		}
 		this.isSuccess = true;
-		App.sdkManager.log(LogType.START_LOADING,"开始加载资源");
+		App.sdkManager.log(LogType.CLICK_START_BTN);
 		this.homePage.load();
 		console.log("授权成功，开始加载");
 	}

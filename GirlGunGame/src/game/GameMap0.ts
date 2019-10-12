@@ -10,6 +10,7 @@ import BattleFlagID from "../main/scene/BattleFlagID";
 import Session from "../main/Session";
 import GameEvent from "../main/GameEvent";
 import App from "../core/App";
+import LogType from "../core/manager/LogType";
 //地图逻辑层
 export default class GameMap0 extends Laya.Sprite {
 
@@ -229,6 +230,13 @@ export default class GameMap0 extends Laya.Sprite {
             else
             {
                 Game.battleLoader.load();
+            }
+
+            if(Game.battleGuide == 9999)
+            {
+                //战斗引导完成进入正式关卡
+                App.sdkManager.log(LogType.BATTLE_GUIDE_6);
+                Game.battleGuide = null;
             }
         }
         return bool;

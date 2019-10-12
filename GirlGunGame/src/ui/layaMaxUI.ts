@@ -36,6 +36,15 @@ export module ui.game {
         }
     }
     REG("ui.game.boomRectUI",boomRectUI);
+    export class gameIconUI extends Laya.View {
+        public static  uiView:any ={"type":"View","props":{"width":110,"height":130},"compId":2,"child":[{"type":"Box","props":{"y":0,"x":0,"width":110,"height":130,"bgColor":"#ffffff"},"compId":3},{"type":"Sprite","props":{"y":7,"x":7,"width":96,"texture":"loading/frog.jpg","height":96},"compId":4},{"type":"Image","props":{"y":0,"x":0,"width":110,"skin":"loading/yuanzhengkong.png","sizeGrid":"22,25,25,29","height":110},"compId":6},{"type":"Label","props":{"width":110,"text":"青蛙过河","height":22,"fontSize":20,"bottom":0,"bold":true,"align":"center"},"compId":7}],"loadList":["loading/frog.jpg","loading/yuanzhengkong.png"],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(gameIconUI.uiView);
+        }
+    }
+    REG("ui.game.gameIconUI",gameIconUI);
     export class heheUI extends Laya.Scene {
         public static  uiView:any ={"type":"Scene","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"Image","props":{"y":11,"x":8,"width":1088,"skin":"battleBg/1.png","sizeGrid":"680,0,594,0","height":1552},"compId":3}],"loadList":["battleBg/1.png"],"loadList3D":[]};
         constructor(){ super()}
@@ -1101,7 +1110,8 @@ export module ui.test {
 		public rankBtn:Laya.Button;
 		public sign7Btn:Laya.Button;
 		public shareBtn:Laya.Button;
-        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"viewbg","props":{"runtime":"ui.game.viewbgUI"},"compId":26},{"type":"Box","props":{"y":141,"x":0,"width":750,"var":"box","height":1093},"compId":24},{"type":"Box","props":{"y":158,"x":22,"width":705,"var":"box1","height":396},"compId":40,"child":[{"type":"TimeLogo","props":{"zOrder":100,"y":30,"x":559.2,"var":"timeLogo","runtime":"ui.test.TimeLogoUI"},"compId":27},{"type":"Button","props":{"zOrder":100,"y":277,"x":63.2,"var":"rankBtn","stateNum":1,"skin":"main/btn_paihang.png","scaleY":0.8,"scaleX":0.8,"anchorY":0.5,"anchorX":0.5},"compId":33},{"type":"Button","props":{"zOrder":100,"y":277,"x":638.2,"var":"sign7Btn","stateNum":1,"skin":"main/btn_qiandao.png","scaleY":0.8,"scaleX":0.8,"gray":true,"anchorY":0.5,"anchorX":0.5},"compId":34},{"type":"Button","props":{"zOrder":100,"y":86,"x":63.2,"var":"shareBtn","stateNum":1,"skin":"main/btn_fenxiang.png","scaleY":0.8,"scaleX":0.8,"anchorY":0.5,"anchorX":0.5},"compId":35},{"type":"Sprite","props":{"zOrder":101,"y":223,"x":608.2,"texture":"main/suo2.png","scaleY":0.8,"scaleX":0.8},"compId":39}]}],"loadList":["main/btn_paihang.png","main/btn_qiandao.png","main/btn_fenxiang.png","main/suo2.png"],"loadList3D":[]};
+		public frogBtn:ui.game.gameIconUI;
+        public static  uiView:any ={"type":"View","props":{"width":750,"height":1334},"compId":2,"child":[{"type":"viewbg","props":{"runtime":"ui.game.viewbgUI"},"compId":26},{"type":"Box","props":{"y":141,"x":0,"width":750,"var":"box","height":1093},"compId":24},{"type":"Box","props":{"y":158,"x":22,"width":705,"var":"box1","height":396},"compId":40,"child":[{"type":"TimeLogo","props":{"zOrder":100,"y":30,"x":559.2,"var":"timeLogo","runtime":"ui.test.TimeLogoUI"},"compId":27},{"type":"Button","props":{"zOrder":100,"y":277,"x":63.2,"var":"rankBtn","stateNum":1,"skin":"main/btn_paihang.png","scaleY":0.8,"scaleX":0.8,"anchorY":0.5,"anchorX":0.5},"compId":33},{"type":"Button","props":{"zOrder":100,"y":277,"x":638.2,"var":"sign7Btn","stateNum":1,"skin":"main/btn_qiandao.png","scaleY":0.8,"scaleX":0.8,"gray":true,"anchorY":0.5,"anchorX":0.5},"compId":34},{"type":"Button","props":{"zOrder":100,"y":86,"x":63.2,"var":"shareBtn","stateNum":1,"skin":"main/btn_fenxiang.png","scaleY":0.8,"scaleX":0.8,"anchorY":0.5,"anchorX":0.5},"compId":35},{"type":"Sprite","props":{"zOrder":101,"y":223,"x":608.2,"texture":"main/suo2.png","scaleY":0.8,"scaleX":0.8},"compId":39},{"type":"gameIcon","props":{"y":382,"x":589.2,"var":"frogBtn","runtime":"ui.game.gameIconUI"},"compId":41}]}],"loadList":["main/btn_paihang.png","main/btn_qiandao.png","main/btn_fenxiang.png","main/suo2.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

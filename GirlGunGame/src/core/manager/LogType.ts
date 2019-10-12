@@ -1,41 +1,4 @@
 export default class LogType{
-    public static HEART:number = 100;
-    public static LOGIN_TIME:number = 0;
-    public static ERROR_ITEM_NULL:number = 1;
-    public static LOGIN_INFO:number = 2;
-    /**
-     * 登陆http的状态 正常是200
-     */
-    public static LOGIN_STATUS:number = 3;
-
-    public static WX_HIDE:number = 4;
-    public static WX_SHOW:number = 5;
-    public static LOAD_ERROR:number = 6;
-
-    public static HANGUP_START:number = 7;
-    public static HANGUP_OVER:number = 8;
-
-    /**
-     * 记录玩家数据
-     */
-    public static PLAYER_DATA:number = 9;
-
-    /**
-     * 新玩家
-     */
-    public static NEW_PLAYER:number = 10;
-
-    
-
-    public static CODE_ERROR:number = 11;
-
-
-    public static LOAD_CONFIG:number = 13;
-    public static LOAD_VERSION:number = 14;
-    public static LOAD_fileconfig:number = 15;
-    public static LOAD_CONFIGZIP:number = 16;
-    public static LOAD_CONFIG_ERR:number = 17;
-
     /**
      * 广告加载失败
      */
@@ -56,70 +19,35 @@ export default class LogType{
      */
     public static AD_FAIL_2:number = 21;
 
-    public static OPEN_TASK:number = 22;
-
-    public static OPEN_TIANFU:number = 23;
-
-    public static CLOSE_ZHUAN_PAN:number = 24;
-    
-    public static OPEN_ZHUAN:number = 25;
-
-    public static AD_ZHUAN:number = 26;
-
-    /**
-     * 玩家一进入游戏 点击屏幕开始
-     */
-    public static NEWER_FIRST_CLICK:number = 1000;
-
-    /**
-     * 打开角色面板
-     */
-    public static NEWER_OPEN_ROLE:number = 1001;
-    /**
-     * 指导装备装备
-     */
-    public static NEWER_EQUIP:number = 1002;
-    /**
-     * 你变的越来越强大
-     */
-    public static NEWER_YUELAIYUEQIANGDA:number = 1005;
-
-    /**
-     * 半血
-     */
-    public static NEWER_HALF:number = 1006;
-
-    /**
-     * 醒来
-     */
-    public static NEWER_XINGLAI:number = 1007;
-
-    /**
-     * 点城市
-     */
-    public static NEWER_CLICK_CITY:number = 1008;
-
-    /**
-     * 点关
-     */
-    public static NEWER_CLICK_STAGE:number = 1009;
-
-    /**小关 */
-    static MAP_INDEX:number = 1010;
-    /**大关 */
-    static CHAPTER_INDEX:number = 1011;
-    /**复活 */
-    static REBORTH_TIMES:number = 1012;
-    /**战斗引导 */
-    static BATTLE_GUIDE:number = 1013;
-    /**显示登陆按钮 */
-    static SHOW_LOGIN_BTN:number = 1014;
-
-    /**开始加载 */
-    static START_LOADING:number = 1015;
-    /**开始战斗有引导加载 */
-    static START_LOADING_GUIDE:number = 1016;
-
+    /**显示登陆界面 */
+    static SHOW_GAME_VIEW:number = 10001;
+    /**点击开始按钮 */
+    static CLICK_START_BTN:number = 10002;
+    /**登陆成功 */
+    static LOGIN_SUCCESS:number = 10003;
+    /**注册用户 */
+    static NEW_PLAYER:number = 10004;
     /**显示主界面 */
-    static SHOW_MAIN:number = 1017;
+    static SHOW_MAIN_VIEW:number = 10005;
+    /**新手战斗加载 */
+    static BATTLE_GUIDE_0:number = 10006;
+    /**滑动摇杆移动到指定位置 */
+    static BATTLE_GUIDE_1:number = 10007;
+    /**最佳控制区域 */
+    static BATTLE_GUIDE_2:number = 10008;
+    /**主角会自动攻击，移动中不会攻击 */
+    static BATTLE_GUIDE_3:number = 10009;
+    /**显示引导怪 */
+    static BATTLE_GUIDE_4:number = 10010;
+    /**通过传送进入下一关 */
+    static BATTLE_GUIDE_5:number = 10011;
+
+    /**到达传送点进入正式地图 */
+    static BATTLE_GUIDE_6:number = 10012;
+    /**点击复活 */
+    static REBORTH_CLICK:number = 10013;
+    /**复活成功 */
+    static REBORTH_SUCCESS:number = 10014;
+    /**跳到青蛙 */
+    static GOTO_FROG:number = 10015;
 }
