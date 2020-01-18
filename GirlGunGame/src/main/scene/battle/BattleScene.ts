@@ -376,6 +376,12 @@ export default class BattleScene extends Laya.Sprite {
         Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.md);
         
         Laya.stage.on(Laya.Event.KEY_PRESS, this, this.onOpenDoor);
+
+        if(Laya.Browser.window.tt)
+        {
+            App.sdkManager.recorder();
+            this._top.btnRecord.visible = true;
+        }
     }
 
     setGuide(str:string,guideId:number):void

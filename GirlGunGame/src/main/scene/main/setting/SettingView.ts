@@ -11,7 +11,7 @@ import Session from "../../../Session";
         this.yinxiao.clickHandler = new Laya.Handler(this,this.onSound);
         this.yinyue.clickHandler = new Laya.Handler(this,this.onMusic);
 
-        if( Laya.Browser.onMiniGame ){
+        if( Laya.Browser.window.tt || Laya.Browser.window.wx ){
             this.zuobi.visible = false;
         }
         this.zuobi.clickHandler = new Laya.Handler( this,this.zuobiFun );
@@ -22,6 +22,8 @@ import Session from "../../../Session";
 
         // this.box1.centerY = 0;
     }
+
+    
 
     private zuobiFun():void{
         Session.homeData.changeGold(  0 , 100000 );

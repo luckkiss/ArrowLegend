@@ -21,6 +21,45 @@ import SysEnemy from "../../sys/SysEnemy";
         this.y = App.top + 60;
 
         Laya.stage.on(GameEvent.BOOS_BLOOD_UPDATE,this,this.onUpdate);
+
+        this.btnRecord.visible = false;
+        if(Laya.Browser.window.tt)
+        {
+            this.btnRecord.visible = true;
+            this.btnRecord.clickHandler = new Laya.Handler(this,this.onStopRecord);
+        }
+    }
+
+    private onStopRecord():void
+    {
+        App.sdkManager.stopRecorder(new Laya.Handler(this,this.addPower));
+    }
+
+    private addPower():void
+    {
+        Session.homeData.curEnergy++;
+        if(Session.homeData.curEnergy >= Session.homeData.maxEngergy)
+        {
+            Session.homeData.curEnergy = Session.homeData.maxEngergy;
+        }
+        Session.homeData.lastTime = 0;
+        Session.saveData();
+        this.reducePowerFun();
+        this.btnRecord.visible = false;
+    }
+
+    public reducePowerFun():void{
+        let r = new ui.test.ReducePowerUI();
+        this.addChild( r ); 
+        r.fc.value = "+1";
+        r.x = 375;
+        r.y = 1100;
+        let t = new Laya.Tween();
+        t.to( r , { y:r.y - 200 } , 700 , null , new Laya.Handler(this,this.rFun, [r] ));
+    }
+
+    private rFun(  a:Laya.Sprite ):void{
+        a.removeSelf();
     }
 
     private onUpdate(hurt:number):void

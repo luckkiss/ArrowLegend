@@ -26,6 +26,15 @@ import { AD_TYPE } from "../../../ADType";
         this.queding.fuhuo.clickHandler = new Laya.Handler(this,this.showAD);
 
         this.on(Laya.Event.DISPLAY,this,this.onDis);
+        this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
+    }
+
+    private onUndis():void
+    {
+        if(Laya.Browser.window.tt)
+        {
+            App.sdkManager.hideBanner();
+        }
     }
 
     private showAD():void
@@ -53,6 +62,11 @@ import { AD_TYPE } from "../../../ADType";
         this.box2.scaleX = 1;
 
         this.setSkill();
+
+        if(Laya.Browser.window.tt)
+        {
+            App.sdkManager.showBanner();
+        }
     }
 
     private onChangeSkill():void

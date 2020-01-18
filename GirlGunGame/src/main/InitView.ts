@@ -32,6 +32,9 @@ export default class InitView extends ui.test.initViewUI{
 		else if (App.platformId == PlatformID.WX) {
 			bc = new WXCookie();
 		}
+		else if (App.platformId == PlatformID.TT) {
+			bc = new WXCookie();
+		}
 		Game.cookie = bc;
 
 		Game.cookie.getCookie(CookieKey.MUSIC_SWITCH, (res) => {

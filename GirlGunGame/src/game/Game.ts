@@ -35,8 +35,8 @@ import LogType from "../core/manager/LogType";
 import GameCube from "../main/scene/battle/GameCube";
 
 export default class Game {
-    static codeVer:string = "2.1.1.191013";
-    static resVer:string = "2.1.1.191013";
+    static codeVer:string = "3.0.0.200118";
+    static resVer:string = "3.0.0.200118";
 
     static battleGuide:number;
 

@@ -22,16 +22,24 @@ export default class LoginHttp extends BaseHttp {
     public static FRONT:string = "";
 
     send(): void {
-        let str:string = "gamex3/login";
-        if(App.platformId == PlatformID.H5)
+        let str:string = "gamelogin/testlogin";
+        if(App.platformId != PlatformID.H5 && App.platformId != PlatformID.TEST)
         {
-            str = "gamex2/login";
+            str = "gamelogin/login";
         }
-        super.send(App.serverIP + str, "scode=" + App.platformId + "&jscode=" + LoginHttp.FRONT + this.jsCode, "post", "text");
+        super.send(App.serverIP + str + "?scode=" + App.platformId + "&jscode=" + LoginHttp.FRONT + this.jsCode,null, "get", "text");
     }
 
     onSuccess(data): void {
-        Session.SKEY = data;
+        if(App.platformId == PlatformID.TEST)
+        {
+            Session.SKEY = data;
+        }
+        else
+        {
+            let obj: any = JSON.parse(data);
+            Session.SKEY = obj.openid;
+        }
         super.onSuccess(data);
         console.log("login success",data);
     }

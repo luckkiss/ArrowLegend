@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Dialog",
-    "selectedBox":35,
-    "selecteID":32,
+    "selectedBox":2,
+    "selecteID":38,
     "searchKey":"Dialog",
     "props":{"width":750,"sceneColor":"#b0b0b0","height":418},
     "nodeParent":-1,
-    "maxID":36,
+    "maxID":42,
     "label":"Dialog",
     "isOpen":true,
     "isDirectory":true,
@@ -166,14 +166,13 @@
             "props":{"y":112.5,"x":190,"var":"bossxuetiao"},
             "nodeParent":2,
             "label":"bossxuetiao",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":35,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":38,"x":41,"width":331,"skin":"bg/bosstiaoxia.png","sizeGrid":"0,21,0,22","height":42},
@@ -187,7 +186,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,bossxue",
                     "props":{"y":37,"x":44,"var":"bossxue","skin":"bg/bosstiaoshang.png"},
@@ -202,7 +200,6 @@
                     "$HIDDEN":false
                 },
                 {
-                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite",
                     "props":{"texture":"bg/bosstouxiang.png"},
@@ -212,6 +209,62 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":34,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Button",
+            "searchKey":"Button,btnRecord",
+            "props":{"y":166,"x":54,"var":"btnRecord","stateNum":"1","skin":"main/rs_bg.png","scaleY":0.7,"scaleX":0.7,"anchorY":0.5,"anchorX":0.5},
+            "nodeParent":2,
+            "label":"btnRecord",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":38,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":46,"x":51,"skin":"main/rs_0.png"},
+                    "nodeParent":38,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":39,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "searchKey":"Image",
+                    "props":{"y":101,"x":27,"skin":"main/tili.png"},
+                    "nodeParent":38,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":40,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "searchKey":"Label",
+                    "props":{"y":101,"x":65,"width":28,"text":"+1","height":20,"fontSize":30,"color":"#ffffff","bold":true},
+                    "nodeParent":38,
+                    "label":"Label",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":41,
                     "child":[
                         ]
                 }]

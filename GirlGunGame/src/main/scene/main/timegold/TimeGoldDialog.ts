@@ -14,6 +14,25 @@ export default class TimeGoldDialog extends ui.test.TimeGoldUI{
         this.AdLingBtn.on( Laya.Event.CLICK,this,this.adClick );
         this.init();
         this.v3bei.ani1.play( 0, true );
+
+        this.on(Laya.Event.DISPLAY,this,this.onDis);
+        this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
+    }
+
+    private onDis():void
+    {
+        if(Laya.Browser.window.tt)
+        {
+            App.sdkManager.showBanner();
+        }
+    }
+
+    private onUndis():void
+    {
+        if(Laya.Browser.window.tt)
+        {
+            App.sdkManager.hideBanner();
+        }
     }
 
     private adClick():void{

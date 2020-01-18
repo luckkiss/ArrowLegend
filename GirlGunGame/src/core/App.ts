@@ -2,7 +2,7 @@ import LayerManager from "./manager/LayerManager";
 import TableManager from "./manager/TableManager";
 import BitmapNumber from "./display/BitmapNumber";
 import SoundManager from "./manager/SoundManager";
-import SdkManager from "./manager/SdkManager";
+import SdkManagerTT from "./manager/SdkManagerTT";
 import DialogManager from "./manager/DialogManager";
 import GameSoundManager from "./manager/GameSoundManager";
 
@@ -15,7 +15,7 @@ export default class App{
     static layerManager:LayerManager = null;
     static tableManager:TableManager = null;
     static soundManager:SoundManager = null;
-    static sdkManager:SdkManager = null;
+    static sdkManager:SdkManagerTT = null;
     static eventManager:Laya.EventDispatcher = new Laya.EventDispatcher();
     static dialogManager:DialogManager = new DialogManager();
     static gameSoundManager:GameSoundManager = null;
@@ -24,7 +24,7 @@ export default class App{
         App.layerManager = new LayerManager();
         App.tableManager = new TableManager();
         App.soundManager = new SoundManager();
-        App.sdkManager = new SdkManager();
+        App.sdkManager = new SdkManagerTT();
         App.gameSoundManager = new GameSoundManager();
     }
 

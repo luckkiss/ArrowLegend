@@ -18,8 +18,9 @@ export default class SenderHttp extends BaseHttp {
 
     send(): void {
         let obj = Session.gameData;
-        // super.send(App.serverIP + "gamex3/save2","skey=" + Session.SKEY + "&type=0&num=0&gamedata=" + JSON.stringify(obj), "post", "text");
-        super.send(App.serverIP + "gamex3/save2","skey=" + Session.SKEY + "&type=1&num="+ Game.battleLoader._configId +"&gamedata=" + JSON.stringify(obj), "post", "text");
+        let gamedata:any = {};
+        gamedata.obj = obj;
+        super.send(App.serverIP + "game/save","skey=" + Session.SKEY + "&gamedata=" + JSON.stringify(gamedata), "post", "text");
     }
 
     onSuccess(data): void {

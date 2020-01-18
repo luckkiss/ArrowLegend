@@ -57,9 +57,11 @@ export default class Session{
     }
 
     static parseData(str:string):void{
-        if(str != "" && str != "0" ){
+        console.log("服务端数据",str);
+        if(str != "" && str != "0" && str != "{}" ){
             App.sdkManager.log(LogType.NEW_PLAYER);
-            Session.gameData = JSON.parse(str);
+            let data = JSON.parse(str);
+            Session.gameData = data.obj;
             for( let i of Session.IDataArr ){
                 i.setData( Session.gameData );
             }

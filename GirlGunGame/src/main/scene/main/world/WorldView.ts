@@ -51,6 +51,14 @@ import OpenIconDialog from "../../../guide/OpenIconDialog";
 
         this.addChild(this.box1);
 
+        if(Laya.Browser.window.tt)
+        {
+            this.rankBtn.visible = false;
+            this.sign7Btn.visible = false;
+            this.shareBtn.visible = false;
+            this.frogBtn.visible = false;
+        }
+
         Laya.stage.on( GameEvent.SHOW_MAIN , this, this.showMain );
     }
 

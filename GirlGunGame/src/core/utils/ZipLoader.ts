@@ -8,13 +8,13 @@ export default class ZipLoader {
     public static instance: ZipLoader = new ZipLoader();
 
 
-    public static load(fileName: String, handler: Handler): void {
+    public static load(fileName: string, handler: Handler): void {
         this.instance.loadFile(fileName, handler);
     }
 
     public handler: Handler = null;
 
-    public loadFile(fileName: String, handler: Handler): void {
+    public loadFile(fileName: string, handler: Handler): void {
         this.handler = handler;
         Laya.loader.load(fileName, new Handler(this, this.zipFun), null, Loader.BUFFER);
     }

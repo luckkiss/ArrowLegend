@@ -15,7 +15,7 @@ export default class TestPlatform extends BasePlatform{
     login(callback):void
     {
         // callback && callback("" + Date.now());
-        callback && callback("shfdsaomghjgai123fdafda456");
+        callback && callback("woyecaonidayea233");
     }
 
     private cb;

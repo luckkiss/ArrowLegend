@@ -75,8 +75,12 @@ class Main {
 		console.log("代码版本",Game.codeVer);
 		console.log("代码版本",Game.resVer);
 		//App.top = 90;
+		if(Laya.Browser.window.tt)
+		{
+			Laya.Browser.window.wx = Laya.Browser.window.tt;
+		}
 		if (Laya.Browser.window.wx) {
-			Laya.URL.basePath = "https://img.kuwan511.com/arrowLegend/" + Game.resVer + "/";
+			Laya.URL.basePath = "https://img.kuwan511.com/arrowLegend/tt/" + Game.resVer + "/";
 			Laya.MiniAdpter.nativefiles = Game.nativefiles;
 			Laya.Browser.window.wx.getSystemInfo({
 				success(res) {
@@ -183,6 +187,7 @@ class Main {
 		REG("p" + PlatformID.TEST, TestPlatform);
 		REG("p" + PlatformID.H5, TestPlatform);
 		REG("p" + PlatformID.WX, WXPlatform);
+		REG("p" + PlatformID.TT, WXPlatform);
 		//buff
 		//无敌
 		REG("BUFF" + BuffID.WUDI_5009, WudiBuff);

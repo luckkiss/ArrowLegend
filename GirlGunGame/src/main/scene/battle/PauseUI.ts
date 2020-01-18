@@ -10,6 +10,15 @@ import App from "../../../core/App";
         this.btnPlay.clickHandler = new Laya.Handler(this,this.onBattle);
         this.btnMusic.clickHandler = new Laya.Handler(this,this.onMusic);
         this.on(Laya.Event.DISPLAY,this,this.onDis);
+        this.on(Laya.Event.UNDISPLAY,this,this.onUndis);
+    }
+
+    private onUndis():void
+    {
+        if(Laya.Browser.window.tt)
+        {
+            App.sdkManager.hideBanner();
+        }
     }
 
     private onDis():void
@@ -21,6 +30,11 @@ import App from "../../../core/App";
         Game.cookie.getCookie(CookieKey.SOUND_SWITCH, (res) => {
             this.soundImg.skin = res.state == 1 ? "bg/zhanting_1.png" : "bg/zhanting_0.png";
         });
+
+        if(Laya.Browser.window.tt)
+        {
+            App.sdkManager.showBanner();
+        }
     }
 
     private onSound():void
