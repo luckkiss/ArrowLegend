@@ -1,9 +1,0 @@
-{
-    "platformId": 5,
-    "platforms": {
-        "0": "http://192.168.3.69:8080/",
-        "10": "https://s1.kuwan511.com/",
-        "31": "https://s1.kuwan511.com/",
-        "5": "https://game.kuwan511.com/"
-    }
-}

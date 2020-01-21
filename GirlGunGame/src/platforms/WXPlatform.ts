@@ -54,6 +54,7 @@ export default class WXPlatform extends BasePlatform {
     login(callback): void {
         Laya.Browser.window.wx.login(
             {
+                force:false,
                 success: (res) => {
                     if (res.code) {
                         Laya.Browser.window.tt.getUserInfo({

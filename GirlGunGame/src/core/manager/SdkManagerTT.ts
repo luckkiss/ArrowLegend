@@ -396,7 +396,8 @@ export default class SdkManagerTT {
         this._hand = handler;
         this.isClickStop = true;
         if (this.isEnd)  {
-            Laya.Browser.window.wx.shareVideo({
+            console.log("时间到分享");
+            Laya.Browser.window.tt.shareVideo({
                 videoPath: this.videoUrl,
                 success: (res) => {
                     this._hand && this._hand.run();
@@ -405,6 +406,7 @@ export default class SdkManagerTT {
             });
         }
         else  {
+            console.log("手动停止然后分享");
             this.recorde.stop();
         }
     }

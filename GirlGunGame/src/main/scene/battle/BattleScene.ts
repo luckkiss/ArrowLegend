@@ -377,10 +377,13 @@ export default class BattleScene extends Laya.Sprite {
         
         Laya.stage.on(Laya.Event.KEY_PRESS, this, this.onOpenDoor);
 
+        this._top.btnRecord.visible = false; 
         if(Laya.Browser.window.tt)
         {
             App.sdkManager.recorder();
-            this._top.btnRecord.visible = true;
+            setTimeout(() => {
+                this._top.btnRecord.visible = true;  
+            }, 3000);
         }
     }
 

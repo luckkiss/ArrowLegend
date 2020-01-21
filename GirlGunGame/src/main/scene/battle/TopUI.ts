@@ -23,11 +23,7 @@ import SysEnemy from "../../sys/SysEnemy";
         Laya.stage.on(GameEvent.BOOS_BLOOD_UPDATE,this,this.onUpdate);
 
         this.btnRecord.visible = false;
-        if(Laya.Browser.window.tt)
-        {
-            this.btnRecord.visible = true;
-            this.btnRecord.clickHandler = new Laya.Handler(this,this.onStopRecord);
-        }
+        this.btnRecord.clickHandler = new Laya.Handler(this,this.onStopRecord);
     }
 
     private onStopRecord():void
