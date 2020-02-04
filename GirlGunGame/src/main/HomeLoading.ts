@@ -6,6 +6,7 @@ import App from "../core/App";
 import PlatformID from "../platforms/PlatformID";
 import Game from "../game/Game";
 import CookieKey from "../gameCookie/CookieKey";
+import Session from "./Session";
     export default class HomeLoading extends ui.game.homePageUI {
     
     private rect:Laya.Rectangle;
@@ -51,8 +52,18 @@ import CookieKey from "../gameCookie/CookieKey";
 	}
 
 	private onSuccess(data): void {
-		console.log("登录成功");
-		ReceiverHttp.create(new Laya.Handler(this, this.onReceive)).send();
+		console.log("登录成功",Game.isLogin);
+		if(Game.isLogin)
+		{
+			console.log("已经登录的用户",Game.isLogin);
+			ReceiverHttp.create(new Laya.Handler(this, this.onReceive)).send();
+		}
+		else{
+			console.log("没有登录的用户");
+			this.onReceive("");
+
+		}
+		
 	}
 
 
@@ -61,6 +72,7 @@ import CookieKey from "../gameCookie/CookieKey";
 		if (this.isInit) {
 			return;
 		}
+		Session.parseData(data);
 		console.log("获取玩家数据成功" + data);
 		this.isInit = true;
 		new GameMain();

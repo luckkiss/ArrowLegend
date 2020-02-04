@@ -22,7 +22,6 @@ export default class ReceiverHttp extends BaseHttp {
 
     onSuccess(data): void {
         App.sdkManager.log(LogType.LOGIN_SUCCESS);
-        Session.parseData(data);
         super.onSuccess(data);
         console.log("receive data",data);
     }

@@ -38,6 +38,8 @@ export default class Game {
     static codeVer:string = "3.0.0.200120";
     static resVer:string = "3.0.0.200120";
 
+    static isLogin:boolean;
+
     static battleGuide:number;
 
     /**本地资源 */

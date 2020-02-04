@@ -51,30 +51,38 @@ export default class WXPlatform extends BasePlatform {
         }
     }
 
+
     login(callback): void {
         Laya.Browser.window.wx.login(
             {
-                force:false,
+                force: false,
                 success: (res) => {
+                    Game.isLogin = res.isLogin;
+                    console.log("登录成功----------------------",res);
                     if (res.code) {
                         Laya.Browser.window.tt.getUserInfo({
                             success(res2) {
-                                console.log('用户信息',res2);
-                              Game.userHeadUrl = res2.userInfo.avatarUrl;
-                              Game.userName = res2.userInfo.nickName;
-                              callback && callback(res.code);
+                                console.log('用户信息------------------------', res2);
+                                Game.userHeadUrl = res2.userInfo.avatarUrl;
+                                Game.userName = res2.userInfo.nickName;
+                                callback && callback(res.code);
                             },
                             fail(res3) {
+                                console.log('用户信息失败------------------------', res3);
                                 callback && callback(res.code);
-                              }
-                          });
+                            }
+                        });
+                    }
+                    else
+                    {
+                        callback && callback(res.anonymousCode);
                     }
                 }
             });
     }
 
     private userBtn;
-    getUserInfo(callback): void  {
+    getUserInfo(callback): void {
         // if(this.userBtn)
         // {
         //    return; 
@@ -107,17 +115,17 @@ export default class WXPlatform extends BasePlatform {
         Laya.Browser.window.tt.authorize({
             scope: "scope.userInfo",
             success() {
-              // 用户同意授权用户信息
-              callback && callback();
+                // 用户同意授权用户信息
+                callback && callback();
             },
             fail(res) {
                 callback && callback();
-              }
-          });
-        
+            }
+        });
+
     }
 
-    
+
 
     onShare(callback): void {
         Laya.Browser.window.wx.shareAppMessage({
