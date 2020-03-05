@@ -48,6 +48,7 @@ import FlyGameMove2 from "./game/move/FlyGameMove2";
 import TestCookie from "./gameCookie/TestCookie";
 import WXCookie from "./gameCookie/WXCookie";
 import { BaseCookie } from "./gameCookie/BaseCookie";
+import Session from "./main/Session";
 
 class Main {
 	constructor() {
@@ -71,7 +72,7 @@ class Main {
 		Laya.alertGlobalError = true;
 
 		if (Laya.Browser.window.wx) {
-			Laya.URL.basePath = "https://img.kuwan511.com/arrowLegend/" + Game.resVer + "/";
+			Laya.URL.basePath = "https://img.kuwan511.com/womanLegend/wx/" + Game.resVer + "/";
 			Laya.MiniAdpter.nativefiles = ["loading/loadingClip.png"];
 
 			Laya.Browser.window.wx.getSystemInfo({
@@ -140,7 +141,9 @@ class Main {
 		let BP = Laya.ClassUtils.getRegClass("p" + App.platformId);
 		new BP().checkUpdate();
 
-		new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
+		// new LoginHttp(new Laya.Handler(this, this.onSuccess)).checkLogin();
+		Session.parseData("");
+		this.onReceive("");
 	}
 
 	private onSuccess(data): void {

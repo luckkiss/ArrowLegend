@@ -103,8 +103,6 @@ export default class BattleLoader {
         Game.bg && Game.bg.clear();
         this._loading.txt.text = "0%";
 
-        this._index = 9;
-
         if(this.continueRes)
         {
             this._mapId = this.continueRes.mapId;
